@@ -27,7 +27,6 @@ app.use(function (req, res, next) {
 	res.status(404).json({ message: "Sorry can't find that!" });
 });
 
-
 app.listen(port, () =>
 	console.log(`app listening at http://localhost:${port}`)
 );
