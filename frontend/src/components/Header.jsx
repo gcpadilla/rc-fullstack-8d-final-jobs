@@ -1,12 +1,13 @@
 import React from 'react'
 import Button from './Button'
 import '.././App.css'
+import logo from '../images/RollingJobswhite.svg'
 
 function Navbar () { 
 
     return (
 <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
-  <a className="navbar-brand text-white" href="#">Navbar</a>
+    <img className="logoStyle" src={logo} alt="logo"/>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>

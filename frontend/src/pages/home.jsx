@@ -3,6 +3,8 @@ import Header from '../components/Header'
 import BodyCategories from '../components/BodyCategories'
 
 import Body from '../components/Body'
+import BodyDown from '../components/BodyDown'
+import Footer from '../components/Footer'
 
 const home = () => {
     return (
@@ -10,8 +12,8 @@ const home = () => {
             <Header />
             <Body />
             <BodyCategories />
-
-            <h1>home</h1>
+            <BodyDown />
+            <Footer />
         </div>
     );
 };
