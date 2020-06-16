@@ -17,7 +17,7 @@ const BodyDown = () => {
             </div>
         </div>
         <div>
-        <div className="mt-5 d-flex flex-column align-items-center">
+        <div className="mt-5 d-flex flex-column align-items-center mt-5 mb-5">
                 <h3 className="tituloNews">Suscríbite al Newsletter</h3>
                 <p className="textNews text-center"> Trabajos - Talleres - Novedades - Información Util </p>  
             <Newsletter />

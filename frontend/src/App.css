@@ -59,7 +59,11 @@ max-width: 14rem;
 text-align: center;
 background-color: #312F73;
 }
-
+.infoCard{
+  font-weight: 700;
+  font-size: 35pt;
+  line-height: 20pt;
+}
 .imgSVG {
   height: 20rem;
 }
