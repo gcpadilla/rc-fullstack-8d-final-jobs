@@ -4,12 +4,12 @@ import '.././App.css'
 
 function CartelJobs (props) {
     return (
-        <div className="card m-3 shadow border-0 cartelJobs container d-flex flex-row justify-content-between align-items-center">
+        <div className="card m-2 shadow border-0 cartelJobs container d-flex flex-row justify-content-between align-items-center">
             <div className="card-body dataBody col-8">
-                <p className="card-text"> {props.empresa} </p>
-                <h3 className="card-title">{props.puesto}</h3>
-                <p className="card-text">{props.lugar} - {props.modalidad}</p>
-                <p className="card-text">{props.tiempoPublicacion}</p>
+                <h3 className="card-text datosCartel"> {props.empresa} </h3>
+                <h3 className="card-title tituloCartel">{props.puesto}</h3>
+                <h3 className="card-text datosCartel">{props.lugar} - {props.modalidad}</h3>
+                <p className="card-text tiempoCartel">{props.tiempoPublicacion}</p>
             </div>
             <img className="col-4 imageLogoCard rounded-circle" src={props.logoEmpresa} alt="logo-empresa"/>
         </div>
