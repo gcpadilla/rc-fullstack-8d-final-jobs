@@ -1,9 +1,19 @@
 import React from 'react';
+import Header from '../components/Header'
+import BodyCategories from '../components/BodyCategories'
+
+import Body from '../components/Body'
+import BodyDown from '../components/BodyDown'
+import Footer from '../components/Footer'
 
 const home = () => {
     return (
         <div>
-            <h1>home</h1>
+            <Header />
+            <Body />
+            <BodyCategories />
+            <BodyDown />
+            <Footer />
         </div>
     );
 };
