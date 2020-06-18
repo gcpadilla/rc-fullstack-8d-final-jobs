@@ -1,8 +1,14 @@
 const express = require('express');
-const router = express.Router(); 
+const { body } = require('express-validator');
+const router = express.Router();
 
-const postulateController = require('../controllers/postulateController')
+const postulateController = require('../controllers/postulateController');
 
-router.get('/', postulateController.getPostulate)
+//CREAR POSTULACION
+router.post('/', [
+  body('intendedsalary', 'Incluir salario pretendido').notEmpty(),
+  body('experiences', 'Debe ingresar experiencia').notEmpty(),
+  body('studies', 'Debe incluir estudios').notEmpty(),
+  ], postulateController.createPostulate);
 
 module.exports = router;
