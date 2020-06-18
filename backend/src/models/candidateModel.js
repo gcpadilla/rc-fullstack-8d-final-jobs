@@ -39,8 +39,18 @@ const CandidateSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  _idpostulation: {
+  profession:{
     type: String,
+    required: true,
+    trim: true
+  },
+  publicationdate:{
+    type: String,
+    required: true,
+    trim: true
+  },
+  postulantRef: {
+    type: Array,
     trim: true,
   },
   token: [ String ]

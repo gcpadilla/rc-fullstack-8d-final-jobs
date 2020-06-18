@@ -19,10 +19,10 @@ const offerRouter = require("./routes/offerRouter");
 
 app.use("/api/v1/status", statusRouter);
 
-app.use("/api/v1/users/administrators/", authAdministratorRouter);
-app.use("/api/v1/users/candidates/", authCandidateRouter);
-app.use("/api/v1/offer/postulates/", postulateRouter);
-app.use("/api/v1/offers/", offerRouter);
+app.use(`"/api/v1/users/administrators"`, authAdministratorRouter);
+app.use("/api/v1/users/candidates", authCandidateRouter);
+app.use("/api/v1/offer/postulates", postulateRouter);
+app.use("/api/v1/offers", offerRouter);
 
 app.use(function (req, res, next) {
   res.status(404).json({ message: "Sorry can't find that!" });
