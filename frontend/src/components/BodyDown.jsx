@@ -7,7 +7,7 @@ const BodyDown = () => {
 
     return (
         <>
-        <div className=" d-flex justify-content-center ">
+        <div className=" d-flex justify-content-center testingMargin ">
             <div className="col-4 d-flex flex-column justify-content-center align-items-end">
                 <h3 className="tituloDown">Trabajamos Juntos</h3>
                 <p className="textDown text-right">Para gestionar como equipo <br /> tu futuro soñado </p>  
@@ -17,7 +17,7 @@ const BodyDown = () => {
             </div>
         </div>
         <div>
-        <div className="mt-5 d-flex flex-column align-items-center mt-5 mb-5">
+        <div className="mt-5 d-flex flex-column align-items-center testingMargin">
                 <h3 className="tituloNews">Suscríbite al Newsletter</h3>
                 <p className="textNews text-center"> Trabajos - Talleres - Novedades - Información Util </p>  
             <Newsletter />

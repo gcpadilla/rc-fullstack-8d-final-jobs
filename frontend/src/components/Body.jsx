@@ -20,7 +20,7 @@ const Body = () => {
     ]
 
     return (
-        <div className="generalBody d-flex justify-content-center ">
+        <div className="generalBody d-flex justify-content-center testingMargin">
             <div className="izquierda col-8 d-flex flex-column justify-content-around align-items-center">
                 <Search />
                 <p>En RollingJobs creemos en la acción de conectar a las personas con su trabajo ideal. </p>  
