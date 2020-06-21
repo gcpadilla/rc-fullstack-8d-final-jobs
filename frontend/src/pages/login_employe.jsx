@@ -1,47 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button, Modal} from "react-bootstrap"
 
-const login_employe = () => {
+
+function Ejercicio4() {
+  const [photo, setPhoto] = useState(false);
+  const handleClose = () => setPhoto(false);
+  const handleShow = () => setPhoto(true);
+  
   return (
-    <div className="container">
-      <div className="col-4 text-center pb-5 border border-primary bg-secondary text-white form-group mb-3">
-        <h1 className="mt-4">Bienvenido</h1>
-        <h4 className="mb-2">login de candidatos</h4>
-        <div className="mb-4">
-          <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input
-                type="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-              />
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-              />
-              <label for="exampleInputPassword1">repeat the Password</label>
-              <input
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-              />
-            </div>
-            <button type="submit" class="btn btn-primary">
-              Submit
-            </button>
-          </form>
-        </div>
-      </div>
+    <div className="container m-5">
+      <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button>
+      <Modal show={photo} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
-};
-
-export default login_employe;
+}
+export default Ejercicio4;
