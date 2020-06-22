@@ -1,4 +1,3 @@
-//const mongoose = require('mongoose');
 const jsonwebtoken = require('jsonwebtoken');
 const CandidateModel = require('../models/candidateModel');
 

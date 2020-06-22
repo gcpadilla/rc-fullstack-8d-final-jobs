@@ -10,16 +10,15 @@ exports.createPostulate = async (req, res) => {
 
   const { body } = req;
 
-  const userData = {
+  const postulateData = {
     intendedsalary: body.intendedsalary,
     experiences: body.experiences,
     studies: body.studies,
-    candidateRef: body.candidateRef,
-    offerRef: body.offerRef,
+    emailcandidate: body.emailcandidate
   };
 
 
-  const postulate = new postulateModel(userData);
+  const postulate = new postulateModel(postulateData);
 
   try {
     await postulate.save();

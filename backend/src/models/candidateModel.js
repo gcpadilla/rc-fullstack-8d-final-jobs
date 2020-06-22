@@ -49,10 +49,7 @@ const CandidateSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  postulantRef: {
-    type: Array,
-    trim: true,
-  },
+  offerRef: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Offer' }],
   token: [ String ]
 }, { versionKey: false });
 

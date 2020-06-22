@@ -1,5 +1,6 @@
+//const mongoose = require('mongoose');
 const jsonwebtoken = require('jsonwebtoken');
-const AdminModel = require('../models/administratorModel');
+const PostulateModel = require('../models/postulateModel');
 
 module.exports = async (req, res, next) => {
   console.log('Authorization...');
@@ -7,7 +8,7 @@ module.exports = async (req, res, next) => {
     const authHeader = req.header('Authorization');
     const token = authHeader.replace('Bearer ', '');
     const decoded = jsonwebtoken.verify(token, process.env.JWT_SECRET);
-    const user_in_db = await AdminModel.findOne({ _id: decoded.user.id, token: token });
+    const user_in_db = await PostulateModel.findOne({ _id: decoded.user.id, token: token });
     
     if (!user_in_db) {
       return res.status(401).json({ message: 'Unauthorized.'});

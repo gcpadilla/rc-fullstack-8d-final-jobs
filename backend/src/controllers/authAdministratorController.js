@@ -3,7 +3,7 @@ const bcryptjs = require('bcryptjs');
 const jsonwebtoken = require('jsonwebtoken');
 const adminModel = require('../models/administratorModel');
 
-//crear usuario
+//crear usuario admin
 exports.createAdmin = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -17,15 +17,15 @@ exports.createAdmin = async (req, res) => {
     return res.status(400).json({ message: 'Usuario ya existe...'});
   }
 
-  const userData = {
+  const adminData = {
     username: body.username,
     token: []
   };
 
   const salt = await bcryptjs.genSalt(10);
-  userData.password = await bcryptjs.hash(body.password, salt);
+  adminData.password = await bcryptjs.hash(body.password, salt);
 
-  const user = new adminModel(userData);
+  const user = new adminModel(adminData);
 
   try {
     await user.save();
@@ -36,7 +36,7 @@ exports.createAdmin = async (req, res) => {
 
 }
 
-//loguear usuario
+//loguear usuario admin
 exports.login = async (req, res) => {
   
   const errors = validationResult(req);
@@ -73,7 +73,7 @@ exports.login = async (req, res) => {
   }
 }
 
-//desloguear usuario
+//desloguear usuario admin
 exports.logout = async (req, res) => {
 
   try {

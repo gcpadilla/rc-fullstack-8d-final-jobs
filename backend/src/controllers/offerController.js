@@ -10,7 +10,7 @@ exports.createOffer = async (req, res) => {
 
   const { body } = req;
 
-  const userData = {
+  const offerData = {
     title: body.title,
     summary: body.summary,
     description: body.description,
@@ -20,14 +20,13 @@ exports.createOffer = async (req, res) => {
     active: body.active,
     quota: body.quota,
     publicationdate: body.publicationdate,
-    postulantRef: body.postulantRef,
   };
 
 
-  const offer = new offerModel(userData);
+  const Offer = new offerModel(offerData);
 
   try {
-    await offer.save();
+    await Offer.save();
     res.send({ message: "Se registro oferta correctamente.." });
   } catch (err) {
     res.status(500).send(err);

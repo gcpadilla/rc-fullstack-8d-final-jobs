@@ -5,7 +5,7 @@ const router = express.Router();
 
 const adminController = require('../controllers/authAdministratorController');
 
-//CREAR USUARIO
+//CREAR USUARIO ADMIN
 router.post('/', [
   body('username', 'El usuario no puede ser nulo').notEmpty(),
   body('password', 'Password no puede ser nulo').notEmpty(),
@@ -13,13 +13,13 @@ router.post('/', [
   body('password', 'debe incluir de 8 a 32 caracteres').isLength({ min: 8, max: 32 }),
   ], adminController.createAdmin);
 
-//LOGUEAR USUARIO
+//LOGUEAR USUARIO ADMIN
 router.post('/login', [
   body('username', 'El usuario no puede ser nulo').notEmpty(),
   body('password', 'Password no puede ser nulo').notEmpty()
   ], adminController.login);
 
-//DESCONECTAR USUARIO
+//DESCONECTAR USUARIO ADMIN
 router.get('/logout', authorize, adminController.logout);
 
 module.exports = router;
