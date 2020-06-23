@@ -5,13 +5,12 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../App.css";
 import Swal from "sweetalert2";
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 import { useState } from "react";
-
 
 const Register = () => {
   const [UserSelec, setUserSelec] = useState({});
-  const [redirec, setredirec] = useState(false)
+  const [redirec, setredirec] = useState(false);
 
   const onsubmit = async (e) => {
     e.preventDefault();
@@ -22,11 +21,11 @@ const Register = () => {
         await axios.post(
           "http://localhost:3001/api/v1/users/candidates",
           UserSelec
-          ); 
-          setTimeout(() => {
-            setredirec(true)
-          }, 1000);      
-          
+        );
+        setTimeout(() => {
+          setredirec(true);
+        }, 1000);
+
         Swal.fire("genial", "se registro sactifactoriamente!", "success");
       } catch (err) {
         if (err.response.data.message === undefined) {
@@ -50,7 +49,7 @@ const Register = () => {
     console.log(anios);
     return anios;
   };
-  
+
   const onInputChange = (e) => {
     setUserSelec({
       ...UserSelec,
@@ -58,13 +57,11 @@ const Register = () => {
       publicationdate: new Date().toLocaleString(),
     });
   };
-  
 
   return (
     <div>
-      {console.log(redirec)
-      }
-     { redirec && <Redirect to='/'  />}
+      {console.log(redirec)}
+      {redirec && <Redirect to="/" />}
       <Header />
       <div className="container">
         <div className="text-center pb-5 form-group mb-3">
@@ -174,13 +171,15 @@ const Register = () => {
                       aria-describedby="passwordHelpBlock"
                       onChange={onInputChange}
                     />
-                    <small id="passwordHelpBlock" className="form-text text-muted">
+                    <small
+                      id="passwordHelpBlock"
+                      className="form-text text-muted"
+                    >
                       la password debe tener entre 8 y 20 caracteres, contener
                       letras y numeros, tiene que contener por lo menos una
                       mayuscula y una minuscula.
                     </small>
                   </div>
-
 
                   <div className="form-group">
                     <label htmlFor="exampleInputPassword1">
