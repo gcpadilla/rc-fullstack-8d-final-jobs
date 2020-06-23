@@ -33,10 +33,10 @@ const BodyCategories = () => {
     ]
 
     return (
-        <div className="d-flex- align-items-center mt-5 mb-5">
-        <div className="d-flex flex-column align-items-center ">
+        <div className="d-flex- align-items-center my-5 generalBody">
+        <div className="d-flex flex-column align-items-center my-5 ">
                 <div className="titulares d-flex container align-items-center">
-                    <h3 className="titulos col-8">Principales Categorías</h3>
+                    <h3 className="titulos col-10">Principales Categorías</h3>
                     <h5 className="links col-2 text-right">Explorar Más</h5>
                 </div>
                 <div className="distriCards d-flex justify-content-between flex-wrap">
@@ -49,9 +49,9 @@ const BodyCategories = () => {
                 </div>
             
         </div>
-            <div className="d-flex flex-column align-items-center">
+            <div className="d-flex flex-column align-items-center my-5">
                 <div className="titulares d-flex container align-items-centers">
-                    <h3 className="titulos col-8" >Puestos Más Solicitados</h3>
+                    <h3 className="titulos col-10" >Puestos Más Solicitados</h3>
                     <h5 className="links col-2 text-right" >Explorar Más</h5>
                 </div>
                 <div className="distriCards d-flex flex-wrap justify-content-center">
