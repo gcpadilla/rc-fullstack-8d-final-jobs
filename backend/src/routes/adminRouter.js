@@ -3,7 +3,7 @@ const { body } = require('express-validator');
 const authorize = require('../middlewares/authorizeAdmin');
 const router = express.Router();
 
-const adminController = require('../controllers/authAdministratorController');
+const adminController = require('../controllers/adminController');
 
 //CREAR USUARIO ADMIN
 router.post('/', [
@@ -20,6 +20,6 @@ router.post('/login', [
   ], adminController.login);
 
 //DESCONECTAR USUARIO ADMIN
-router.get('/logout', authorize, adminController.logout);
+router.get('/logout', authorize(["user","admin"]), adminController.logout);
 
 module.exports = router;

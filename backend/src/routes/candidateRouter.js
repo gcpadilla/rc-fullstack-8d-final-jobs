@@ -3,9 +3,9 @@ const { body } = require('express-validator');
 const authorize = require('../middlewares/authorizeCandidate');
 const router = express.Router();
 
-const candidateController = require('../controllers/authCandidateController');
+const candidateController = require('../controllers/candidateController');
 
-//CREAR USUARIO
+//CREAR CANDIDATO
 router.post('/', [
   body('firstname', 'El nombre no puede ser nulo').notEmpty(),
   body('lastname', 'El apellido no puede ser nulo').notEmpty(),
@@ -21,13 +21,13 @@ router.post('/', [
   body('profession', 'La profesion no puede ser nula').notEmpty()
   ], candidateController.createCandidate);
 
-//LOGUEAR USUARIO
+//LOGUEAR CANDIDATO
 router.post('/login', [
   body('username', 'El usuario no puede ser nulo').notEmpty(),
   body('password', 'Password no puede ser nulo').notEmpty()
   ], candidateController.login);
 
-//DESCONECTAR USUARIO
-router.get('/logout', authorize, candidateController.logout);
+//DESCONECTAR CANDIDATO
+router.get('/logout', authorize (["user","admin"]), candidateController.logout);
 
 module.exports = router;

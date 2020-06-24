@@ -14,15 +14,15 @@ require("./database");
 
 const statusRouter = require("./routes/statusRouter");
 
-const authAdministratorRouter = require("./routes/authAdministratorRouter");
-const authCandidateRouter = require("./routes/authCandidateRouter");
+const adminRouter = require("./routes/adminRouter");
+const candidateRouter = require("./routes/candidateRouter");
 const postulateRouter = require("./routes/postulateRouter");
 const offerRouter = require("./routes/offerRouter");
 
 app.use("/api/v1/status", statusRouter);
 
-app.use("/api/v1/users/administrators", authAdministratorRouter);
-app.use("/api/v1/users/candidates", authCandidateRouter);
+app.use("/api/v1/users/administrators", adminRouter);
+app.use("/api/v1/users/candidates", candidateRouter);
 app.use("/api/v1/offer/postulates", postulateRouter);
 app.use("/api/v1/offers", offerRouter);
 

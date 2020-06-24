@@ -1,7 +1,7 @@
 const jsonwebtoken = require('jsonwebtoken');
 const CandidateModel = require('../models/candidateModel');
 
-module.exports = async (req, res, next) => {
+module.exports = (role) => async (req, res, next) => {
   try {
     const authHeader = req.header('Authorization');
     const token = authHeader.replace('Bearer ', '');
@@ -9,6 +9,11 @@ module.exports = async (req, res, next) => {
     const user_in_db = await CandidateModel.findOne({ _id: decoded.user.id, token: token });
     if (!user_in_db) {
       return res.status(401).json({ message: 'Unauthorized.'});
+    }
+    if (role instanceof String && decoded.user.role !== role) {
+      return res.status(401).json({ mensaje: "Unauthorized" });
+    } else if (Array.isArray(role) && !role.includes(decoded.user.role)) {
+      return res.status(401).json({ mensaje: "Unauthorized" });
     }
     
     res.locals.user = user_in_db;

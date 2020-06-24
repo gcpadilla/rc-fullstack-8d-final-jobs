@@ -22,6 +22,16 @@ const PostulateSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    offerid: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    candidateid: {
+      type: String,
+      required: true,
+      trim: true,
+    },
   },
   { versionKey: false }
 );

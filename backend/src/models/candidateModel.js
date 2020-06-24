@@ -44,12 +44,16 @@ const CandidateSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  role: {
+    type: String,
+    default:"user",
+  },
   publicationdate:{
     type: String,
     required: true,
     trim: true
   },
-  offerRef: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Offer' }],
+  postulateRef: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Postulation' }],
   token: [ String ]
 }, { versionKey: false });
 
