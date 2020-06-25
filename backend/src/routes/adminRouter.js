@@ -3,9 +3,9 @@ const { body } = require('express-validator');
 const authorize = require('../middlewares/authorizeAdmin');
 const router = express.Router();
 
-const adminController = require('../controllers/authAdministratorController');
+const adminController = require('../controllers/adminController');
 
-//CREAR USUARIO
+//CREAR USUARIO ADMIN
 router.post('/', [
   body('username', 'El usuario no puede ser nulo').notEmpty(),
   body('password', 'Password no puede ser nulo').notEmpty(),
@@ -13,13 +13,13 @@ router.post('/', [
   body('password', 'debe incluir de 8 a 32 caracteres').isLength({ min: 8, max: 32 }),
   ], adminController.createAdmin);
 
-//LOGUEAR USUARIO
+//LOGUEAR USUARIO ADMIN
 router.post('/login', [
   body('username', 'El usuario no puede ser nulo').notEmpty(),
   body('password', 'Password no puede ser nulo').notEmpty()
   ], adminController.login);
 
-//DESCONECTAR USUARIO
-router.get('/logout', authorize, adminController.logout);
+//DESCONECTAR USUARIO ADMIN
+router.get('/logout', authorize(["user","admin"]), adminController.logout);
 
 module.exports = router;

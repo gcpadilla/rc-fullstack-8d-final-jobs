@@ -33,7 +33,7 @@ const OfferSchema = new mongoose.Schema({
   },
   active: {
     type: Boolean,
-    default:false,
+    default:true,
     trim: true,
   },
   quota:{
@@ -46,13 +46,9 @@ const OfferSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  postulantRef: {
-    type: Array,
-    required: true,
-    trim: true,
-  },
+  postulateRef:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Postulation' }],
 }, { versionKey: false });
 
-const OfferModel = mongoose.model("offer", OfferSchema);
+const OfferModel = mongoose.model("Offer", OfferSchema);
 
 module.exports = OfferModel;

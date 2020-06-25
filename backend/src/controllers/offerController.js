@@ -1,7 +1,8 @@
 const { validationResult } = require("express-validator");
 const offerModel = require("../models/offerModel");
+const adminModel = require("../models/administratorModel");
 
-//crear usuario
+//crear oferta
 exports.createOffer = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -10,7 +11,7 @@ exports.createOffer = async (req, res) => {
 
   const { body } = req;
 
-  const userData = {
+  const offerData = {
     title: body.title,
     summary: body.summary,
     description: body.description,
@@ -20,15 +21,27 @@ exports.createOffer = async (req, res) => {
     active: body.active,
     quota: body.quota,
     publicationdate: body.publicationdate,
-    postulantRef: body.postulantRef,
   };
 
-
-  const offer = new offerModel(userData);
+  
 
   try {
-    await offer.save();
-    res.send({ message: "Se registro oferta correctamente.." });
+    const admin_id = await adminModel.findOne({ _id: res.locals.user.id });
+    if (admin_id) {
+      const Offer = new offerModel(offerData);
+      await Offer.save();
+      res.send({ message: "Se registro oferta correctamente.." });
+    }
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
+//todas las ofertas activas
+exports.getAllOffersActives = async (req, res) => {
+  try {
+    const offers = await offerModel.find({active: true});
+    res.send(offers);
   } catch (err) {
     res.status(500).send(err);
   }

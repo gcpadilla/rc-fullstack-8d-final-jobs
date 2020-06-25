@@ -1,5 +1,8 @@
 const { validationResult } = require("express-validator");
 const postulateModel = require("../models/postulateModel");
+const mongoose = require("mongoose");
+const candidateModel = require("../models/candidateModel");
+const offerModel = require("../models/offerModel")
 
 //crear postulacion
 exports.createPostulate = async (req, res) => {
@@ -10,20 +13,37 @@ exports.createPostulate = async (req, res) => {
 
   const { body } = req;
 
-  const userData = {
+  const postulateData = {
     intendedsalary: body.intendedsalary,
     experiences: body.experiences,
     studies: body.studies,
-    candidateRef: body.candidateRef,
-    offerRef: body.offerRef,
+    emailcandidate: body.emailcandidate,
+    offerid: mongoose.Types.ObjectId(req.params.offerId),
+    candidateid: res.locals.user.id,
   };
 
-
-  const postulate = new postulateModel(userData);
+  const postulate = new postulateModel(postulateData);
 
   try {
-    await postulate.save();
-    res.send({ message: "Se registro postulacion correctamente.." });
+    const candidate_id = await candidateModel.findOne({
+      _id: res.locals.user.id,
+    });
+    if (candidate_id) {
+      await postulate.save();
+
+      const offer = await offerModel.findById({_id: mongoose.Types.ObjectId(req.params.offerId)});
+      const candidate = await candidateModel.findById({_id: res.locals.user.id});
+
+      offer.postulateRef.push(postulate._id)
+      await offer.save()
+      candidate.postulateRef.push(postulate._id)
+      await candidate.save()
+
+      res.send({
+        message: "Se registro postulacion correctamente..",
+        postulate,
+      });
+    }
   } catch (err) {
     res.status(500).send(err);
   }

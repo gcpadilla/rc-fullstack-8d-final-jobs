@@ -1,10 +1,9 @@
-const mongoose = require("mongoose");
 const { validationResult } = require("express-validator");
 const bcryptjs = require("bcryptjs");
 const jsonwebtoken = require("jsonwebtoken");
 const candidateModel = require("../models/candidateModel");
 
-//crear usuario
+//crear candidato
 exports.createCandidate = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -26,7 +25,7 @@ exports.createCandidate = async (req, res) => {
     return res.status(400).json({ message: "dni ya existe..." });
   }
 
-  const userData = {
+  const candidateData = {
     firstname: body.firstname,
     lastname: body.lastname,
     username: body.username,
@@ -40,9 +39,9 @@ exports.createCandidate = async (req, res) => {
   };
 
   const salt = await bcryptjs.genSalt(10);
-  userData.password = await bcryptjs.hash(body.password, salt);
+  candidateData.password = await bcryptjs.hash(body.password, salt);
 
-  const user = new candidateModel(userData);
+  const user = new candidateModel(candidateData);
 
   try {
     await user.save();
@@ -54,7 +53,7 @@ exports.createCandidate = async (req, res) => {
   }
 };
 
-//loguear usuario
+//loguear candidato
 exports.login = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -77,22 +76,24 @@ exports.login = async (req, res) => {
     user: {
       id: user_in_db.id,
       username: user_in_db.username,
+      role: user_in_db.role,
     },
   };
 
   try {
-    const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET, {
-      expiresIn: process.env.TOKEN_EXP_TIME,
-    });
+    // const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET, {
+    //   expiresIn: process.env.TOKEN_EXP_TIME,
+    // });
+    const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET);
     user_in_db.token = [token];
     await candidateModel.update({ username: user_in_db.username }, user_in_db);
-    res.send({ message: "Se logueo perfecto", token });
+    res.send({ message: "Se logueo perfecto", token, role: user_in_db.role });
   } catch (error) {
     return res.status(500).json({ message: "ERROR DE LOGIN.", error });
   }
 };
 
-//desloguear usuario
+//desloguear candidato
 exports.logout = async (req, res) => {
   try {
     await candidateModel.updateOne(
