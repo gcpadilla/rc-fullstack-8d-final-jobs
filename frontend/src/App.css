@@ -38,6 +38,7 @@ p  {
 }
 
 .dropdown-item  {
+  font-size: 10pt;
   color: white;
   background-color: #0c0a59;
 }
@@ -183,6 +184,11 @@ font-size: 10pt;
   font-family: 'Poppins', sans-serif;  font-size: 10pt;
   list-style-type: none; 
   color: white;
+}
+
+.aTituloLinks{
+  font-family: 'Poppins', sans-serif;  font-size: 10pt;
+  list-style-type: none; 
 }
 
 .logoFooter{

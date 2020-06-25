@@ -2,6 +2,7 @@ import React from 'react'
 import '.././App.css'
 import logo from '../images/RollingJobswhite.svg'
 import { Link } from 'react-router-dom'
+import Offers from '../pages/offers'
 
 const Footer = () => {
     return (
@@ -17,7 +18,7 @@ const Footer = () => {
                 <div className="col-4 dataCandidatos text-white d-flex flex-column ">
                     <h3 className="tituloFooter">Candidatos</h3>
                     <Link className="tituloLinks" to="/">Preguntas Frecuentes</Link>
-                    <Link className="tituloLinks" to="/">Empleos por Categorías</Link>
+                    <Link className="tituloLinks" to="/frontend/src/pages/offers.jsx" >Empleos por Categorías</Link>
                 </div>
                 <div className="col-4 Empresa text-white d-flex flex-column">
                     <h3 className="tituloFooter">Empresas</h3>
