@@ -2,6 +2,7 @@ const { validationResult } = require("express-validator");
 const postulateModel = require("../models/postulateModel");
 const mongoose = require("mongoose");
 const candidateModel = require("../models/candidateModel");
+const offerModel = require("../models/offerModel")
 
 //crear postulacion
 exports.createPostulate = async (req, res) => {
@@ -29,9 +30,20 @@ exports.createPostulate = async (req, res) => {
     });
     if (candidate_id) {
       await postulate.save();
-      res.send({ message: "Se registro postulacion correctamente..", postulate });
+
+      const offer = await offerModel.findById({_id: mongoose.Types.ObjectId(req.params.offerId)});
+      const candidate = await candidateModel.findById({_id: res.locals.user.id});
+
+      offer.postulateRef.push(postulate._id)
+      await offer.save()
+      candidate.postulateRef.push(postulate._id)
+      await candidate.save()
+
+      res.send({
+        message: "Se registro postulacion correctamente..",
+        postulate,
+      });
     }
-    return res.status(500).send(err);
   } catch (err) {
     res.status(500).send(err);
   }

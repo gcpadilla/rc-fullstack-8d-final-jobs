@@ -23,15 +23,15 @@ exports.createOffer = async (req, res) => {
     publicationdate: body.publicationdate,
   };
 
-  const Offer = new offerModel(offerData);
+  
 
   try {
     const admin_id = await adminModel.findOne({ _id: res.locals.user.id });
     if (admin_id) {
+      const Offer = new offerModel(offerData);
       await Offer.save();
       res.send({ message: "Se registro oferta correctamente.." });
     }
-    return res.status(500).send(err);
   } catch (err) {
     res.status(500).send(err);
   }

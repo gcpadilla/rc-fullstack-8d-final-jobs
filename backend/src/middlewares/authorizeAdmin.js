@@ -10,12 +10,12 @@ module.exports = (role) => async (req, res, next) => {
     const user_in_db = await AdminModel.findOne({ _id: decoded.user.id, token: token });
     
     if (!user_in_db) {
-      return res.status(401).json({ message: 'Unauthorized 1...'});
+      return res.status(401).json({ message: 'Unauthorized...'});
     }
     if (role instanceof String && decoded.user.role !== role) {
-      return res.status(401).json({ mensaje: "Unauthorized 2..." });
+      return res.status(401).json({ mensaje: "Unauthorized..." });
     } else if (Array.isArray(role) && !role.includes(decoded.user.role)) {
-      return res.status(401).json({ mensaje: "Unauthorized 3..." });
+      return res.status(401).json({ mensaje: "Unauthorized..." });
     }
     
     res.locals.user = user_in_db;
@@ -24,6 +24,6 @@ module.exports = (role) => async (req, res, next) => {
     next();
 
   } catch (error) {
-    return res.status(401).json({ message: 'Unauthorized 4...', error: error.message });
+    return res.status(401).json({ message: 'Unauthorized...', error: error.message });
   }
 };

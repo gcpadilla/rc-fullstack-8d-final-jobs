@@ -46,7 +46,7 @@ const OfferSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  postulantRef:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Postulation' }],
+  postulateRef:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Postulation' }],
 }, { versionKey: false });
 
 const OfferModel = mongoose.model("Offer", OfferSchema);
