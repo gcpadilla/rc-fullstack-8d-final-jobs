@@ -21,6 +21,6 @@ router.post(
 );
 
 //LISTAR TODAS LAS OFERTAS ACTIVAS
-router.get("/active", offerController.getAllOffersActives);
+router.get("/all", offerController.getAllOffersActives);
 
 module.exports = router;

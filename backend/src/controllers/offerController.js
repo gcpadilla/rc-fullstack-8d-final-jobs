@@ -40,7 +40,7 @@ exports.createOffer = async (req, res) => {
 //todas las ofertas activas
 exports.getAllOffersActives = async (req, res) => {
   try {
-    const offers = await offerModel.find({active: true});
+    const offers = await offerModel.find({active: true},"-postulateRef -active");
     res.send(offers);
   } catch (err) {
     res.status(500).send(err);
