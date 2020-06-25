@@ -8,6 +8,7 @@ function Login() {
 
   return (
     <div >
+
       <Button variant="primary" onClick={handleShow}>
         Launch demo modal
       </Button>
@@ -20,6 +21,7 @@ function Login() {
             
           </Modal.Title>
         </Modal.Header>
+      
         <Modal.Body>
           <div className="mb-4">
             <form>
@@ -54,6 +56,7 @@ function Login() {
           </div>
         </Modal.Body>
       </Modal>
+
     </div>
   );
 }

@@ -16,6 +16,8 @@ const Register = () => {
     e.preventDefault();
     const anio = edad(UserSelec.age);
     UserSelec.age = anio;
+
+    
     if (UserSelec.password === UserSelec.password2) {
       try {
         await axios.post(
@@ -28,6 +30,9 @@ const Register = () => {
 
         Swal.fire("genial", "se registro sactifactoriamente!", "success");
       } catch (err) {
+
+       ;
+
         if (err.response.data.message === undefined) {
           Swal.fire(
             `Error de ${err.response.data.errors[0].param}`,
@@ -46,11 +51,13 @@ const Register = () => {
     const nacimiento = moment(a);
     const hoy = moment();
     const anios = hoy.diff(nacimiento, "years");
-    console.log(anios);
+
     return anios;
   };
 
   const onInputChange = (e) => {
+
+    
     setUserSelec({
       ...UserSelec,
       [e.target.name]: e.target.value,
