@@ -3,6 +3,8 @@ import Button from './Button'
 import '.././App.css'
 import logo from '../images/RollingJobswhite.svg'
 import {NavLink, Link} from 'react-router-dom'
+
+
 function Navbar() {
 
   return (
@@ -18,7 +20,7 @@ function Navbar() {
               <NavLink className="nav-link dropdown-toggle text-white" role="button" data-toggle="dropdown"  to="/" >Candidatos</NavLink>
               <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <Link className="dropdown-item" to="/">Preguntas Frecuentes</Link>
-                <Link className="dropdown-item" to="/">Empleos por Categorías</Link>
+                <Link className="dropdown-item" to="/offers">Empleos por Categorías</Link>
               </div>
             </li>
 
@@ -27,6 +29,7 @@ function Navbar() {
                 Empresas
         </NavLink>
               <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <Link className="dropdown-item" to="/company">Perfil</Link>
                 <Link className="dropdown-item" to="/">Preguntas Frecuentes</Link>
                 <Link className="dropdown-item" to="/">Precios</Link>
                 <Link className="dropdown-item" to="/">Publicar Empleos</Link>
