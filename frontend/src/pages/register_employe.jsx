@@ -24,11 +24,12 @@ const Register = () => {
           "http://localhost:3001/api/v1/users/candidates",
           UserSelec
         );
-        setTimeout(() => {
-          setredirec(true);
-        }, 1000);
+        // setTimeout(() => {
+        //   setredirec(true);
+        // }, 1000);
 
-        Swal.fire("genial", "se registro sactifactoriamente!", "success");
+       await Swal.fire("genial", "se registro sactifactoriamente!", "success");
+       setredirec(true);
       } catch (err) {
 
        ;
@@ -203,7 +204,7 @@ const Register = () => {
                   </div>
                 </div>
               </div>
-              <button type="submit" className="btn btn-success rounded-pill">
+              <button type="submit" onSubmit={onsubmit} className="btn btn-success rounded-pill">
                 Guardar
               </button>
             </form>

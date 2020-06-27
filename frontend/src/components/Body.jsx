@@ -27,7 +27,8 @@ const Body = () => {
                 <Button name="¿Buscás al Candidato?" />
                     <div className="d-flex justify-content-between m-3">
                         {titulos.map (nombre => {
-                            return <CartelInfo Titulo={nombre.Titulo} Subtitulo={nombre.Subtitulo} className />
+                            
+                            return <CartelInfo Titulo={nombre.Titulo} Subtitulo={nombre.Subtitulo} key={nombre.Titulo} className />
                         })}
                     </div>
                 <Button name="Publicar Ahora" />       

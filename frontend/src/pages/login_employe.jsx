@@ -1,14 +1,49 @@
 import React from "react";
-// import { Button, Modal } from "react-bootstrap";
-import Login from "../components/Login";
+import LoginBody from "../components/LoginBody";
 
 function Login_employe() {
- 
   return (
-    <div >
-      
-     <Login/>
+    <div>
+      <button
+        type="button"
+        className="btn btn-success rounded-pill"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Iniciar seccion
+      </button>
+
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <div className="ml-5">
+                <h3 className="ml-4">Login de candidatos</h3>
+              </div>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div className="m-3">
+              <LoginBody />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
-export default  Login_employe;
+export default Login_employe;

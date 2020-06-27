@@ -9,7 +9,7 @@ const BodyCategories = () => {
     const categories =[
         {imagen: searchImage ,
         Titulo: "Categoría Categoría",
-        vancante: 15 },
+        vancante: 14 },
 
         {imagen: searchImage ,
         Titulo: "Categoría Categoría",
@@ -27,7 +27,7 @@ const BodyCategories = () => {
         puesto: "Puesto Puesto",
         lugar:"lugar",
         modalidad:"Part-Time",
-        tiempo: "Hace XX dias",
+        tiempo: "Hace XI dias",
         imagen: searchImage,
         }
     ]
@@ -44,7 +44,10 @@ const BodyCategories = () => {
                     return <CartelCategories 
                     imagen={categ.imagen} 
                     tituloCategoria={categ.Titulo} 
-                    vacantes={categ.vancante}/>
+                    vacantes={categ.vancante}
+                    key={categ.vancante}
+                    />
+                    
                 })}
                 </div>
             
@@ -63,6 +66,7 @@ const BodyCategories = () => {
                     modalidad={job.modalidad}
                     tiempoPublicacion={job.tiempo}
                     logoEmpresa={job.imagen}
+                    key={job.tiempo}
                     />
                 })}
                 </div>

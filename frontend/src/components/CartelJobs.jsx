@@ -2,6 +2,7 @@ import React from 'react'
 import '.././App.css'
 
 
+
 function CartelJobs (props) {
     return (
         <div className="card m-2 shadow border-0 cartelJobs container d-flex flex-row justify-content-between align-items-center">
@@ -16,5 +17,4 @@ function CartelJobs (props) {
         )   
     }
 
-
-export default CartelJobs 
+export default CartelJobs
