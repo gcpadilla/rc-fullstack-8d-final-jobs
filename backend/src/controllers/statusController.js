@@ -1,3 +1,3 @@
 exports.getStatus = (req, res) => {
-  return res.status(404).json({ mensaje: "server is working" });
+  return res.json({ mensaje: "the server is working correctly" });
 };

@@ -17,13 +17,18 @@ const PostulateSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    candidateRef: {
-      type: Array,
+    emailcandidate: {
+      type: String,
       required: true,
       trim: true,
     },
-    offerRef: {
-      type: Array,
+    offerid: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    candidateid: {
+      type: String,
       required: true,
       trim: true,
     },
@@ -31,6 +36,6 @@ const PostulateSchema = new mongoose.Schema(
   { versionKey: false }
 );
 
-const PostulateModel = mongoose.model("postulacion", PostulateSchema);
+const PostulateModel = mongoose.model("Postulation", PostulateSchema);
 
 module.exports = PostulateModel;

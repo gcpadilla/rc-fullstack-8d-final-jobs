@@ -1,8 +1,7 @@
-//const mongoose = require('mongoose');
 const jsonwebtoken = require('jsonwebtoken');
 const AdminModel = require('../models/administratorModel');
 
-module.exports = async (req, res, next) => {
+module.exports = (role) => async (req, res, next) => {
   console.log('Authorization...');
   try {
     const authHeader = req.header('Authorization');
@@ -11,7 +10,12 @@ module.exports = async (req, res, next) => {
     const user_in_db = await AdminModel.findOne({ _id: decoded.user.id, token: token });
     
     if (!user_in_db) {
-      return res.status(401).json({ message: 'Unauthorized.'});
+      return res.status(401).json({ message: 'Unauthorized...'});
+    }
+    if (role instanceof String && decoded.user.role !== role) {
+      return res.status(401).json({ mensaje: "Unauthorized..." });
+    } else if (Array.isArray(role) && !role.includes(decoded.user.role)) {
+      return res.status(401).json({ mensaje: "Unauthorized..." });
     }
     
     res.locals.user = user_in_db;
@@ -20,6 +24,6 @@ module.exports = async (req, res, next) => {
     next();
 
   } catch (error) {
-    return res.status(401).json({ message: 'Unauthorized.', error: error.message });
+    return res.status(401).json({ message: 'Unauthorized...', error: error.message });
   }
 };
