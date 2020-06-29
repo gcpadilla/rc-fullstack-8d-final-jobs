@@ -21,11 +21,14 @@ router.post(
   offerController.createOffer
 );
 
+//LISTAR TODAS LAS OFERTAS
+router.get("/admin/all",authorizeAdmin("admin"), offerController.getAllOffers);
+
 //LISTAR TODAS LAS OFERTAS ACTIVAS
-router.get("/all", offerController.getAllOffers);
+router.get("/candidate/all",authorizeUser("user"), offerController.getAllOffersActive);
 
 //MOSTRAR UNA OFERTA
-router.get("/:OfferId",authorizeUser(["user","admin"]), offerController.getOffer);
+router.get("/:OfferId",authorizeUser("user"), offerController.getOffer);
 
 
 module.exports = router;

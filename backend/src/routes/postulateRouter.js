@@ -1,6 +1,7 @@
 const express = require("express");
 const { body } = require("express-validator");
-const authorize = require("../middlewares/authorizeCandidate");
+const authorizeAdmin = require("../middlewares/authorizeAdmin");
+const authorizeUser = require("../middlewares/authorizeCandidate");
 const router = express.Router();
 
 const postulateController = require("../controllers/postulateController");
@@ -8,7 +9,7 @@ const postulateController = require("../controllers/postulateController");
 //CREAR POSTULACION
 router.post(
   "/:offerId",
-  authorize("user")  ,
+  authorizeUser("user")  ,
   [
     body("intendedsalary", "Incluir salario pretendido").notEmpty(),
     body("experiences", "Debe ingresar experiencia").notEmpty(),
@@ -18,5 +19,13 @@ router.post(
   ],
   postulateController.createPostulate
 );
+
+//LISTAR TODAS LAS POSTULACIONES ADMIN
+
+router.get("/admin/all",authorizeAdmin("admin"), postulateController.getAllPostulates);
+
+//LISTAR TODAS LAS POSTULACIONES USER
+
+router.get("/user/all",authorizeUser("user"), postulateController.getAllPostulatessUser);
 
 module.exports = router;

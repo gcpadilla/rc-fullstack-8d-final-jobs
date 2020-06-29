@@ -24,8 +24,6 @@ exports.createOffer = async (req, res) => {
     publicationdate: body.publicationdate,
   };
 
-  
-
   try {
     const admin_id = await adminModel.findOne({ _id: res.locals.user.id });
     if (admin_id) {
@@ -38,8 +36,19 @@ exports.createOffer = async (req, res) => {
   }
 };
 
-//todas las ofertas activas
+//todas las ofertas
 exports.getAllOffers = async (req, res) => {
+  try {
+    const offers = await offerModel.find({},"-postulateRef -active");
+    res.send(offers);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
+
+//todas las ofertas activas
+exports.getAllOffersActive = async (req, res) => {
   try {
     const offers = await offerModel.find({active: true},"-postulateRef -active");
     res.send(offers);
