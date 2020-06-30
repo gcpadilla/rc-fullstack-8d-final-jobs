@@ -1,6 +1,7 @@
 const express = require("express");
 const { body } = require("express-validator");
-const authorize = require("../middlewares/authorizeAdmin");
+const authorizeAdmin = require("../middlewares/authorizeAdmin");
+const authorizeUser = require("../middlewares/authorizeCandidate");
 const router = express.Router();
 
 const offerController = require("../controllers/offerController");
@@ -8,7 +9,7 @@ const offerController = require("../controllers/offerController");
 //CREAR OFERTA
 router.post(
   "/",
-  authorize("admin"),
+  authorizeAdmin("admin"),
   [
     body("title", "Debe incluir un titulo").notEmpty(),
     body("summary", "Debe incluir un resumen").notEmpty(),
@@ -20,7 +21,14 @@ router.post(
   offerController.createOffer
 );
 
+//LISTAR TODAS LAS OFERTAS
+router.get("/admin/all",authorizeAdmin("admin"), offerController.getAllOffers);
+
 //LISTAR TODAS LAS OFERTAS ACTIVAS
-router.get("/active", offerController.getAllOffersActives);
+router.get("/candidate/all",authorizeUser("user"), offerController.getAllOffersActive);
+
+//MOSTRAR UNA OFERTA
+router.get("/:OfferId",authorizeUser("user"), offerController.getOffer);
+
 
 module.exports = router;

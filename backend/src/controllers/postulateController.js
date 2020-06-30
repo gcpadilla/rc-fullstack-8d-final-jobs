@@ -48,3 +48,23 @@ exports.createPostulate = async (req, res) => {
     res.status(500).send(err);
   }
 };
+
+//todas las postulaciones admin
+exports.getAllPostulates = async (req, res) => {
+  try {
+    const postulates = await postulateModel.find({});
+    res.send(postulates);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
+//todas las postulaciones user
+exports.getAllPostulatessUser = async (req, res) => {
+  try {
+    const postulates = await postulateModel.find({});
+    res.send(postulates);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
