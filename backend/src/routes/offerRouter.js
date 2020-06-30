@@ -25,7 +25,10 @@ router.post(
 router.get("/all", offerController.getAllOffers);
 
 //MOSTRAR UNA OFERTA
-router.get("/:OfferId",authorizeUser(["user","admin"]), offerController.getOffer);
+router.get("/:OfferId",authorizeUser("user"), offerController.getOffer);
+
+//LISTAR TODAS LAS OFERTAS ACTIVAS
+router.get("/all", offerController.getAllOffers);
 
 
 module.exports = router;

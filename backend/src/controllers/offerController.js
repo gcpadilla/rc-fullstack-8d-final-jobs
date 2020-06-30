@@ -31,7 +31,7 @@ exports.createOffer = async (req, res) => {
     if (admin_id) {
       const Offer = new offerModel(offerData);
       await Offer.save();
-      res.send({ message: "Se registro oferta correctamente.." });
+      res.send({ message: "Se registro oferta correctamente..", Offer });
     }
   } catch (err) {
     res.status(500).send(err);
