@@ -10,7 +10,7 @@ function Login_employe() {
         data-toggle="modal"
         data-target="#exampleModal"
       >
-        Iniciar seccion
+        Iniciar Sesión
       </button>
 
       <div
@@ -25,7 +25,8 @@ function Login_employe() {
           <div className="modal-content">
             <div className="modal-header">
               <div className="ml-5">
-                <h3 className="ml-4">Login de candidatos</h3>
+                <h3 className="ml-4">Bienvenido</h3>
+                <p className="tituloLinks">Por favor, ingrese sus datos para continuar</p>
               </div>
               <button
                 type="button"

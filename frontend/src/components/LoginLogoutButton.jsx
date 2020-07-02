@@ -57,8 +57,9 @@ function LoginLogoutButton() {
                 <Modal show={photo} onHide={handleClose}>
                   <Modal.Header closeButton>
                     <Modal.Title>
-                      <div className="ml-5">
-                        <h3 className="ml-4">Login de candidatos</h3>
+                      <div className="ml-5 d-flex flex-column align-items-center">
+                        <h3 className="ml-4 tituloCartel">Iniciar Sesión</h3>
+                        <h5 className="text-center datosCartel">Por Favor, ingrese sus credenciales para continuar</h5>
                       </div>
                     </Modal.Title>
                   </Modal.Header>

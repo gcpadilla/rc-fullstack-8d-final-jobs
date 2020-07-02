@@ -50,7 +50,7 @@ const LoginBody = () => {
                 name="username"
                 onChange={(e) => setUsername(e.target.value)}
                 value={username}
-                placeholder="Ingrese el username"
+                placeholder="Nombre de Usuario"
               />
             </div>
             <div className="form-group">
@@ -64,7 +64,7 @@ const LoginBody = () => {
                 name="password"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
-                placeholder="Password"
+                placeholder="Contraseña"
               />
               <div className="mt-3 text-center">
                 <button
@@ -72,7 +72,7 @@ const LoginBody = () => {
                   className="text-center btn btn-success rounded-pill"
                   onClick={signInHandler}
                 >
-                  Guardar
+                  Ingresar
                 </button>
               </div>
             </div>

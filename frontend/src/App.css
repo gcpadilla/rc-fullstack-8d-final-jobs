@@ -14,7 +14,7 @@ Regular 400
 h3, h5, ul, li {
   font-family: 'Poppins', sans-serif
 }
-p  {
+p, label  {
   font-family: 'Open Sans', sans-serif
 }
 .btn {
