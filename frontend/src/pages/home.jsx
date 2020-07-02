@@ -8,13 +8,15 @@ import BodyDown from '../components/BodyDown'
 import Footer from '../components/Footer'
 import auth from "../utils/auth";
 
+import FaqCandidates from './faqsCandidates'
+
 const home = () => {
     return (
         <div>
             {console.log(auth.isAuthenticated())}
-            
-            <InicialBody />
             <Header />
+            {/* <FaqCandidates /> */}
+            <InicialBody />
             <Body />
             <BodyCategories />
             <BodyDown />

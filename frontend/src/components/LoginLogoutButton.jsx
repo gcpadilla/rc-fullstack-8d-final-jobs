@@ -42,7 +42,7 @@ function LoginLogoutButton() {
                   onClick={signOutHandler}
                   className="btn btn-secondary rounded-pill"
                 >
-                  Cerrar seccion
+                  Cerrar Sesión
                 </button>
               </div>
             ) : (
@@ -52,7 +52,7 @@ function LoginLogoutButton() {
                   className="btn btn-success rounded-pill"
                   onClick={handleShow}
                 >
-                  iniciar seccion
+                  Iniciar Sesión
                 </Button>
                 <Modal show={photo} onHide={handleClose}>
                   <Modal.Header closeButton>

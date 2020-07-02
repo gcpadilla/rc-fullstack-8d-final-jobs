@@ -3,16 +3,22 @@ import React from 'react'
 // import Button from './Button'
 import ".././App.css";
 import logo from "../images/RollingJobswhite.svg";
-import { NavLink, Link } from "react-router-dom";
+import {Route, NavLink, Link, Switch } from "react-router-dom";
 import LoginLogoutButton from "./LoginLogoutButton"
+// import { useState } from 'react';
+// import FaqsCandidates from "../pages/faqsCandidates";
+// import FaqBusiness from "../pages/FaqsBusiness";
+// import FormJobPostulate from "../components/FormJobPostulate";
 
 
 
-function Navbar() {
-  
 
+const Navbar = () => {
+
+ 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
+    <div>
+ <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
       <img className="logoStyle" src={logo} alt="logo" />
       <button
         className="navbar-toggler"
@@ -25,6 +31,7 @@ function Navbar() {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
+
       <div
         className="collapse navbar-collapse row justify-content-end"
         id="navbarNavDropdown"
@@ -44,7 +51,7 @@ function Navbar() {
                 className="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <Link className="dropdown-item" to="/">
+                <Link className="dropdown-item" to="/faqcandidates">
                   Preguntas Frecuentes
                 </Link>
                 <Link className="dropdown-item" to="/offers">
@@ -72,13 +79,13 @@ function Navbar() {
                 <Link className="dropdown-item" to="/company">
                   Perfil
                 </Link>
-                <Link className="dropdown-item" to="/">
+                <Link className="dropdown-item" to="faqbusiness">
                   Preguntas Frecuentes
                 </Link>
-                <Link className="dropdown-item" to="/">
+                <Link className="dropdown-item" to="/prices">
                   Precios
                 </Link>
-                <Link className="dropdown-item" to="/">
+                <Link className="dropdown-item" to="/publicJob">
                   Publicar Empleos
                 </Link>
               </div>
@@ -101,13 +108,13 @@ function Navbar() {
                 className="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <Link className="dropdown-item" to="/">
+                <Link className="dropdown-item" to="/informacion">
                   ¿Quienes Somos?
                 </Link>
-                <Link className="dropdown-item" to="/">
+                <Link className="dropdown-item" to="/prensa">
                   Prensa
                 </Link>
-                <Link className="dropdown-item" to="/">
+                <Link className="dropdown-item" to="/contacto">
                   Contacto
                 </Link>
               </div>
@@ -121,9 +128,25 @@ function Navbar() {
             </li>
            <LoginLogoutButton/>
           </ul>
+
         </div>
+
       </div>
+
     </nav>
+    {/* <Switch>
+      
+       <Route path="/faqcandidates" component={FaqsCandidates}> </Route>
+        <Route path="/faqbusiness" component={FaqBusiness}> </Route>
+        <Route path="/prices"> </Route>
+        <Route path="/publicJob" component={FormJobPostulate}> </Route>
+        <Route path="/informacion">  </Route>
+        <Route path="/prensa"> </Route>
+        <Route path="/contacto"> </Route>
+    </Switch> */}
+    </div>
+
   );
+
 }
 export default Navbar;

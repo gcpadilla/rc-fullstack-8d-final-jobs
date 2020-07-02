@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import {BrowserRouter as Router, Switch, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
 import "../App.css";
 
 
@@ -19,19 +19,25 @@ const company = () => {
         <div className="companyData d-flex flex-column align-items-center my-3">
            <h3>Bienvenido "Sr Empresa"</h3> 
                 <div className="modifData">
+                <Router>
+
                     <div className=" d-flex justify-content-around my-3">
-                            <Link className="aTituloLinks " to="/modifate_data">Modificar Datos</Link>
+                            <Link className="aTituloLinks " to="/modifdata">Modificar Datos</Link>
                             <Link className="aTituloLinks " to="/publicar">Publicar Empleo</Link>
                             <Link className="aTituloLinks " to="/postulates">Postulaciones</Link>
-
                     </div>
-                            <FormID />
-                            <FormJobPostulate />
-                            <PostulationsJobs />
+                            <Route path="/modifdata"> <FormID />  </Route>
+                            <Route path="/publicar"> <FormJobPostulate />  </Route>
+                            <Route path="/postulates"> <PostulationsJobs />  </Route>
+                            
+                            </Router>
+      
                 </div>
         </div>
+
         <Footer />
         </>
+
     );
 };
 
