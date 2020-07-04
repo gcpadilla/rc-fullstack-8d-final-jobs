@@ -8,7 +8,7 @@ import BodyDown from '../components/BodyDown'
 import Footer from '../components/Footer'
 import auth from "../utils/auth";
 
-const home = () => {
+const Home = () => {
     return (
         <div>
             {console.log(auth.isAuthenticated())}
@@ -23,4 +23,4 @@ const home = () => {
     );
 };
 
-export default home;
+export default Home;

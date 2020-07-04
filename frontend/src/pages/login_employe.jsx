@@ -10,7 +10,7 @@ function Login_employe() {
         data-toggle="modal"
         data-target="#exampleModal"
       >
-        Iniciar seccion
+        Iniciar sesion
       </button>
 
       <div
