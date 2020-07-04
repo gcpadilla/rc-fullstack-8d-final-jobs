@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 
 const PostulateSchema = new mongoose.Schema(
   {
+    state: {
+      type: String,
+      default:"pendiente",
+      required: true,
+      trim: true,
+    },
     intendedsalary: {
       type: String,
       required: true,

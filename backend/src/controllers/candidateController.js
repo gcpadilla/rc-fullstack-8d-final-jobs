@@ -87,7 +87,7 @@ exports.login = async (req, res) => {
     const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET);
     user_in_db.token = [token];
     await candidateModel.update({ username: user_in_db.username }, user_in_db);
-    res.send({ message: "Se logueo perfecto", token, role: user_in_db.role });
+    res.send({ message: "Se logueo perfecto", token, role: user_in_db.role, username: user_in_db.username });
   } catch (error) {
     return res.status(500).json({ message: "ERROR DE LOGIN.", error });
   }
