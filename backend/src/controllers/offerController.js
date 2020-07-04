@@ -22,6 +22,7 @@ exports.createOffer = async (req, res) => {
     active: body.active,
     quota: body.quota,
     publicationdate: body.publicationdate,
+    categories: body.categories
   };
 
   try {
@@ -39,7 +40,7 @@ exports.createOffer = async (req, res) => {
 //todas las ofertas
 exports.getAllOffers = async (req, res) => {
   try {
-    const offers = await offerModel.find({},"-postulateRef -active");
+    const offers = await offerModel.find({});
     res.send(offers);
   } catch (err) {
     res.status(500).send(err);

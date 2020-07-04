@@ -60,9 +60,11 @@ exports.getAllPostulates = async (req, res) => {
 };
 
 //todas las postulaciones user
+//agrager filtrado candidateid
 exports.getAllPostulatessUser = async (req, res) => {
   try {
-    const postulates = await postulateModel.find({});
+    const postulates = await postulateModel.find({candidateid: res.locals.user.id});
+    console.log(postulates)
     res.send(postulates);
   } catch (err) {
     res.status(500).send(err);

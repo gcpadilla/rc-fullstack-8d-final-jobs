@@ -16,6 +16,11 @@ const OfferSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  categories: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   profession: {
     type: String,
     required: true,
