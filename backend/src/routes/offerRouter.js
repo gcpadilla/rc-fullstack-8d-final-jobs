@@ -17,6 +17,7 @@ router.post(
     body("profession", "Debe incluir una profesión").notEmpty(),
     body("workplace", "Ddebe incluir lugar de trabajo").notEmpty(),
     body("quota", "Debe agregar un cupo").notEmpty(),
+    body("categories", "Debe agregar una categoria").notEmpty(),
   ],
   offerController.createOffer
 );
