@@ -46,4 +46,7 @@ body('age', 'La edad no puede ser nula').notEmpty(),
 body('profession', 'La profesion no puede ser nula').notEmpty()
 ],authorize ("user"),candidateController.updateCandidate);
 
+//ELIMINAR CANDIDATO
+router.delete("/", authorize ("user"), candidateController.deleteCandidate);
+
 module.exports = router;

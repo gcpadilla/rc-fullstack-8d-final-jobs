@@ -161,7 +161,7 @@ exports.updateCandidate = async (req, res) => {
 		await candidateModel.findByIdAndUpdate(res.locals.user.id, userBlanck, {
 			new: true,
 		});
-		
+
 		let user_exists = await candidateModel.findOne({ username: body.username });
 		let email_exists = await candidateModel.findOne({ email: body.email });
 		let dni_exists = await candidateModel.findOne({ dni: body.dni });
@@ -204,6 +204,27 @@ exports.updateCandidate = async (req, res) => {
 			userNewData,
 		});
 	} catch (error) {
-		res.status(500).send({ message: "ERROR DE UPDATE." });
+		res.status(500).send({ message: "Error al actualizar ...." });
 	}
+};
+
+//borrar candidato
+exports.deleteCandidate = async (req, res) => {
+ try {
+	 if (!res.locals.user.id ) {
+		 return res.status(404).json({ message: "No se encontro candidato..." });
+	 }
+
+	 const user = await candidateModel.findByIdAndDelete(res.locals.user.id );
+
+	 if (!user) {
+		 return res.status(404).json({ message: "No se encontro candidato..." });
+	 }
+
+	 return res
+		 .status(200)
+		 .send({ message: "Candidato Eliminado ..."});
+ } catch (error) {
+	res.status(500).send({ message: "Error al eliminar candidato ..." });
+ }
 };
