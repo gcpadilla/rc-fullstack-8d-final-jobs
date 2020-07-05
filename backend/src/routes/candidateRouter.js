@@ -28,7 +28,7 @@ body('password', 'Password no puede ser nulo').notEmpty()
 ], candidateController.login);
 
 //DESCONECTAR CANDIDATO
-router.get('/logout', authorize (["user","admin"]), candidateController.logout);
+router.get('/logout', authorize ("user"), candidateController.logout);
 
 //EDITAR CANDIDATO
 router.put('/', [

@@ -32,8 +32,8 @@ exports.createOffer = async (req, res) => {
       await Offer.save();
       res.send({ message: "Se registro oferta correctamente.." });
     }
-  } catch (err) {
-    res.status(500).send(err);
+  } catch (error) {
+    res.status(500).send({ message: "Error al crear oferta ..." });
   }
 };
 
@@ -42,9 +42,55 @@ exports.getAllOffers = async (req, res) => {
   try {
     const offers = await offerModel.find({});
     res.send(offers);
-  } catch (err) {
-    res.status(500).send(err);
+  } catch (error) {
+    res.status(500).send({ message: "Error al traer ofertas ..." });
   }
+};
+
+//editar oferta
+exports.updateOffer = async (req, res) => {
+	try {
+		if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+			return res.status(404).json({ message: "No de encontro oferta ..."});
+		}
+
+		const offerta = await offerModel.findByIdAndUpdate(
+			req.params.id,
+			req.body,
+			{ new: true }
+		);
+
+		if (!offerta) {
+			return res.status(404).json({ message: "No de encontro oferta ..."});
+		}
+
+    res.send({
+      message: "Se actualizaron datos correctamente...",
+      offerta});
+	} catch (error) {
+		res.status(500).send({ message: "Error al editar oferta ..." });
+	}
+};
+
+//Borrar oferta
+exports.deleteOffer = async (req, res) => {
+ try {
+   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+     return res.status(404).json({ message: "No de encontro oferta ..."});
+   }
+
+   const oferta = await offerModel.findByIdAndDelete(req.params.id);
+
+   if (!oferta) {
+     return res.status(404).json({ message: "No de encontro oferta ..."});
+   }
+
+   return res
+     .status(200)
+     .send({ message: "Oferta eliminada" });
+ } catch (error) {
+  res.status(500).send({ message: "Error al borrar oferta ..." });
+ }
 };
 
 
