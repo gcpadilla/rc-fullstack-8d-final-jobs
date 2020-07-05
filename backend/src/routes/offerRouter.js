@@ -17,12 +17,19 @@ router.post(
     body("profession", "Debe incluir una profesión").notEmpty(),
     body("workplace", "Ddebe incluir lugar de trabajo").notEmpty(),
     body("quota", "Debe agregar un cupo").notEmpty(),
+    body("categories", "Debe agregar una categoria").notEmpty(),
   ],
   offerController.createOffer
 );
 
 //LISTAR TODAS LAS OFERTAS
 router.get("/admin/all",authorizeAdmin("admin"), offerController.getAllOffers);
+
+//EDITAR OFERTAS
+router.put('/:id',authorizeAdmin ("admin"), offerController.updateOffer);
+
+//BORRAR OFERTA
+router.delete("/:id", offerController.deleteOffer);
 
 //LISTAR TODAS LAS OFERTAS ACTIVAS
 router.get("/candidate/all",authorizeUser("user"), offerController.getAllOffersActive);
