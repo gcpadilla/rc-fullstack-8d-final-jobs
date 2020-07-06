@@ -16,13 +16,15 @@ const Register = () => {
     e.preventDefault();
     const anio = edad(UserSelec.age);
     UserSelec.age = anio;
+    console.log('Pasó')
 
 
     if (UserSelec.password === UserSelec.password2) {
       try {
         await axios.post(
           "http://localhost:3001/api/v1/users/candidates",
-          UserSelec
+          UserSelec,
+          console.log(UserSelec)
         );
         // setTimeout(() => {
         //   setredirec(true);

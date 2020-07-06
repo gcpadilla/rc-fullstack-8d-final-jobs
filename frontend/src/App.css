@@ -87,10 +87,10 @@ p, label  {
   .btn{
     font-size: 10pt;
   }
-  .navbarGeneral{
-    display:flex;
+  /* .navbarGeneral{
+    display: flex;
     justify-content: end;
-  }
+  } */
 
  }
 
