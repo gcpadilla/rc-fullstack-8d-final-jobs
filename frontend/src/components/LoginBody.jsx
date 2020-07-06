@@ -21,10 +21,8 @@ const LoginBody = () => {
         }
         
       );
-   
-    
-      auth.login(response.data.token);
-      console.log(response.data.role);
+      auth.login(response.data.token, response.data.username);
+
       await sweetalert.fire(
         "ADMINISTRADOR",
         `Bienvenido ${username.trim()}`,
@@ -47,8 +45,8 @@ const LoginBody = () => {
           password: password.trim(),
         }
       );
-      auth.login(response.data.token);
-      console.log(response.data.role);
+      auth.login(response.data.token, response.data.username );
+  
       await sweetalert.fire(
         "genial",
         `Bienvenido ${username.trim()}`,
