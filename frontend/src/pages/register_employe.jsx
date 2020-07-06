@@ -16,23 +16,25 @@ const Register = () => {
     e.preventDefault();
     const anio = edad(UserSelec.age);
     UserSelec.age = anio;
+    console.log('Pasó')
 
-    
+
     if (UserSelec.password === UserSelec.password2) {
       try {
         await axios.post(
           "http://localhost:3001/api/v1/users/candidates",
-          UserSelec
+          UserSelec,
+          console.log(UserSelec)
         );
         // setTimeout(() => {
         //   setredirec(true);
         // }, 1000);
 
-       await Swal.fire("genial", "se registro sactifactoriamente!", "success");
-       setredirec(true);
+        await Swal.fire("genial", "se registro sactifactoriamente!", "success");
+        setredirec(true);
       } catch (err) {
 
-       ;
+        ;
 
         if (err.response.data.message === undefined) {
           Swal.fire(
@@ -58,7 +60,7 @@ const Register = () => {
 
   const onInputChange = (e) => {
 
-    
+
     setUserSelec({
       ...UserSelec,
       [e.target.name]: e.target.value,
@@ -73,113 +75,121 @@ const Register = () => {
       <Header />
       <div className="container">
         <div className="text-center pb-5 form-group mb-3">
-          <h1 className="mt-4 titulos">Bienvenido</h1>
-          <h4 className="mb-4 texdo">Registro de candidatos</h4>
+          <h3 className="mt-4 titulos">Bienvenido</h3>
+          <h5 className="mb-4 texdo">Registro de candidatos</h5>
+          <p className="mb-4 textNews"> Por favor, ingrese sus datos personales para iniciar tu proceso a tu nuevo trabajo.</p>
           <div className="mb-4">
             <form onSubmit={onsubmit}>
-              <div className="row">
-                <div className="col-md-6">
-                  <div className="form-group">
-                    <label htmlFor="Name">Ingrese su nombre/s</label>
+              <div className="form-group">
+
+                <div className=" form-row ">
+
+                  <div className="form-group col-6">
+                    <label htmlFor="Name">Nombre</label>
                     <input
                       type="text"
                       required
                       className="form-control "
                       name="firstname"
-                      placeholder="Name"
+                      placeholder="Nombre"
                       onChange={onInputChange}
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label htmlFor="username">Ingrese un username</label>
-                    <input
-                      type="text"
-                      required
-                      className="form-control"
-                      name="username"
-                      placeholder="username"
-                      onChange={onInputChange}
-                    />
-                  </div>
+                  <div className="form-group col-6">
+                      <label htmlFor="lastname">Apellido</label>
+                      <input
+                        type="text"
+                        required
+                        className="form-control"
+                        name="lastname"
+                        placeholder="Apellido"
+                        onChange={onInputChange}
+                      />
+                    </div>
+                </div>
 
-                  <div className="form-group">
-                    <label htmlFor="Age">Ingrese su fecha de nacimiento</label>
+                <div className="form-row">
+
+                    <div className="form-group col-md-6">
+                      <label htmlFor="dni">Documento</label>
+                      <input
+                        type="number"
+                        required
+                        className="form-control"
+                        name="dni"
+                        placeholder="DNI / Cedula de Identidad / Pasaporte"
+                        onChange={onInputChange}
+                      />
+                    </div>
+
+                  <div className="form-group col-md-6">
+                    <label htmlFor="Age">Fecha de Nacimiento</label>
                     <input
                       type="date"
                       required
                       className="form-control"
                       name="age"
-                      placeholder="Age"
+                      placeholder="Fecha de Nacimiento"
                       onChange={onInputChange}
                     />
                   </div>
+            </div>
 
-                  <div className="form-group">
-                    <label htmlFor="profession">Ingrese su profesión</label>
+                <div className="form-row">
+                  <div className="form-group col-md-6">
+                    <label htmlFor="profession">Profesión Principal</label>
                     <input
                       type="text"
                       required
                       className="form-control"
                       name="profession"
-                      placeholder="profession"
+                      placeholder="Profesión"
                       onChange={onInputChange}
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label htmlFor="dni">ingrese su dni</label>
-                    <input
-                      type="number"
-                      required
-                      className="form-control"
-                      name="dni"
-                      placeholder="dni"
-                      onChange={onInputChange}
-                    />
-                  </div>
-                </div>
-
-                <div className="col-md-6">
-                  <div className="form-group">
-                    <label htmlFor="lastname">ingrese su apellido</label>
-                    <input
-                      type="text"
-                      required
-                      className="form-control"
-                      name="lastname"
-                      placeholder="lastname"
-                      onChange={onInputChange}
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Email address</label>
+                  <div className="form-group col-md-6">
+                    <label htmlFor="exampleInputEmail1">Correo Elctrónico</label>
                     <input
                       type="email"
                       required
                       className="form-control"
                       name="email"
                       aria-describedby="emailHelp"
-                      placeholder="Enter email"
+                      placeholder="Correo Elctrónico"
+                      onChange={onInputChange}
+                    />
+                  </div>
+              </div>
+
+              <div className="form-row">
+                  <div className="form-group col-md-6">
+                    <label htmlFor="username">Nombre de Usuario</label>
+                    <input
+                      type="text"
+                      required
+                      className="form-control"
+                      name="username"
+                      placeholder="Nombre de Usuario"
                       onChange={onInputChange}
                     />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group col-md-3">
                     {" "}
-                    <label htmlFor="inputPassword5">Password</label>
+                    <label htmlFor="inputPassword5">Contraseña</label>
                     <input
                       type="password"
                       required
-                      placeholder="Password"
+                      placeholder="Contraseña"
                       id="inputPassword5"
                       name="password"
                       className="form-control"
                       aria-describedby="passwordHelpBlock"
                       onChange={onInputChange}
                     />
-                    <small
+                      <small
                       id="passwordHelpBlock"
                       className="form-text text-muted"
                     >
@@ -188,24 +198,25 @@ const Register = () => {
                       mayuscula y una minuscula.
                     </small>
                   </div>
-
-                  <div className="form-group">
+                  <div className="form-group col-md-3">
                     <label htmlFor="exampleInputPassword1">
-                      Repita la Password
+                      Repita la Contraseña
                     </label>
                     <input
                       type="password"
                       required
                       className="form-control"
                       name="password2"
-                      placeholder="Password"
+                      placeholder="Contraseña"
                       onChange={onInputChange}
                     />
                   </div>
-                </div>
-              </div>
+
+                  </div>
+            </div>
+
               <button type="submit" onSubmit={onsubmit} className="btn btn-success rounded-pill">
-                Guardar
+                Confirmar Registro
               </button>
             </form>
           </div>

@@ -3,6 +3,7 @@ import '../App.css'
 import CartelCategories from './CartelCategories'
 import CartelJobs from './CartelJobs'
 import searchImage from '../images/search.svg'
+import {Link} from 'react-router-dom'
 
 const BodyCategories = () => {
 
@@ -37,7 +38,7 @@ const BodyCategories = () => {
         <div className="d-flex flex-column align-items-center my-5 ">
                 <div className="titulares d-flex container align-items-center">
                     <h3 className="titulos col-10">Principales Categorías</h3>
-                    <h5 className="links col-2 text-right">Explorar Más</h5>
+                    <Link className="links col-2 text-right">Explorar Más</Link>
                 </div>
                 <div className="distriCards d-flex justify-content-between flex-wrap">
                 {categories.map (categ => {
@@ -55,8 +56,7 @@ const BodyCategories = () => {
             <div className="d-flex flex-column align-items-center my-5">
                 <div className="titulares d-flex container align-items-centers">
                     <h3 className="titulos col-10" >Puestos Más Solicitados</h3>
-                    <h5 className="links col-2 text-right" >Explorar Más</h5>
-                </div>
+                    <Link className="links col-2 text-right">Explorar Más</Link>                </div>
                 <div className="distriCards d-flex flex-wrap justify-content-center">
                 {jobs.map (job => {
                     return <CartelJobs 

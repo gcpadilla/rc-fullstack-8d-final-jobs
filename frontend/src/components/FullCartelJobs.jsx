@@ -3,7 +3,7 @@ import '.././App.css'
 import { Link } from 'react-router-dom'
 
 
-function CartelJobs(props) {
+function FullCartelJobs(props) {
     return (
         <>
             <div className="card m-2 shadow border-0 cartelJobs container d-flex flex-column">
@@ -13,13 +13,15 @@ function CartelJobs(props) {
                         <h3 className="card-text datosCartel"> {props.empresa} </h3>
                         <h3 className="card-title tituloCartel">{props.puesto}</h3>
                         <h3 className="card-text datosCartel">{props.lugar} - {props.modalidad}</h3>
+                        <p className="card-text descriptionOffer">{props.descripcion}</p>
+
                         <p className="card-text tiempoCartel">{props.tiempoPublicacion}</p>
                     </div>
-                    <div className="col-4">
+                    <div class="col-4">
                         <img className="imageLogoCard card-img rounded-circle btn-sm" src={props.logoEmpresa} alt="logo-empresa" />
                     </div>
-                    <Link to="/" className="btn btn-primary btn-sm rounded-pill mr-1 mt-1">{props.button} Testing</Link>
-                    <Link to="/" className="btn btn-primary btn-sm rounded-pill mr-1 mt-1">{props.button} Testing</Link>
+                    <Link to="/" class="btn btn-primary btn-sm rounded-pill mr-1 mt-1">{props.button} Testing</Link>
+                    <Link to="/" class="btn btn-primary btn-sm rounded-pill mr-1 mt-1">{props.button} Testing</Link>
 
 
                 </div>
@@ -30,4 +32,4 @@ function CartelJobs(props) {
     )
 }
 
-export default CartelJobs
+export default FullCartelJobs
