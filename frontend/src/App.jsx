@@ -22,13 +22,13 @@ function App() {
         <Route path="/offers" component={offers}/>
         <Route path="/" component={home} />
 
-        <Route path="/faqcandidates" component={FaqsCandidates}> </Route>
-        <Route path="/faqbusiness" component={FaqBusiness}> </Route>
-        <Route path="/prices"> </Route>
-        <Route path="/publicJob" component={FormJobPostulate}> </Route>
-        <Route path="/informacion">  </Route>
-        <Route path="/prensa"> </Route>
-        <Route path="/contacto"> </Route>
+        <Route path="/faqcandidates" component={FaqsCandidates} /> 
+        <Route path="/faqbusiness" component={FaqBusiness} />
+        <Route path="/prices" /> 
+        <Route path="/publicJob" component={FormJobPostulate}/>
+        <Route path="/informacion"/>
+        <Route path="/prensa"/>
+        <Route path="/contacto"/> 
 
       </Switch>
     </Router>
