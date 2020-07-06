@@ -25,6 +25,12 @@ router.post(
 //LISTAR TODAS LAS OFERTAS
 router.get("/admin/all",authorizeAdmin("admin"), offerController.getAllOffers);
 
+//EDITAR OFERTAS
+router.put('/:id',authorizeAdmin ("admin"), offerController.updateOffer);
+
+//BORRAR OFERTA
+router.delete("/:id", offerController.deleteOffer);
+
 //LISTAR TODAS LAS OFERTAS ACTIVAS
 router.get("/candidate/all",authorizeUser("user"), offerController.getAllOffersActive);
 

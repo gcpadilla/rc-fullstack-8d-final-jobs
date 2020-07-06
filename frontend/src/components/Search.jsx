@@ -1,11 +1,13 @@
 import React from 'react'
 
 const Search = () => {
+
+  const style = {
+    
+  }
     return (
         
-        <form className="form-inline my-2 my-lg-0">
-      <input className="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search" />
-    </form>
+      <input className= "form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search" />
     )
 }
 

@@ -14,12 +14,12 @@ Regular 400
 h3, h5, ul, li {
   font-family: 'Poppins', sans-serif
 }
-p  {
+p, label  {
   font-family: 'Open Sans', sans-serif
 }
 .btn {
   font-family: 'Poppins', sans-serif;
-  font-size: 10spt;
+  font-size: 8pt;
 }
 
 /* header */
@@ -27,6 +27,7 @@ p  {
 .logoStyle{
   max-width: 160px ;
 }
+
 .navbar{
   border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -37,8 +38,9 @@ p  {
   background-color: #3dd993
 }
 
+
 .dropdown-item  {
-  font-size: 10pt;
+  font-size: 8pt;
   color: white;
   background-color: #0c0a59;
 }
@@ -51,8 +53,46 @@ p  {
 
 .nav-link {
   color: white;
-  font-size: 10pt;
+  font-size: 8pt;
 }
+
+
+
+@media (min-width: 768px) {
+  .logoStyle{
+    max-width: 160px ;
+  }
+ 
+  .dropdown-item  {
+    font-size: 10pt;
+    color: white;
+    background-color: #0c0a59;
+  }
+  
+  .dropdown-menu  {
+    color: white;
+    background-color: #0c0a59;
+  }
+  
+  .nav-link {
+    color: white;
+    font-size: 10pt;
+  }
+
+  .navbarStyle {
+    display: flex;
+    align-items: center;
+  }
+
+  .btn{
+    font-size: 10pt;
+  }
+  /* .navbarGeneral{
+    display: flex;
+    justify-content: end;
+  } */
+
+ }
 
 /* body */
 .homeInicial {
@@ -62,10 +102,16 @@ p  {
   background-position: center;
   border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
-
+  background-position: bottom;
 }
 .logoPortada{
-  width: 50rem;
+  width: 25rem;
+}
+
+@media (min-width: 768px) {
+  .logoPortada{
+    width: 50rem;
+  }
 }
 
 .infoInicial{
@@ -102,9 +148,14 @@ font-size: 20pt;
 font-weight: 600;
 }
 .links{
+  font-family:'Poppins', sans-serif;
 font-size: 10pt;
+color: #3DD990;
 }
 
+.modifData{
+  width: 50rem;
+}
 
 
 .cartelCategories{
@@ -124,7 +175,6 @@ font-size: 10pt;
 -moz-border-radius-topleft: 10px;
 -moz-border-radius-bottomright: 10px; */
   max-width: 20rem;
-  max-height: 10rem;
   border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
@@ -134,20 +184,29 @@ font-size: 10pt;
   font-size: 18pt;
   line-height: 18pt;
 }
-
+.dataBody{
+  line-height: 4pt;
+}
 .tiempoCartel{
   font-size: 8pt;
+  line-height: 8pt;
 }
 .datosCartel{
   font-size: 9pt;
+
 }
 
-.dataBody{
-  line-height: 3pt;
+.descriptionOffer{
+  font-size: 9pt;
+  line-height: 10pt;
 }
+
+
+
 .imageLogoCard {
   background-color: rgb(223, 223, 223);
-  height: 6rem;
+  height: 5rem;
+  width: 5rem;
 
 }
 
@@ -200,3 +259,6 @@ font-size: 10pt;
   margin-bottom: 15rem;
 }
 
+.searchBar {
+  background-color: #0c0a59;
+}

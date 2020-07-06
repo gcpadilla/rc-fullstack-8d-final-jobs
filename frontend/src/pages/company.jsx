@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import React, { useState, useEffect } from "react";
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import "../App.css";
 
 import FormID from "../components/FormID";
 import FormJobPostulate from "../components/FormJobPostulate";
@@ -9,7 +10,6 @@ import PostulationsJobs from "../components/PostulationsJobs";
 const Company = () => {
   const [username, setUsername] = useState("");
   const [publicar, setpublicar] = useState(true);
-  const [crear, setcrear] = useState(true);
   const [card, setcard] = useState(true);
 
   useEffect(() => {
@@ -21,13 +21,6 @@ const Company = () => {
       setpublicar(true);
     } else {
       setpublicar(false);
-    }
-  };
-  const mostrarcrear = () => {
-    if (crear === false) {
-      setcrear(true);
-    } else {
-      setcrear(false);
     }
   };
 
@@ -46,13 +39,6 @@ const Company = () => {
         <h3>Bienvenido {username}</h3>
         <div className="modifData">
           <div className=" d-flex justify-content-around my-3">
-          <button
-              type="submit"
-              onClick={mostrarcrear}
-              className="btn btn-primary rounded-pill mx-5"
-            >
-             modificar Ofertas
-            </button>
             {/* <Link className="aTituloLinks " to="/modifate_data">crear Datos </Link> */}
             <button
               type="submit"
@@ -71,12 +57,6 @@ const Company = () => {
             </button>
             {/* <Link className="aTituloLinks " to="/postulates">Postulaciones</Link> */}
           </div>
-          
-          {crear ? <div></div> : (
-            <div>
-             <FormID />
-            </div>
-          )}
           {publicar ? <div></div> : (
             <div>
               <FormJobPostulate crear={mostrarPublicar} />

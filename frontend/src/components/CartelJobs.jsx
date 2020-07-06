@@ -13,9 +13,10 @@ function CartelJobs (props) {
                 <h3 className="card-text datosCartel">{props.workplace} - {props.availability}</h3>
                 <p className="card-text tiempoCartel">{props.publicationdate}</p>
             </div>
-            <img className="col-4 imageLogoCard rounded-circle" src={props.logoEmpresa} alt="logo-empresa"/>
+
+
         </div>
-        )   
-    }
+    )
+}
 
 export default CartelJobs

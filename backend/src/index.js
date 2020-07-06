@@ -10,7 +10,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-require("./database");
+require("./database"); 
 
 const statusRouter = require("./routes/statusRouter");
 

@@ -4,6 +4,7 @@ import '.././App.css'
 import { useState, useEffect, useCallback } from "react";
 // import Swal from "sweetalert2";
 import axios from "axios"
+import CardOfferts from './CardOfferts';
 
 
 
@@ -20,28 +21,16 @@ const [data, setdata] = useState([]);
     getArticles();
   }, [getArticles]);
 
-    // const data = [
-    //     {name: 'Nombre',
-    //     age: 18,
-    //     document: 12345678,
-    //     cv: 'CV',
-    //     aceptar: 'Si',
-    //     rechazar: 'No',
-    //     }
-    // ]
+ 
     const cartel = data.map( (n,i) => (
-        <CartelJobs data={n} key={i}/>
+        <CardOfferts data={n} key={i}/>
       ));
-    //   console.log(data)
-    //   console.log(data[0]);
-      
-      
 
     return (
         <div className="d-flex flex-column align-items-center justify-content-around">
             <h3>Ver Postulaciones</h3>
             {cartel}
-        <table className="table">
+        {/* <table className="table">
             <thead>
                 <tr>
                     <th scope="col">Nombre y Apellido</th>
@@ -66,7 +55,7 @@ const [data, setdata] = useState([]);
                 })}
 
             </thead>
-        </table>
+        </table> */}
         </div>
     )
 }
