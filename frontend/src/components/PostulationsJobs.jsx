@@ -1,8 +1,6 @@
 import React from 'react'
-import CartelJobs from './CartelJobs'
 import '.././App.css'
 import { useState, useEffect, useCallback } from "react";
-// import Swal from "sweetalert2";
 import axios from "axios"
 import CardOfferts from './CardOfferts';
 
