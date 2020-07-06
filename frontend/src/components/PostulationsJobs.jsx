@@ -1,23 +1,34 @@
 import React from 'react'
-import CartelJobs from './CartelJobs'
 import '.././App.css'
+import { useState, useEffect, useCallback } from "react";
+import axios from "axios"
+import CardOfferts from './CardOfferts';
+
 
 
 const PostulationsJobs = () =>{
-    const data = [
-        {name: 'Nombre',
-        age: 18,
-        document: 12345678,
-        cv: 'CV',
-        aceptar: 'Si',
-        rechazar: 'No',
-        }
-    ]
+const [data, setdata] = useState([]);
+    
+  const getArticles = useCallback(async () => {
+    const response = await axios.get("http://localhost:3001/api/v1/offers/admin/all");   
+    setdata(response.data)
+}, []);
+
+
+  useEffect(() => {
+    getArticles();
+  }, [getArticles]);
+
+ 
+    const cartel = data.map( (n,i) => (
+        <CardOfferts data={n} key={i}/>
+      ));
+
     return (
         <div className="d-flex flex-column align-items-center justify-content-around">
             <h3>Ver Postulaciones</h3>
-            <CartelJobs />
-        <table className="table">
+            {cartel}
+        {/* <table className="table">
             <thead>
                 <tr>
                     <th scope="col">Nombre y Apellido</th>
@@ -42,7 +53,7 @@ const PostulationsJobs = () =>{
                 })}
 
             </thead>
-        </table>
+        </table> */}
         </div>
     )
 }

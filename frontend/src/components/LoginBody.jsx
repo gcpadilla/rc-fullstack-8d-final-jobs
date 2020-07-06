@@ -7,11 +7,35 @@ import auth from "../utils/auth";
 const LoginBody = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const history = useHistory();
 
   const signInHandler = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/api/v1/users/administrators/login",
+        {
+          username: username.trim(),
+          password: password.trim(),
+        }
+        
+      );
+      auth.login(response.data.token, response.data.username);
 
+      await sweetalert.fire(
+        "ADMINISTRADOR",
+        `Bienvenido ${username.trim()}`,
+        "success"
+      );
+      console.log("es un admin");
+      
+      history.push("/company");
+      return
+  
+    } catch (error) {
+      console.log("es un usuario");
+    }
 
     try {
       const response = await axios.post(
@@ -21,9 +45,8 @@ const LoginBody = () => {
           password: password.trim(),
         }
       );
-
-      auth.login(response.data.token);
-      console.log("logueado");
+      auth.login(response.data.token, response.data.username );
+  
       await sweetalert.fire(
         "genial",
         `Bienvenido ${username.trim()}`,

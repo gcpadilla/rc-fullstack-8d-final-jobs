@@ -7,6 +7,7 @@ import register_employe from "./pages/register_employe"
 import company from "./pages/company"
 import company2 from "./pages/company2.jsx"
 import offers from "./pages/offers"
+// import OffersId from "./pages/OffersId"
 import FaqsCandidates from "./pages/faqsCandidates";
 import FaqBusiness from "./pages/FaqsBusiness";
 import FormJobPostulate from "./components/FormJobPostulate";
@@ -21,7 +22,9 @@ function App() {
         <Route path="/register_employe" component={register_employe}/>
         <Route path="/company" component={company}/>
         <Route path="/company2" component={company2}/>
+        {/* <Route path="/offers/:id" component={OffersId}/> */}
         <Route path="/offers" component={offers}/>
+
 
         <Route path="/faqbusiness" exact component={FaqBusiness} />
         <Route path="/prices" /> 

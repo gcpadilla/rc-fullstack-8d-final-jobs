@@ -2,7 +2,7 @@ import React from 'react'
 import '.././App.css'
 import logo from '../images/RollingJobswhite.svg'
 import { Link } from 'react-router-dom'
-import Offers from '../pages/offers'
+// import Offers from '../pages/offers'
 
 const Footer = () => {
     return (

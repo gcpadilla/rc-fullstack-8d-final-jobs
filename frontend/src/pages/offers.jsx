@@ -8,7 +8,7 @@ import FullCartelJobs from '../components/FullCartelJobs'
 import SearchImage from '../images/search.svg'
 
 
-const offers = () => {
+const Offers = () => {
 
     const jobs = [
         {empresa: "Empresa",
@@ -54,4 +54,4 @@ const offers = () => {
     );
 };
 
-export default offers;
+export default Offers;

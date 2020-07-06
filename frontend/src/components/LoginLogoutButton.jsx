@@ -23,9 +23,21 @@ function LoginLogoutButton() {
     const signOutHandler = async (e) => {
       e.preventDefault();
       try {
+        await axios.get("http://localhost:3001/api/v1/users/administrators/logout");
+        auth.logout();
+        await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
+        setForceUpdate(true);
+        // handleClose();
+        history.push("/");
+        return
+      } catch (error) {
+        console.log("no es administrador");        
+      }
+
+      try {
         await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
         auth.logout();
-        await sweetalert.fire("", "seccion cerrada", "success");
+        await sweetalert.fire("", "sesion cerrada", "success");
         setForceUpdate(true);
         history.push("/");
         handleClose();
