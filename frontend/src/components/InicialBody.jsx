@@ -24,11 +24,6 @@ const InicialBody = () => {
       <Search />
       <div className="linksLoguin d-flex align-items-center">
         <div>
-          <Link className="mr-3" to="/register_employe">
-            Registrate
-          </Link>
-        </div>
-        <div>
           <LoginLogoutButton />
         </div>
       </div>

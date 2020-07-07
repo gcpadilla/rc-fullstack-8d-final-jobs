@@ -3,14 +3,14 @@ import React from "react";
 // import Button from './Button'
 import ".././App.css";
 import logo from "../images/RollingJobswhite.svg";
-import { Route, NavLink, Link, Switch } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import LoginLogoutButton from "./LoginLogoutButton";
 // import { useState } from 'react';
 // import FaqsCandidates from "../pages/faqsCandidates";
 // import FaqBusiness from "../pages/FaqsBusiness";
 // import FormJobPostulate from "../components/FormJobPostulate";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <div>
       <nav className="navbar navbar-expand-md navbar-light cabeceraWeb">
@@ -115,13 +115,8 @@ const Navbar = () => {
                 </div>
               </li>
             </ul>
-            <ul className="navbar-nav mr-5">
-              <li className="nav-item active mr-2">
-                <NavLink className="nav-link text-white" to="/register_employe">
-                  Regístrate <span className="sr-only">(current)</span>
-                </NavLink>
-              </li>
-              <LoginLogoutButton />
+            <ul >
+              <LoginLogoutButton user={props.user}/>
             </ul>
           </div>
         </div>
