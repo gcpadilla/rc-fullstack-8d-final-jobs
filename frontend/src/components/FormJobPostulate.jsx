@@ -15,15 +15,14 @@ const FormJobPostulate = (props) => {
             "http://localhost:3001/api/v1/offers",
             UserSelec
           );
-          console.log(UserSelec);
       setUserSelec({})
       await Swal.fire("genial", "se creo correctamente la oferta", "success");
       props.crear(true)
+      props.forzar()
+    
       } catch (error) {
-          console.log(error);
-          
-      }
-     
+          console.log(error);          
+      }     
   };
 
   const onInputChange = (e) => {

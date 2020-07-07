@@ -30,6 +30,6 @@ const OffersId = () =>{
     
 //         </div>
 //     )
-}
+// }
 
 export default OffersId
