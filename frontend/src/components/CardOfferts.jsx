@@ -1,20 +1,42 @@
-import React from 'react'
+import React from "react";
 import axios from "axios";
 import sweetalert from "sweetalert2";
 
-
 const CardOfferts = (props) => {
-
   const onClickDeleteHandler = async () => {
-    try {  
-      await axios.delete(`http://localhost:3001/api/v1/offers/${props.data._id}`);
-      await sweetalert.fire("Borrada", "se borro la oferta", "success");
-      props.forzar()
+    try {
+      sweetalert
+        .fire({
+          title: "Esta seguro?",
+          text: "No podra recuperar!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Si, borrar!",
+        })
+        .then(async (result) => {
+          if (result.value) {
+            await axios.delete(
+              `http://localhost:3001/api/v1/offers/${props.data._id}`
+            );
+            sweetalert.fire({
+              icon: "success",
+              text: "Oferta eliminada...",
+              width: 250,
+              showConfirmButton: false,
+              timer: 2000,
+            });
+            props.forzar();
+          }
+        });
+    } catch (error) {}
+  };
+  const onClickUpdateHandler = async () => {
+    props.update(props.data._id);
+  
+  };
 
-    } catch (error) {
-      
-    }
-  }
   return (
     <div className="card m-2 shadow border-0 cartelJobs container d-flex flex-row justify-content-between align-items-center">
       <div className="card-body dataBody col-8">
@@ -26,8 +48,20 @@ const CardOfferts = (props) => {
         <p className="card-text tiempoCartel">{props.data.publicationdate}</p>
         <dir>
           {" "}
-          <button type="submit" className="btn btn-primary rounded-pill mx-5" >Modificar</button>
-          <button type="submit" onClick={onClickDeleteHandler} className="btn btn-primary rounded-pill mx-5">Borrar</button>{" "}
+          <button
+            type="submit"
+            onClick={onClickUpdateHandler}
+            className="btn btn-primary rounded-pill mx-5"
+          >
+            Modificar
+          </button>
+          <button
+            type="submit"
+            onClick={onClickDeleteHandler}
+            className="btn btn-primary rounded-pill mx-5"
+          >
+            Borrar
+          </button>{" "}
         </dir>
       </div>
     </div>
