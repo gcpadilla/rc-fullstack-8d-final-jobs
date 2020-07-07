@@ -2,18 +2,17 @@ import React, { useState, useEffect, useCallback } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import axios from "axios";
-
 import CardOfferts from "../components/CardOfferts";
-
 import FormJobPostulate from "../components/FormJobPostulate";
-
+import EditOffers from "../components/EditOffers"
 
 const Company = () => {
   const [username, setUsername] = useState("");
   const [publicar, setpublicar] = useState(true);
   const [card, setcard] = useState(true);
+  const [edit, setedit] = useState(true);
   const [data, setdata] = useState([]);
-
+  const [id, setid] = useState("");
 
   const getArticles = useCallback(async () => {
     const response = await axios.get(
@@ -31,9 +30,18 @@ const Company = () => {
   }, []);
 
   const forzar = () => {
-    getArticles()
-    setpublicar(true);   
-  }
+    getArticles();
+    setpublicar(true);
+  };
+
+  const update = (_id) => {
+    setpublicar(true);
+    setcard(true);
+    setedit(false);
+    console.log(_id);
+    setid(_id)
+    
+  };
 
   const mostrarPublicar = () => {
     if (publicar === false) {
@@ -41,7 +49,9 @@ const Company = () => {
     } else {
       setpublicar(false);
     }
-    getArticles()
+    getArticles();
+    setcard(true);
+    setedit(true);
   };
 
   const mostrarcard = () => {
@@ -50,15 +60,31 @@ const Company = () => {
     } else {
       setcard(false);
     }
-    getArticles()
+    getArticles();
+    setpublicar(true);
+    setedit(true);
   };
-  
-    const cards = data.map((a) => (
-        <div key={a._id} >
-          <CardOfferts data={a} key={a._id} cerrar={mostrarcard} forzar={forzar} />
-        </div>
-      ));
 
+  // const editcard = () => {
+  //   if (edit === false) {
+  //     setedit(true);
+  //   } else {
+  //     setedit(false);
+  //   }
+  //   getArticles()
+  // };
+
+  const cards = data.map((a) => (
+    <div key={a._id}>
+      <CardOfferts
+        data={a}
+        key={a._id}
+        cerrar={mostrarcard}
+        forzar={forzar}
+        update={update}
+      />
+    </div>
+  ));
 
   return (
     <>
@@ -93,6 +119,13 @@ const Company = () => {
             </div>
           )}
           {card ? <div></div> : <div>{cards}</div>}
+          {edit ? (
+            <div></div>
+          ) : (
+            <div>
+              <EditOffers id={id} terminar={mostrarcard}/>
+            </div>
+          )}
         </div>
       </div>
       <Footer />

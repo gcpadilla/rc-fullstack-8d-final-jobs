@@ -15,11 +15,6 @@ function LoginLogoutButton(props) {
   const [username, setUsername] = useState(localStorage.getItem("username"));
   const history = useHistory();
 
-  // useEffect(() => {
-  //   if (forceUpdate) {
-  //     setForceUpdate(false);
-  //   }
-  // }, [forceUpdate]);
 
   useEffect( () => {
 if (props.user=== null) {
@@ -29,7 +24,6 @@ if (props.user=== null) {
 
   const signOutHandler = async (e) => {
     e.preventDefault();
-    // setUsername(localStorage.getItem("username"))
     try {
       await axios.get(
         "http://localhost:3001/api/v1/users/administrators/logout"
