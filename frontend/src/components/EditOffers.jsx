@@ -1,20 +1,25 @@
 import React from "react";
 import { useState } from "react";
-// import Button from './Button'
 import Swal from "sweetalert2";
 import axios from "axios";
 
-const FormJobPostulate = (props) => {
+const EditOffers = (props) => {
   const [UserSelec, setUserSelec] = useState({});
 
   const onsubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/api/v1/offers", UserSelec);
+      await axios.put(
+        `http://localhost:3001/api/v1/offers/${props.id}`,
+        UserSelec
+      );
       setUserSelec({});
-      await Swal.fire("genial", "se creo correctamente la oferta", "success");
-      props.crear(true);
-      props.forzar();
+      await Swal.fire(
+        "genial",
+        "se modifico correctamente la oferta",
+        "success"
+      );
+      props.terminar();
     } catch (error) {
       console.log(error);
     }
@@ -27,10 +32,9 @@ const FormJobPostulate = (props) => {
       publicationdate: new Date().toLocaleString(),
     });
   };
-
   return (
     <div className="d-flex flex-column align-items-center">
-      <h3>Crear Ofertas</h3>
+      <h3>Editar Oferta</h3>
 
       <form>
         <div className="form-group">
@@ -122,7 +126,7 @@ const FormJobPostulate = (props) => {
           // onClick={() => props.crear(true)}
           className="btn btn-success rounded-pill"
         >
-          Crear oferta
+          Editar oferta
         </button>
         {/* <Button className="mr-2" name="Crear oferta" /> */}
         {/* <Button className="mr-2" name="Publicar" /> */}
@@ -131,4 +135,4 @@ const FormJobPostulate = (props) => {
   );
 };
 
-export default FormJobPostulate;
+export default EditOffers;
