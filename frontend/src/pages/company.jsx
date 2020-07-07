@@ -1,21 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useParams, Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 import CardOfferts from "../components/CardOfferts";
-import FormID from "../components/FormID";
+
 import FormJobPostulate from "../components/FormJobPostulate";
-import PostulationsJobs from "../components/PostulationsJobs";
+
 
 const Company = () => {
   const [username, setUsername] = useState("");
   const [publicar, setpublicar] = useState(true);
   const [card, setcard] = useState(true);
-  const params = useParams();
-
   const [data, setdata] = useState([]);
+
 
   const getArticles = useCallback(async () => {
     const response = await axios.get(
@@ -32,12 +30,18 @@ const Company = () => {
     setUsername(localStorage.getItem("username"));
   }, []);
 
+  const forzar = () => {
+    getArticles()
+    setpublicar(true);   
+  }
+
   const mostrarPublicar = () => {
     if (publicar === false) {
       setpublicar(true);
     } else {
       setpublicar(false);
     }
+    getArticles()
   };
 
   const mostrarcard = () => {
@@ -46,13 +50,15 @@ const Company = () => {
     } else {
       setcard(false);
     }
+    getArticles()
   };
+  
+    const cards = data.map((a) => (
+        <div key={a._id} >
+          <CardOfferts data={a} key={a._id} cerrar={mostrarcard} forzar={forzar} />
+        </div>
+      ));
 
-  const cards = data.map((a) => (
-    <div key={a._id} >
-      <CardOfferts data={a} key={a._id} />
-    </div>
-  ));
 
   return (
     <>

@@ -52,6 +52,7 @@ const LoginBody = () => {
         `Bienvenido ${username.trim()}`,
         "success"
       );
+      
       history.push("/");
     } catch (error) {
       sweetalert.fire("ERROR", error.response.data.message, "error");
