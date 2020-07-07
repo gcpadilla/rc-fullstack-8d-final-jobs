@@ -118,6 +118,13 @@ p, label  {
   text-align: center;
 }
 
+.formSuscription{
+  background-color: #0c0a59;
+  text-align: center;
+  width: 20rem;
+
+}
+
 @media (min-width: 768px) {
   .logoPortada{
     width: 50rem;
@@ -125,7 +132,12 @@ p, label  {
   .searchButton{
     width: 16rem;
   }
+  .formSuscription{
+    background-color: #0c0a59;
+    text-align: center;
+    width: 50rem;
   
+  }
 }
 
 .infoInicial{
@@ -168,7 +180,7 @@ color: #3DD990;
 }
 
 .modifData{
-  width: 50rem;
+  max-width: 50rem;
 }
 
 
@@ -188,7 +200,8 @@ color: #3DD990;
 -webkit-border-bottom-right-radius: 10px;
 -moz-border-radius-topleft: 10px;
 -moz-border-radius-bottomright: 10px; */
-  max-width: 20rem;
+  width: 20rem;
+  height: 15rem;
   border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
