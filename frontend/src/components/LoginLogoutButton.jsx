@@ -58,8 +58,8 @@ if (props.user=== null) {
   return (
     <div className="">
       {auth.isAuthenticated() ? (
-        <div className="container mx-2">
-          <h5 className="text-warning">Bienvenido {username}</h5>
+        <div className="container mx-2 d-flex flex-row align-items-baseline">
+          <h5 className=" usernameLoguin text-white">Bienvenido {username}</h5>
           <button
             onClick={signOutHandler}
             className="btn btn-secondary rounded-pill"
@@ -69,7 +69,7 @@ if (props.user=== null) {
         </div>
       ) : (
         <div className="container mx-2">
-           <li className="nav-item active mr-2">
+           <li className="nav-item active mr-2 tituloLinks">
                 <NavLink className="nav-link text-white" to="/register_employe">
                   Regístrate <span className="sr-only">(current)</span>
                 </NavLink>
