@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css'
 import Team from '../images/team.svg'
-import Newsletter from '../components/Search' 
+import FormSuscription from '../components/FormSuscrip' 
 
 const BodyDown = () => {
 
@@ -18,7 +18,7 @@ const BodyDown = () => {
         <div className="mt-5 d-flex flex-column align-items-center testingMargin">
                 <h3 className="tituloNews">Suscríbite al Newsletter</h3>
                 <p className="textNews text-center"> Trabajos - Talleres - Novedades - Información Util </p>  
-            <Newsletter />
+            <FormSuscription />
             </div>
         </div>
         </>

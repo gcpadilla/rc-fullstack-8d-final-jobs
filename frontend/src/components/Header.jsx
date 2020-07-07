@@ -28,10 +28,10 @@ const Navbar = (props) => {
         </button>
 
         <div
-          className="navbarGeneral collapse navbar-collapse row"
+          className="navbarGeneral collapse navbar-collapse"
           id="navbarNavDropdown"
         >
-          <div className="navbarStyle align-items-end">
+          <div className="navbarStyle d-flex align-items-end">
             <ul className="navbar-nav mr-5">
               <li className="nav-item dropdown mr-2">
                 <NavLink
@@ -115,22 +115,11 @@ const Navbar = (props) => {
                 </div>
               </li>
             </ul>
-            <ul >
               <LoginLogoutButton user={props.user}/>
-            </ul>
           </div>
         </div>
       </nav>
-      {/* <Switch>
-      
-       <Route path="/faqcandidates" component={FaqsCandidates}> </Route>
-        <Route path="/faqbusiness" component={FaqBusiness}> </Route>
-        <Route path="/prices"> </Route>
-        <Route path="/publicJob" component={FormJobPostulate}> </Route>
-        <Route path="/informacion">  </Route>
-        <Route path="/prensa"> </Route>
-        <Route path="/contacto"> </Route>
-    </Switch> */}
+
     </div>
   );
 };

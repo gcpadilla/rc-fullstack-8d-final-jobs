@@ -22,8 +22,8 @@ const Body = () => {
     return (
         <div className="generalBody d-flex justify-content-center">
             <div className="izquierdaBody col-8 d-flex flex-column align-items-center justify-content-around">
-                <Search />
-                <p>En RollingJobs creemos en la acción de conectar a las personas con su trabajo ideal. </p>  
+                {/* <Search /> */}
+                <p className="text-center mt-5">En RollingJobs creemos en la acción <br /> de conectar a las personas <br /> con su trabajo ideal. </p>  
                 <Button name="¿Buscás al Candidato?" />
                     <div className="d-flex justify-content-between m-3">
                         {titulos.map (nombre => {

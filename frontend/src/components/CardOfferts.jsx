@@ -7,8 +7,8 @@ const CardOfferts = (props) => {
     try {
       sweetalert
         .fire({
-          title: "Esta seguro?",
-          text: "No podra recuperar!",
+          title: "¿Estás Seguro?",
+          text: "Esta acción no se puede recuperar",
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
@@ -39,26 +39,26 @@ const CardOfferts = (props) => {
 
   return (
     <div className="card m-2 shadow border-0 cartelJobs container d-flex flex-row justify-content-between align-items-center">
-      <div className="card-body dataBody col-8">
+      <div className="card-body dataBody">
         <h3 className="card-text datosCartel"> {props.data.title} </h3>
         <h3 className="card-title tituloCartel">{props.data.summary}</h3>
         <h3 className="card-text datosCartel">
           {props.data.workplace} - {props.data.availability}
         </h3>
         <p className="card-text tiempoCartel">{props.data.publicationdate}</p>
-        <dir>
+        <dir className="d-flex justify-content-start">
           {" "}
           <button
             type="submit"
             onClick={onClickUpdateHandler}
-            className="btn btn-primary rounded-pill mx-5"
+            className="btn btn-primary rounded-pill mr-3"
           >
             Modificar
           </button>
           <button
             type="submit"
             onClick={onClickDeleteHandler}
-            className="btn btn-primary rounded-pill mx-5"
+            className="btn btn-primary rounded-pill"
           >
             Borrar
           </button>{" "}

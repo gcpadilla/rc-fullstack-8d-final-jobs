@@ -118,7 +118,7 @@ const Company = () => {
               <FormJobPostulate crear={mostrarPublicar} />
             </div>
           )}
-          {card ? <div></div> : <div>{cards}</div>}
+          {card ? <div></div> : <div  className="d-flex flex-wrap">{cards}</div>}
           {edit ? (
             <div></div>
           ) : (

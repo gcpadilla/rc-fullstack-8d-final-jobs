@@ -14,7 +14,6 @@ const InicialBody = () => {
 
   return (
     <div className="homeInicial d-flex flex-column align-items-center justify-content-around">
-      {/* style={{backgroundImage: `url(${Moon}`}} */}
       <img className="logoPortada" src={logo} alt="Logo" />
       <div className="text-white text-center ">
         <h3>El paso a un</h3>
