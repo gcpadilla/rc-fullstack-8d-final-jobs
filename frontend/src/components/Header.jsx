@@ -31,7 +31,7 @@ const Navbar = () => {
           className="navbarGeneral collapse navbar-collapse row"
           id="navbarNavDropdown"
         >
-          <div className="navbarStyle align-items-end">
+          <div className="navbarStyle">
             <ul className="navbar-nav mr-5">
               <li className="nav-item dropdown mr-2">
                 <NavLink
