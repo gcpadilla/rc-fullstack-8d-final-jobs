@@ -104,7 +104,7 @@ exports.getAllOffersActive = async (req, res) => {
   }
 };
 
-//Una oferta
+//Una oferta user
 exports.getOffer = async (req, res) => {
 
   try {
@@ -113,6 +113,44 @@ exports.getOffer = async (req, res) => {
     }
     
 		const offer = await offerModel.findById(req.params.OfferId, "-postulateRef -active");
+		if (!offer) {
+			return res.status(404).json({ message: "Offer not found." });
+		}
+
+		res.send(offer);
+	} catch (err) {
+		res.status(500).send(err);
+	}
+};
+
+//POSTULACIONES DE Una oferta
+exports.getPostulationsOffer = async (req, res) => {
+
+  try {
+		if (!mongoose.Types.ObjectId.isValid(req.params.OfferId)) {
+			return res.status(404).json({ message: "Offer not found." });
+    }
+    
+		const offer = await offerModel.findById(req.params.OfferId).populate('postulateRef');
+		if (!offer) {
+			return res.status(404).json({ message: "Offer not found." });
+		}
+
+		res.send(offer);
+	} catch (err) {
+		res.status(500).send(err);
+	}
+};
+
+//Una oferta admin
+exports.getOfferAdmin = async (req, res) => {
+
+  try {
+		if (!mongoose.Types.ObjectId.isValid(req.params.OfferId)) {
+			return res.status(404).json({ message: "Offer not found." });
+    }
+    
+		const offer = await offerModel.findById(req.params.OfferId);
 		if (!offer) {
 			return res.status(404).json({ message: "Offer not found." });
 		}
