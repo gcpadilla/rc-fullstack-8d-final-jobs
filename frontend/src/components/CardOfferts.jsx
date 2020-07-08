@@ -1,48 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import sweetalert from "sweetalert2";
 
 const CardOfferts = (props) => {
   const [active, setactive] = useState("");
-
- useEffect(() => {
-   if (props.data.active===true) {
-     setactive("Activa")
-   } else {
-     setactive("Inactiva")
-   }
- }, []);
-
- const activar = async() => {
-   console.log(props.data.active);
-   
-  if (props.data.active===true) {
-    try {
-      await axios.put(
-        `http://localhost:3001/api/v1/offers/${props.data._id}`,
-       { active: false}
-      );
-    
-    } catch (error) {
-      console.log(error);
+  const [color, setcolor] = useState("text-success");
+  useEffect(() => {
+    if (props.data.active === true) {
+      setactive("Activa");
+      setcolor("text-success");
+    } else {
+      setactive("Inactiva");
+      setcolor("text-muted");
     }
-    setactive("Activa")
-  } else {
-    try {
-      await axios.put(
-        `http://localhost:3001/api/v1/offers/${props.data._id}`,
-       { active: true}
-      );
-    
-    } catch (error) {
-      console.log(error);
-    }
-    
-    setactive("Inactiva")
-  }
-  console.log(props.data.active);
-  
- }
+  }, []);
+
   const onClickDeleteHandler = async () => {
     try {
       sweetalert
@@ -78,12 +50,15 @@ const CardOfferts = (props) => {
 
   return (
     <div className="card m-2 shadow border-0 cartelJobs container d-flex flex-row justify-content-between align-items-center">
-      <div className="card-body dataBody"> 
+      {console.log(props.data)}
+
+      <div className="card-body dataBody">
         <h3 className="card-text datosCartel"> {props.data.title} </h3>
         <h3 className="card-title tituloCartel">{props.data.summary}</h3>
         <h3 className="card-text datosCartel">
           {props.data.workplace} - {props.data.availability}
         </h3>
+        <p className={`card-text tiempoCartel ${color}`}>{active}</p>
         <p className="card-text tiempoCartel">{props.data.publicationdate}</p>
         <dir className="d-flex justify-content-start">
           {" "}
@@ -101,13 +76,6 @@ const CardOfferts = (props) => {
           >
             Borrar
           </button>{" "}
-          <button
-            type="submit"
-            onClick={activar}
-            className="btn btn-warning rounded-pill mr-3"
-          >
-           {active}
-          </button>
         </dir>
       </div>
     </div>

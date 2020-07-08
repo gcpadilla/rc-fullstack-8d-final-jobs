@@ -35,7 +35,7 @@ const EditOffers = (props) => {
   };
   return (
     <div className="d-flex flex-column align-items-center">
-      <h3>Editar Oferta</h3>
+      <h3>Editar Oferta {props.oferta.summary}</h3>
 
       <form>
         <div className="form-group">
