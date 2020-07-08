@@ -1,7 +1,8 @@
+import { useState, useEffect, useCallback} from "react";
 import React from "react";
-import { useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
+
 
 const EditOffers = (props) => {
   const [UserSelec, setUserSelec] = useState({});
@@ -10,7 +11,7 @@ const EditOffers = (props) => {
     e.preventDefault();
     try {
       await axios.put(
-        `http://localhost:3001/api/v1/offers/${props.id}`,
+        `http://localhost:3001/api/v1/offers/${props.oferta._id}`,
         UserSelec
       );
       setUserSelec({});
@@ -43,6 +44,7 @@ const EditOffers = (props) => {
             required
             className="form-control "
             name="title"
+            defaultValue={props.oferta.title}
             placeholder="Titulo del Puesto"
             onChange={onInputChange}
           />
@@ -53,6 +55,7 @@ const EditOffers = (props) => {
             required
             className="form-control "
             name="summary"
+            defaultValue={props.oferta.summary}
             placeholder="Resumen"
             onChange={onInputChange}
           />
@@ -62,6 +65,7 @@ const EditOffers = (props) => {
             className="form-control"
             required
             name="description"
+            defaultValue={props.oferta.description}
             placeholder="Descripción"
             onChange={onInputChange}
           />
@@ -72,6 +76,7 @@ const EditOffers = (props) => {
             required
             className="form-control"
             name="profession"
+            defaultValue={props.oferta.profession}
             placeholder="Profesion"
             onChange={onInputChange}
           />
@@ -82,6 +87,7 @@ const EditOffers = (props) => {
             required
             className="form-control "
             name="workplace"
+            defaultValue={props.oferta.workplace}
             placeholder="Lugar de trabajo"
             onChange={onInputChange}
           />
@@ -92,6 +98,7 @@ const EditOffers = (props) => {
             required
             className="form-control"
             name="quota"
+            defaultValue={props.oferta.quota}
             placeholder="cupo"
             onChange={onInputChange}
           />
@@ -101,6 +108,7 @@ const EditOffers = (props) => {
             className="form-control"
             onChange={onInputChange}
             name="availability"
+            defaultValue={props.oferta.availability}
           >
             <option>disponibilidad</option>
             <option>Media Jornada</option>
@@ -112,6 +120,7 @@ const EditOffers = (props) => {
             className="form-control"
             onChange={onInputChange}
             name="categories"
+            defaultValue={props.oferta.categories}
           >
             <option>elija una categoria</option>
             <option>informatica</option>

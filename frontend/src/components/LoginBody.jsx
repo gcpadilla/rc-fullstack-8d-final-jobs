@@ -4,10 +4,10 @@ import sweetalert from "sweetalert2";
 import axios from "axios";
 import auth from "../utils/auth";
 
-const LoginBody = () => {
-  const [username, setUsername] = useState("");
+const LoginBody = (props) => {
+  
   const [password, setPassword] = useState("");
-
+const [username, setUsername] = useState();
   const history = useHistory();
 
   const signInHandler = async (e) => {
@@ -52,7 +52,7 @@ const LoginBody = () => {
         `Bienvenido ${username.trim()}`,
         "success"
       );
-      
+      props.setUsername(response.data.username)
       history.push("/");
     } catch (error) {
       sweetalert.fire("ERROR", error.response.data.message, "error");

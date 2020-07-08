@@ -11,14 +11,11 @@ import React, { useState, useEffect } from "react";
 import FaqCandidates from "./faqsCandidates";
 
 const Home = () => {
-    const [username, setUsername] = useState("");
-    useEffect(() => {
-      setUsername( localStorage.getItem("username")) 
-    }, []);
+   
   return (
     <div>
-      {console.log(username)}
-      <Header user={username} />
+     
+      <Header  />
       {/* <FaqCandidates /> */}
       <InicialBody />
       <Body />
