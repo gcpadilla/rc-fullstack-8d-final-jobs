@@ -22,6 +22,9 @@ p, label  {
   font-size: 8pt;
 }
 
+html {
+  padding:0;
+}
 /* header */
 
 .logoStyle{
@@ -124,6 +127,18 @@ p, label  {
   width: 20rem;
 
 }
+.lateralSide{
+  background: #0c0a59;
+}
+
+.companyData {
+  height: 100wh;
+  width: 10rem;
+}
+
+.sidebarMenu{
+  height: 100vh;
+}
 
 @media (min-width: 768px) {
   .logoPortada{
@@ -137,6 +152,10 @@ p, label  {
     text-align: center;
     width: 50rem;
   
+  }
+  .companyData {
+    height: 100wh;
+    width: 20rem;
   }
 }
 

@@ -30,10 +30,11 @@ const FormJobPostulate = (props) => {
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <h3>Crear Ofertas</h3>
+      <h3 className="titulos my-3">Crear Ofertas</h3>
 
-      <form>
-        <div className="form-group">
+      <form className="was-validated">
+        <div className="form-row">
+        <div className="col-md-6 col-sm-12 form-group">
           <input
             type="text"
             required
@@ -43,7 +44,7 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
           />
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <input
             type="text"
             required
@@ -53,7 +54,7 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
           />
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <textarea
             className="form-control"
             required
@@ -62,7 +63,7 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
           />
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <input
             type="text"
             required
@@ -72,7 +73,7 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
           />
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <input
             type="text"
             required
@@ -82,7 +83,7 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
           />
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <input
             type="number"
             required
@@ -92,7 +93,7 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
           />
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <select
             className="form-control"
             onChange={onInputChange}
@@ -103,7 +104,7 @@ const FormJobPostulate = (props) => {
             <option>Jornada Completa</option>
           </select>
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <select
             className="form-control"
             onChange={onInputChange}
@@ -113,6 +114,7 @@ const FormJobPostulate = (props) => {
             <option>informatica</option>
             <option>construccion</option>
           </select>
+          </div>
         </div>
       </form>
       <div className="buttonOptions d-flex justify-content-between">

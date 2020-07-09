@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 import axios from "axios";
 import CardOfferts from "../components/CardOfferts";
 import FormJobPostulate from "../components/FormJobPostulate";
 import EditOffers from "../components/EditOffers"
+import { Link } from 'react-router-dom'
+
+import logo from "../images/RollingJobswhite.svg";
+
 
 const Company = () => {
   const [username, setUsername] = useState("");
@@ -87,30 +90,34 @@ const Company = () => {
   ));
 
   return (
-    <>
-      <Header />
-      <div className="companyData d-flex flex-column align-items-center my-3">
-        <h3>Bienvenido {username}</h3>
-        <div className="modifData">
-          <div className=" d-flex justify-content-around my-3">
-            {/* <Link className="aTituloLinks " to="/modifate_data">crear Datos </Link> */}
-            <button
-              type="submit"
-              onClick={mostrarPublicar}
-              className="btn btn-primary rounded-pill mx-5"
-            >
-              Crear Ofertas
-            </button>
-            {/* <Link className="aTituloLinks " to="/publicar">Publicar Empleo</Link> */}
-            <button
-              type="submit"
-              onClick={mostrarcard}
-              className="btn btn-primary rounded-pill mx-5"
-            >
-              Ofertas
-            </button>
-            {/* <Link className="aTituloLinks " to="/postulates">Postulaciones</Link> */}
-          </div>
+    <div className="container-fluid">
+      <div className="row">
+        {/* <Header /> */}
+        <nav id="sidebarMenu" className="col-3 d-md-block bg-dark sidebar collapse sidebarMenu">
+
+      <div className="sidebar-sticky">
+        <img src={logo} loading="lazy" className="logoFooter" />
+          <h2 className="text-white">Bienvenido {username}</h2>
+
+          <ul className="nav flex-column mt-5">
+          <li className="nav-item">
+              <Link  type="submit" onClick={mostrarPublicar} className="text-white"> Crear Ofertas</Link>
+          </li>
+          <li className="nav-item">
+              <Link  type="submit" onClick={mostrarcard} className="text-white"> Ofertas Publicadas</Link>
+          </li>
+          </ul>            
+
+
+
+      </div>
+    </nav>
+
+      <div className=" col-9 companyData card d-flex flex-wrap">
+        <div className="">
+
+        </div>
+        <div className="">
           {publicar ? (
             <div></div>
           ) : (
@@ -118,7 +125,14 @@ const Company = () => {
               <FormJobPostulate crear={mostrarPublicar} />
             </div>
           )}
-          {card ? <div></div> : <div  className="d-flex flex-wrap">{cards}</div>}
+          {card ? <div></div> : <div>
+            <h3 className="titulos text-center my-3">Ofertas Publicadas</h3>
+            <div className="d-flex flex-wrap justify-content-center"> 
+            {cards}
+            </div> 
+            </div>}
+
+
           {edit ? (
             <div></div>
           ) : (
@@ -126,10 +140,17 @@ const Company = () => {
               <EditOffers id={id} terminar={mostrarcard}/>
             </div>
           )}
+
         </div>
+
+
+        </div>
+        </div>
+
+
+      {/* <Footer /> */}
       </div>
-      <Footer />
-    </>
+      
   );
 };
 
