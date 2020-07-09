@@ -60,13 +60,72 @@ exports.getAllPostulates = async (req, res) => {
 };
 
 //todas las postulaciones user
-//agrager filtrado candidateid
 exports.getAllPostulatessUser = async (req, res) => {
   try {
-    const postulates = await postulateModel.find({candidateid: res.locals.user.id});
+    const postulates = await postulateModel.find({candidateid: res.locals.user.id}, "-candidateid");
     console.log(postulates)
     res.send(postulates);
   } catch (err) {
     res.status(500).send(err);
+  }
+};
+
+//Editar postulación
+exports.updatePostulate = async (req, res) => {
+	try {
+		if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+			return res.status(404).json({ message: "No de encontro postulación ..." });
+    }
+    
+    const postulate_in_db = await postulateModel.findOne({ _id: req.params.id });
+
+    if (!postulate_in_db) {
+      return res.status(400).json({ message: "Credenciales no validas." });
+    }
+
+    const { body } = req;
+
+  const postulateData = {
+    state: postulate_in_db.state,
+    intendedsalary: body.intendedsalary,
+    experiences: body.experiences,
+    studies: body.studies,
+    emailcandidate: body.emailcandidate,
+  };
+
+		let postulate = await postulateModel.findByIdAndUpdate(
+			req.params.id,
+			postulateData,
+			{ new: true }
+    );
+    
+    postulate = await postulateModel.findOne({ _id: req.params.id }, "-candidateid");
+
+		if (!postulate) {
+			return res.status(404).json({ message: "No de encontro postulación ..." });
+		}
+
+		res.send(postulate);
+	} catch (err) {
+		res.status(500).send({ message: "Error al editar postulación ..." });
+	}
+};
+
+//Borrar postulacion
+exports.deletePostulate = async (req, res) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ message: "No de encontro postulación ..." });
+    }
+
+    const postulate = await postulateModel.findByIdAndDelete(req.params.id);
+
+    if (!postulate) {
+      return res.status(404).json({ message: "No de encontro postulación ..." });
+    }
+
+    return res.status(200).send({ message: "Postulación eliminada" });
+  } catch (error) {
+    res.status(500).send({ message: "Error al borrar postulación ..." });
   }
 };

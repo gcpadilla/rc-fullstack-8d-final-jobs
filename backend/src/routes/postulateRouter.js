@@ -22,10 +22,16 @@ router.post(
 
 //LISTAR TODAS LAS POSTULACIONES ADMIN
 
-router.get("/admin/all",authorizeAdmin("admin"), postulateController.getAllPostulates);
+router.get("/admin/all", authorizeAdmin("admin"), postulateController.getAllPostulates);
 
 //LISTAR TODAS LAS POSTULACIONES USER
 
-router.get("/user/all",authorizeUser("user"), postulateController.getAllPostulatessUser);
+router.get("/user/all", authorizeUser("user"), postulateController.getAllPostulatessUser);
+
+//BORRAR POSTULACION
+router.delete("/:id", authorizeUser("user"), postulateController.deletePostulate);
+
+//EDITAR POSTULACION
+router.put('/:id', authorizeUser("user"), postulateController.updatePostulate);
 
 module.exports = router;

@@ -32,7 +32,7 @@ router.get("/:OfferId/admin",authorizeAdmin("admin"), offerController.getOffer);
 router.put('/:id',authorizeAdmin ("admin"), offerController.updateOffer);
 
 //BORRAR OFERTA
-router.delete("/:id", offerController.deleteOffer);
+router.delete("/:id", authorizeAdmin("admin"), offerController.deleteOffer);
 
 //LISTAR TODAS LAS OFERTAS ACTIVAS
 router.get("/candidate/all",authorizeUser("user"), offerController.getAllOffersActive);

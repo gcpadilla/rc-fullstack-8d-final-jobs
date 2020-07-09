@@ -142,7 +142,7 @@ exports.getOffer = async (req, res) => {
   }
 };
 
-//POSTULACIONES DE Una oferta
+//Postulaciones de Una oferta
 exports.getPostulationsOffer = async (req, res) => {
   try {
     if (!mongoose.Types.ObjectId.isValid(req.params.OfferId)) {

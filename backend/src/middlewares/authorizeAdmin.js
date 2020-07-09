@@ -2,7 +2,6 @@ const jsonwebtoken = require('jsonwebtoken');
 const AdminModel = require('../models/administratorModel');
 
 module.exports = (role) => async (req, res, next) => {
-  console.log('Authorization...');
   try {
     const authHeader = req.header('Authorization');
     const token = authHeader.replace('Bearer ', '');
