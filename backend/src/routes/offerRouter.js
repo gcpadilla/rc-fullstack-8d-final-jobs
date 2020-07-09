@@ -37,6 +37,9 @@ router.delete("/:id", offerController.deleteOffer);
 //LISTAR TODAS LAS OFERTAS ACTIVAS
 router.get("/candidate/all",authorizeUser("user"), offerController.getAllOffersActive);
 
+//LISTAR TODAS LAS OFERTAS ACTIVAS EN HOME
+router.get("/all", offerController.getAllOffersHome);
+
 //MOSTRAR UNA OFERTA USER
 router.get("/:OfferId",authorizeUser("user"), offerController.getOffer);
 

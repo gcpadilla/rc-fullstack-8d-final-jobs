@@ -67,11 +67,12 @@ exports.login = async (req, res) => {
   try {
     //const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET, { expiresIn: process.env.TOKEN_EXP_TIME });
     const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET);
-    user_in_db.token = [ token ];
+    user_in_db.token.push(token)
+    //user_in_db.token = [ token ];
     await adminModel.update({ username: user_in_db.username }, user_in_db);
     res.send({ message: 'Se logueo perfecto', token, role: user_in_db.role, username: user_in_db.username});
   } catch (error) {
-    return res.status(500).json({ message: 'ERROR.', error });
+    return res.status(500).json({ message: "ERROR DE LOGIN.", error });
   }
 }
 
@@ -85,7 +86,7 @@ exports.logout = async (req, res) => {
     res.json({ message: 'Se deslogueo perfecto' });
 
   } catch (error) {
-    res.status(500).send({ message: 'ERROR.', error });
+    res.status(500).send({ message: 'ERROR DE LOGOUT.', error });
   }
 
 }
