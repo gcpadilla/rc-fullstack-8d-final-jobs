@@ -34,12 +34,12 @@ const Company = () => {
     setpublicar(true);
   };
 
-  const update = (_id) => {
+  const update = (oferta) => {
     setpublicar(true);
     setcard(true);
     setedit(false);
-    console.log(_id);
-    setid(_id)
+    console.log(oferta);
+    setid(oferta)
     
   };
 
@@ -123,7 +123,7 @@ const Company = () => {
             <div></div>
           ) : (
             <div>
-              <EditOffers id={id} terminar={mostrarcard}/>
+              <EditOffers oferta={id} terminar={mostrarcard}/>
             </div>
           )}
         </div>
