@@ -89,17 +89,32 @@ const Company = () => {
     </div>
   ));
 
+
+
   return (
-    <div className="container-fluid">
+    <>
+    {/* <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow position-static">
+  <ul className="navbar-nav px-3">
+    <li className="nav-item text-nowrap">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    </li>
+  </ul>
+</nav> */}
+
+    <div className=" container-fluid">
       <div className="row">
         {/* <Header /> */}
-        <nav id="sidebarMenu" className="col-3 d-md-block bg-dark sidebar collapse sidebarMenu">
+        <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenu sticky-top ">
 
-      <div className="sidebar-sticky">
-        <img src={logo} loading="lazy" className="logoFooter" />
-          <h2 className="text-white">Bienvenido {username}</h2>
+        <img src={logo} loading="lazy" className="logoStyle" />
 
-          <ul className="nav flex-column mt-5">
+
+      <div className="sidebar-sticky d-flex flex-column justify-content-around mb-3">
+          <h2 className="textAdmin text-white">Bienvenido {username}</h2>
+
+          <ul className="nav flex-column d-flex mt-5">
           <li className="nav-item">
               <Link  type="submit" onClick={mostrarPublicar} className="text-white"> Crear Ofertas</Link>
           </li>
@@ -107,13 +122,17 @@ const Company = () => {
               <Link  type="submit" onClick={mostrarcard} className="text-white"> Ofertas Publicadas</Link>
           </li>
           </ul>            
-
+          <ul className="nav flex-column d-flex mt-5">
+                      <li className="nav-item">
+              <Link className="mt-auto" type="submit" className="text-white"> Cerrar Sesión</Link>
+          </li>
+          </ul>
 
 
       </div>
     </nav>
 
-      <div className=" col-9 companyData card d-flex flex-wrap">
+      <div className=" col-md-9 col-lg-10 companyData d-flex flex-column flex-wrap">
         <div className="">
 
         </div>
@@ -150,7 +169,7 @@ const Company = () => {
 
       {/* <Footer /> */}
       </div>
-      
+      </>
   );
 };
 
