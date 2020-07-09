@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { NavLink} from "react-router-dom"
 import { Button, Modal } from "react-bootstrap";
@@ -11,7 +11,7 @@ function LoginLogoutButton(props) {
   const [photo, setPhoto] = useState(false);
   const handleClose = () => setPhoto(false);
   const handleShow = () => setPhoto(true);
-  const [forceUpdate, setForceUpdate] = useState(false);
+  // const [forceUpdate, setForceUpdate] = useState(false);
   const [username, setUsername] = useState(localStorage.getItem("username"));
   const history = useHistory();
 
@@ -26,7 +26,7 @@ function LoginLogoutButton(props) {
       );
       auth.logout();
       await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
-      setForceUpdate(true);
+      // setForceUpdate(true);
       // handleClose();
       history.push("/");
       return;
@@ -37,7 +37,7 @@ function LoginLogoutButton(props) {
       await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
       auth.logout();
       await sweetalert.fire("", "sesion cerrada", "success");
-      setForceUpdate(true);
+      // setForceUpdate(true);
       history.push("/");
       handleClose();
     } catch (error) {

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback} from "react";
+import { useState} from "react";
 import React from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -9,17 +9,6 @@ const EditOffers = (props) => {
 
   const onsubmit = async (e) => {
     e.preventDefault();
-  //   console.log(UserSelec.active);
-  // if (UserSelec.active==="Activo") {
-  //   console.log("aqui");
-    
-  //     setUserSelec(true)
-
-    // } else {
-    //  setUserSelec({active:false})
-    // } 
-    // console.log(UserSelec.active);
-    
     try {
       await axios.put(
         `http://localhost:3001/api/v1/offers/${props.oferta._id}`,
