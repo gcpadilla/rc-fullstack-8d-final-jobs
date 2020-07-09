@@ -49,4 +49,7 @@ body('profession', 'La profesion no puede ser nula').notEmpty()
 //ELIMINAR CANDIDATO
 router.delete("/", authorize ("user"), candidateController.deleteCandidate);
 
+//EDIT CANDIDATO
+router.get('/edit/', authorize ("user"), candidateController.editCandidate);
+
 module.exports = router;

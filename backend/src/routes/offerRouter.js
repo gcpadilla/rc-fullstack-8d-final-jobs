@@ -25,6 +25,9 @@ router.post(
 //LISTAR TODAS LAS OFERTAS
 router.get("/admin/all",authorizeAdmin("admin"), offerController.getAllOffers);
 
+//MOSTRAR UNA OFERTA ADMIN
+router.get("/:OfferId/admin",authorizeAdmin("admin"), offerController.getOffer);
+
 //EDITAR OFERTAS
 router.put('/:id',authorizeAdmin ("admin"), offerController.updateOffer);
 
@@ -34,8 +37,15 @@ router.delete("/:id", offerController.deleteOffer);
 //LISTAR TODAS LAS OFERTAS ACTIVAS
 router.get("/candidate/all",authorizeUser("user"), offerController.getAllOffersActive);
 
-//MOSTRAR UNA OFERTA
+//LISTAR TODAS LAS OFERTAS ACTIVAS EN HOME
+router.get("/all", offerController.getAllOffersHome);
+
+//MOSTRAR UNA OFERTA USER
 router.get("/:OfferId",authorizeUser("user"), offerController.getOffer);
+
+//MOSTRAR POSTULACIONES DE UNA OFERTA
+router.get("/:OfferId/postulations",authorizeAdmin("admin"), offerController.getPostulationsOffer);
+
 
 
 module.exports = router;

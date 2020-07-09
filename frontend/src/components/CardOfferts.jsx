@@ -1,8 +1,9 @@
-import React from "react";
+import React from "react"
 import axios from "axios";
 import sweetalert from "sweetalert2";
 
 const CardOfferts = (props) => {
+
   const onClickDeleteHandler = async () => {
     try {
       sweetalert
@@ -33,8 +34,7 @@ const CardOfferts = (props) => {
     } catch (error) {}
   };
   const onClickUpdateHandler = async () => {
-    props.update(props.data._id);
-  
+    props.update(props.data);
   };
 
   return (
@@ -45,6 +45,7 @@ const CardOfferts = (props) => {
         <h3 className="card-text datosCartel">
           {props.data.workplace} - {props.data.availability}
         </h3>
+  <p className={`card-text tiempoCartel ${props.data.active ? "text-success":"text-muted"}`}>{props.data.active ? "Active": "Inactiva"}</p>
         <p className="card-text tiempoCartel">{props.data.publicationdate}</p>
         <dir className="d-flex justify-content-start">
           {" "}

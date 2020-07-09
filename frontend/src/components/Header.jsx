@@ -11,6 +11,7 @@ import LoginLogoutButton from "./LoginLogoutButton";
 // import FormJobPostulate from "../components/FormJobPostulate";
 
 const Navbar = (props) => {
+
   return (
     <div>
       <nav className="navbar navbar-expand-md navbar-light cabeceraWeb">
@@ -115,7 +116,7 @@ const Navbar = (props) => {
                 </div>
               </li>
             </ul>
-              <LoginLogoutButton user={props.user}/>
+              <LoginLogoutButton />
           </div>
         </div>
       </nav>

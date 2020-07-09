@@ -16,11 +16,7 @@ function LoginLogoutButton(props) {
   const history = useHistory();
 
 
-  useEffect( () => {
-if (props.user=== null) {
-  setUsername(props.user)
-} 
-  }, []);
+
 
   const signOutHandler = async (e) => {
     e.preventDefault();
@@ -87,7 +83,7 @@ if (props.user=== null) {
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <LoginBody />
+              <LoginBody setUsername={setUsername} />
             </Modal.Body>
           </Modal>
         </div>
