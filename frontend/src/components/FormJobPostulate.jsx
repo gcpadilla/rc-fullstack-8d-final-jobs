@@ -14,7 +14,7 @@ const FormJobPostulate = (props) => {
       setUserSelec({});
       await Swal.fire("genial", "se creo correctamente la oferta", "success");
       props.crear(true);
-      props.forzar();
+      // props.forzar();
     } catch (error) {
       console.log(error);
     }
