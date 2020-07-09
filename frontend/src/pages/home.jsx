@@ -19,7 +19,7 @@ const Home = () => {
       {/* <FaqCandidates /> */}
       <InicialBody />
       <Body />
-      <BodyCategories />
+      {/* <BodyCategories /> */}
       <BodyDown />
       <Footer />
     </div>
