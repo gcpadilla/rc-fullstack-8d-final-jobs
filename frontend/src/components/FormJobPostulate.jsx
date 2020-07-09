@@ -98,6 +98,7 @@ const FormJobPostulate = (props) => {
             className="form-control"
             onChange={onInputChange}
             name="availability"
+            required
           >
             <option>disponibilidad</option>
             <option>Media Jornada</option>
@@ -109,6 +110,7 @@ const FormJobPostulate = (props) => {
             className="form-control"
             onChange={onInputChange}
             name="categories"
+            required
           >
             <option>elija una categoria</option>
             <option>informatica</option>
@@ -116,10 +118,13 @@ const FormJobPostulate = (props) => {
           </select>
           </div>
         </div>
-      </form>
+
+  
+
       <div className="buttonOptions d-flex justify-content-between">
         <button
           type="submit"
+          value="submit"
           onClick={onsubmit}
           // onClick={() => props.crear(true)}
           className="btn btn-success rounded-pill"
@@ -129,6 +134,7 @@ const FormJobPostulate = (props) => {
         {/* <Button className="mr-2" name="Crear oferta" /> */}
         {/* <Button className="mr-2" name="Publicar" /> */}
       </div>
+      </form>
     </div>
   );
 };

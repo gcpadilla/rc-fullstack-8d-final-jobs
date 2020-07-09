@@ -11,7 +11,7 @@ OpenSans:
 Regular 400 
 */
 
-h3, h5, ul, li {
+h3, h5, ul, li, label {
   font-family: 'Poppins', sans-serif
 }
 p, label  {
@@ -147,6 +147,10 @@ html {
 }
 .textAdmin{
   font-size: 1rem;
+}
+.formLabel{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 @media (min-width: 768px) {
