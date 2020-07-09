@@ -85,7 +85,8 @@ exports.login = async (req, res) => {
     // expiresIn: process.env.TOKEN_EXP_TIME,
     // });
     const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET);
-    user_in_db.token = [token];
+    user_in_db.token.push(token)
+    //user_in_db.token = [token];
     await candidateModel.update({ username: user_in_db.username }, user_in_db);
     res.send({
       message: "Se logueo perfecto",
