@@ -23,7 +23,7 @@ const InicialBody = () => {
       <Search />
       <div className="linksLoguin d-flex align-items-center">
         <div>
-          <LoginLogoutButton />
+          {/* <LoginLogoutButton /> */}
         </div>
       </div>
     </div>

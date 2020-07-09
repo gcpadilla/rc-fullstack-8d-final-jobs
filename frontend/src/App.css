@@ -11,7 +11,7 @@ OpenSans:
 Regular 400 
 */
 
-h3, h5, ul, li {
+h3, h5, ul, li, label {
   font-family: 'Poppins', sans-serif
 }
 p, label  {
@@ -22,6 +22,9 @@ p, label  {
   font-size: 8pt;
 }
 
+html {
+  padding:0;
+}
 /* header */
 
 .logoStyle{
@@ -124,6 +127,31 @@ p, label  {
   width: 20rem;
 
 }
+.lateralSide{
+  background: #0c0a59;
+}
+
+.companyData {
+  height: 100wh;
+  width: 10rem;
+}
+
+.sidebarMenu{
+  height: 100vh;
+  width: 30%;
+  background-color: #0c0a59;
+}
+
+.listNavbar{
+  height: 100vh;
+}
+.textAdmin{
+  font-size: 1rem;
+}
+.formLabel{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
 
 @media (min-width: 768px) {
   .logoPortada{
@@ -137,6 +165,13 @@ p, label  {
     text-align: center;
     width: 50rem;
   
+  }
+  .companyData {
+    height: 100wh;
+    width: 100vw;
+  }
+  .textAdmin{
+    font-size: 2rem;
   }
 }
 
