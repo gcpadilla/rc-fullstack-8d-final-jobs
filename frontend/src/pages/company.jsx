@@ -38,7 +38,6 @@ const Company = () => {
     setpublicar(true);
     setcard(true);
     setedit(false);
-    console.log(oferta);
     setid(oferta)
     
   };

@@ -9,6 +9,17 @@ const EditOffers = (props) => {
 
   const onsubmit = async (e) => {
     e.preventDefault();
+  //   console.log(UserSelec.active);
+  // if (UserSelec.active==="Activo") {
+  //   console.log("aqui");
+    
+  //     setUserSelec(true)
+
+    // } else {
+    //  setUserSelec({active:false})
+    // } 
+    // console.log(UserSelec.active);
+    
     try {
       await axios.put(
         `http://localhost:3001/api/v1/offers/${props.oferta._id}`,
@@ -27,6 +38,7 @@ const EditOffers = (props) => {
   };
 
   const onInputChange = (e) => {
+
     setUserSelec({
       ...UserSelec,
       [e.target.name]: e.target.value,
@@ -102,6 +114,17 @@ const EditOffers = (props) => {
             placeholder="cupo"
             onChange={onInputChange}
           />
+        </div>
+        <div className="form-group">
+          <select
+            className="form-control"
+            onChange={onInputChange}
+            name="active"
+            defaultValue={props.oferta.active}
+          >
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
+          </select>
         </div>
         <div className="form-group">
           <select
