@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 import axios from "axios";
 import CardOfferts from "../components/CardOfferts";
 import FormJobPostulate from "../components/FormJobPostulate";
 import EditOffers from "../components/EditOffers"
+import { Link } from 'react-router-dom'
+
+import logo from "../images/RollingJobswhite.svg";
+
 
 const Company = () => {
   const [username, setUsername] = useState("");
@@ -85,31 +88,54 @@ const Company = () => {
     </div>
   ));
 
+
+
   return (
     <>
-      <Header />
-      <div className="companyData d-flex flex-column align-items-center my-3">
-        <h3>Bienvenido {username}</h3>
-        <div className="modifData">
-          <div className=" d-flex justify-content-around my-3">
-            {/* <Link className="aTituloLinks " to="/modifate_data">crear Datos </Link> */}
-            <button
-              type="submit"
-              onClick={mostrarPublicar}
-              className="btn btn-primary rounded-pill mx-5"
-            >
-              Crear Ofertas
-            </button>
-            {/* <Link className="aTituloLinks " to="/publicar">Publicar Empleo</Link> */}
-            <button
-              type="submit"
-              onClick={mostrarcard}
-              className="btn btn-primary rounded-pill mx-5"
-            >
-              Ofertas
-            </button>
-            {/* <Link className="aTituloLinks " to="/postulates">Postulaciones</Link> */}
-          </div>
+    {/* <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow position-static">
+  <ul className="navbar-nav px-3">
+    <li className="nav-item text-nowrap">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    </li>
+  </ul>
+</nav> */}
+
+    <div className=" container-fluid">
+      <div className="row">
+        {/* <Header /> */}
+        <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenu sticky-top ">
+
+        <img src={logo} loading="lazy" className="logoStyle" />
+
+
+      <div className="sidebar-sticky d-flex flex-column justify-content-around mb-3">
+          <h2 className="textAdmin text-white">Bienvenido {username}</h2>
+
+          <ul className="nav flex-column d-flex mt-5">
+          <li className="nav-item">
+              <Link  type="submit" onClick={mostrarPublicar} className="text-white"> Crear Ofertas</Link>
+          </li>
+          <li className="nav-item">
+              <Link  type="submit" onClick={mostrarcard} className="text-white"> Ofertas Publicadas</Link>
+          </li>
+          </ul>            
+          <ul className="nav flex-column d-flex mt-5">
+                      <li className="nav-item">
+              <Link className="mt-auto" type="submit" className="text-white"> Cerrar Sesión</Link>
+          </li>
+          </ul>
+
+
+      </div>
+    </nav>
+
+      <div className=" col-md-9 col-lg-10 companyData d-flex flex-column flex-wrap">
+        <div className="">
+
+        </div>
+        <div className="">
           {publicar ? (
             <div></div>
           ) : (
@@ -117,7 +143,14 @@ const Company = () => {
               <FormJobPostulate crear={mostrarPublicar} />
             </div>
           )}
-          {card ? <div></div> : <div  className="d-flex flex-wrap">{cards}</div>}
+          {card ? <div></div> : <div>
+            <h3 className="titulos text-center my-3">Ofertas Publicadas</h3>
+            <div className="d-flex flex-wrap justify-content-center"> 
+            {cards}
+            </div> 
+            </div>}
+
+
           {edit ? (
             <div></div>
           ) : (
@@ -125,10 +158,17 @@ const Company = () => {
               <EditOffers oferta={id} terminar={mostrarcard}/>
             </div>
           )}
+
         </div>
+
+
+        </div>
+        </div>
+
+
+      {/* <Footer /> */}
       </div>
-      <Footer />
-    </>
+      </>
   );
 };
 
