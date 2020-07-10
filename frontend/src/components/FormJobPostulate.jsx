@@ -14,7 +14,7 @@ const FormJobPostulate = (props) => {
       setUserSelec({});
       await Swal.fire("genial", "se creo correctamente la oferta", "success");
       props.crear(true);
-      props.forzar();
+      // props.forzar();
     } catch (error) {
       console.log(error);
     }
@@ -30,10 +30,11 @@ const FormJobPostulate = (props) => {
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <h3>Crear Ofertas</h3>
+      <h3 className="titulos my-3">Crear Ofertas</h3>
 
-      <form>
-        <div className="form-group">
+      <form className="was-validated">
+        <div className="form-row">
+        <div className="col-md-6 col-sm-12 form-group">
           <input
             type="text"
             required
@@ -43,7 +44,7 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
           />
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <input
             type="text"
             required
@@ -53,7 +54,7 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
           />
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <textarea
             className="form-control"
             required
@@ -62,7 +63,7 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
           />
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <input
             type="text"
             required
@@ -72,7 +73,7 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
           />
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <input
             type="text"
             required
@@ -82,7 +83,7 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
           />
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <input
             type="number"
             required
@@ -92,32 +93,38 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
           />
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <select
             className="form-control"
             onChange={onInputChange}
             name="availability"
+            required
           >
             <option>disponibilidad</option>
             <option>Media Jornada</option>
             <option>Jornada Completa</option>
           </select>
         </div>
-        <div className="form-group">
+        <div className="col-md-6 col-sm-12 form-group">
           <select
             className="form-control"
             onChange={onInputChange}
             name="categories"
+            required
           >
             <option>elija una categoria</option>
             <option>informatica</option>
             <option>construccion</option>
           </select>
+          </div>
         </div>
-      </form>
+
+  
+
       <div className="buttonOptions d-flex justify-content-between">
         <button
           type="submit"
+          value="submit"
           onClick={onsubmit}
           // onClick={() => props.crear(true)}
           className="btn btn-success rounded-pill"
@@ -127,6 +134,7 @@ const FormJobPostulate = (props) => {
         {/* <Button className="mr-2" name="Crear oferta" /> */}
         {/* <Button className="mr-2" name="Publicar" /> */}
       </div>
+      </form>
     </div>
   );
 };
