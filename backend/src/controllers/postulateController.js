@@ -22,12 +22,15 @@ exports.createPostulate = async (req, res) => {
     candidateid: res.locals.user.id,
   };
 
-   const post = await postulateModel.findOne({
-    candidateid: res.locals.user.id}, {offerId:req.params.offerId
-  });
+  const post = await postulateModel
+    .findOne()
+    .where({ candidateid: res.locals.user.id })
+    .where({ offerid: mongoose.Types.ObjectId(req.params.offerId) });
 
   if (post) {
-    return res.status(400).json({ message: "Ya estas postulado a esta oferta . . ." });
+    return res
+      .status(400)
+      .json({ message: "Ya estas postulado a esta oferta . . ." });
   }
 
   const candidate = await candidateModel.findById({
@@ -35,7 +38,6 @@ exports.createPostulate = async (req, res) => {
   });
 
   try {
-  
     if (candidate) {
       const postulate = new postulateModel(postulateData);
       await postulate.save();
@@ -51,7 +53,8 @@ exports.createPostulate = async (req, res) => {
 
       res.send({
         message: "Se registro postulacion correctamente..",
-        postulate, post
+        postulate,
+        post,
       });
     }
   } catch (err) {
