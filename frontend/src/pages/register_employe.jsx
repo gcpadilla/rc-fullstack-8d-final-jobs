@@ -16,15 +16,13 @@ const Register = () => {
     e.preventDefault();
     const anio = edad(UserSelec.age);
     UserSelec.age = anio;
-    console.log('Pasó')
-
+    console.log("Pasó");
 
     if (UserSelec.password === UserSelec.password2) {
       try {
         await axios.post(
           "http://localhost:3001/api/v1/users/candidates",
-          UserSelec,
-          console.log(UserSelec)
+          UserSelec
         );
         // setTimeout(() => {
         //   setredirec(true);
@@ -33,9 +31,6 @@ const Register = () => {
         await Swal.fire("genial", "se registro sactifactoriamente!", "success");
         setredirec(true);
       } catch (err) {
-
-        ;
-
         if (err.response.data.message === undefined) {
           Swal.fire(
             `Error de ${err.response.data.errors[0].param}`,
@@ -59,8 +54,6 @@ const Register = () => {
   };
 
   const onInputChange = (e) => {
-
-
     setUserSelec({
       ...UserSelec,
       [e.target.name]: e.target.value,
@@ -77,13 +70,15 @@ const Register = () => {
         <div className="text-center pb-5 form-group mb-3">
           <h3 className="mt-4 titulos">Bienvenido</h3>
           <h5 className="mb-4 texdo">Registro de candidatos</h5>
-          <p className="mb-4 textNews"> Por favor, ingrese sus datos personales para iniciar tu proceso a tu nuevo trabajo.</p>
+          <p className="mb-4 textNews">
+            {" "}
+            Por favor, ingrese sus datos personales para iniciar tu proceso a tu
+            nuevo trabajo.
+          </p>
           <div className="mb-4">
             <form onSubmit={onsubmit}>
               <div className="form-group">
-
                 <div className=" form-row ">
-
                   <div className="form-group col-6">
                     <label htmlFor="Name">Nombre</label>
                     <input
@@ -97,31 +92,30 @@ const Register = () => {
                   </div>
 
                   <div className="form-group col-6">
-                      <label htmlFor="lastname">Apellido</label>
-                      <input
-                        type="text"
-                        required
-                        className="form-control"
-                        name="lastname"
-                        placeholder="Apellido"
-                        onChange={onInputChange}
-                      />
-                    </div>
+                    <label htmlFor="lastname">Apellido</label>
+                    <input
+                      type="text"
+                      required
+                      className="form-control"
+                      name="lastname"
+                      placeholder="Apellido"
+                      onChange={onInputChange}
+                    />
+                  </div>
                 </div>
 
                 <div className="form-row">
-
-                    <div className="form-group col-md-6">
-                      <label htmlFor="dni">Documento</label>
-                      <input
-                        type="number"
-                        required
-                        className="form-control"
-                        name="dni"
-                        placeholder="DNI / Cedula de Identidad / Pasaporte"
-                        onChange={onInputChange}
-                      />
-                    </div>
+                  <div className="form-group col-md-6">
+                    <label htmlFor="dni">Documento</label>
+                    <input
+                      type="number"
+                      required
+                      className="form-control"
+                      name="dni"
+                      placeholder="DNI / Cedula de Identidad / Pasaporte"
+                      onChange={onInputChange}
+                    />
+                  </div>
 
                   <div className="form-group col-md-6">
                     <label htmlFor="Age">Fecha de Nacimiento</label>
@@ -134,7 +128,7 @@ const Register = () => {
                       onChange={onInputChange}
                     />
                   </div>
-            </div>
+                </div>
 
                 <div className="form-row">
                   <div className="form-group col-md-6">
@@ -150,7 +144,9 @@ const Register = () => {
                   </div>
 
                   <div className="form-group col-md-6">
-                    <label htmlFor="exampleInputEmail1">Correo Elctrónico</label>
+                    <label htmlFor="exampleInputEmail1">
+                      Correo Elctrónico
+                    </label>
                     <input
                       type="email"
                       required
@@ -161,9 +157,9 @@ const Register = () => {
                       onChange={onInputChange}
                     />
                   </div>
-              </div>
+                </div>
 
-              <div className="form-row">
+                <div className="form-row">
                   <div className="form-group col-md-6">
                     <label htmlFor="username">Nombre de Usuario</label>
                     <input
@@ -189,7 +185,7 @@ const Register = () => {
                       aria-describedby="passwordHelpBlock"
                       onChange={onInputChange}
                     />
-                      <small
+                    <small
                       id="passwordHelpBlock"
                       className="form-text text-muted"
                     >
@@ -211,11 +207,19 @@ const Register = () => {
                       onChange={onInputChange}
                     />
                   </div>
-
-                  </div>
-            </div>
-
-              <button type="submit" onSubmit={onsubmit} className="btn btn-success rounded-pill">
+                </div>
+              </div>
+              <button
+                onClick={setredirec}
+                className="btn btn-danger rounded-pill mr-5"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                onSubmit={onsubmit}
+                className="btn btn-success rounded-pill"
+              >
                 Confirmar Registro
               </button>
             </form>

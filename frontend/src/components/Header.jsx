@@ -10,7 +10,7 @@ import LoginLogoutButton from "./LoginLogoutButton";
 // import FaqBusiness from "../pages/FaqsBusiness";
 // import FormJobPostulate from "../components/FormJobPostulate";
 
-const Navbar = (props) => {
+const Navbar = () => {
 
   return (
     <div>

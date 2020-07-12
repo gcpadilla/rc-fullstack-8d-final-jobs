@@ -5,16 +5,14 @@ import axios from "axios";
 import searchImage from "../images/search.svg";
 import { Link } from "react-router-dom";
 
-const OfertasInicio= () => {
+const OfertasInicio= (props) => {
   const [data, setdata] = useState([]);
   const getArticles = useCallback(async () => {
     try {
       const response = await axios.get(
         "http://localhost:3001/api/v1/offers/all"
       );
-      setdata(response.data);
-      console.log(response.data.length);
-      
+      setdata(response.data);      
     } catch (error) {
       console.log(error);
     }
