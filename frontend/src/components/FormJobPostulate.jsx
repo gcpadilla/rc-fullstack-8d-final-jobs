@@ -13,10 +13,18 @@ const FormJobPostulate = (props) => {
       await axios.post("http://localhost:3001/api/v1/offers", UserSelec);
       setUserSelec({});
       await Swal.fire("genial", "se creo correctamente la oferta", "success");
-      props.crear(true);
-      // props.forzar();
-    } catch (error) {
-      console.log(error);
+      // props.crear();
+      props.forzar();
+    } catch (err) {
+      if (err.response.data.message === undefined) {
+        Swal.fire(
+          `Error de ${err.response.data.errors[0].param}`,
+          err.response.data.errors[0].msg,
+          "error"
+        );
+      } else {
+        Swal.fire("Oops..", err.response.data.message, "error");
+      }
     }
   };
 
@@ -121,7 +129,13 @@ const FormJobPostulate = (props) => {
 
   
 
-      <div className="buttonOptions d-flex justify-content-between">
+      <div className="buttonOptions d-flex ">
+      <button
+                onClick={props.forzar}
+                className="btn btn-danger rounded-pill mr-5"
+              >
+                Cancelar
+              </button>
         <button
           type="submit"
           value="submit"

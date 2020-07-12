@@ -5,12 +5,12 @@ import axios from "axios";
 import auth from "../utils/auth";
 
 const LoginBody = (props) => {
-  
   const [password, setPassword] = useState("");
-const [username, setUsername] = useState();
+  const [username, setUsername] = useState();
+  const [flag, setflag] = useState(true);  
   const history = useHistory();
 
-  const signInHandler = async (e) => {
+  const signInHandler = async (e) => {  
     e.preventDefault();
     try {
       const response = await axios.post(
@@ -19,44 +19,45 @@ const [username, setUsername] = useState();
           username: username.trim(),
           password: password.trim(),
         }
-        
       );
       auth.login(response.data.token, response.data.username);
-
       await sweetalert.fire(
         "ADMINISTRADOR",
         `Bienvenido ${username.trim()}`,
         "success"
       );
       console.log("es un admin");
-      
-      history.push("/company");
-      return
-  
-    } catch (error) {
-      console.log("es un usuario");
-    }
 
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/api/v1/users/candidates/login",
-        {
-          username: username.trim(),
-          password: password.trim(),
-        }
-      );
-      auth.login(response.data.token, response.data.username );
-  
-      await sweetalert.fire(
-        "genial",
-        `Bienvenido ${username.trim()}`,
-        "success"
-      );
-      props.setUsername(response.data.username)
-      history.push("/");
+      history.push("/company");
+      return;
     } catch (error) {
-      sweetalert.fire("ERROR", error.response.data.message, "error");
+      setflag(false)
     }
+if (flag===true) {
+  try {
+    const response = await axios.post(
+      "http://localhost:3001/api/v1/users/candidates/login",
+      {
+        username: username.trim(),
+        password: password.trim(),
+      }
+    );
+    auth.login(response.data.token, response.data.username);
+
+    await sweetalert.fire(
+      "genial",
+      `Bienvenido ${username.trim()}`,
+      "success"
+    );
+    props.setUsername(response.data.username);
+    history.push("/");
+  } catch (error) {
+    sweetalert.fire("ERROR", error.response.data.message, "error");
+  }
+  
+  
+}
+    
   };
 
   return (

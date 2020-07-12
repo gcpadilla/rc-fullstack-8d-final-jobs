@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "../App.css";
-import CartelCategories from "./CartelCategories";
+import CardPostulation from "./CardPostulation";
 import axios from "axios";
-import searchImage from "../images/search.svg";
-import { Link } from "react-router-dom";
 
-const OfertasInicio= (props) => {
+const OfertasInicioUser= () => {
   const [data, setdata] = useState([]);
   const getArticles = useCallback(async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/v1/offers/all"
+        "http://localhost:3001/api/v1/offers/candidate/all"
       );
-      setdata(response.data);      
+      setdata(response.data);
+      console.log(response.data.length);
     } catch (error) {
       console.log(error);
     }
@@ -30,7 +29,7 @@ const OfertasInicio= (props) => {
         <div className="distriCards d-flex justify-content-between flex-wrap">
           {data.map((a,i) => {
             return (
-              <CartelCategories
+              <CardPostulation all={a}
                 titulo={a.title}
                 descripcion={a.summary}
                 vacantes={a.quota}
@@ -44,4 +43,4 @@ const OfertasInicio= (props) => {
   );
 };
 
-export default OfertasInicio;
+export default OfertasInicioUser;
