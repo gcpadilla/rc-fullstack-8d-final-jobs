@@ -14,8 +14,8 @@ const Navbar = (props) => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-md navbar-light cabeceraWeb">
-        <img className="logoStyle" src={logo} alt="logo" />
+      <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
+          <img className="logoStyle" src={logo} alt="logo" />
         <button
           className="navbar-toggler"
           type="button"
@@ -115,8 +115,9 @@ const Navbar = (props) => {
                   </Link>
                 </div>
               </li>
-            </ul>
               <LoginLogoutButton />
+
+            </ul>
           </div>
         </div>
       </nav>

@@ -7,16 +7,18 @@ const BodyDown = () => {
 
     return (
         <>
-        <div className=" d-flex justify-content-center align-items-center generalBody ">
-            <div className="col-4 d-flex flex-column justify-content-center align-items-end">
-                <h3 className="tituloDown">Trabajamos Juntos</h3>
-                <p className="textDown text-right">Para gestionar como equipo <br /> tu futuro soñado </p>  
+        <div className="generalBody d-flex flex-wrap justify-content-center align-items-center container-fluid">
+            <div className="col-sm-12 col-md-4 d-flex flex-column">
+                <h3 className="tituloDown text-center">Trabajamos Juntos</h3>
+                <p className="textDown text-center">Para gestionar como equipo <br /> tu futuro soñado </p>  
             </div>
-                <img src={Team} alt="Team" className="ml-5 col-6 h-100 align-items-center"/>
+                <div className="ml-5 col-sm-12 col-md-6 d-flex justify-content-center">
+                <img src={Team} alt="Team" />
+                </div>
         </div>
         <div>
         <div className="mt-5 d-flex flex-column align-items-center testingMargin">
-                <h3 className="tituloNews">Suscríbite al Newsletter</h3>
+                <h3 className="tituloNews text-center">Suscríbite al Newsletter</h3>
                 <p className="textNews text-center"> Trabajos - Talleres - Novedades - Información Util </p>  
             <FormSuscription />
             </div>
