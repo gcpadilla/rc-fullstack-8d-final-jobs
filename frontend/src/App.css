@@ -247,6 +247,10 @@ html {
     line-height: 18pt;
   }
 
+  .imgSizeLanding{
+    width: 70%;
+  }
+
 @media (min-width: 768px) {
   .logoPortada{
     width: 50rem;
@@ -336,6 +340,9 @@ html {
   .textDown {
     font-size: 14pt;
     line-height: 18pt;
+  }
+  .imgSizeLanding{
+    width: 100%;
   }
 }
 

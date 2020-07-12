@@ -13,7 +13,7 @@ const BodyDown = () => {
                 <p className="textDown text-center">Para gestionar como equipo <br /> tu futuro soñado </p>  
             </div>
                 <div className="ml-5 col-sm-12 col-md-6 d-flex justify-content-center">
-                <img src={Team} alt="Team" />
+                <img src={Team} alt="Team" className="imgSizeLanding" />
                 </div>
         </div>
         <div>
