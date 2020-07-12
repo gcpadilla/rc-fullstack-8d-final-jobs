@@ -1,13 +1,13 @@
-import React from 'react'
-import '.././App.css'
-import { useState, useEffect, useCallback } from "react";
-import { useParams, Link, useHistory } from 'react-router-dom';
-import axios from "axios"
+// import React from 'react'
+// import '.././App.css'
+// import { useState, useEffect, useCallback } from "react";
+// import { useParams, Link, useHistory } from 'react-router-dom';
+// import axios from "axios"
 
 
 
 
-const OffersId = () =>{
+// const OffersId = () =>{
 //     const params = useParams();
 //     const history = useHistory();
 // const [data, setdata] = useState([]);
@@ -32,4 +32,4 @@ const OffersId = () =>{
 //     )
 // }
 
-export default OffersId
+// export default OffersId;

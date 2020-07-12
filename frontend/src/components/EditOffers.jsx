@@ -21,8 +21,16 @@ const EditOffers = (props) => {
         "success"
       );
       props.terminar();
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      if (err.response.data.message === undefined) {
+        Swal.fire(
+          `Error de ${err.response.data.errors[0].param}`,
+          err.response.data.errors[0].msg,
+          "error"
+        );
+      } else {
+        Swal.fire("Oops..", err.response.data.message, "error");
+      }
     }
   };
 
@@ -149,6 +157,12 @@ const EditOffers = (props) => {
 
       </form>
       <div className="buttonOptions d-flex justify-content-between">
+      <button
+                onClick={props.terminar}
+                className="btn btn-danger rounded-pill mr-5"
+              >
+                Cancelar
+              </button>
         <button
           type="submit"
           onClick={onsubmit}
