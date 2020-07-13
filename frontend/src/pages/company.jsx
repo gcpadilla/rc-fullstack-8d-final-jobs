@@ -13,7 +13,7 @@ import logo from "../images/RollingJobswhite.svg";
 const Company = () => {
   const [username, setUsername] = useState("");
   const [publicar, setpublicar] = useState(true);
-  const [card, setcard] = useState(true);
+  const [card, setcard] = useState(false);
   const [edit, setedit] = useState(true);
   const [data, setdata] = useState([]);
   const [id, setid] = useState("");
@@ -39,6 +39,7 @@ const Company = () => {
 
   const forzar = () => {
     getArticles();
+    setcard(false);
     setpublicar(true);
   };
 
@@ -120,27 +121,33 @@ const Company = () => {
     </div>
   ));
 
+  const signOutHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.get(
+        "http://localhost:3001/api/v1/users/administrators/logout"
+      );
+      auth.logout();
+      await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
+      history.push("/");
+      return;
+    } catch (error) {
+    }
+
+  };
+
 
 
   return (
     <>
-    {/* <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow position-static">
-  <ul className="navbar-nav px-3">
-    <li className="nav-item text-nowrap">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-    </li>
-  </ul>
-</nav> */}
 
-    <div className=" container-fluid">
+    <div className=" companyStyle container-fluid">
       <div className="row">
-        {/* <Header /> */}
         <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenu sticky-top ">
 
-        <img src={logo} loading="lazy" className="logoStyle" />
-
+      <Link to="/">
+        <img src={logo} loading="lazy" className="logoStyle mb-3" />
+      </Link>
 
       <div className="sidebar-sticky d-flex flex-column justify-content-around mb-3">
           <h2 className="textAdmin text-white">Bienvenido {username}</h2>
@@ -159,7 +166,6 @@ const Company = () => {
           </li>
           </ul>
 
-
       </div>
     </nav>
 
@@ -172,7 +178,7 @@ const Company = () => {
             <div></div>
           ) : (
             <div>
-              <FormJobPostulate crear={mostrarPublicar} />
+              <FormJobPostulate crear={mostrarPublicar}  forzar={forzar}/>
             </div>
           )}
           {card ? <div></div> : <div>

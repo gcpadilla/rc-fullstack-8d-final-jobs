@@ -10,12 +10,12 @@ import LoginLogoutButton from "./LoginLogoutButton";
 // import FaqBusiness from "../pages/FaqsBusiness";
 // import FormJobPostulate from "../components/FormJobPostulate";
 
-const Navbar = (props) => {
+const Navbar = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-md navbar-light cabeceraWeb">
-        <img className="logoStyle" src={logo} alt="logo" />
+      <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
+          <img className="logoStyle" src={logo} alt="logo" />
         <button
           className="navbar-toggler"
           type="button"
@@ -115,8 +115,9 @@ const Navbar = (props) => {
                   </Link>
                 </div>
               </li>
-            </ul>
               <LoginLogoutButton />
+
+            </ul>
           </div>
         </div>
       </nav>
