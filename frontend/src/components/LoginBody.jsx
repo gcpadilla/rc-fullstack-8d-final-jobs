@@ -21,7 +21,7 @@ const [username, setUsername] = useState();
         }
         
       );
-      auth.login(response.data.token, response.data.username);
+      auth.login(response.data.token, response.data.username, response.data.role);
 
       await sweetalert.fire(
         "ADMINISTRADOR",
@@ -45,7 +45,7 @@ const [username, setUsername] = useState();
           password: password.trim(),
         }
       );
-      auth.login(response.data.token, response.data.username );
+      auth.login(response.data.token, response.data.username, response.data.role );
   
       await sweetalert.fire(
         "genial",

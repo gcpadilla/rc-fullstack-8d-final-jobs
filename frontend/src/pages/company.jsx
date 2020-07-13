@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Footer from "../components/Footer";
 import axios from "axios";
 import CardOfferts from "../components/CardOfferts";
 import FormJobPostulate from "../components/FormJobPostulate";
 import EditOffers from "../components/EditOffers"
-import { Link } from 'react-router-dom'
+import auth from "../utils/auth";
+import sweetalert from "sweetalert2";
+import { Link, useHistory } from 'react-router-dom'
 
 import logo from "../images/RollingJobswhite.svg";
 
@@ -16,6 +17,10 @@ const Company = () => {
   const [edit, setedit] = useState(true);
   const [data, setdata] = useState([]);
   const [id, setid] = useState("");
+  const [photo, setPhoto] = useState(false);
+  const handleClose = () => setPhoto(false);
+  const handleShow = () => setPhoto(true);  
+  const history = useHistory();
 
   const getArticles = useCallback(async () => {
     const response = await axios.get(
@@ -67,6 +72,33 @@ const Company = () => {
     setedit(true);
   };
 
+  const signOutHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.get(
+        "http://localhost:3001/api/v1/users/administrators/logout"
+      );
+      auth.logout();
+      await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
+      // setForceUpdate(true);
+      // handleClose();
+      history.push("/");
+      return;
+    } catch (error) {
+    }
+
+    try {
+      await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
+      auth.logout();
+      await sweetalert.fire("", "sesion cerrada", "success");
+      // setForceUpdate(true);
+      history.push("/");
+      handleClose();
+    } catch (error) {
+      sweetalert.fire("ERROR", "error de deslogueo", "error");
+    }
+  };
+
   // const editcard = () => {
   //   if (edit === false) {
   //     setedit(true);
@@ -115,15 +147,15 @@ const Company = () => {
 
           <ul className="nav flex-column d-flex mt-5">
           <li className="nav-item">
-              <Link  type="submit" onClick={mostrarPublicar} className="text-white"> Crear Ofertas</Link>
+              <Link  onClick={mostrarPublicar} className="text-white"> Crear Ofertas</Link>
           </li>
           <li className="nav-item">
-              <Link  type="submit" onClick={mostrarcard} className="text-white"> Ofertas Publicadas</Link>
+              <Link onClick={mostrarcard} className="text-white"> Ofertas Publicadas</Link>
           </li>
           </ul>            
           <ul className="nav flex-column d-flex mt-5">
                       <li className="nav-item">
-              <Link className="mt-auto" type="submit" className="text-white"> Cerrar Sesión</Link>
+              <Link className="mt-auto" onClick={signOutHandler} className="text-white"> Cerrar Sesión</Link>
           </li>
           </ul>
 

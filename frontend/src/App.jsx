@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import PrivateRoute from './components/PrivateRoute';
 import "./App.css";
 import home from "./pages/home"
 import login_employe from "./pages/login_employe.jsx"
@@ -14,27 +15,23 @@ import FormJobPostulate from "./components/FormJobPostulate";
 
 function App() {
   return <div>
- <Router>
+    <Router>
       <Switch>
-      <Route path="/faqcandidates" component={FaqsCandidates} /> 
-
-        <Route path="/login_employe" component={login_employe}/>
-        <Route path="/register_employe" component={register_employe}/>
-        <Route path="/company" component={company}/>
-        <Route path="/company2" component={company2}/>
+        <Route path="/faqcandidates" component={FaqsCandidates} />
+        <Route path="/login_employe" component={login_employe} />
+        <Route path="/register_employe" component={register_employe} />
+        <PrivateRoute path="/company" component={company} />
+        <PrivateRoute path="/company2" component={company2} />
         {/* <Route path="/offers/:id" component={OffersId}/> */}
-        <Route path="/offers" component={offers}/>
-
-
+        <Route path="/offers" component={offers} />
         <Route path="/faqbusiness" exact component={FaqBusiness} />
-        <Route path="/prices" /> 
-        <Route path="/publicJob" component={FormJobPostulate}/>
-        <Route path="/informacion"/>
-        <Route path="/prensa"/>
-        <Route path="/contacto"/> 
-
-        <Route path="/" component={home} />
-
+        <Route path="/prices" />
+        <PrivateRoute path="/publicJob" component={FormJobPostulate} />
+        <Route path="/informacion" />
+        <Route path="/prensa" />
+        <Route path="/contacto" />
+        <Route path="/home" component={home}/>
+        <Redirect from="/" to="/home"/>
       </Switch>
     </Router>
   </div>;
