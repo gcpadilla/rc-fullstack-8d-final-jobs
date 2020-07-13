@@ -112,12 +112,13 @@ const Company = () => {
   return (
     <>
 
-    <div className=" container-fluid">
+    <div className=" companyStyle container-fluid">
       <div className="row">
         <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenu sticky-top ">
 
-        <img src={logo} loading="lazy" className="logoStyle" />
-
+      <Link to="/">
+        <img src={logo} loading="lazy" className="logoStyle mb-3" />
+      </Link>
 
       <div className="sidebar-sticky d-flex flex-column justify-content-around mb-3">
           <h2 className="textAdmin text-white">Bienvenido {username}</h2>
@@ -135,7 +136,6 @@ const Company = () => {
               <Link className="mt-auto" type="submit" onClick={signOutHandler} className="text-white"> Cerrar Sesión</Link>
           </li>
           </ul>
-
 
       </div>
     </nav>
