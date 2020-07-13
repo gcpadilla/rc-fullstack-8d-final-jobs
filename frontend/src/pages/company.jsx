@@ -19,7 +19,7 @@ const Company = () => {
   const [id, setid] = useState("");
   const [photo, setPhoto] = useState(false);
   const handleClose = () => setPhoto(false);
-  const handleShow = () => setPhoto(true);  
+  const handleShow = () => setPhoto(true);
   const history = useHistory();
 
   const getArticles = useCallback(async () => {
@@ -48,7 +48,7 @@ const Company = () => {
     setcard(true);
     setedit(false);
     setid(oferta)
-    
+
   };
 
   const mostrarPublicar = () => {
@@ -121,92 +121,77 @@ const Company = () => {
     </div>
   ));
 
-  const signOutHandler = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.get(
-        "http://localhost:3001/api/v1/users/administrators/logout"
-      );
-      auth.logout();
-      await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
-      history.push("/");
-      return;
-    } catch (error) {
-    }
-
-  };
-
 
 
   return (
     <>
 
-    <div className=" companyStyle container-fluid">
-      <div className="row">
-        <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenu sticky-top ">
+      <div className=" companyStyle container-fluid">
+        <div className="row">
+          <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenu sticky-top ">
 
-      <Link to="/">
-        <img src={logo} loading="lazy" className="logoStyle mb-3" />
-      </Link>
+            <Link to="/">
+              <img src={logo} loading="lazy" className="logoStyle mb-3" />
+            </Link>
 
-      <div className="sidebar-sticky d-flex flex-column justify-content-around mb-3">
-          <h2 className="textAdmin text-white">Bienvenido {username}</h2>
+            <div className="sidebar-sticky d-flex flex-column justify-content-around mb-3">
+              <h2 className="textAdmin text-white">Bienvenido {username}</h2>
 
-          <ul className="nav flex-column d-flex mt-5">
-          <li className="nav-item">
-              <Link  onClick={mostrarPublicar} className="text-white"> Crear Ofertas</Link>
-          </li>
-          <li className="nav-item">
-              <Link onClick={mostrarcard} className="text-white"> Ofertas Publicadas</Link>
-          </li>
-          </ul>            
-          <ul className="nav flex-column d-flex mt-5">
-                      <li className="nav-item">
-              <Link className="mt-auto" onClick={signOutHandler} className="text-white"> Cerrar Sesión</Link>
-          </li>
-          </ul>
+              <ul className="nav flex-column d-flex mt-5">
+                <li className="nav-item">
+                  <Link onClick={mostrarPublicar} className="text-white"> Crear Ofertas</Link>
+                </li>
+                <li className="nav-item">
+                  <Link onClick={mostrarcard} className="text-white"> Ofertas Publicadas</Link>
+                </li>
+              </ul>
+              <ul className="nav flex-column d-flex mt-5">
+                <li className="nav-item">
+                  <Link className="mt-auto" onClick={signOutHandler} className="text-white"> Cerrar Sesión</Link>
+                </li>
+              </ul>
 
-      </div>
-    </nav>
-
-      <div className=" col-md-9 col-lg-10 companyData d-flex flex-column flex-wrap">
-        <div className="">
-
-        </div>
-        <div className="">
-          {publicar ? (
-            <div></div>
-          ) : (
-            <div>
-              <FormJobPostulate crear={mostrarPublicar}  forzar={forzar}/>
             </div>
-          )}
-          {card ? <div></div> : <div>
-            <h3 className="titulos text-center my-3">Ofertas Publicadas</h3>
-            <div className="d-flex flex-wrap justify-content-center"> 
-            {cards}
-            </div> 
-            </div>}
+          </nav>
 
+          <div className=" col-md-9 col-lg-10 companyData d-flex flex-column flex-wrap">
+            <div className="">
 
-          {edit ? (
-            <div></div>
-          ) : (
-            <div>
-              <EditOffers oferta={id} terminar={mostrarcard}/>
             </div>
-          )}
+            <div className="">
+              {publicar ? (
+                <div></div>
+              ) : (
+                  <div>
+                    <FormJobPostulate crear={mostrarPublicar} forzar={forzar} />
+                  </div>
+                )}
+              {card ? <div></div> : <div>
+                <h3 className="titulos text-center my-3">Ofertas Publicadas</h3>
+                <div className="d-flex flex-wrap justify-content-center">
+                  {cards}
+                </div>
+              </div>}
 
+
+              {edit ? (
+                <div></div>
+              ) : (
+                  <div>
+                    <EditOffers oferta={id} terminar={mostrarcard} />
+                  </div>
+                )}
+
+            </div>
+
+
+          </div>
         </div>
 
 
-        </div>
-        </div>
-
-
-      {/* <Footer /> */}
+        {/* <Footer /> */}
       </div>
-      </>
+    </>
   );
 };
 
