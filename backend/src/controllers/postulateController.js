@@ -53,8 +53,7 @@ exports.createPostulate = async (req, res) => {
 
       res.send({
         message: "Se registro postulacion correctamente..",
-        postulate,
-        post,
+        postulate
       });
     }
   } catch (err) {
@@ -79,7 +78,12 @@ exports.getAllPostulatessUser = async (req, res) => {
       { candidateid: res.locals.user.id },
       "-candidateid"
     );
-    console.log(postulates);
+
+    if (postulates.length===0) {
+      return res
+      .status(400)
+      .json({ message: "No tienes postulaciones . . ." });
+    }
     res.send(postulates);
   } catch (err) {
     res.status(500).send(err);

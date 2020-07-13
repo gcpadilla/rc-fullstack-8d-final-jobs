@@ -13,8 +13,7 @@ import auth from "../utils/auth";
 const Home = () => {
   return (
     <div>
-     
-      <Header />
+      <Header  />
       <InicialBody />
       <Body />
       {auth.isAuthenticated() ?<OfertaInicioUser /> : <OfertaInicio />}  
