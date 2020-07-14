@@ -20,7 +20,8 @@ const LoginBody = (props) => {
           password: password.trim(),
         }
       );
-      auth.login(response.data.token, response.data.username);
+      auth.login(response.data.token, response.data.username, response.data.role);
+
       await sweetalert.fire(
         "ADMINISTRADOR",
         `Bienvenido ${username.trim()}`,
@@ -42,7 +43,7 @@ if (flag===true) {
         password: password.trim(),
       }
     );
-    auth.login(response.data.token, response.data.username);
+    auth.login(response.data.token, response.data.username, response.data.role) ;
 
     await sweetalert.fire(
       "genial",
