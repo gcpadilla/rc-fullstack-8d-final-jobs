@@ -58,8 +58,8 @@ function LoginLogoutButton(props) {
           </button>
         </div>
       ) : (
-        <div className="container mx-2">
-           <li className="nav-item active mr-2 tituloLinks">
+        <div className="container  mx-2">
+           <li className="nav-item active tituloLinks">
                 <NavLink className="nav-link text-white" to="/register_employe">
                   Regístrate <span className="sr-only">(current)</span>
                 </NavLink>

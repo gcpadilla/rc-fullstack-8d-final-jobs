@@ -10,7 +10,10 @@ const CardPostulate = (props) => {
     const handleClose = () => {
       props.get();
       setShow(false)};
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+      console.log("show");
+      setShow(true)};
+
     const [data, setdata] = useState([]);
     const getArticles = useCallback(async () => {
       try {
