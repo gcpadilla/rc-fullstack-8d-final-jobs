@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import searchImage from "../images/search.svg";
+// import searchImage from "../images/search.svg";
 import { Button, Modal } from "react-bootstrap";
 import FormPostulate from "./FormPostulate";
 
@@ -14,7 +14,7 @@ const CardPostulation = (props) => {
             
             <Link onClick={handleShow} to="/" >
                    <div className="card-body">
-                <img src={searchImage} alt="buscar"/>
+                {/* <img src={searchImage} alt="buscar"/> */}
                 <h5 className="card-title tituloCartel">{props.titulo}</h5>
                 <h5 className="card-title tituloCartel">{props.descripcion}</h5>
                 <p className="card-text tiempoCartel">{props.vacantes} vacantes</p>

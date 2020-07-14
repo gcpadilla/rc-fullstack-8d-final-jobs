@@ -11,6 +11,7 @@ import offers from "./pages/offers"
 import FaqsCandidates from "./pages/faqsCandidates";
 import FaqBusiness from "./pages/FaqsBusiness";
 import FormJobPostulate from "./components/FormJobPostulate";
+import Prices from "./pages/Prices";
 
 function App() {
   return <div>
@@ -27,7 +28,7 @@ function App() {
 
 
         <Route path="/faqbusiness" exact component={FaqBusiness} />
-        <Route path="/prices" /> 
+        <Route path="/prices" component={Prices} /> 
         <Route path="/publicJob" component={FormJobPostulate}/>
         <Route path="/informacion"/>
         <Route path="/prensa"/>

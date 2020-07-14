@@ -114,7 +114,7 @@ const Company = () => {
 
     <div className=" companyStyle container-fluid">
       <div className="row">
-        <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenu sticky-top ">
+        <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenuAdmin sticky-top ">
 
       <Link to="/">
         <img src={logo} loading="lazy" className="logoStyle mb-3" />

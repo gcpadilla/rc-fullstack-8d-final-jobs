@@ -1,52 +1,53 @@
 import React from "react";
-import "../App.css";
-
+import Header from '../components/Header'
 const FaqsCandidates = () => {
   
   const faqs = [
     {
-      pregunta: "¿Pregunta?",
+      pregunta: "Olvidé mi contraseña, ¿cómo puedo acceder?",
       respuesta:
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+        "Si has olvidado tu contraseña de acceso podés solicitar un recordatorio haciendo click acá.",
     },
     {
-      pregunta: "¿Pregunta?",
+      pregunta: "¿Cómo me puedo postular a los avisos de empleo?",
       respuesta:
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+        "Para postularte a los avisos tenés que tener una cuenta creada postularte a la posición deseada. Si todavía no tenés una cuenta creada podés registrarte acá.",
     },
     {
-      pregunta: "¿Pregunta?",
+      pregunta: "¿Cuántas veces puedo postularme al mismo aviso?",
       respuesta:
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+        "Solo se puede postular una vez a cada aviso. No podrás postularte nuevamente a una oferta, aunque elimines la postulación anterior y tampoco es posible recuperarlas, por lo que te sugerimos estar completamente seguro antes de abandonar una postulación.",
     },
     {
-      pregunta: "¿Pregunta?",
+      pregunta: "¿De qué manera las empresas pueden contactar conmigo?",
       respuesta:
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+        "Las empresas pueden contactar contigo utilizando los datos de contacto que dejaste al registrarte. Te sugerimos que introduzcas información correcta, esto te ayudará a ser contactado con mayor facilidad",
     },
     {
-      pregunta: "¿Pregunta?",
+      pregunta: "¿Puedo eliminar mi candidatura de una oferta?",
       respuesta:
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+        "Si te has postulado a una oferta pero prefieres eliminar tu candidatura lo podés hacer desde la sección Mis Postulaciones. Desde este listado tenés la opción de eliminar tu candidatura de un aviso en concreto. Recuerda que si abandonás una candidatura, no podrás volver a postularse al mismo aviso.",
     },
     {
-      pregunta: "¿Pregunta?",
+      pregunta: "¿Cómo puedo cambiar mis datos de acceso??",
       respuesta:
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+        "Podés modificar los datos de acceso desde el panel de Usuario dentro de tu cuenta.",
     },
   ];
   return (
-
+    <>
+    <Header />
     <div className="p-5">
     {console.log('test')}
         <h3 className="titulos text-center">Preguntas Frecuentes</h3>
         {faqs.map (ques =>  {
             return      <div className="p-3">
-                <h1 className="titulos">{ques.pregunta}</h1>
+                <h1 className="titulosQues">{ques.pregunta}</h1>
             <p className="card-text">{ques.respuesta} </p>
       </div>
         })}
     </div>
+    </>
   );
 };
 
