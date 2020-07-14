@@ -6,31 +6,88 @@ import axios from "axios";
 
 const FormPostulate = (props) => {
   const [UserSelec, setUserSelec] = useState({});
-  const onsubmit = async (e) => {
-    e.preventDefault();
-    console.log(props.all._id);
+
+  const onDelete = () => {
     try {
-        await axios.post(`http://localhost:3001/api/v1/offer/postulates/${props.all._id}`, UserSelec, );
-      setUserSelec({});
-      await Swal.fire("genial", "te postulaste correctamente", "success");
-      props.cerrar();
-    } 
-    catch (err) {
-      if (err.response.data.message === undefined) {
-        Swal.fire(
-          `Error de ${err.response.data.errors[0].param}`,
-          err.response.data.errors[0].msg,
-          "error"
+      Swal.fire({
+        title: "¿Estás Seguro?",
+        text: "Esta acción no se puede recuperar",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, borrar!",
+      }).then(async (result) => {
+        if (result.value) {
+          await axios.delete(
+            `http://localhost:3001/api/v1/offer/postulates/${props.postu._id}`
+          );
+          Swal.fire({
+            icon: "success",
+            text: "Oferta eliminada...",
+            width: 250,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          props.cerrar();
+        }
+      });
+    } catch (error) {}
+  };
+
+  const onsubmit = async (e) => {
+    if (props.postularse===true) {
+      e.preventDefault();
+      try {
+        await axios.put(
+          `http://localhost:3001/api/v1/offer/postulates/${props.postu._id}`,
+          UserSelec
         );
-      } else {
-        Swal.fire("Oops..", err.response.data.message, "error");
+        setUserSelec({});
+        await Swal.fire(
+          "genial",
+          "se modifico correctamente la postulación",
+          "success"
+        );
+        props.cerrar();
+      } catch (err) {
+        if (err.response.data.message === undefined) {
+          Swal.fire(
+            `Error de ${err.response.data.errors[0].param}`,
+            err.response.data.errors[0].msg,
+            "error"
+          );
+        } else {
+          Swal.fire("Oops..", err.response.data.message, "error");
+        }
+      }
+    } else {
+      e.preventDefault();
+      try {
+        await axios.post(
+          `http://localhost:3001/api/v1/offer/postulates/${props.all._id}`,
+          UserSelec
+        );
+        setUserSelec({});
+        await Swal.fire("genial", "te postulaste correctamente", "success");
+        props.cerrar();
+      } catch (err) {
+        if (err.response.data.message === undefined) {
+          Swal.fire(
+            `Error de ${err.response.data.errors[0].param}`,
+            err.response.data.errors[0].msg,
+            "error"
+          );
+        } else {
+          Swal.fire("Oops..", err.response.data.message, "error");
+        }
       }
     }
-    
-  
+   
   };
 
   const onInputChange = (e) => {
+    
     setUserSelec({
       ...UserSelec,
       [e.target.name]: e.target.value,
@@ -39,15 +96,15 @@ const FormPostulate = (props) => {
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <h3 className="titulos my-3">Crear Ofertas</h3>
-
-      <form className="was-validated">
+      <h3 className="titulos my-3">Crear Postulación</h3>
+      <form className="was-validated" onSubmit={onsubmit}>
         <div className="form-row">
           <div className="col-md-6 col-sm-12 form-group">
             <input
               type="number"
               required
               className="form-control "
+              defaultValue={props.postu.intendedsalary}
               name="intendedsalary"
               placeholder="Sueldo Pretendido"
               onChange={onInputChange}
@@ -59,6 +116,7 @@ const FormPostulate = (props) => {
               required
               className="form-control "
               name="emailcandidate"
+              defaultValue={props.postu.emailcandidate}
               placeholder="Email de contacto"
               onChange={onInputChange}
             />
@@ -68,6 +126,7 @@ const FormPostulate = (props) => {
               className="form-control"
               required
               name="experiences"
+              defaultValue={props.postu.experiences}
               placeholder="Experiencia Laboral"
               onChange={onInputChange}
             />
@@ -77,18 +136,44 @@ const FormPostulate = (props) => {
               className="form-control"
               required
               name="studies"
+              defaultValue={props.postu.studies}
               placeholder="Estudios"
               onChange={onInputChange}
             />
           </div>
         </div>
         <Modal.Footer>
-          <Button variant="secondary btn  rounded-pill" onClick={props.cerrar}>
+          <Button variant="danger btn rounded-pill" onClick={props.cerrar}>
             Cerrar
           </Button>
-          <Button variant="btn btn-success rounded-pill" onClick={onsubmit}>
-            Postularse
-          </Button>
+          {props.postularse ? (
+            <div>
+              <button
+                type="submit"
+                className="btn btn-success rounded-pill"
+              >
+                {" "}
+                Modificar
+              </button>
+
+              <Button
+                variant="btn btn-warning  rounded-pill mx-2"
+                onClick={onDelete}
+              >
+                Delete
+              </Button>
+            </div>
+          ) : (
+            <div>
+              <button
+                type="submit"
+                className="btn btn-success rounded-pill"
+              >
+                {" "}
+                Postularse
+              </button>
+            </div>
+          )}
         </Modal.Footer>
       </form>
     </div>

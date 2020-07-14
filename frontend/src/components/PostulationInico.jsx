@@ -1,25 +1,22 @@
 import React, { useState, useEffect, useCallback } from "react";
-import CardPostulation from "./CardPostulation";
-import axios from "axios";
 
-const OfertasInicioUser= (props) => {
+import CardPostulate from "./CardPostulate";
 
+const PostulationInico = (props) => {
 
   return (
     <div className="d-flex- align-items-center my-5 generalBody">
       <div className="d-flex flex-column align-items-center my-5 ">
         <div className="titulares d-flex container align-items-center">
-          <h3 className="titulos col-10">Ofertas de trabajo</h3>
+          <h3 className="titulos col-10">Estas son tus Postulaciones</h3>
         </div>
         <div className="distriCards d-flex justify-content-between flex-wrap">
-          {props.datauser.map((a,i) => {
+          {props.datapostulation.map((a, i) => {
             return (
-              <CardPostulation all={a}
-                titulo={a.title}
-                descripcion={a.summary}
-                vacantes={a.quota}
+              <CardPostulate
+                all={a}
                 key={i}
-                get={props.get}
+             get={props.get}
               />
             );
           })}
@@ -29,4 +26,4 @@ const OfertasInicioUser= (props) => {
   );
 };
 
-export default OfertasInicioUser;
+export default PostulationInico;

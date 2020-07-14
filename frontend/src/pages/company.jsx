@@ -61,11 +61,12 @@ const Company = () => {
   };
 
   const mostrarcard = () => {
-    if (card === false) {
-      setcard(true);
-    } else {
-      setcard(false);
-    }
+    // if (card === false) {
+    //   setcard(true);
+    // } else {
+    //   setcard(false);
+    // }
+    setcard(false)
     getArticles();
     setpublicar(true);
     setedit(true);
@@ -106,8 +107,6 @@ const Company = () => {
     }
 
   };
-
-
 
   return (
     <>
