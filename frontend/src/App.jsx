@@ -12,6 +12,7 @@ import offers from "./pages/offers"
 import FaqsCandidates from "./pages/faqsCandidates";
 import FaqBusiness from "./pages/FaqsBusiness";
 import FormJobPostulate from "./components/FormJobPostulate";
+import Prices from "./pages/Prices";
 
 function App() {
   return <div>
@@ -30,8 +31,7 @@ function App() {
         <Route path="/informacion" />
         <Route path="/prensa" />
         <Route path="/contacto" />
-        <Route path="/home" component={home}/>
-        <Redirect from="/" to="/home"/>
+        <Route path="/" component={home}/>
       </Switch>
     </Router>
   </div>;

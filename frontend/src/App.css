@@ -11,7 +11,7 @@ OpenSans:
 Regular 400 
 */
 
-h3, h5, ul, li, label {
+h3,h2, h5, ul, li, label {
   font-family: 'Poppins', sans-serif
 }
 p, label  {
@@ -29,6 +29,11 @@ html {
 
 .logoStyle{
   max-width: 160px ;
+}
+
+.logo{
+  background-image: url(./images/RollingJobswhite.svg) ;
+  width: 160px 
 }
 
 .navbar{
@@ -69,6 +74,9 @@ html {
 .usernameLoguin {
   color: white;
   font-size: 10pt;
+}
+.card-deck{
+  margin: 10px;
 }
 
 @media (min-width: 996px) {
@@ -151,10 +159,17 @@ html {
   width: 10rem;
 }
 
-.sidebarMenu{
+
+.sidebarMenuAdmin{
   height: 100vh;
   width: 30%;
   background-color: #0c0a59;
+}
+
+.sidebarMenu{
+  height: 100vh;
+  width: 30%;
+  background-color: #3DD990;
 }
 
 .listNavbar{
@@ -162,6 +177,7 @@ html {
 }
 .textAdmin{
   font-size: 1rem;
+  font-weight: 700;
 }
 .formLabel{
   font-family: 'Poppins', sans-serif;
@@ -186,6 +202,13 @@ html {
   background-size: 30%;
   background-position: right bottom;
 ;
+}
+.profileStyle{
+  background-image:  url(./images/team.svg);
+  display:flex;
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: right bottom;
 }
 
 .cartelCategories{
@@ -249,6 +272,12 @@ html {
 
   .imgSizeLanding{
     width: 70%;
+  }
+  .profilePH{
+   width: 150px;
+    height: 150px;
+    object-fit: cover;
+
   }
 
 @media (min-width: 768px) {
@@ -365,9 +394,15 @@ html {
 
 
 .titulos{
-font-size: 20pt;
+font-size: 25pt;
 font-weight: 600;
 }
+
+.titulosQues{
+  font-size: 15pt;
+  font-weight: 600;
+}
+
 .links{
   font-family:'Poppins', sans-serif;
 font-size: 10pt;
@@ -432,6 +467,11 @@ color: #3DD990;
 .menuFooter {
   width: 100vh;
 }
+.tituloCardSale{
+  font-weight: 600;
+  font-size: 15pt;
+  font-family: 'Poppins', sans-serif;
+}
 
 .tituloFooter{
   font-weight: 600;
@@ -457,4 +497,7 @@ color: #3DD990;
 
 .searchBar {
   background-color: #0c0a59;
+}
+.imagePrice{
+width: 70px ;
 }

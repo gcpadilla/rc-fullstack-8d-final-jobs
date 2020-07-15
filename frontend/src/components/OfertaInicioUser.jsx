@@ -26,7 +26,9 @@ const OfertasInicioUser= () => {
         <div className="titulares d-flex container align-items-center">
           <h3 className="titulos col-10">Ofertas de trabajo</h3>
         </div>
-        <div className="distriCards d-flex justify-content-between flex-wrap">
+        <div className="container">
+
+        <div className="distriCards d-flex  flex-wrap">
           {data.map((a,i) => {
             return (
               <CardPostulation all={a}
@@ -35,8 +37,11 @@ const OfertasInicioUser= () => {
                 vacantes={a.quota}
                 key={i}
               />
+
             );
           })}
+        </div>
+
         </div>
       </div>
     </div>
