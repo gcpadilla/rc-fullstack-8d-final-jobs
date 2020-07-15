@@ -1,9 +1,9 @@
-import React from "react"
+import React from "react";
 import axios from "axios";
 import sweetalert from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const CardOfferts = (props) => {
-
   const onClickDeleteHandler = async () => {
     try {
       sweetalert
@@ -45,25 +45,41 @@ const CardOfferts = (props) => {
         <h3 className="card-text datosCartel">
           {props.data.workplace} - {props.data.availability}
         </h3>
-  <p className={`card-text tiempoCartel ${props.data.active ? "text-success":"text-muted"}`}>{props.data.active ? "Active": "Inactiva"}</p>
+        <Link
+          className="card-text tiempoCartel"
+          onClick={() => props.adminPostulate(props.data._id)}
+        >
+          Postulaciones
+        </Link>
+        <p
+          className={`card-text tiempoCartel ${
+            props.data.active ? "text-success" : "text-muted"
+          }`}
+        >
+          {props.data.active ? "Active" : "Inactiva"}
+        </p>
+
         <p className="card-text tiempoCartel">{props.data.publicationdate}</p>
-        <dir className="d-flex justify-content-start">
-          {" "}
-          <button
-            type="submit"
-            onClick={onClickUpdateHandler}
-            className="btn btn-primary rounded-pill mr-3"
-          >
-            Modificar
-          </button>
-          <button
-            type="submit"
-            onClick={onClickDeleteHandler}
-            className="btn btn-primary rounded-pill"
-          >
-            Borrar
-          </button>{" "}
-        </dir>
+        {props.sola ? (
+          <div></div>
+        ) : (
+          <dir className="d-flex justify-content-start">
+            <button
+              type="submit"
+              onClick={onClickUpdateHandler}
+              className="btn btn-primary rounded-pill mr-3"
+            >
+              Modificar
+            </button>
+            <button
+              type="submit"
+              onClick={onClickDeleteHandler}
+              className="btn btn-primary rounded-pill"
+            >
+              Borrar
+            </button>{" "}
+          </dir>
+        )}
       </div>
     </div>
   );

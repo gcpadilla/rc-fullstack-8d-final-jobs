@@ -5,8 +5,8 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const FormPostulate = (props) => {
-  const [UserSelec, setUserSelec] = useState({});
-
+  const [UserSelec, setUserSelec] = useState(props.postu);
+console.log(props);
   const onDelete = () => {
     try {
       Swal.fire({

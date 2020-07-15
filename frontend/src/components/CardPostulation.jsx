@@ -14,14 +14,14 @@ const CardPostulation = (props) => {
 
   return (
     <div className="card m-3 cartelCategories">
-      <Link onClick={handleShow} to="/">
+      <div style={{cursor: "pointer"}} onClick={handleShow} >
         <div className="card-body">
           <img src={searchImage} alt="buscar" />
           <h5 className="card-title tituloCartel">{props.titulo}</h5>
           <h5 className="card-title tituloCartel">{props.descripcion}</h5>
           <p className="card-text tiempoCartel">{props.vacantes} vacantes</p>
         </div>
-      </Link>
+      </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
