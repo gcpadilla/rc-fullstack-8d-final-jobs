@@ -37,10 +37,10 @@ axios.interceptors.response.use(
 );
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <App classname="p-0"/>
-  </React.StrictMode>,
-  document.getElementById('root')
+  // </React.StrictMode>
+  ,document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
