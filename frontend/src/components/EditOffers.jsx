@@ -35,12 +35,14 @@ const EditOffers = (props) => {
   };
 
   const onInputChange = (e) => {
-
+   
     setUserSelec({
+
       ...UserSelec,
       [e.target.name]: e.target.value,
       publicationdate: new Date().toLocaleString(),
     });
+    console.log(UserSelec);
   };
   return (
     <div className="d-flex flex-column align-items-center">

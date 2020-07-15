@@ -2,25 +2,27 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import CardOfferts from "../components/CardOfferts";
 import FormJobPostulate from "../components/FormJobPostulate";
-import EditOffers from "../components/EditOffers"
+import EditOffers from "../components/EditOffers";
 import auth from "../utils/auth";
 import sweetalert from "sweetalert2";
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory } from "react-router-dom";
 
 import logo from "../images/RollingJobswhite.svg";
-
+import AdminEditPostulation from "../components/AdminEditPostulation";
 
 const Company = () => {
   const [username, setUsername] = useState("");
   const [publicar, setpublicar] = useState(true);
   const [card, setcard] = useState(false);
   const [edit, setedit] = useState(true);
+  const [postulation, setpostulation] = useState(true);
   const [data, setdata] = useState([]);
   const [id, setid] = useState("");
   const [photo, setPhoto] = useState(false);
   const handleClose = () => setPhoto(false);
   const handleShow = () => setPhoto(true);
   const history = useHistory();
+  const [idpost, setidpost] = useState("");
 
   const getArticles = useCallback(async () => {
     const response = await axios.get(
@@ -47,8 +49,8 @@ const Company = () => {
     setpublicar(true);
     setcard(true);
     setedit(false);
-    setid(oferta)
-
+    setid(oferta);
+    setpostulation(true);
   };
 
   const mostrarPublicar = () => {
@@ -60,17 +62,15 @@ const Company = () => {
     getArticles();
     setcard(true);
     setedit(true);
+    setpostulation(true);
   };
 
   const mostrarcard = () => {
-    if (card === false) {
-      setcard(true);
-    } else {
-      setcard(false);
-    }
+    setcard(false);
     getArticles();
     setpublicar(true);
     setedit(true);
+    setpostulation(true);
   };
 
   const signOutHandler = async (e) => {
@@ -81,33 +81,29 @@ const Company = () => {
       );
       auth.logout();
       await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
-      // setForceUpdate(true);
-      // handleClose();
       history.push("/");
       return;
-    } catch (error) {
-    }
+    } catch (error) {}
 
     try {
       await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
       auth.logout();
       await sweetalert.fire("", "sesion cerrada", "success");
-      // setForceUpdate(true);
       history.push("/");
       handleClose();
     } catch (error) {
       sweetalert.fire("ERROR", "error de deslogueo", "error");
     }
   };
-
-  // const editcard = () => {
-  //   if (edit === false) {
-  //     setedit(true);
-  //   } else {
-  //     setedit(false);
-  //   }
-  //   getArticles()
-  // };
+  const adminPostulate = (data) => {
+    setcard(true);
+    getArticles();
+    setidpost(data);
+    setpublicar(true);
+    setedit(true);
+    setpostulation(false);
+    console.log(data);
+  };
 
   const cards = data.map((a) => (
     <div key={a._id}>
@@ -117,19 +113,19 @@ const Company = () => {
         cerrar={mostrarcard}
         forzar={forzar}
         update={update}
+        adminPostulate={adminPostulate}
       />
     </div>
   ));
 
-
-
   return (
     <>
-
       <div className=" companyStyle container-fluid">
         <div className="row">
-          <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenu sticky-top ">
-
+          <nav
+            id="sidebarMenu"
+            className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenu sticky-top "
+          >
             <Link to="/">
               <img src={logo} loading="lazy" className="logoStyle mb-3" />
             </Link>
@@ -139,55 +135,76 @@ const Company = () => {
 
               <ul className="nav flex-column d-flex mt-5">
                 <li className="nav-item">
-                  <Link onClick={mostrarPublicar} className="text-white"> Crear Ofertas</Link>
+                  <Link onClick={mostrarPublicar} className="text-white">
+                    {" "}
+                    Crear Ofertas
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link onClick={mostrarcard} className="text-white"> Ofertas Publicadas</Link>
+                  <Link onClick={mostrarcard} className="text-white">
+                    {" "}
+                    Ofertas Publicadas
+                  </Link>
                 </li>
               </ul>
               <ul className="nav flex-column d-flex mt-5">
                 <li className="nav-item">
-                  <Link className="mt-auto" onClick={signOutHandler} className="text-white"> Cerrar Sesión</Link>
+                  <Link
+                    className="mt-auto"
+                    onClick={signOutHandler}
+                    className="text-white"
+                  >
+                    {" "}
+                    Cerrar Sesión
+                  </Link>
                 </li>
               </ul>
-
             </div>
           </nav>
 
           <div className=" col-md-9 col-lg-10 companyData d-flex flex-column flex-wrap">
-            <div className="">
-
-            </div>
+            <div className=""></div>
             <div className="">
               {publicar ? (
                 <div></div>
               ) : (
-                  <div>
-                    <FormJobPostulate crear={mostrarPublicar} forzar={forzar} />
-                  </div>
-                )}
-              {card ? <div></div> : <div>
-                <h3 className="titulos text-center my-3">Ofertas Publicadas</h3>
-                <div className="d-flex flex-wrap justify-content-center">
-                  {cards}
+                <div>
+                  <FormJobPostulate crear={mostrarPublicar} forzar={forzar} />
                 </div>
-              </div>}
-
+              )}
+              {card ? (
+                <div></div>
+              ) : (
+                <div>
+                  <h3 className="titulos text-center my-3">
+                    Ofertas Publicadas
+                  </h3>
+                  <div className="d-flex flex-wrap justify-content-center">
+                    {cards}
+                  </div>
+                </div>
+              )}
 
               {edit ? (
                 <div></div>
               ) : (
-                  <div>
-                    <EditOffers oferta={id} terminar={mostrarcard} />
-                  </div>
-                )}
+                <div>
+                  <EditOffers oferta={id} terminar={mostrarcard} />
+                </div>
+              )}
 
+              {postulation ? (
+                <div></div>
+              ) : (
+                <div>
+                  {console.log(idpost)}
+                  <AdminEditPostulation idpost={idpost} />
+                  postulacion
+                </div>
+              )}
             </div>
-
-
           </div>
         </div>
-
 
         {/* <Footer /> */}
       </div>
