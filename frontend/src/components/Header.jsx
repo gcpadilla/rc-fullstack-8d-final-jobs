@@ -15,7 +15,9 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
+        <Link className="d-flex"to="/home">
           <img className="logoStyle" src={logo} alt="logo" />
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -47,6 +49,10 @@ const Navbar = () => {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
+                <Link className="dropdown-item" to="/company2">
+                    Mi Perfil
+                  </Link>
+
                   <Link className="dropdown-item" to="/faqcandidates">
                     Preguntas Frecuentes
                   </Link>

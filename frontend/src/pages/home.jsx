@@ -25,7 +25,7 @@ const Home = () => {
       );
       setdatauser(response.data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }, []); 
 
@@ -36,7 +36,7 @@ const Home = () => {
       );
       setdatapostulation(response.data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   
