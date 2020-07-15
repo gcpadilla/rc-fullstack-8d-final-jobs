@@ -15,13 +15,13 @@ const Company = () => {
   const [publicar, setpublicar] = useState(true);
   const [card, setcard] = useState(false);
   const [edit, setedit] = useState(true);
+  const [postulation, setpostulation] = useState(true);
   const [data, setdata] = useState([]);
   const [id, setid] = useState("");
   const [photo, setPhoto] = useState(false);
   const handleClose = () => setPhoto(false);
   const handleShow = () => setPhoto(true);
   const history = useHistory();
-  const [postulation, setpostulation] = useState(false);
   const [idpost, setidpost] = useState("");
 
   const getArticles = useCallback(async () => {
