@@ -42,7 +42,7 @@ const FaqBusiness = () => {
 
   ];
   return (
-    <>
+    <section>
     <Header />
     <div className="p-5">
         <h3 className="titulos text-center">Preguntas Frecuentes</h3>
@@ -53,7 +53,7 @@ const FaqBusiness = () => {
       </div>
         })}
     </div>
-    </>
+    </section>
   );
 };
 

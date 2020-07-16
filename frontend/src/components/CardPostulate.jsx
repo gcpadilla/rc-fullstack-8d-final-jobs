@@ -33,10 +33,11 @@ const CardPostulate = (props) => {
   
     return (
       <div className="card m-3 cartelCategories">
-        <Link onClick={handleShow} to="/">
+        <Link onClick={handleShow} to="/" className="text-decoration-none">
           <div className="card-body">
-            <h5 className="card-title tituloCartel">Postulado a la oferta de {data.title}</h5>
-            <h5 className="card-title tituloCartel text-muted">Estado: {props.all.state}</h5>
+            <h5 className="card-title tiempoCartel "> Postulado a la oferta de </h5>
+            <h5 className="card-title tituloCartel ">{data.title}</h5>
+            <p className="card-title tiempoCartel text-muted ">Estado: {props.all.state}</p>
           </div>
         </Link>
   

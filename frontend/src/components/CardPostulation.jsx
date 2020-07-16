@@ -25,7 +25,7 @@ const CardPostulation = (props) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Postularse a la oferta de {props.titulo}</Modal.Title>
+          <Modal.Title className="tituloCartel">Postularse a la oferta de {props.titulo}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <FormPostulate all={props.all} postu={props} cerrar={handleClose} postularse={false}/>
