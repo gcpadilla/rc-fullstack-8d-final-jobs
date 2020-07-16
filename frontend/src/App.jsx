@@ -18,6 +18,8 @@ import FaqsCandidates from "./pages/faqsCandidates";
 import FaqBusiness from "./pages/FaqsBusiness";
 import FormJobPostulate from "./components/FormJobPostulate";
 import Prices from "./pages/Prices";
+import WeAre from './pages/Weare'
+import Contacto from './pages/Contacto'
 
 function App() {
   return (
@@ -28,19 +30,19 @@ function App() {
           <Route path="/login_employe" component={login_employe} />
           <Route path="/register_employe" component={register_employe} />
           <PrivateRoute path="/company" component={company} />
-          <PrivateRoute path="/company2" component={company2} />
+          <PrivateRoute path="/profile" component={company2} />
           {/* <Route path="/offers/:id" component={OffersId}/> */}
           <Route path="/offers" component={offers} />
           <Route path="/faqbusiness" exact component={FaqBusiness} />
-          <Route path="/prices" />
+          <Route path="/prices" component={Prices} />
           <PrivateRoute path="/publicJob" component={FormJobPostulate} />
-          <Route path="/informacion" />
+          <Route path="/informacion" component={WeAre}/>
           <Route path="/prensa" />
-          <Route path="/contacto" />
-          <Route path="/home" component={home} />
-          <Route exact path="/">
+          <Route path="/contacto" component={Contacto} />
+          <Route path="/" component={home} />
+          {/* <Route exact path="/">
             <Redirect from="/" to="/home" />
-          </Route>
+          </Route> */}
         </Switch>
       </Router>
     </div>

@@ -79,6 +79,8 @@ html {
   margin: 10px;
 }
 
+
+
 @media (min-width: 996px) {
   .navbarGeneral {
     display:flex;
@@ -220,8 +222,9 @@ html {
   .tituloCartel {
     font-weight: 600;
     font-size: 14pt;
-    line-height: 20pt;
+    line-height: 16pt;
   }
+
   
   .tiempoCartel{
     font-size: 8pt;
@@ -309,7 +312,19 @@ html {
       max-height: 10rem;
       border-top-left-radius: 15px;
       border-bottom-right-radius: 15px;
+
+     }
+
+     .cartelCategories :hover {
+      background-color: #0c0a59;
+      max-width: 15rem;
+      max-height: 10rem;
+      border-top-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      color: white;
+      transition: background-color .4s;
     }
+
     .tituloCartel {
       font-weight: 600;
       font-size: 18pt;
@@ -372,6 +387,12 @@ html {
   }
   .imgSizeLanding{
     width: 100%;
+  }
+
+  .footerWeb{
+    height: 200px;
+    display: flex;
+    align-items: center;
   }
 }
 
