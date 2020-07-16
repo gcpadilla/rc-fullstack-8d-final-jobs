@@ -37,10 +37,10 @@ function App() {
           <Route path="/informacion" />
           <Route path="/prensa" />
           <Route path="/contacto" />
-          <Route path="/home" component={home} />
-          <Route exact path="/">
-            <Redirect from="/" to="/home" />
-          </Route>
+          <Route path="/" component={home} />
+          {/* <Route exact path="/"> */}
+            {/* <Redirect from="/" to="/home" /> */}
+          {/* </Route> */}
         </Switch>
       </Router>
     </div>

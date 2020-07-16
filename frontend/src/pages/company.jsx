@@ -102,7 +102,6 @@ const Company = () => {
     setpublicar(true);
     setedit(true);
     setpostulation(false);
-    console.log(data);
   };
 
   const cards = data.map((a) => (
@@ -197,9 +196,7 @@ const Company = () => {
                 <div></div>
               ) : (
                 <div>
-                  {console.log(idpost)}
                   <AdminEditPostulation idpost={idpost} />
-                  postulacion
                 </div>
               )}
             </div>

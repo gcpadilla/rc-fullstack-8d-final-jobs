@@ -32,6 +32,6 @@ router.get("/user/all", authorizeUser("user"), postulateController.getAllPostula
 router.delete("/:id", authorizeUser("user"), postulateController.deletePostulate);
 
 //EDITAR POSTULACION
-router.put('/:id', authorizeUser("user"), postulateController.updatePostulate);
+router.put('/:id', postulateController.updatePostulate);
 
 module.exports = router;

@@ -29,6 +29,7 @@ const CardPostulate = (props) => {
     useEffect(() => {
       getArticles();
     }, [getArticles]);
+    
   
     return (
       <div className="card m-3 cartelCategories">

@@ -25,7 +25,8 @@ const Home = () => {
       );
       setdatauser(response.data);
     } catch (error) {
-      // console.log(error);
+      console.log("no tiene ofertas");
+      setdatauser([])
     }
   }, []); 
 
@@ -36,15 +37,15 @@ const Home = () => {
       );
       setdatapostulation(response.data);
     } catch (error) {
-      // console.log(error);
+      console.log("no tiene postulaciones");
+      setdatapostulation([])
     }
   };
   
   
     useEffect(() => {
      if (auth.isAuthenticated()===true) {
-      getpostulation()
-      getuser(); 
+   actualizar()
      }
   }, [auth.isAuthenticated()]);
   return (
