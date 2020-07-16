@@ -1,6 +1,5 @@
-const express = require("express");
-const nodemailer = require('nodemailer')
 const { body } = require("express-validator");
+const express = require("express");
 const authorizeAdmin = require("../middlewares/authorizeAdmin");
 const authorizeUser = require("../middlewares/authorizeCandidate");
 const router = express.Router();
