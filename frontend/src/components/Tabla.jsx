@@ -19,7 +19,7 @@ const Table = (props) => {
     });
     try {
       await axios.put(
-        `http://localhost:3001/api/v1/offer/postulates/${props.c._id}`,
+        `http://localhost:3001/api/v1/offer/postulates/${props.c._id}/admin`,
         { emailcandidate: props.c.emailcandidate,
           experiences: props.c.experiences,
           intendedsalary: props.c.intendedsalary,
