@@ -1,10 +1,12 @@
 const express = require("express");
+const nodemailer = require('nodemailer')
 const { body } = require("express-validator");
 const authorizeAdmin = require("../middlewares/authorizeAdmin");
 const authorizeUser = require("../middlewares/authorizeCandidate");
 const router = express.Router();
-
 const postulateController = require("../controllers/postulateController");
+
+
 
 //CREAR POSTULACION
 router.post(
@@ -33,5 +35,8 @@ router.delete("/:id", authorizeUser("user"), postulateController.deletePostulate
 
 //EDITAR POSTULACION
 router.put('/:id', postulateController.updatePostulate);
+
+//EDITAR POSTULACION ADMIN
+router.put('/:id/admin', authorizeAdmin("admin"), postulateController.updatePostulateAdmin);
 
 module.exports = router;

@@ -133,8 +133,66 @@ exports.updatePostulate = async (req, res) => {
         .status(404)
         .json({ message: "No de encontro postulación ..." });
     }
+    
+    res.send({
+			message: "Se actualizaron tus datos correctamente...",
+			postulate,
+    });
+    
+  } catch (err) {
+    res.status(500).send({ message: "Error al editar postulación ..." });
+  }
+};
 
-    res.send(postulate);
+//Editar postulación administrador
+exports.updatePostulateAdmin = async (req, res) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res
+        .status(404)
+        .json({ message: "No de encontro postulación ..." });
+    }
+
+    const postulate_in_db = await postulateModel.findOne({
+      _id: req.params.id,
+    });
+
+    if (!postulate_in_db) {
+      return res.status(400).json({ message: "Credenciales no validas." });
+    }
+
+    const { body } = req;
+
+    const postulateData = {
+      state: body.state,
+      intendedsalary: postulate_in_db.intendedsalary,
+      experiences: postulate_in_db.experiences,
+      studies: postulate_in_db.studies,
+      emailcandidate: postulate_in_db.emailcandidate,
+    };
+
+    let postulate = await postulateModel.findByIdAndUpdate(
+      req.params.id,
+      postulateData,
+      { new: true }
+    );
+
+    postulate = await postulateModel.findOne(
+      { _id: req.params.id },
+      "-candidateid"
+    );
+
+    if (!postulate) {
+      return res
+        .status(404)
+        .json({ message: "No de encontro postulación ..." });
+    }
+    
+    res.send({
+			message: "Se actualizaron tus datos correctamente...",
+			postulate,
+    });
+    
   } catch (err) {
     res.status(500).send({ message: "Error al editar postulación ..." });
   }
