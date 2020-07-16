@@ -1,8 +1,11 @@
 const { validationResult } = require("express-validator");
+const express = require("express");
+const nodemailer = require("nodemailer");
 const postulateModel = require("../models/postulateModel");
 const mongoose = require("mongoose");
 const candidateModel = require("../models/candidateModel");
 const offerModel = require("../models/offerModel");
+const SendmailTransport = require("nodemailer/lib/sendmail-transport");
 
 //crear postulacion
 exports.createPostulate = async (req, res) => {
@@ -53,7 +56,7 @@ exports.createPostulate = async (req, res) => {
 
       res.send({
         message: "Se registro postulacion correctamente..",
-        postulate
+        postulate,
       });
     }
   } catch (err) {
@@ -79,10 +82,8 @@ exports.getAllPostulatessUser = async (req, res) => {
       "-candidateid"
     );
 
-    if (postulates.length===0) {
-      return res
-      .status(400)
-      .json({ message: "No tienes postulaciones . . ." });
+    if (postulates.length === 0) {
+      return res.status(400).json({ message: "No tienes postulaciones . . ." });
     }
     res.send(postulates);
   } catch (err) {
@@ -133,12 +134,11 @@ exports.updatePostulate = async (req, res) => {
         .status(404)
         .json({ message: "No de encontro postulación ..." });
     }
-    
+
     res.send({
-			message: "Se actualizaron tus datos correctamente...",
-			postulate,
+      message: "Se actualizaron tus datos correctamente...",
+      postulate,
     });
-    
   } catch (err) {
     res.status(500).send({ message: "Error al editar postulación ..." });
   }
@@ -170,6 +170,31 @@ exports.updatePostulateAdmin = async (req, res) => {
       studies: postulate_in_db.studies,
       emailcandidate: postulate_in_db.emailcandidate,
     };
+    if (!body.state) {
+      return res.status(400).json({ message: "Credenciales no validas." });
+    }
+
+    //----------------------Email------------------------------------------------------------
+
+    if (body.state) {
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: `${process.env.EMAIL}`,
+          pass: `${process.env.PASSEMAIL}`,
+        },
+      });
+
+      const email = await transporter.sendMail({
+        from: "<jobs@jobs.com>",
+        to: `${postulate_in_db.emailcandidate}`,
+        subject: "Postulacion a Jobs",
+        text: `Estas ${body.state}, cominicate al telefono 12345 o dirigete a calle sin nombre 123`,
+      });
+      console.log("se envio", email);
+    }
+
+    //----------------------Email------------------------------------------------------------
 
     let postulate = await postulateModel.findByIdAndUpdate(
       req.params.id,
@@ -187,12 +212,11 @@ exports.updatePostulateAdmin = async (req, res) => {
         .status(404)
         .json({ message: "No de encontro postulación ..." });
     }
-    
+
     res.send({
-			message: "Se actualizaron tus datos correctamente...",
-			postulate,
+      message: "Se actualizaron tus datos correctamente...",
+      postulate,
     });
-    
   } catch (err) {
     res.status(500).send({ message: "Error al editar postulación ..." });
   }
