@@ -9,24 +9,26 @@ const Table = (props) => {
     e.preventDefault();
     console.log(estado);
     console.log({
-      emailcandidate: props.c.emailcandidate,
-      experiences: props.c.experiences,
-      intendedsalary: props.c.intendedsalary,
-      studies: props.c.studies,
-      state: estado,
-      offerid: props.c.offerid,
-      candidateid: props.c.candidateid
+      // emailcandidate: props.c.emailcandidate,
+      // experiences: props.c.experiences,
+      // intendedsalary: props.c.intendedsalary,
+      // studies: props.c.studies,
+      state: estado
+      // offerid: props.c.offerid,
+      // candidateid: props.c.candidateid
     });
     try {
       await axios.put(
         `http://localhost:3001/api/v1/offer/postulates/${props.c._id}/admin`,
-        { emailcandidate: props.c.emailcandidate,
-          experiences: props.c.experiences,
-          intendedsalary: props.c.intendedsalary,
-          studies: props.c.studies,
-          state: estado,
-          offerid: props.c.offerid,
-          candidateid: props.c.candidateid}
+        {
+          //  emailcandidate: props.c.emailcandidate,
+          // experiences: props.c.experiences,
+          // intendedsalary: props.c.intendedsalary,
+          // studies: props.c.studies,
+          state: estado
+          // offerid: props.c.offerid,
+          // candidateid: props.c.candidateid
+        }
       );
       await Swal.fire(
         "genial",

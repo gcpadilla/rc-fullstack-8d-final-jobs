@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom";
 import { Button, Modal } from "react-bootstrap";
 import LoginBody from "./LoginBody";
 import sweetalert from "sweetalert2";
@@ -15,9 +15,6 @@ function LoginLogoutButton(props) {
   const [username, setUsername] = useState(localStorage.getItem("username"));
   const history = useHistory();
 
-
-
-
   const signOutHandler = async (e) => {
     e.preventDefault();
     try {
@@ -30,8 +27,7 @@ function LoginLogoutButton(props) {
       // handleClose();
       history.push("/");
       return;
-    } catch (error) {
-    }
+    } catch (error) {}
 
     try {
       await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
@@ -43,6 +39,10 @@ function LoginLogoutButton(props) {
     } catch (error) {
       sweetalert.fire("ERROR", "error de deslogueo", "error");
     }
+  };
+
+  const user = (datos) => {
+    props.id(datos);
   };
 
   return (
@@ -59,11 +59,11 @@ function LoginLogoutButton(props) {
         </div>
       ) : (
         <div className="container  mx-2">
-           <li className="nav-item active tituloLinks">
-                <NavLink className="nav-link text-white" to="/register_employe">
-                  Regístrate <span className="sr-only">(current)</span>
-                </NavLink>
-              </li>
+          <li className="nav-item active tituloLinks">
+            <NavLink className="nav-link text-white" to="/register_employe">
+              Regístrate <span className="sr-only">(current)</span>
+            </NavLink>
+          </li>
           <Button
             variant="primary"
             className="btn btn-success rounded-pill"
@@ -83,7 +83,10 @@ function LoginLogoutButton(props) {
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <LoginBody setUsername={setUsername} />
+              <LoginBody 
+              setUsername={setUsername}
+              //  user={user}
+               />
             </Modal.Body>
           </Modal>
         </div>
