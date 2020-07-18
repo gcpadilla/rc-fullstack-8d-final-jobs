@@ -16,7 +16,8 @@ const PerfilUser = () => {
   const [perfil, setperfil] = useState(true);
   const [UserSelec, setUserSelec] = useState({});
   const [candidato, setcandidato] = useState({});
-  const params = useParams();
+  // const params = useParams();
+  
   const onsubmit = async (e) => {
     e.preventDefault()}
     const getArticles = useCallback(async () => {
@@ -111,7 +112,7 @@ const PerfilUser = () => {
                               required
                               className="form-control "
                               name="firstname"
-                              placeholder="Nombre"
+                              defaultValue={candidato.firstname}
                               onChange={onInputChange}
                             />
                           </div>
@@ -123,7 +124,7 @@ const PerfilUser = () => {
                               required
                               className="form-control"
                               name="lastname"
-                              placeholder="Apellido"
+                              defaultValue={candidato.lastname}
                               onChange={onInputChange}
                             />
                           </div>
@@ -137,7 +138,7 @@ const PerfilUser = () => {
                               required
                               className="form-control"
                               name="dni"
-                              placeholder="DNI / Cedula de Identidad / Pasaporte"
+                              defaultValue={candidato.dni}
                               onChange={onInputChange}
                             />
                           </div>
@@ -149,7 +150,7 @@ const PerfilUser = () => {
                               required
                               className="form-control"
                               name="age"
-                              placeholder="Fecha de Nacimiento"
+                              defaultValue={candidato.age}
                               onChange={onInputChange}
                             />
                           </div>
@@ -165,7 +166,7 @@ const PerfilUser = () => {
                               required
                               className="form-control"
                               name="profession"
-                              placeholder="Profesión"
+                              defaultValue={candidato.profession}
                               onChange={onInputChange}
                             />
                           </div>
@@ -180,7 +181,7 @@ const PerfilUser = () => {
                               className="form-control"
                               name="email"
                               aria-describedby="emailHelp"
-                              placeholder="Correo Elctrónico"
+                              defaultValue={candidato.email}
                               onChange={onInputChange}
                             />
                           </div>
@@ -194,7 +195,7 @@ const PerfilUser = () => {
                               required
                               className="form-control"
                               name="username"
-                              placeholder="Nombre de Usuario"
+                              defaultValue={candidato.username}
                               onChange={onInputChange}
                             />
                           </div>
@@ -205,9 +206,9 @@ const PerfilUser = () => {
                             <input
                               type="password"
                               required
-                              placeholder="Contraseña"
+                              defaultValue="Contraseña"
                               id="inputPassword5"
-                              name="password"
+                              name=""
                               className="form-control"
                               aria-describedby="passwordHelpBlock"
                               onChange={onInputChange}
@@ -230,7 +231,7 @@ const PerfilUser = () => {
                               required
                               className="form-control"
                               name="password2"
-                              placeholder="Contraseña"
+                              defaultValue=""
                               onChange={onInputChange}
                             />
                           </div>
