@@ -151,7 +151,14 @@ exports.getPostulationsOffer = async (req, res) => {
 
     const offer = await offerModel
       .findById(req.params.OfferId)
-      .populate("postulateRef");
+      .populate(
+        "postulateRef",
+       "-candidateid",
+       )
+       .populate(
+        "candidateRef",
+        "firstname lastname -_id"
+       )
     if (!offer) {
       return res.status(404).json({ message: "Offer not found." });
     }
