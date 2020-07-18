@@ -3,7 +3,7 @@ import React from "react";
 // import Button from './Button'
 import ".././App.css";
 import logo from "../images/RollingJobswhite.svg";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link,useParams} from "react-router-dom";
 import LoginLogoutButton from "./LoginLogoutButton";
 // import { useState } from 'react';
 // import FaqsCandidates from "../pages/faqsCandidates";
@@ -11,7 +11,10 @@ import LoginLogoutButton from "./LoginLogoutButton";
 // import FormJobPostulate from "../components/FormJobPostulate";
 
 const Navbar = () => {
-
+  const params = useParams();
+  // const id =(parametros) => {
+  //   console.log(parametros);
+  // }
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
@@ -49,7 +52,7 @@ const Navbar = () => {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                <Link className="dropdown-item" to="/company2">
+                <Link className="dropdown-item" to="/PerfilUser:juanito">
                     Mi Perfil
                   </Link>
 
@@ -121,7 +124,9 @@ const Navbar = () => {
                   </Link>
                 </div>
               </li>
-              <LoginLogoutButton />
+              <LoginLogoutButton 
+              // id={id} 
+              />
 
             </ul>
           </div>
