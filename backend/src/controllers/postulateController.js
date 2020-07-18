@@ -172,22 +172,22 @@ exports.updatePostulateAdmin = async (req, res) => {
 
     //----------------------Email------------------------------------------------------------
 
-    if (state !== "pendiente") {
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: `${process.env.EMAIL}`,
-          pass: `${process.env.PASSEMAIL}`,
-        },
-      });
+    // if (state !== "pendiente") {
+    //   const transporter = nodemailer.createTransport({
+    //     service: "gmail",
+    //     auth: {
+    //       user: `${process.env.EMAIL}`,
+    //       pass: `${process.env.PASSEMAIL}`,
+    //     },
+    //   });
 
-      await transporter.sendMail({
-        from: "<gcpadilla@gmail.com>",
-        to: `${postulate_in_db.emailcandidate}`,
-        subject: "Postulacion a Jobs",
-        text: `Estas ${state}, cominicate al telefono 12345 o dirigete a Av. Siempreviva 742`,
-      });
-    }
+    //   await transporter.sendMail({
+    //     from: "<fredykv@gmail.com>",
+    //     to: `${postulate_in_db.emailcandidate}`,
+    //     subject: "Postulacion a Jobs",
+    //     text: `Estas ${state}, cominicate al telefono 12345 o dirigete a Av. Siempreviva 742`,
+    //   });
+    // }
 
     //----------------------Email------------------------------------------------------------
     console.log(state)
