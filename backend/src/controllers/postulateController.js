@@ -164,6 +164,7 @@ exports.updatePostulateAdmin = async (req, res) => {
     const postulate_in_db = await postulateModel.findOne({
       _id: req.params.id,
     });
+    console.log(req.params.id)
 
     if (!postulate_in_db) {
       return res.status(400).json({ message: "Credenciales no validas." });
@@ -180,21 +181,22 @@ exports.updatePostulateAdmin = async (req, res) => {
         },
       });
 
-      const email = await transporter.sendMail({
-        from: "<jobs@jobs.com>",
+      await transporter.sendMail({
+        from: "<gcpadilla@gmail.com>",
         to: `${postulate_in_db.emailcandidate}`,
         subject: "Postulacion a Jobs",
-        text: `Estas ${body.state}, cominicate al telefono 12345 o dirigete a Av. Siempreviva 742`,
+        text: `Estas ${state}, cominicate al telefono 12345 o dirigete a Av. Siempreviva 742`,
       });
     }
 
     //----------------------Email------------------------------------------------------------
-
+    console.log(state)
     let postulate = await postulateModel.findByIdAndUpdate(
       req.params.id,
-      state,
+      {state:state},
       { new: true }
     );
+    console.log(postulate)
 
     postulate = await postulateModel.findOne(
       { _id: req.params.id },
