@@ -1,5 +1,6 @@
-import React, { useState, useCallback, useEffect} from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import Header from "../components/Header";
 import OfertaInicio from "../components/OfetasInicio";
 import OfertaInicioUser from "../components/OfertaInicioUser";
@@ -13,11 +14,16 @@ import auth from "../utils/auth";
 const Home = () => {
   const [datapostulation, setdatapostulation] = useState([]);
   const [datauser, setdatauser] = useState([]);
+  const [role, setrole] = useState(localStorage.getItem("role")); // eslint-disable-line no-unused-vars
+  const history = useHistory();
 
+  // console.log(role);
   const actualizar = () => {
-    getpostulation()
-    getuser()
-  }
+    getpostulation();
+    getuser();
+  };
+
+  // TRAIGO TODA LAS OFERTAS
   const getuser = useCallback(async () => {
     try {
       const response = await axios.get(
@@ -26,10 +32,11 @@ const Home = () => {
       setdatauser(response.data);
     } catch (error) {
       console.log("no tiene ofertas");
-      setdatauser([])
+      setdatauser([]);
     }
-  }, []); 
+  }, []);
 
+  // TRAIGO TODA LAS POSTULACIONES
   const getpostulation = async () => {
     try {
       const response = await axios.get(
@@ -38,16 +45,19 @@ const Home = () => {
       setdatapostulation(response.data);
     } catch (error) {
       console.log("no tiene postulaciones");
-      setdatapostulation([])
+      setdatapostulation([]);
     }
   };
-  
-  
-    useEffect(() => {
-     if (auth.isAuthenticated()===true) {
-   actualizar()
-     }
+  // CON ESTO CONTROLO QUE ESTE AUTENTICADO Y ADEMAS NO SEA UN ADMIN
+  useEffect(() => {
+    if (auth.isAuthenticated() === true) {
+      if (role === "admin") {
+        history.push("/company");
+      }
+      actualizar();
+    }
   }, [auth.isAuthenticated()]);
+
   return (
     <div>
       <Header />
@@ -55,8 +65,11 @@ const Home = () => {
       <Body />
       {auth.isAuthenticated() ? (
         <div>
-          <OfertaInicioUser get={actualizar} datauser={datauser}/>
-          <PostulationInicio get={actualizar} datapostulation={datapostulation} />
+          <OfertaInicioUser get={actualizar} datauser={datauser} />
+          <PostulationInicio
+            get={actualizar}
+            datapostulation={datapostulation}
+          />
         </div>
       ) : (
         <div>
