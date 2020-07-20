@@ -21,6 +21,9 @@ body('age', 'La edad no puede ser nula').notEmpty(),
 body('profession', 'La profesion no puede ser nula').notEmpty()
 ], candidateController.createCandidate);
 
+//IMAGEN DE PERFIL
+router.post('/upImagen', authorize ("user"), candidateController.uploadImages);
+
 //LOGUEAR CANDIDATO
 router.post('/login', [
 body('username', 'El usuario no puede ser nulo').notEmpty(),

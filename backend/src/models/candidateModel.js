@@ -17,6 +17,9 @@ const CandidateSchema = new mongoose.Schema({
     trim: true,
     unique: true
   },
+  imageUrl: {
+    type: String,
+  },
   email: {
     type: String,
     required: true,
