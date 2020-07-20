@@ -22,12 +22,11 @@ const OfertasInicio= (props) => {
     getArticles();
   }, [getArticles]);
   return (
-    <div className="bodyPostulates d-flex align-items-center justify-content-center my-5">
-      <div className="d-flex flex-column align-items-center">
-        <div className="titulares d-flex container align-items-center my-3">
-          <h3 className="infoCard col-10">Ofertas de trabajo</h3>
+      <div className="d-flex flex-column align-items-center my-5">
+        <div className="titulares d-flex justify-content-center justify-content-md-arround ">
+          <h3 className="infoCard mb-5">Ofertas de trabajo</h3>
         </div>
-        <div className="distriCards d-flex justify-content-around flex-wrap my-5">
+        <div className="d-flex flex-wrap justify-content-center justify-content-md-start">
           {data.map((a,i) => {
             return (
               <CartelCategories
@@ -40,7 +39,6 @@ const OfertasInicio= (props) => {
           })}
         </div>
       </div>
-    </div>
   );
 };
 

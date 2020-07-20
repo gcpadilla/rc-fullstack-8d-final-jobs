@@ -176,13 +176,13 @@ exports.updatePostulateAdmin = async (req, res) => {
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: `${process.env.EMAIL}`,
-          pass: `${process.env.PASSEMAIL}`,
+          user: "reactjobs2020@gmail.com" || process.env.EMAIL,
+          pass: "rivercampeon2018" || process.env.PASSEMAIL,
         },
       });
 
       await transporter.sendMail({
-        from: "<gcpadilla@gmail.com>",
+        from: "<reactjobs2020@gmail.com>",
         to: `${postulate_in_db.emailcandidate}`,
         subject: "Postulacion a Jobs",
         text: `Estas ${state}, cominicate al telefono 12345 o dirigete a Av. Siempreviva 742`,

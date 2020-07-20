@@ -6,51 +6,57 @@ import { Button, Modal } from "react-bootstrap";
 import FormPostulate from "./FormPostulate";
 
 const CardPostulate = (props) => {
-    const [show, setShow] = useState(false);
-    const handleClose = () => {
-      props.get();
-      setShow(false)};
-    const handleShow = () => {
-      console.log("show");
-      setShow(true)};
+  const [show, setShow] = useState(false);
 
-    const [data, setdata] = useState([]);
-    const getArticles = useCallback(async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:3001/api/v1/offers/${props.all.offerid}`
-        );
-        setdata(response.data);
-      } catch (error) {
-      }
-    }, []);
-  
-  
-    useEffect(() => {
-      getArticles();
-    }, [getArticles]);
-    
-  
-    return (
-      <div className="card m-3 cartelCategories">
-        <Link onClick={handleShow} to="/" className="text-decoration-none">
-          <div className="card-body">
-            <h5 className="card-title tiempoCartel "> Postulado a la oferta de </h5>
-            <h5 className="card-title tituloCartel ">{data.title}</h5>
-            <p className="card-title tiempoCartel text-muted ">Estado: {props.all.state}</p>
-          </div>
-        </Link>
-  
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Editar postulacion de {props.titulo}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <FormPostulate all={data} postu={props.all} cerrar={handleClose} postularse={true} />
-          </Modal.Body>
-        </Modal>
+  const handleClose = () => {
+    console.log("boton cerrar")
+    setShow(false)
+    props.get();
+
+  };
+
+  const handleShow = () => {
+    console.log("show");
+    setShow(true)
+  };
+
+  const [data, setdata] = useState([]);
+  const getArticles = useCallback(async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/api/v1/offers/${props.all.offerid}`
+      );
+      setdata(response.data);
+    } catch (error) {
+    }
+  }, []);
+
+
+  useEffect(() => {
+    getArticles();
+  }, [getArticles]);
+
+
+  return (
+    <>
+      <div className="card cartelCategories m-3" onClick={handleShow}>
+        <div className="card-body">
+          <h5 className="card-title"> Postulado a </h5>
+          <h6 className="card-subtitle mb-2">{data.title}</h6>
+          <p className="card-title text-muted">Estado: {props.all.state}</p>
+        </div>
       </div>
-    );
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Editar postulacion de {props.titulo}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <FormPostulate all={data} postu={props.all} cerrar={handleClose} postularse={true} />
+        </Modal.Body>
+      </Modal>
+    </>
+  );
 };
 
 export default CardPostulate;

@@ -40,9 +40,9 @@ function App() {
           <Route path="/prensa" />
           <Route path="/contacto" component={Contacto} />
           <Route path="/" component={home} />
-          {/* <Route exact path="/">
+          <Route exact path="/">
             <Redirect from="/" to="/home" />
-          </Route> */}
+          </Route>
         </Switch>
       </Router>
     </div>
