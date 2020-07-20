@@ -6,7 +6,7 @@ import auth from "../utils/auth";
 
 const LoginBody = (props) => {
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState("");
   const [flag, setflag] = useState(true);  
   const history = useHistory();
 
