@@ -59,19 +59,16 @@ function LoginLogoutButton(props) {
         </div>
       ) : (
         <div className="container  mx-2">
-<<<<<<< HEAD
            <li className="nav-item active tituloLinks">
                 <NavLink className="nav-link text-white react-icons" to="/register_employe">
                 <FiUserPlus/> Regístrate <span className="sr-only">(current)</span>
                 </NavLink>
               </li>
-=======
           <li className="nav-item active tituloLinks">
             <NavLink className="nav-link text-white" to="/register_employe">
               Regístrate <span className="sr-only">(current)</span>
             </NavLink>
           </li>
->>>>>>> 17a2e0c33526102378aa2ed7078124320ba4c24f
           <Button
             variant="primary"
             className="btn btn-success rounded-pill react-icons"
