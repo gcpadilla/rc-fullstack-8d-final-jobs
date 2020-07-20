@@ -11,59 +11,68 @@ OpenSans:
 Regular 400 
 */
 
-h3,h2, h5, ul, li, label {
+h3,
+h2,
+h5,
+ul,
+li,
+label {
   font-family: 'Poppins', sans-serif
 }
-p, label  {
+
+p,
+label {
   font-family: 'Open Sans', sans-serif
 }
+
 .btn {
   font-family: 'Poppins', sans-serif;
   font-size: 8pt;
 }
 
 html {
-  padding:0;
+  padding: 0;
 }
+
 /* header */
 
-.logoStyle{
-  max-width: 160px ;
+.logoStyle {
+  max-width: 160px;
 }
 
-.logo{
-  background-image: url(./images/RollingJobswhite.svg) ;
-  width: 160px 
+.logo {
+  background-image: url(./images/RollingJobswhite.svg);
+  width: 160px
 }
 
-.navbar{
+.navbar {
   border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #0c0a59 
-  }
+  background-color: #0c0a59
+}
 
-  .navbarGeneral {
-    display:flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-  
+.navbarGeneral {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
 
 .botonHeader {
   background-color: #3dd993
 }
 
 
-.dropdown-item  {
+.dropdown-item {
   font-size: 10pt;
   color: white;
   background-color: #0c0a59;
 }
 
-.dropdown-menu  {
+.dropdown-menu {
   color: white;
   background-color: #0c0a59;
-  
+
 }
 
 .nav-link {
@@ -75,7 +84,8 @@ html {
   color: white;
   font-size: 10pt;
 }
-.card-deck{
+
+.card-deck {
   margin: 10px;
 }
 
@@ -83,28 +93,28 @@ html {
 
 @media (min-width: 996px) {
   .navbarGeneral {
-    display:flex;
+    display: flex;
     justify-content: flex-end;
   }
-  
+
 }
 
 @media (min-width: 768px) {
-  .logoStyle{
-    max-width: 160px ;
+  .logoStyle {
+    max-width: 160px;
   }
- 
-  .dropdown-item  {
+
+  .dropdown-item {
     font-size: 12pt;
     color: white;
     background-color: #0c0a59;
   }
-  
-  .dropdown-menu  {
+
+  .dropdown-menu {
     color: white;
     background-color: #0c0a59;
   }
-  
+
   .nav-link {
     color: white;
     font-size: 12pt;
@@ -115,7 +125,7 @@ html {
     align-items: center;
   }
 
-  .btn{
+  .btn {
     font-size: 12pt;
   }
 
@@ -125,7 +135,7 @@ html {
   }
 
 
- }
+}
 
 /* body */
 .homeInicial {
@@ -137,22 +147,25 @@ html {
   border-bottom-right-radius: 15px;
   background-position: bottom;
 }
-.logoPortada{
+
+.logoPortada {
   width: 25rem;
   text-align: center;
 }
-.searchButton{
+
+.searchButton {
   width: 10rem;
   text-align: center;
 }
 
-.formSuscription{
+.formSuscription {
   background-color: #0c0a59;
   text-align: center;
   width: 20rem;
 
 }
-.lateralSide{
+
+.lateralSide {
   background: #0c0a59;
 }
 
@@ -162,241 +175,256 @@ html {
 }
 
 
-.sidebarMenuAdmin{
+.sidebarMenuAdmin {
   height: 100vh;
   width: 30%;
   background-color: #0c0a59;
 }
 
-.sidebarMenu{
+.sidebarMenu {
   height: 100vh;
   width: 30%;
   background-color: #3DD990;
 }
 
-.listNavbar{
+.listNavbar {
   height: 100vh;
 }
-.textAdmin{
+
+.textAdmin {
   font-size: 1rem;
   font-weight: 700;
 }
-.formLabel{
+
+.formLabel {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
 }
 
-.izquierdaBody{
+.izquierdaBody {
   height: 40rem;
   width: 100%;
-  background-image:  url(./images/peopleUno.svg);
-  display:flex;
+  background-image: url(./images/peopleUno.svg);
+  display: flex;
   background-repeat: no-repeat;
   background-size: 60%;
   background-position: right bottom;
   ;
 }
 
-.companyStyle{
-  background-image:  url(./images/puzzlePeople.svg);
-  display:flex;
+.companyStyle {
+  background-image: url(./images/puzzlePeople.svg);
+  display: flex;
   background-repeat: no-repeat;
   background-size: 30%;
   background-position: right bottom;
-;
+  ;
 }
-.profileStyle{
-  background-image:  url(./images/team.svg);
-  display:flex;
+
+.profileStyle {
+  background-image: url(./images/team.svg);
+  display: flex;
   background-repeat: no-repeat;
   background-size: 30%;
   background-position: right bottom;
 }
 
-.cartelCategories{
-    max-width: 12rem;
-    max-height: 10rem;
-    border-top-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-  }
-  .tituloCartel {
-    font-weight: 600;
-    font-size: 14pt;
-    line-height: 16pt;
-  }
+.cartelCategories {
+  cursor: pointer;
+  width: 320px;
+  height: 150px;
+  -webkit-box-shadow: 1px -2px 20px 2px #000000;
+  box-shadow: 1px -2px 20px 2px #000000;
+  border: solid 1px #0c0a59 !important;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
 
-  
-  .tiempoCartel{
-    font-size: 8pt;
-    line-height: 8pt;
-  }
+.card-body {
+  padding: 2rem !important;
+}
 
-  .tituloNews{
-    font-weight: 700;
-    color:#0c0a59;
-    font-size: 2rem;
-  }
+.tituloCartel {
+  font-weight: 600;
+  font-size: 14pt;
+  line-height: 16pt;
+}
 
-  .textNews{
-    font-weight: 400;
-    color:#0c0a59;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-  }
-  .logoFooter{
-    width: 250px;
-  }
 
-  
+.tiempoCartel {
+  font-size: 8pt;
+  line-height: 8pt;
+}
+
+.tituloNews {
+  font-weight: 700;
+  color: #0c0a59;
+  font-size: 2rem;
+}
+
+.textNews {
+  font-weight: 400;
+  color: #0c0a59;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.logoFooter {
+  width: 250px;
+}
+
+
 .cartelInfo {
   width: 10rem;
   height: 6rem;
   text-align: center;
   background-color: #312F73;
   border-radius: 15px;
-  }
+}
 
-  .infoCard{
-    font-weight: 700;
-    font-size: 26pt;
-    line-height: 20pt;
-  }
+.infoCard {
+  font-weight: 700;
+  font-size: 26pt;
+  line-height: 20pt;
+}
 
-  .tituloDown{
-    font-weight: 700;
-    line-height:22pt;
-    font-size: 20pt;
-  }
+.tituloDown {
+  font-weight: 700;
+  line-height: 22pt;
+  font-size: 20pt;
+}
 
-  .textDown {
-    font-size: 16pt;
-    line-height: 18pt;
-  }
+.textDown {
+  font-size: 16pt;
+  line-height: 18pt;
+}
 
-  .imgSizeLanding{
-    width: 70%;
-  }
-  .profilePH{
-   width: 150px;
-    height: 150px;
-    object-fit: cover;
+.imgSizeLanding {
+  width: 70%;
+}
 
-  }
+.profilePH {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+
+}
 
 @media (min-width: 768px) {
-  .logoPortada{
+  .logoPortada {
     width: 50rem;
   }
-  .searchButton{
+
+  .searchButton {
     width: 16rem;
   }
-  .formSuscription{
+
+  .formSuscription {
     background-color: #0c0a59;
     text-align: center;
     width: 50rem;
-  
+
   }
+
   .companyData {
     height: 100wh;
     width: 100vw;
   }
-  .textAdmin{
+
+  .textAdmin {
     font-size: 2rem;
   }
-  .cartelCategories{
-    /* -webkit-border-top-left-radius: 10px;
-    -webkit-border-bottom-right-radius: 10px;
-    -moz-border-radius-topleft: 10px;
-    -moz-border-radius-bottomright: 10px; */
-      max-width: 15rem;
-      max-height: 10rem;
-      border-top-left-radius: 15px;
-      border-bottom-right-radius: 15px;
 
-     }
-
-     .cartelCategories :hover {
-      background-color: #0c0a59;
-      max-width: 15rem;
-      max-height: 10rem;
-      border-top-left-radius: 15px;
-      border-bottom-right-radius: 15px;
-      color: white;
-      transition: background-color .4s;
-    }
-
-    .tituloCartel {
-      font-weight: 600;
-      font-size: 18pt;
-      line-height: 18pt;
-    }
-    
-    .tiempoCartel{
-      font-size: 10pt;
-      line-height: 10pt;
-    }
-    .izquierdaBody{
-      height: 40rem;
-      width: 100%;
-      background-image:  url(./images/peopleUno.svg);
-      display:flex;
-      background-repeat: no-repeat;
-      background-size: 30%;
-      background-position: right center;
-      ;
-    }
-    .tituloNews{
-      font-weight: 700;
-      color:#0c0a59;
-      font-size: 3rem;
-    }
-    .textNews{
-      font-weight: 400;
-      color:#0c0a59;
-      font-size: 1.30rem;
-      font-family: 'Poppins', sans-serif;
-    }
-    .logoFooter{
-      max-width: 300px;
-    }
-    
-.cartelInfo {
-  width: 14rem;
-  height: 8rem;
-  text-align: center;
-  background-color: #312F73;
-  border-radius: 15px;
+  .cartelCategories:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    background-color: #0c0a59;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: white;
+    /* transition: background-color .4s; */
   }
 
-  .infoCard{
+  .tituloCartel {
+    font-weight: 600;
+    font-size: 18pt;
+    line-height: 18pt;
+  }
+
+  .tiempoCartel {
+    font-size: 10pt;
+    line-height: 10pt;
+  }
+
+  .izquierdaBody {
+    height: 40rem;
+    width: 100%;
+    background-image: url(./images/peopleUno.svg);
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: right center;
+    ;
+  }
+
+  .tituloNews {
+    font-weight: 700;
+    color: #0c0a59;
+    font-size: 3rem;
+  }
+
+  .textNews {
+    font-weight: 400;
+    color: #0c0a59;
+    font-size: 1.30rem;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .logoFooter {
+    max-width: 300px;
+  }
+
+  .cartelInfo {
+    width: 14rem;
+    height: 8rem;
+    text-align: center;
+    background-color: #312F73;
+    border-radius: 15px;
+  }
+
+  .infoCard {
     font-weight: 700;
     font-size: 35pt;
     line-height: 20pt;
   }
-  
-  .tituloDown{
+
+  .tituloDown {
     font-weight: 700;
-    line-height:26pt;
+    line-height: 26pt;
     font-size: 28pt;
-  
+
   }
 
   .textDown {
     font-size: 14pt;
     line-height: 18pt;
   }
-  .imgSizeLanding{
+
+  .imgSizeLanding {
     width: 100%;
   }
 
-  .footerWeb{
+  .footerWeb {
     height: 200px;
     display: flex;
     align-items: center;
   }
 }
 
-.infoInicial{
+.infoInicial {
   font-weight: 700;
   line-height: 20pt;
 }
@@ -405,40 +433,50 @@ html {
   height: 30rem;
 }
 
-.generalBody {
-  height: 40rem;
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.bodyPostulates{
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* .generalBody {
+  height: 40rem;
+} */
+
+.bodyPostulates {
   height: 20rem;
 }
 
 
-.titulos{
-font-size: 25pt;
-font-weight: 600;
+.titulos {
+  font-size: 25pt;
+  font-weight: 600;
 }
 
-.titulosQues{
+.titulosQues {
   font-size: 15pt;
   font-weight: 600;
 }
 
-.links{
-  font-family:'Poppins', sans-serif;
-font-size: 10pt;
-color: #3DD990;
+.links {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10pt;
+  color: #3DD990;
 }
 
-.modifData{
+.modifData {
   max-width: 50rem;
 }
 
 
 
-  
-.cartelJobs{
-/* -webkit-border-top-left-radius: 10px;
+
+.cartelJobs {
+  /* -webkit-border-top-left-radius: 10px;
 -webkit-border-bottom-right-radius: 10px;
 -moz-border-radius-topleft: 10px;
 -moz-border-radius-bottomright: 10px; */
@@ -451,16 +489,16 @@ color: #3DD990;
 
 
 
-.dataBody{
+.dataBody {
   line-height: 4pt;
 }
 
-.datosCartel{
+.datosCartel {
   font-size: 9pt;
 
 }
 
-.descriptionOffer{
+.descriptionOffer {
   font-size: 9pt;
   line-height: 10pt;
 }
@@ -481,44 +519,54 @@ color: #3DD990;
 
 /* footer */
 
-.footerWeb{
+.footerWeb {
   background-color: #0c0a59;
   /* max-height: 12rem; */
 }
+
 .menuFooter {
   width: 100vh;
 }
-.tituloCardSale{
+
+.tituloCardSale {
   font-weight: 600;
   font-size: 15pt;
   font-family: 'Poppins', sans-serif;
 }
 
-.tituloFooter{
+.tituloFooter {
   font-weight: 600;
   font-size: 15pt;
 }
-.tituloLinks{
-  font-family: 'Poppins', sans-serif;  font-size: 10pt;
-  list-style-type: none; 
+
+.tituloLinks {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10pt;
+  list-style-type: none;
   color: white;
 }
 
-.aTituloLinks{
-  font-family: 'Poppins', sans-serif;  font-size: 10pt;
-  list-style-type: none; 
+.aTituloLinks {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10pt;
+  list-style-type: none;
 }
 
 
 
-.testingMargin{
+.testingMargin {
   margin-top: 5rem;
-  margin-bottom: 15rem;
+  margin-bottom: 5rem;
 }
 
 .searchBar {
   background-color: #0c0a59;
 }
-.imagePrice{
-width: 70px ;
+
+.imagePrice {
+  width: 70px;
+}
+
+svg {
+  margin-top: -3px !important;
 }

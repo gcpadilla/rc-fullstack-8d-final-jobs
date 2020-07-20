@@ -35,7 +35,7 @@ const Offers = () => {
                 <div className="titulares d-flex container align-items-centers">
                     <h3 className="titulos col-10" >Puestos Disponibles</h3>
                 </div>
-                <div className="distriCards d-flex flex-wrap justify-content-center">
+                <div className="d-flex flex-wrap justify-content-center">
                 {jobs.map (job => {
                     return <FullCartelJobs 
                     empresa={job.empresa} 

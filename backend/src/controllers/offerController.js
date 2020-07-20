@@ -114,7 +114,7 @@ exports.getAllOffersHome = async (req, res) => {
         "-active -postulateRef -_id -description -publicationdate -profession -availability -workplace -categories"
       )
       .sort("-publicationdate")
-      .limit(4);
+      .limit(3);
     res.send(offers);
   } catch (err) {
     res.status(500).send(err);
