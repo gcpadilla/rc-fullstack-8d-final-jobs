@@ -230,6 +230,7 @@ html {
 }
 
 .cartelCategories {
+  padding: 1rem !important;
   cursor: pointer;
   width: 320px;
   height: 150px;
@@ -240,9 +241,6 @@ html {
   border-bottom-right-radius: 15px;
 }
 
-.card-body {
-  padding: 2rem !important;
-}
 
 .tituloCartel {
   font-weight: 600;
@@ -336,6 +334,7 @@ html {
   }
 
   .cartelCategories:hover {
+    padding: 1rem !important;
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     -o-transform: scale(1.1);
