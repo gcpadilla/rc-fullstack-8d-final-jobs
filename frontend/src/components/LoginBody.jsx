@@ -51,6 +51,7 @@ if (flag===true) {
       "success"
     );
     props.setUsername(response.data.username);
+    // props.user(response.data)
     history.push("/");
   } catch (error) {
     sweetalert.fire("ERROR", error.response.data.message, "error");

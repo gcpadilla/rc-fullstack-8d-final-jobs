@@ -85,15 +85,15 @@ const Company = () => {
       return;
     } catch (error) {}
 
-    try {
-      await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
-      auth.logout();
-      await sweetalert.fire("", "sesion cerrada", "success");
-      history.push("/");
-      handleClose();
-    } catch (error) {
-      sweetalert.fire("ERROR", "error de deslogueo", "error");
-    }
+    // try {
+    //   await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
+    //   auth.logout();
+    //   await sweetalert.fire("", "sesion cerrada", "success");
+    //   history.push("/");
+    //   handleClose();
+    // } catch (error) {
+    //   sweetalert.fire("ERROR", "error de deslogueo", "error");
+    // }
   };
   const adminPostulate = (data) => {
     setcard(true);
@@ -123,7 +123,7 @@ const Company = () => {
         <div className="row">
           <nav
             id="sidebarMenu"
-            className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenu sticky-top "
+            className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenuAdmin sticky-top "
           >
             <Link to="/">
               <img src={logo} loading="lazy" className="logoStyle mb-3" />
