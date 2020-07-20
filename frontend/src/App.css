@@ -79,12 +79,33 @@ html {
   margin: 10px;
 }
 
+.sidebarMenuAdmin{
+  height: 100vh;
+  width: 25%;
+  background-color: #0c0a59;
+}
+
 
 
 @media (min-width: 996px) {
   .navbarGeneral {
     display:flex;
     justify-content: flex-end;
+    
+  }
+  .sidebarMenuAdmin{
+    height: 100vh;
+    width: 30%;
+    background-color: #0c0a59;
+  }
+  
+  .sidebarMenu{
+    height: 100vh;
+    width: 30%;
+    background-color: #3DD990;
+  }
+  .textAdmin{
+    font-size: 1.5rem;
   }
   
 }
@@ -127,7 +148,6 @@ html {
 
  }
 
-/* body */
 .homeInicial {
   height: 40rem;
   background: url(./images/lunaAustronaut.svg) no-repeat;
@@ -178,7 +198,7 @@ html {
   height: 100vh;
 }
 .textAdmin{
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 700;
 }
 .formLabel{

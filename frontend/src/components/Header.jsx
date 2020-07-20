@@ -49,7 +49,7 @@ const Navbar = () => {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                <Link className="dropdown-item" to="/company2">
+                <Link className="dropdown-item" to="/profile">
                     Mi Perfil
                   </Link>
 
