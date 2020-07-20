@@ -1,10 +1,10 @@
 import React from "react";
 
 // import Button from './Button'
-import ".././App.css";
+// import ".././App.css";
 import logo from "../images/RollingJobswhite.svg";
 import { NavLink, Link,useParams} from "react-router-dom";
-import LoginLogoutButton from "./LoginLogoutButton";
+import LoginLogoutButton from "../components/LoginLogoutButton";
 // import { useState } from 'react';
 // import FaqsCandidates from "../pages/faqsCandidates";
 // import FaqBusiness from "../pages/FaqsBusiness";

@@ -17,17 +17,15 @@ function LoginLogoutButton(props) {
 
   const signOutHandler = async (e) => {
     e.preventDefault();
-    try {
-      await axios.get(
-        "http://localhost:3001/api/v1/users/administrators/logout"
-      );
-      auth.logout();
-      await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
-      // setForceUpdate(true);
-      // handleClose();
-      history.push("/");
-      return;
-    } catch (error) {}
+    // try {
+    //   await axios.get(
+    //     "http://localhost:3001/api/v1/users/administrators/logout"
+    //   );
+    //   auth.logout();
+    //   await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
+    //   history.push("/");
+    //   return;
+    // } catch (error) {}
 
     try {
       await axios.get("http://localhost:3001/api/v1/users/candidates/logout");

@@ -1,36 +1,94 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Footer from "../components/Footer";
 import axios from "axios";
-import CardOfferts from "../components/CardOfferts";
-import FormJobPostulate from "../components/FormJobPostulate";
-import EditOffers from "../components/EditOffers";
 import { Link } from "react-router-dom";
+import { useHistory} from "react-router-dom";
+import Swal from "sweetalert2";
 import auth from "../utils/auth";
-import sweetalert from "sweetalert2";
-import { useHistory, useParams} from "react-router-dom";
 import logo from "../images/RollingJobs.svg";
 import profilePH from "../images/profile.jpg";
+import PostulationInicio from "../components/PostulationInico";
+import OfertaInicioUser from "../components/OfertaInicioUser";
+
 
 const PerfilUser = () => {
-   
-  const [perfil, setperfil] = useState(true);
+  const [display, setdisplay] = useState(1);
   const [UserSelec, setUserSelec] = useState({});
-  const [candidato, setcandidato] = useState({});
-  // const params = useParams();
-  
-  const onsubmit = async (e) => {
-    e.preventDefault()}
-    const getArticles = useCallback(async () => {
-        const response = await axios.get(
-          "http://localhost:3001/api/v1/users/candidates/edit/"
-        );
-      setcandidato(response.data)
-        console.log(response.data);
-      }, []);    
-      useEffect(() => {
-        getArticles();
-      }, [getArticles]);
+  const [datapostulation, setdatapostulation] = useState([]);
+  const [datauser, setdatauser] = useState([]);
+  const history = useHistory();
 
+  // TRAE LOS DATOS DE LAS OFERTAS Y POSTULACIONES
+  const actualizar = () => {
+    getpostulation();
+    getuser();
+  };
+  const getuser = useCallback(async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3001/api/v1/offers/candidate/all"
+      );
+      setdatauser(response.data);
+    } catch (error) {
+      console.log("no tiene ofertas");
+      setdatauser([]);
+    }
+  }, []);
+
+  const getpostulation = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3001/api/v1/offer/postulates/user/all"
+      );
+      setdatapostulation(response.data);
+    } catch (error) {
+      console.log("no tiene postulaciones");
+      setdatapostulation([]);
+    }
+  };
+
+  // FUNCIONES DEL FORMULARIO
+  const onsubmit = async (e) => {
+    e.preventDefault();
+    Swal
+      .fire({
+        title: "Esta seguro?",
+        text: "Desea modificar los datos?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, modificar!",
+      })
+      .then(async (result) => {
+        if (result.value) {
+          try {
+            await axios.put(
+              "http://localhost:3001/api/v1/users/candidates/",
+              UserSelec
+            );
+            Swal.fire({
+              icon: "success",
+              text: "modificado correctamente...",
+              width: 250,
+              showConfirmButton: false,
+              timer: 2000,
+            });
+            // setUserSelec({});
+            // setdisplay(1)
+          } catch (err) {
+            if (err.response.data.message === undefined) {
+              Swal.fire(
+                `Error de ${err.response.data.errors[0].param}`,
+                err.response.data.errors[0].msg,
+                "error"
+              );
+            } else {
+              Swal.fire("Oops..", err.response.data.message, "error");
+            }
+          }
+        }
+      });
+  };
   const onInputChange = (e) => {
     setUserSelec({
       ...UserSelec,
@@ -38,6 +96,33 @@ const PerfilUser = () => {
       publicationdate: new Date().toLocaleString(),
     });
   };
+
+  // TRAE LOS DATOS DEL USUARIO PARA SER EDITADOS
+  const getArticles = useCallback(async () => {
+    const response = await axios.get(
+      "http://localhost:3001/api/v1/users/candidates/edit/"
+    );
+    setUserSelec(response.data);
+    // setUserSelec(response.data)
+  }, []);
+
+  useEffect(() => {
+    getArticles();
+  }, [getArticles]);
+
+  // CERRAR SESION
+  const signOutHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
+      auth.logout();
+      await Swal.fire("", "sesion cerrada", "success");
+      history.push("/");
+    } catch (error) {
+      Swal.fire("ERROR", "error de deslogueo", "error");
+    }
+  };
+
   return (
     <div className=" companyStyle container-fluid">
       <div className="row">
@@ -46,43 +131,60 @@ const PerfilUser = () => {
           className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenu sticky-top "
         >
           <Link to="/">
-            <img src={logo} loading="lazy" className="logoStyle mb-3" />
+            <img src={logo} alt="logo" loading="lazy" className="logoStyle mb-3" />
           </Link>
 
           <div className="sidebar-sticky d-flex flex-column justify-content-around mb-3">
-            <h2 className="textAdmin text-dark">Bienvenido usuario</h2>
+  <h2 className="textAdmin text-dark">Bienvenido {UserSelec.username}</h2>
 
             <img
               src={profilePH}
+              alt="logo"
               className="profilePH img-fluid mx-auto d-block rounded-circle"
             />
 
             <ul className="nav flex-column d-flex mt-5">
               <li className="nav-item">
-                <Link type="submit" className="text-dark">
+                <button
+                  onClick={() => {setdisplay(1)
+                  actualizar()}}
+                  className="text-dark btn btn-link"
+                >
                   {" "}
                   Modificar Perfil
-                </Link>
+                </button>
               </li>
               <li className="nav-item">
-                <Link type="submit" className="text-dark">
+                <button
+                  onClick={() => {setdisplay(2)
+                    actualizar()}}
+                  className="text-dark btn btn-link"
+                >
                   {" "}
                   Ver Postulaciones
-                </Link>
+                </button>
               </li>
               <li className="nav-item">
-                <Link type="submit" className="text-dark">
+                <button
+                  onClick={() => {setdisplay(3)
+                    actualizar()
+                  }}
+                  className="text-dark btn btn-link"
+                >
                   {" "}
                   Ofertas Publicadas{" "}
-                </Link>
+                </button>
               </li>
             </ul>
             <ul className="nav flex-column d-flex mt-5">
               <li className="nav-item">
-                <Link className="mt-auto" type="submit" className="text-dark">
+                <button
+                  onClick={signOutHandler}
+                  className="text-dark btn btn-link mt-auto"
+                >
                   {" "}
                   Cerrar Sesión
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -91,11 +193,11 @@ const PerfilUser = () => {
         <div className=" col-md-9 col-lg-10 companyData d-flex flex-column flex-wrap">
           <div className=""></div>
           <div className="">
-            {perfil ? (
+            {display === 1 ? (
               <div className="container">
                 <div className="text-center pb-5 form-group mb-3">
                   <h3 className="mt-4 titulos">Bienvenido</h3>
-                  <h5 className="mb-4 texdo">Registro de candidatos</h5>
+                  <h5 className="mb-4 texdo">Registro de Candidato</h5>
                   <p className="mb-4 textNews">
                     {" "}
                     Por favor, ingrese sus datos personales para iniciar tu
@@ -112,7 +214,7 @@ const PerfilUser = () => {
                               required
                               className="form-control "
                               name="firstname"
-                              defaultValue={candidato.firstname}
+                              defaultValue={UserSelec.firstname}
                               onChange={onInputChange}
                             />
                           </div>
@@ -124,12 +226,11 @@ const PerfilUser = () => {
                               required
                               className="form-control"
                               name="lastname"
-                              defaultValue={candidato.lastname}
+                              defaultValue={UserSelec.lastname}
                               onChange={onInputChange}
                             />
                           </div>
                         </div>
-
                         <div className="form-row">
                           <div className="form-group col-md-6">
                             <label htmlFor="dni">Documento</label>
@@ -138,19 +239,7 @@ const PerfilUser = () => {
                               required
                               className="form-control"
                               name="dni"
-                              defaultValue={candidato.dni}
-                              onChange={onInputChange}
-                            />
-                          </div>
-
-                          <div className="form-group col-md-6">
-                            <label htmlFor="Age">Fecha de Nacimiento</label>
-                            <input
-                              type="date"
-                              required
-                              className="form-control"
-                              name="age"
-                              defaultValue={candidato.age}
+                              defaultValue={UserSelec.dni}
                               onChange={onInputChange}
                             />
                           </div>
@@ -166,7 +255,7 @@ const PerfilUser = () => {
                               required
                               className="form-control"
                               name="profession"
-                              defaultValue={candidato.profession}
+                              defaultValue={UserSelec.profession}
                               onChange={onInputChange}
                             />
                           </div>
@@ -181,7 +270,7 @@ const PerfilUser = () => {
                               className="form-control"
                               name="email"
                               aria-describedby="emailHelp"
-                              defaultValue={candidato.email}
+                              defaultValue={UserSelec.email}
                               onChange={onInputChange}
                             />
                           </div>
@@ -195,7 +284,7 @@ const PerfilUser = () => {
                               required
                               className="form-control"
                               name="username"
-                              defaultValue={candidato.username}
+                              defaultValue={UserSelec.username}
                               onChange={onInputChange}
                             />
                           </div>
@@ -206,9 +295,9 @@ const PerfilUser = () => {
                             <input
                               type="password"
                               required
-                              defaultValue="Contraseña"
+                              defaultValue=""
                               id="inputPassword5"
-                              name=""
+                              name="password"
                               className="form-control"
                               aria-describedby="passwordHelpBlock"
                               onChange={onInputChange}
@@ -238,11 +327,6 @@ const PerfilUser = () => {
                         </div>
                       </div>
                       <button
-                        className="btn btn-danger rounded-pill mr-5"
-                      >
-                        Cancelar
-                      </button>
-                      <button
                         type="submit"
                         onSubmit={onsubmit}
                         className="btn btn-success rounded-pill"
@@ -254,20 +338,28 @@ const PerfilUser = () => {
                 </div>
               </div>
             ) : (
-              <div></div>
+              <></>
             )}
-
-            {<div></div> ? (
-              <div></div>
-            ) : (
+            {display === 2 ? (
               <div>
-                {/* <EditOffers oferta={id} terminar={mostrarcard}/> */}
+                <PostulationInicio
+                  get={actualizar}
+                  datapostulation={datapostulation}
+                />
               </div>
+            ) : (
+              <></>
+            )}
+            {display === 3 ? (
+              <div>
+                <OfertaInicioUser get={actualizar} datauser={datauser} />
+              </div>
+            ) : (
+              <></>
             )}
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
     </div>
   );
 };
