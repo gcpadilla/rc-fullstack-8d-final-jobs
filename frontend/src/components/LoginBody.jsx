@@ -6,7 +6,7 @@ import auth from "../utils/auth";
 
 const LoginBody = (props) => {
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState("");
   const [flag, setflag] = useState(true);  
   const history = useHistory();
 
@@ -51,9 +51,11 @@ if (flag===true) {
       "success"
     );
     props.setUsername(response.data.username);
+    // props.user(response.data)
     history.push("/");
   } catch (error) {
     sweetalert.fire("ERROR", error.response.data.message, "error");
+    setflag(true)
   }
   
   
@@ -65,7 +67,7 @@ if (flag===true) {
     <div>
       <div>
         <div className="mb-4">
-          <form>
+          <form onSubmit={signInHandler}>
             <div className="form-group">
               {/* <label for="exampleInputEmail1">Email address</label> */}
               <input
@@ -95,9 +97,7 @@ if (flag===true) {
               <div className="mt-3 text-center">
                 <button
                   type="submit"
-                  className="text-center btn btn-success rounded-pill"
-                  onClick={signInHandler}
-                >
+                  className="text-center btn btn-success rounded-pill">
                   Ingresar
                 </button>
               </div>

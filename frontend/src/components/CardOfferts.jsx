@@ -45,12 +45,15 @@ const CardOfferts = (props) => {
         <h3 className="card-text datosCartel">
           {props.data.workplace} - {props.data.availability}
         </h3>
-        <Link
+        {props.sola ? (
+          <></>
+        ) : (
+        <Link to="/company"
           className="card-text tiempoCartel"
           onClick={() => props.adminPostulate(props.data._id)}
         >
           Postulaciones
-        </Link>
+        </Link>)}
         <p
           className={`card-text tiempoCartel ${
             props.data.active ? "text-success" : "text-muted"

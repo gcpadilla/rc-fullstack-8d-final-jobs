@@ -1,17 +1,20 @@
 import React from "react";
 
 // import Button from './Button'
-import ".././App.css";
+// import ".././App.css";
 import logo from "../images/RollingJobswhite.svg";
-import { NavLink, Link } from "react-router-dom";
-import LoginLogoutButton from "./LoginLogoutButton";
+import { NavLink, Link,useParams} from "react-router-dom";
+import LoginLogoutButton from "../components/LoginLogoutButton";
 // import { useState } from 'react';
 // import FaqsCandidates from "../pages/faqsCandidates";
 // import FaqBusiness from "../pages/FaqsBusiness";
 // import FormJobPostulate from "../components/FormJobPostulate";
 
 const Navbar = () => {
-
+  const params = useParams();
+  // const id =(parametros) => {
+  //   console.log(parametros);
+  // }
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
@@ -49,7 +52,11 @@ const Navbar = () => {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
+<<<<<<< HEAD
                 <Link className="dropdown-item" to="/profile">
+=======
+                <Link className="dropdown-item" to="/PerfilUser">
+>>>>>>> 127d10ed1d96fc28adbbdf0e3036479ba50130e7
                     Mi Perfil
                   </Link>
 
@@ -121,7 +128,9 @@ const Navbar = () => {
                   </Link>
                 </div>
               </li>
-              <LoginLogoutButton />
+              <LoginLogoutButton 
+              // id={id} 
+              />
 
             </ul>
           </div>

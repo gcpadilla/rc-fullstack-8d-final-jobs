@@ -114,7 +114,7 @@ exports.getAllOffersHome = async (req, res) => {
         "-active -postulateRef -_id -description -publicationdate -profession -availability -workplace -categories"
       )
       .sort("-publicationdate")
-      .limit(4);
+      .limit(3);
     res.send(offers);
   } catch (err) {
     res.status(500).send(err);
@@ -151,7 +151,14 @@ exports.getPostulationsOffer = async (req, res) => {
 
     const offer = await offerModel
       .findById(req.params.OfferId)
-      .populate("postulateRef");
+      .populate(
+        "postulateRef",
+       "-candidateid",
+       )
+       .populate(
+        "candidateRef",
+        "firstname lastname -_id"
+       )
     if (!offer) {
       return res.status(404).json({ message: "Offer not found." });
     }

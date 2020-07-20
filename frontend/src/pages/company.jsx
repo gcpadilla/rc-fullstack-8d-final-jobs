@@ -1,78 +1,40 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
+import sweetalert from "sweetalert2";
+import { Link, useHistory } from "react-router-dom";
 import CardOfferts from "../components/CardOfferts";
 import FormJobPostulate from "../components/FormJobPostulate";
 import EditOffers from "../components/EditOffers";
-import auth from "../utils/auth";
-import sweetalert from "sweetalert2";
-import { Link, useHistory } from "react-router-dom";
-
-import logo from "../images/RollingJobswhite.svg";
 import AdminEditPostulation from "../components/AdminEditPostulation";
+import auth from "../utils/auth";
+import logo from "../images/RollingJobswhite.svg";
 
 const Company = () => {
-  const [username, setUsername] = useState("");
-  const [publicar, setpublicar] = useState(true);
-  const [card, setcard] = useState(false);
-  const [edit, setedit] = useState(true);
-  const [postulation, setpostulation] = useState(true);
+  const [username, setUsername] = useState(localStorage.getItem("username")); // eslint-disable-line no-unused-vars
+  const [display, setdisplay] = useState(2);
   const [data, setdata] = useState([]);
   const [id, setid] = useState("");
-  const [photo, setPhoto] = useState(false);
-  const handleClose = () => setPhoto(false);
-  const handleShow = () => setPhoto(true);
-  const history = useHistory();
   const [idpost, setidpost] = useState("");
+  const history = useHistory();
 
+  // TRAIGO LAS OFERTAS CREADAS
   const getArticles = useCallback(async () => {
     const response = await axios.get(
       "http://localhost:3001/api/v1/offers/admin/all"
     );
     setdata(response.data);
   }, []);
-
   useEffect(() => {
     getArticles();
   }, [getArticles]);
 
-  useEffect(() => {
-    setUsername(localStorage.getItem("username"));
-  }, []);
-
+  // VUELVO A LA PAGINA PRINCIPAL DE ADMINISTRADOR CON LAS CARD DE OFERTAS
   const forzar = () => {
     getArticles();
-    setcard(false);
-    setpublicar(true);
+    setdisplay(2);
   };
 
-  const update = (oferta) => {
-    setpublicar(true);
-    setcard(true);
-    setedit(false);
-    setid(oferta);
-    setpostulation(true);
-  };
-
-  const mostrarPublicar = () => {
-    if (publicar === false) {
-      setpublicar(true);
-    } else {
-      setpublicar(false);
-    }
-    getArticles();
-    setcard(true);
-    setedit(true);
-    setpostulation(true);
-  };
-
-  const mostrarcard = () => {
-    setcard(false);
-    getArticles();
-    setpublicar(true);
-    setedit(true);
-    setpostulation(true);
-  };
-
+  // DESLOGEO Y VUELVO INICIO
   const signOutHandler = async (e) => {
     e.preventDefault();
     try {
@@ -84,36 +46,35 @@ const Company = () => {
       history.push("/");
       return;
     } catch (error) {}
-
-    try {
-      await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
-      auth.logout();
-      await sweetalert.fire("", "sesion cerrada", "success");
-      history.push("/");
-      handleClose();
-    } catch (error) {
-      sweetalert.fire("ERROR", "error de deslogueo", "error");
-    }
   };
-  const adminPostulate = (data) => {
-    setcard(true);
+
+  // SETEO EL LO Q SE VE AL EN ADMIN
+  const crearOferta = () => {
+    setdisplay(1);
+  };
+  const mostrarOfertas = () => {
     getArticles();
+    setdisplay(2);
+  };
+  const update = (oferta) => {
+    setid(oferta);
+    setdisplay(3);
+  };
+  const postuladosAOferta = (data) => {
     setidpost(data);
-    setpublicar(true);
-    setedit(true);
-    setpostulation(false);
-    console.log(data);
+    setdisplay(4);
   };
 
+  // CARGO LAS CARD CON LAS OFERTAS
   const cards = data.map((a) => (
     <div key={a._id}>
       <CardOfferts
         data={a}
         key={a._id}
-        cerrar={mostrarcard}
+        cerrar={mostrarOfertas}
         forzar={forzar}
         update={update}
-        adminPostulate={adminPostulate}
+        adminPostulate={postuladosAOferta}
       />
     </div>
   ));
@@ -127,36 +88,44 @@ const Company = () => {
             className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenuAdmin sticky-top "
           >
             <Link to="/">
-              <img src={logo} loading="lazy" className="logoStyle mb-3" />
+              <img
+                src={logo}
+                alt="logo"
+                loading="lazy"
+                className="logoStyle mb-3"
+              />
             </Link>
-
             <div className="sidebar-sticky d-flex flex-column justify-content-around mb-3">
               <h2 className="textAdmin text-white">Bienvenido {username}</h2>
-
               <ul className="nav flex-column d-flex mt-5">
                 <li className="nav-item">
-                  <Link onClick={mostrarPublicar} className="text-white">
+                  <button
+                    onClick={crearOferta}
+                    className="text-white btn btn-link"
+                  >
                     {" "}
                     Crear Ofertas
-                  </Link>
+                  </button>
                 </li>
                 <li className="nav-item">
-                  <Link onClick={mostrarcard} className="text-white">
+                  <button
+                    onClick={mostrarOfertas}
+                    className="text-white btn btn-link"
+                  >
                     {" "}
                     Ofertas Publicadas
-                  </Link>
+                  </button>
                 </li>
               </ul>
               <ul className="nav flex-column d-flex mt-5">
                 <li className="nav-item">
-                  <Link
-                    className="mt-auto"
+                  <button
                     onClick={signOutHandler}
-                    className="text-white"
+                    className="text-white btn btn-link mt-auto"
                   >
                     {" "}
                     Cerrar Sesión
-                  </Link>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -165,16 +134,17 @@ const Company = () => {
           <div className=" col-md-9 col-lg-10 companyData d-flex flex-column flex-wrap">
             <div className=""></div>
             <div className="">
-              {publicar ? (
-                <div></div>
-              ) : (
+              {display === 1 ? (
                 <div>
-                  <FormJobPostulate crear={mostrarPublicar} forzar={forzar} />
+                  <FormJobPostulate
+                    // crear={crearOferta}
+                    forzar={forzar}
+                  />
                 </div>
-              )}
-              {card ? (
-                <div></div>
               ) : (
+                <></>
+              )}
+              {display === 2 ? (
                 <div>
                   <h3 className="titulos text-center my-3">
                     Ofertas Publicadas
@@ -183,30 +153,28 @@ const Company = () => {
                     {cards}
                   </div>
                 </div>
+              ) : (
+                <></>
               )}
 
-              {edit ? (
-                <div></div>
-              ) : (
+              {display === 3 ? (
                 <div>
-                  <EditOffers oferta={id} terminar={mostrarcard} />
+                  <EditOffers oferta={id} terminar={mostrarOfertas} />
                 </div>
+              ) : (
+                <></>
               )}
 
-              {postulation ? (
-                <div></div>
-              ) : (
+              {display === 4 ? (
                 <div>
-                  {console.log(idpost)}
                   <AdminEditPostulation idpost={idpost} />
-                  postulacion
                 </div>
+              ) : (
+                <></>
               )}
             </div>
           </div>
         </div>
-
-        {/* <Footer /> */}
       </div>
     </>
   );

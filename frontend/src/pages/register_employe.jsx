@@ -16,8 +16,7 @@ const Register = () => {
     e.preventDefault();
     const anio = edad(UserSelec.age);
     UserSelec.age = anio;
-    console.log("Pasó");
-
+    console.log(UserSelec);
     if (UserSelec.password === UserSelec.password2) {
       try {
         await axios.post(
@@ -49,16 +48,23 @@ const Register = () => {
     const nacimiento = moment(a);
     const hoy = moment();
     const anios = hoy.diff(nacimiento, "years");
-
     return anios;
   };
 
   const onInputChange = (e) => {
-    setUserSelec({
-      ...UserSelec,
-      [e.target.name]: e.target.value,
-      publicationdate: new Date().toLocaleString(),
-    });
+    if (e.target.name==="age") {  
+      setUserSelec({
+        ...UserSelec,
+        [e.target.name]: e.target.value,
+        publicationdate: new Date().toLocaleString(), dateborn: e.target.value
+      });   
+    } else {
+      setUserSelec({
+        ...UserSelec,
+        [e.target.name]: e.target.value,
+      }); 
+    }
+    console.log(UserSelec);
   };
 
   return (

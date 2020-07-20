@@ -1,11 +1,9 @@
 const { validationResult } = require("express-validator");
-const express = require("express");
 const nodemailer = require("nodemailer");
 const postulateModel = require("../models/postulateModel");
 const mongoose = require("mongoose");
 const candidateModel = require("../models/candidateModel");
 const offerModel = require("../models/offerModel");
-const SendmailTransport = require("nodemailer/lib/sendmail-transport");
 
 //crear postulacion
 exports.createPostulate = async (req, res) => {
@@ -14,51 +12,55 @@ exports.createPostulate = async (req, res) => {
     return res.status(422).json({ errors: errors.array() });
   }
 
+  const candidate = await candidateModel.findById({
+    _id: res.locals.user.id,
+  });
+
+  if (!candidate) {
+    return res.status(400).json({ message: "No se encontro candidato . . ." });
+  }
+
   const { body } = req;
 
   const postulateData = {
     intendedsalary: body.intendedsalary,
     experiences: body.experiences,
     studies: body.studies,
-    emailcandidate: body.emailcandidate,
+    emailcandidate: candidate.email,
     offerid: mongoose.Types.ObjectId(req.params.offerId),
     candidateid: res.locals.user.id,
   };
 
-  const post = await postulateModel
+  const existPost = await postulateModel
     .findOne()
     .where({ candidateid: res.locals.user.id })
     .where({ offerid: mongoose.Types.ObjectId(req.params.offerId) });
 
-  if (post) {
+  if (existPost) {
     return res
       .status(400)
       .json({ message: "Ya estas postulado a esta oferta . . ." });
   }
 
-  const candidate = await candidateModel.findById({
-    _id: res.locals.user.id,
-  });
-
   try {
-    if (candidate) {
-      const postulate = new postulateModel(postulateData);
-      await postulate.save();
+    const postulate = new postulateModel(postulateData);
+    await postulate.save();
 
-      const offer = await offerModel.findById({
-        _id: mongoose.Types.ObjectId(req.params.offerId),
-      });
+    const offer = await offerModel.findById({
+      _id: mongoose.Types.ObjectId(req.params.offerId),
+    });
+    console.log(offer);
 
-      offer.postulateRef.push(postulate._id);
-      await offer.save();
-      candidate.postulateRef.push(postulate._id);
-      await candidate.save();
+    offer.postulateRef.push(postulate._id);
+    offer.candidateRef.push(candidate._id);
+    await offer.save();
+    candidate.postulateRef.push(postulate._id);
+    await candidate.save();
 
-      res.send({
-        message: "Se registro postulacion correctamente..",
-        postulate,
-      });
-    }
+    res.send({
+      message: "Se registro postulacion correctamente..",
+      postulate,
+    });
   } catch (err) {
     res.status(500).send(err);
   }
@@ -153,54 +155,48 @@ exports.updatePostulateAdmin = async (req, res) => {
         .json({ message: "No de encontro postulación ..." });
     }
 
+    const { state } = req.body;
+
+    if (!state) {
+      return res.status(400).json({ message: "Se produjo un error. . ." });
+    }
+
     const postulate_in_db = await postulateModel.findOne({
       _id: req.params.id,
     });
+    console.log(req.params.id)
 
     if (!postulate_in_db) {
       return res.status(400).json({ message: "Credenciales no validas." });
     }
 
-    const { body } = req;
-
-    const postulateData = {
-      state: body.state,
-      intendedsalary: postulate_in_db.intendedsalary,
-      experiences: postulate_in_db.experiences,
-      studies: postulate_in_db.studies,
-      emailcandidate: postulate_in_db.emailcandidate,
-    };
-    if (!body.state) {
-      return res.status(400).json({ message: "Credenciales no validas." });
-    }
-
     //----------------------Email------------------------------------------------------------
 
-    if (body.state) {
+    if (state !== "pendiente") {
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: `${process.env.EMAIL}`,
-          pass: `${process.env.PASSEMAIL}`,
+          user: "reactjobs2020@gmail.com" || process.env.EMAIL,
+          pass: "rivercampeon2018" || process.env.PASSEMAIL,
         },
       });
 
-      const email = await transporter.sendMail({
-        from: "<jobs@jobs.com>",
+      await transporter.sendMail({
+        from: "<reactjobs2020@gmail.com>",
         to: `${postulate_in_db.emailcandidate}`,
         subject: "Postulacion a Jobs",
-        text: `Estas ${body.state}, cominicate al telefono 12345 o dirigete a calle sin nombre 123`,
+        text: `Estas ${state}, cominicate al telefono 12345 o dirigete a Av. Siempreviva 742`,
       });
-      console.log("se envio", email);
     }
 
     //----------------------Email------------------------------------------------------------
-
+    console.log(state)
     let postulate = await postulateModel.findByIdAndUpdate(
       req.params.id,
-      postulateData,
+      {state:state},
       { new: true }
     );
+    console.log(postulate)
 
     postulate = await postulateModel.findOne(
       { _id: req.params.id },

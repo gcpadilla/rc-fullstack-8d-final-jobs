@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { FiUser, FiUserX, FiUserPlus } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
-import { NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom";
 import { Button, Modal } from "react-bootstrap";
 import LoginBody from "./LoginBody";
 import sweetalert from "sweetalert2";
@@ -15,23 +16,17 @@ function LoginLogoutButton(props) {
   const [username, setUsername] = useState(localStorage.getItem("username"));
   const history = useHistory();
 
-
-
-
   const signOutHandler = async (e) => {
     e.preventDefault();
-    try {
-      await axios.get(
-        "http://localhost:3001/api/v1/users/administrators/logout"
-      );
-      auth.logout();
-      await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
-      // setForceUpdate(true);
-      // handleClose();
-      history.push("/");
-      return;
-    } catch (error) {
-    }
+    // try {
+    //   await axios.get(
+    //     "http://localhost:3001/api/v1/users/administrators/logout"
+    //   );
+    //   auth.logout();
+    //   await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
+    //   history.push("/");
+    //   return;
+    // } catch (error) {}
 
     try {
       await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
@@ -42,7 +37,13 @@ function LoginLogoutButton(props) {
       handleClose();
     } catch (error) {
       sweetalert.fire("ERROR", "error de deslogueo", "error");
+      localStorage.clear()
+      history.push("/home");
     }
+  };
+
+  const user = (datos) => {
+    props.id(datos);
   };
 
   return (
@@ -53,23 +54,26 @@ function LoginLogoutButton(props) {
           <button
             onClick={signOutHandler}
             className="btn btn-secondary rounded-pill"
-          >
-            Cerrar Sesión
+          ><FiUserX/> Cerrar Sesión
           </button>
         </div>
       ) : (
         <div className="container  mx-2">
            <li className="nav-item active tituloLinks">
-                <NavLink className="nav-link text-white" to="/register_employe">
-                  Regístrate <span className="sr-only">(current)</span>
+                <NavLink className="nav-link text-white react-icons" to="/register_employe">
+                <FiUserPlus/> Regístrate <span className="sr-only">(current)</span>
                 </NavLink>
               </li>
+          <li className="nav-item active tituloLinks">
+            <NavLink className="nav-link text-white" to="/register_employe">
+              Regístrate <span className="sr-only">(current)</span>
+            </NavLink>
+          </li>
           <Button
             variant="primary"
-            className="btn btn-success rounded-pill"
+            className="btn btn-success rounded-pill react-icons"
             onClick={handleShow}
-          >
-            Iniciar Sesión
+          > <FiUser /> Iniciar Sesión
           </Button>
           <Modal show={photo} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -83,7 +87,10 @@ function LoginLogoutButton(props) {
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <LoginBody setUsername={setUsername} />
+              <LoginBody 
+              setUsername={setUsername}
+              //  user={user}
+               />
             </Modal.Body>
           </Modal>
         </div>

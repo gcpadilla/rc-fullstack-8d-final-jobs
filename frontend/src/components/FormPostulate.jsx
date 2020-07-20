@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import { MdSave, MdAttachMoney } from "react-icons/md";
 import { Button, Modal } from "react-bootstrap";
 import Swal from "sweetalert2";
 import axios from "axios";
 
 const FormPostulate = (props) => {
   const [UserSelec, setUserSelec] = useState(props.postu);
-console.log(props);
+  console.log(props);
   const onDelete = () => {
     try {
       Swal.fire({
@@ -32,11 +33,11 @@ console.log(props);
           props.cerrar();
         }
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const onsubmit = async (e) => {
-    if (props.postularse===true) {
+    if (props.postularse === true) {
       e.preventDefault();
       try {
         await axios.put(
@@ -83,11 +84,11 @@ console.log(props);
         }
       }
     }
-   
+
   };
 
   const onInputChange = (e) => {
-    
+
     setUserSelec({
       ...UserSelec,
       [e.target.name]: e.target.value,
@@ -96,20 +97,22 @@ console.log(props);
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <h3 className="titulos my-3">Crear Postulación</h3>
-      <form className="was-validated" onSubmit={onsubmit}>
+      <h4 className="titulos mb-3">Crear Postulación</h4>
+      <form onSubmit={onsubmit}>
         <div className="form-row">
-          <div className="col-md-6 col-sm-12 form-group">
-            <input
-              type="number"
+        <div className="input-group mb-3 col-md-6 col-sm-12">
+          <div className="input-group-prepend">
+            <span className="input-group-text" id="basic-addon1">$</span>
+          </div>
+          <input  
+          type="number"
               required
               className="form-control "
               defaultValue={props.postu.intendedsalary}
               name="intendedsalary"
               placeholder="Sueldo Pretendido"
-              onChange={onInputChange}
-            />
-          </div>
+              onChange={onInputChange} aria-describedby="basic-addon1" />
+        </div>
           <div className="col-md-6 col-sm-12 form-group">
             <input
               type="email"
@@ -164,16 +167,17 @@ console.log(props);
               </Button>
             </div>
           ) : (
-            <div>
-              <button
-                type="submit"
-                className="btn btn-success rounded-pill"
-              >
-                {" "}
-                Postularse
+              <div>
+                <button
+                  style={{ verticalAlign: 'middle' }}
+                  type="submit"
+                  className="btn btn-success rounded-pill"
+                >
+                  {" "}
+                  <MdSave /> Postularse
               </button>
-            </div>
-          )}
+              </div>
+            )}
         </Modal.Footer>
       </form>
     </div>
