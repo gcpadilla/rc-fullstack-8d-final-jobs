@@ -40,7 +40,7 @@ const FormJobPostulate = (props) => {
     <div className="d-flex flex-column align-items-center">
       <h3 className="titulos my-3">Crear Ofertas</h3>
 
-      <form className="was-validated">
+      <form onSubmit={onsubmit}>
         <div className="form-row">
         <div className="col-md-6 col-sm-12 form-group">
           <input
@@ -138,8 +138,6 @@ const FormJobPostulate = (props) => {
               </button>
         <button
           type="submit"
-          value="submit"
-          onClick={onsubmit}
           // onClick={() => props.crear(true)}
           className="btn btn-success rounded-pill"
         >
