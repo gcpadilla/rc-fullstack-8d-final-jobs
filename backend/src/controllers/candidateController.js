@@ -6,7 +6,8 @@ const fs = require("fs")
 const bcryptjs = require("bcryptjs");
 const jsonwebtoken = require("jsonwebtoken");
 const candidateModel = require("../models/candidateModel");
-const uploadModel = require("../models/uploadModel");
+const uploadImagenModel = require("../models/uploadImageModel");
+const uploadCvModel = require("../models/uploadCvModel");
 
 //crear candidato
 exports.createCandidate = async (req, res) => {
@@ -286,7 +287,7 @@ exports.uploadImages = async (req, res) => {
       }
     }
 
-    const upload = new uploadModel({
+    const upload = new uploadImagenModel({
       resourceType: 'candidate',
       resourceId: new mongoose.Types.ObjectId(res.locals.user.id),
       files: filesResult
@@ -370,7 +371,7 @@ exports.uploadCv = async (req, res) => {
       }
     }
 
-    const upload = new uploadModel({
+    const upload = new uploadCvModel({
       resourceType: 'candidate',
       resourceId: new mongoose.Types.ObjectId(res.locals.user.id),
       files: filesResult
