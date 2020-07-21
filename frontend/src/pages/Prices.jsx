@@ -66,19 +66,19 @@ const Prices = () => {
         <div className="container">
                 <div className="row">
                 <div className="col-md-6 col-sm-12 row d-flex align-items-center">
-                    <img className="col-2 imagePrice" src={medal} />
+                    <img className="col-2 imagePrice" src={medal} alt="medal"/>
                     <p className="col-10">Ofrecemos una solución simple e integral de reclutamiento</p>
                 </div>
                 <div className="col-md-6 col-sm-12 row d-flex align-items-center">
-                    <img className="col-2" src={flag} />
+                    <img className="col-2" src={flag} alt="flag" />
                     <p className="col-10">Disponemos de herramientas personalizadas para la necesidad de cada cliente. </p>
                 </div>
                 <div className="col-md-6 col-sm-12 row d-flex align-items-center">
-                    <img className="col-2" src={key} />
+                    <img className="col-2" src={key} alt="key" />
                     <p className="col-10">Contribuimos a la imagen de tu empresa como marca empleadora. </p>
                 </div>
                 <div className="col-md-6 col-sm-12 row d-flex align-items-center">
-                    <img className="col-2" src={padlog} />
+                    <img className="col-2" src={padlog} alt="padlog"/>
                     <p className="col-10">Es fácil, seguro y efectivo. </p>
                 </div>
             </div>

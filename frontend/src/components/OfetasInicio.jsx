@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import "../App.css";
 import CartelCategories from "./CartelCategories";
 import axios from "axios";
-import searchImage from "../images/search.svg";
-import { Link } from "react-router-dom";
+// import searchImage from "../images/search.svg";
+// import { Link } from "react-router-dom";
 
 const OfertasInicio= (props) => {
   const [data, setdata] = useState([]);

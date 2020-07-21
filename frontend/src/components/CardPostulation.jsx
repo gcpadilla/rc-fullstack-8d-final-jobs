@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { MdPlace, MdDescription, MdEventAvailable } from "react-icons/md";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import searchImage from "../images/search.svg";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import FormPostulate from "./FormPostulate";
 
 const CardPostulation = (props) => {

@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 
 import CardPostulate from "./CardPostulate";
 
 const PostulationInico = (props) => {
-
+  // console.log(props);
   return (
     <>
       <div className="d-flex- align-items-center my-5 generalBody">

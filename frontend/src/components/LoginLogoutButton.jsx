@@ -42,9 +42,9 @@ function LoginLogoutButton(props) {
     }
   };
 
-  const user = (datos) => {
-    props.id(datos);
-  };
+  // const user = (datos) => {
+  //   props.id(datos);
+  // };
 
   return (
     <div className="">
@@ -64,11 +64,6 @@ function LoginLogoutButton(props) {
                 <FiUserPlus/> Regístrate <span className="sr-only">(current)</span>
                 </NavLink>
               </li>
-          <li className="nav-item active tituloLinks">
-            <NavLink className="nav-link text-white" to="/register_employe">
-              Regístrate <span className="sr-only">(current)</span>
-            </NavLink>
-          </li>
           <Button
             variant="primary"
             className="btn btn-success rounded-pill react-icons"

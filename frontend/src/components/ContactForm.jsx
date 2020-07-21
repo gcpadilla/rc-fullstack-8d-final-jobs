@@ -1,7 +1,6 @@
-import { useState} from "react";
 import React from "react";
-import Swal from "sweetalert2";
-import axios from "axios";
+// import Swal from "sweetalert2";
+// import axios from "axios";
 import image1 from '../images/peopleUno.svg'
 
 
