@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 import CardPostulation from "./CardPostulation";
-import axios from "axios";
 
 const OfertasInicioUser = (props) => {
   return (
