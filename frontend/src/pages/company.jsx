@@ -97,7 +97,7 @@ const Company = () => {
             </Link>
             <div className="sidebar-sticky d-flex flex-column justify-content-around mb-3">
               <h2 className="textAdmin text-white">Bienvenido {username}</h2>
-              <ul className="nav flex-column d-flex mt-5">
+              <ul className="nav d-flex flex-column mt-5">
                 <li className="nav-item">
                   <button
                     onClick={crearOferta}
@@ -146,7 +146,7 @@ const Company = () => {
               )}
               {display === 2 ? (
                 <div>
-                  <h3 className="titulos text-center my-3">
+                  <h3 className="titulos text-center my-3 testingBackground">
                     Ofertas Publicadas
                   </h3>
                   <div className="d-flex flex-wrap justify-content-center">

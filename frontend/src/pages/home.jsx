@@ -64,7 +64,7 @@ const Home = () => {
       <InicialBody />
       <Body />
       {auth.isAuthenticated() ? (
-        <div>
+        <div className="d-flex flex-wrap">
           <OfertaInicioUser get={actualizar} datauser={datauser} />
           <PostulationInicio
             get={actualizar}

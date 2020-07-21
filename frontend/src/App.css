@@ -22,6 +22,9 @@ p, label  {
   font-size: 8pt;
 }
 
+.btn-link {
+}
+
 html {
   padding:0;
 }
@@ -91,6 +94,9 @@ html {
   line-height: 16pt;
 }
 
+.postulationInicio{
+  width:100vw;
+}
 
 
 @media (min-width: 996px) {
@@ -343,7 +349,7 @@ html {
     width: 100vw;
   }
   .textAdmin{
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   .cartelCategories{
     /* -webkit-border-top-left-radius: 10px;
@@ -364,7 +370,7 @@ html {
       border-top-left-radius: 15px;
       border-bottom-right-radius: 15px;
       color: white;
-      transition: background-color .4s;
+
     }
 
     .tituloCartel {
