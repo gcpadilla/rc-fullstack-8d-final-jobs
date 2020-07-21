@@ -85,6 +85,12 @@ html {
   background-color: #0c0a59;
 }
 
+.titulares {
+  font-weight: 600;
+  font-size: 14pt;
+  line-height: 16pt;
+}
+
 
 
 @media (min-width: 996px) {
@@ -158,7 +164,7 @@ html {
   background-position: bottom;
 }
 .logoPortada{
-  width: 25rem;
+  width: 20rem;
   text-align: center;
 }
 .searchButton{
@@ -169,7 +175,7 @@ html {
 .formSuscription{
   background-color: #0c0a59;
   text-align: center;
-  width: 20rem;
+  width: 12rem;
 
 }
 .lateralSide{
@@ -281,6 +287,7 @@ html {
     font-size: 26pt;
     line-height: 26pt;
   }
+  
 
   .tituloDown{
     font-weight: 700;
@@ -295,6 +302,8 @@ html {
 
   .imgSizeLanding{
     width: 70%;
+    display:flex;
+    justify-content: center;
   }
   .profilePH{
    width: 150px;
@@ -302,6 +311,19 @@ html {
     object-fit: cover;
 
   }
+  .tituloLinks{
+    font-family: 'Poppins', sans-serif;
+    font-size: 10pt;
+    list-style-type: none; 
+    color: white;
+  }
+  
+  .aTituloLinks{
+    font-family: 'Poppins', sans-serif;
+    font-size: 10pt;
+    list-style-type: none; 
+  }
+  
 
 @media (min-width: 768px) {
   .logoPortada{
@@ -394,6 +416,13 @@ html {
     line-height: 35pt;
   }
   
+  .titulares{
+    font-weight: 700;
+    line-height:26pt;
+    font-size: 28pt;
+  
+  }
+
   .tituloDown{
     font-weight: 700;
     line-height:26pt;
@@ -414,6 +443,19 @@ html {
     display: flex;
     align-items: center;
   }
+  .tituloLinks{
+    font-family: 'Poppins', sans-serif;
+    font-size: 12pt;
+    list-style-type: none; 
+    color: white;
+  }
+  
+  .aTituloLinks{
+    font-family: 'Poppins', sans-serif;
+    font-size: 12pt;
+    list-style-type: none; 
+  }
+  
 }
 
 .infoInicial{
@@ -517,16 +559,6 @@ color: #3DD990;
 .tituloFooter{
   font-weight: 600;
   font-size: 15pt;
-}
-.tituloLinks{
-  font-family: 'Poppins', sans-serif;  font-size: 10pt;
-  list-style-type: none; 
-  color: white;
-}
-
-.aTituloLinks{
-  font-family: 'Poppins', sans-serif;  font-size: 10pt;
-  list-style-type: none; 
 }
 
 
