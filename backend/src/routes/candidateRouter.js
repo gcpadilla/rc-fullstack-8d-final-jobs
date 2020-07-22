@@ -25,6 +25,9 @@ body('profession', 'La profesion no puede ser nula').notEmpty()
 //IMAGEN DE PERFIL
 router.post('/upImagen', authorize ("user"), candidateController.uploadImages);
 
+//CV DE CANDIDATO
+router.post('/upCv', authorize ("user"), candidateController.uploadCv);
+
 //LOGUEAR CANDIDATO
 router.post('/login', [
 body('username', 'El usuario no puede ser nulo').notEmpty(),

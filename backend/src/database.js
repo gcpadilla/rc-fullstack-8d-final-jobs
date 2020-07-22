@@ -14,7 +14,8 @@ mongoose.connect(`mongodb://${process.env.DB_HOST}/${process.env.DB_NAME}`, {
 
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
-	useCreateIndex: true
+	useCreateIndex: true,
+	useFindAndModify: false
 });
 
 let db = mongoose.connection;

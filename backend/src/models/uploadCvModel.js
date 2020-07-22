@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const UploadsSchema = new mongoose.Schema({
+const UploadCvSchema = new mongoose.Schema({
   resourceType: {
     type: String,
     required: true,
@@ -51,6 +51,6 @@ const UploadsSchema = new mongoose.Schema({
   ]
 }, { versionKey: false });
 
-const UploadsModel = mongoose.model("imagePerfil", UploadsSchema);
+const UploadCvModel = mongoose.model("UploadCvCanditate", UploadCvSchema);
 
-module.exports = UploadsModel;
+module.exports = UploadCvModel;

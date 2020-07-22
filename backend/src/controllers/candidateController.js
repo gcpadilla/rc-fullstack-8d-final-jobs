@@ -6,7 +6,8 @@ const fs = require("fs")
 const bcryptjs = require("bcryptjs");
 const jsonwebtoken = require("jsonwebtoken");
 const candidateModel = require("../models/candidateModel");
-const imagePerfilModel = require("../models/imagePerfilModel");
+const uploadImagenModel = require("../models/uploadImageModel");
+const uploadCvModel = require("../models/uploadCvModel");
 
 //crear candidato
 exports.createCandidate = async (req, res) => {
@@ -229,9 +230,9 @@ exports.uploadImages = async (req, res) => {
       return res.status(404).json({ message: "No se encontro candidato..."});
     }
 
-    const article = await candidateModel.findById(res.locals.user.id);
+    const candidate = await candidateModel.findById(res.locals.user.id);
     
-    if (!article) {
+    if (!candidate) {
       return res.status(404).json({ message: "No se encontro candidato..."});
     }
   } catch (err) {
@@ -286,7 +287,7 @@ exports.uploadImages = async (req, res) => {
       }
     }
 
-    const upload = new imagePerfilModel({
+    const upload = new uploadImagenModel({
       resourceType: 'candidate',
       resourceId: new mongoose.Types.ObjectId(res.locals.user.id),
       files: filesResult
@@ -297,7 +298,91 @@ exports.uploadImages = async (req, res) => {
       await candidateModel.findByIdAndUpdate(res.locals.user.id, { imageUrl: '/static/' + upload.files[0].filename }, { new: true });
       res.send({
         message: "Se guardo imagen de perfil . . .",
-        // upload,
+        upload,
+      });
+    } catch (err) {
+      res.status(500).send(err);
+    }
+
+  });
+};
+
+// cargar cv de candidato
+exports.uploadCv = async (req, res) => {
+
+  try {
+    if (!res.locals.user.id){
+      return res.status(404).json({ message: "No se encontro candidato..."});
+    }
+
+    const candidate = await candidateModel.findById(res.locals.user.id);
+    
+    
+    if (!candidate) {
+      return res.status(404).json({ message: "No se encontro candidato..."});
+    }
+  } catch (err) {
+    res.status(500).send(err);
+  }
+
+  const form = formidable({
+    hash: 'sha256',
+    multiples: false,
+    keepExtensions: true
+  });
+
+  form.parse(req, async (err, fields, files) => {
+    const filesResult = [];
+
+    for (let fieldName in files) {
+      const fieldData = files[fieldName];
+
+        let extencion = /(.docx|.pdf|.doc)$/i;
+        if(!extencion.exec(fieldData.path)){
+          return res.status(415).json({ message: "Tipo de archivo incorrecto."});
+        }
+      
+      if (Array.isArray(fieldData)) {
+        fieldData.forEach(f => {
+          const filename = path.basename(f.path);
+          const newFileLocation = path.join(__dirname, '../public', filename);
+          fs.renameSync(f.path, newFileLocation);
+          filesResult.push({ 
+            fieldName,
+            hash: f.hash,
+            originalFileName: f.name,
+            filename,
+            sizeInBytes: f.size,
+            mimeType: f.type
+          });
+        });
+      } else {
+        const filename = path.basename(fieldData.path);
+        const newFileLocation = path.join(__dirname, '../public', filename);
+        fs.renameSync(fieldData.path, newFileLocation);
+        filesResult.push({ 
+          fieldName,
+          hash: fieldData.hash,
+          originalFileName: fieldData.name,
+          filename,
+          sizeInBytes: fieldData.size,
+          mimeType: fieldData.type
+        });
+      }
+    }
+
+    const upload = new uploadCvModel({
+      resourceType: 'candidate',
+      resourceId: new mongoose.Types.ObjectId(res.locals.user.id),
+      files: filesResult
+    });
+
+    try {
+      await upload.save();
+      await candidateModel.findByIdAndUpdate(res.locals.user.id, { cv: '/static/' + upload.files[0].filename }, { new: true });
+      res.send({
+        message: "Se guardo cv de candidato . . .",
+        upload,
       });
     } catch (err) {
       res.status(500).send(err);
