@@ -1,14 +1,14 @@
 import React from "react";
 
-import styles from  "../styles.module.css";
+// import styles from  "../styles.module.css";
 import logo from "../images/RollingJobswhite.svg";
 import Search from "./Search";
 
 const InicialBody = () => {
 
-  const style = {
-    backgroundColor: "blue",
-  }
+  // const style = {
+  //   backgroundColor: "blue",
+  // }
 
   return (
     <div className="homeInicial d-flex flex-column align-items-center justify-content-around">

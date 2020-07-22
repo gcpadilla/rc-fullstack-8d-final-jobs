@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 
 import CardPostulate from "./CardPostulate";
 
 const PostulationInico = (props) => {
-
+  // console.log(props);
   return (
       <div className="d-flex justify-content-md-start justify-content-sm-start  flex-column my-5">
         <div className="titulares d-flex d-flex justify-content-center justify-content-md-around">

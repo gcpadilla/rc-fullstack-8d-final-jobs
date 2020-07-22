@@ -21,6 +21,7 @@ const AdminEditPostulation = (props) => {
         `http://localhost:3001/api/v1/offers/${props.idpost}/postulations`
       );
       setcat(res.data);
+      console.log(res.data);
     } catch (error) {}
   }, [props.idpost]);
 
@@ -49,9 +50,9 @@ const AdminEditPostulation = (props) => {
                   <th scope="col">Estudios</th>
                   <th scope="col">Estado</th>
                 </tr>
-                {cat.postulateRef.map((c) => {
+                {cat.postulateRef.map((c,i) => {
                   return (
-                    <Tabla c={c} key={c._id}/>
+                    <Tabla c={c} d={cat.candidateRef[i]} key={c._id}/>
                   );
                 })}
               </thead>

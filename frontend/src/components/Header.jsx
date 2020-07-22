@@ -3,15 +3,16 @@ import React from "react";
 // import Button from './Button'
 // import ".././App.css";
 import logo from "../images/RollingJobswhite.svg";
-import { NavLink, Link,useParams} from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import LoginLogoutButton from "../components/LoginLogoutButton";
+import auth from "../utils/auth";
 // import { useState } from 'react';
 // import FaqsCandidates from "../pages/faqsCandidates";
 // import FaqBusiness from "../pages/FaqsBusiness";
 // import FormJobPostulate from "../components/FormJobPostulate";
 
 const Navbar = () => {
-  const params = useParams();
+  // const params = useParams();
   // const id =(parametros) => {
   //   console.log(parametros);
   // }
@@ -52,9 +53,10 @@ const Navbar = () => {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
+                  {auth.isAuthenticated() ? ( 
                 <Link className="dropdown-item" to="/PerfilUser">
                     Mi Perfil
-                  </Link>
+                  </Link>) :(<></>)}
 
                   <Link className="dropdown-item" to="/faqcandidates">
                     Preguntas Frecuentes
@@ -81,9 +83,6 @@ const Navbar = () => {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <Link className="dropdown-item" to="/company">
-                    Perfil
-                  </Link>
                   <Link className="dropdown-item" to="faqbusiness">
                     Preguntas Frecuentes
                   </Link>

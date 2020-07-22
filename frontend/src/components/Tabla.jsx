@@ -4,7 +4,7 @@ import axios from "axios";
 
 const Table = (props) => {
   const [estado, setestado] = useState("");
-
+console.log(props);
   const modificar = async (e) => {
     e.preventDefault();
     console.log(estado);
@@ -49,7 +49,7 @@ const Table = (props) => {
   };
   return (
     <tr>
-      <td>{props.c._id}</td>
+      <td>{props.d.firstname} {props.d.lastname}</td>
       <td>{props.c.emailcandidate}</td>
       <td>{props.c.experiences}</td>
       <td>{props.c.intendedsalary}</td>
@@ -60,14 +60,15 @@ const Table = (props) => {
             <select
               className="form-control"
               name="state"
+              required
               onChange={(e) => setestado(e.target.value)}
               defaultValue={props.c.state}
             >
-              <option>pendiente</option>
+              {/* <option>pendiente</option> */}
               <option>Aceptado</option>
               <option>Desestimado</option>
             </select>
-            <button type="submit" className="btn btn-primary ">
+            <button className="btn btn-primary ">
               Modificar
             </button>
           </div>

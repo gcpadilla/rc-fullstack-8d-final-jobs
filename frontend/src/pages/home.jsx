@@ -31,7 +31,7 @@ const Home = () => {
       );
       setdatauser(response.data);
     } catch (error) {
-      console.log("no tiene ofertas");
+      // console.log("no tiene ofertas");
       setdatauser([]);
     }
   }, []);
@@ -44,7 +44,7 @@ const Home = () => {
       );
       setdatapostulation(response.data);
     } catch (error) {
-      console.log("no tiene postulaciones");
+      // console.log("no tiene postulaciones");
       setdatapostulation([]);
     }
   };
