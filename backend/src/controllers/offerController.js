@@ -81,7 +81,7 @@ exports.deleteOffer = async (req, res) => {
   }
 
   try {
-    await postulateModel.deleteOne({ offerid: req.params.id });
+    await postulateModel.deleteMany({ offerid: req.params.id });
     const oferta = await offerModel.findByIdAndDelete(req.params.id);
 
     if (!oferta) {
