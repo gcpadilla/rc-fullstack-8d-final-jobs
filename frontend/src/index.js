@@ -25,11 +25,12 @@ axios.interceptors.response.use(
     const { response } = error;
     if (response.status === 401 && response.data.error && response.data.error.includes('expired')) {
       auth.logout();
-      window.location = '/users/signin';
+      window.location = '/';
       return;
     }
     if (response.status === 401 && !auth.isAuthenticated()) {
-      window.location = '/users/signin';
+      localStorage.clear()
+      window.location = '/';
       return;
     }
     return Promise.reject(error);
