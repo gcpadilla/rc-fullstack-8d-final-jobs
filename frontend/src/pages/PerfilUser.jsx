@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../utils/auth";
 import logo from "../images/RollingJobs.svg";
+import sombra from "../images/sombra4.png";
 import profilePH from "../images/profile.jpg";
 import PostulationInicio from "../components/PostulationInico";
 import OfertaInicioUser from "../components/OfertaInicioUser";
@@ -30,7 +31,6 @@ const PerfilUser = () => {
       );
       setdatauser(response.data);
     } catch (error) {
-      console.log("no tiene ofertas");
       setdatauser([]);
     }
   }, []);
@@ -42,7 +42,7 @@ const PerfilUser = () => {
       );
       setdatapostulation(response.data);
     } catch (error) {
-      console.log("no tiene postulaciones");
+      // console.log("no tiene postulaciones");
       setdatapostulation([]);
     }
   };
@@ -102,7 +102,7 @@ const PerfilUser = () => {
       "http://localhost:3001/api/v1/users/candidates/edit/"
     );
     setUserSelec(response.data);
-    console.log(response.data.imageUrl);
+    // console.log(response.data.imageUrl);
   }, []);
 
   useEffect(() => {
@@ -122,10 +122,10 @@ const PerfilUser = () => {
     }
   };
 
-  const cargarImagen = (e) => {  
+  const cargarImagen = (e) => {
     // setfile(e.target.files[0]);
-    console.log("imagen");  
-    guardarImage(e.target.files[0])  
+    // console.log("imagen");
+    guardarImage(e.target.files[0]);
   };
 
   const guardarImage = async (f) => {
@@ -164,7 +164,7 @@ const PerfilUser = () => {
       }
     }
   };
-  console.log(UserSelec);
+  console.log(UserSelec.imageUrl);
 
   return (
     <div className=" companyStyle container-fluid">
@@ -186,26 +186,39 @@ const PerfilUser = () => {
             <h2 className="textAdmin text-dark">
               Bienvenido {UserSelec.username}
             </h2>
-           
-            <img
-              src={"http://localhost:3001" + UserSelec.imageUrl}
-              alt="logo"
-              className="profilePH img-fluid mx-auto d-block rounded-circle"
-            />
-            <form onSubmit={guardarImage} >
-            <div className="custom-file">
-              <input
-                type="file"
-                className="custom-file-input"
-                onChange={cargarImagen}
-                lang="es"
+            {UserSelec.imageUrl!==undefined ?(<div>
+              <img
+                src={"http://localhost:3001" + UserSelec.imageUrl}
+                alt="sombra"
+                className="profilePH img-fluid mx-auto d-block rounded-circle"
               />
-              <label className="custom-file-label" htmlFor="customFileLang">
-                Seleccionar Archivo
-              </label>
-              <button className="text-dark btn btn-link" >guarda imagen</button>
-            </div>
-            </form>            <ul className="nav flex-column d-flex mt-5">
+            </div>):(<div>
+              <img
+                src={sombra}
+                alt="sombra"
+                className="profilePH img-fluid mx-auto d-block rounded-circle"
+              />
+            </div>)
+            }
+            
+            <form onSubmit={guardarImage}>
+              <div className="custom-file ">
+                <input
+                  type="file"
+                  className="custom-file-input"
+                  onChange={cargarImagen}
+                  lang="es"
+                />
+                <label
+                  className="custom-file-label "
+                  htmlFor="customFileLang"
+                ></label>
+                {/* <button className="text-dark btn btn-link">
+                  guarda imagen
+                </button> */}
+              </div>
+            </form>{" "}
+            <ul className="nav flex-column d-flex mt-5">
               <li className="nav-item">
                 <button
                   onClick={() => {

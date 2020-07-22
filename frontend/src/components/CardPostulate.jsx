@@ -7,7 +7,7 @@ import FormPostulate from "./FormPostulate";
 
 const CardPostulate = (props) => {
   const [show, setShow] = useState(false);
-  const [data, setdata] = useState(null);
+  const [data, setdata] = useState([]);
 
   // CERRAR MODAL
   const handleClose = () => {
@@ -28,14 +28,13 @@ const CardPostulate = (props) => {
       );
       setdata(response.data);
     } catch (error) {
-      setdata(null)
+      setdata([])
     }
   }, [props.all.offerid]);
 
   useEffect(() => {
     getArticles();
   }, [getArticles]);
-  console.log(data);
   return (
     <>
       {data !== null ? (

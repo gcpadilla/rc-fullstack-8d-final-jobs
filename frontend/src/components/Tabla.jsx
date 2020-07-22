@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import { FiMail } from "react-icons/fi";
 import Swal from "sweetalert2";
 import axios from "axios";
 
 const Table = (props) => {
   const [estado, setestado] = useState(props.c.state);
-  console.log(props);
+  const [flag, setflag] = useState(true);
   const modificar = async (e) => {
     e.preventDefault();
-    console.log(estado);
     try {
+      setflag(false);
       await axios.put(
         `http://localhost:3001/api/v1/offer/postulates/${props.c._id}/admin`,
         { state: estado }
@@ -18,6 +19,7 @@ const Table = (props) => {
         "se modifico correctamente la postulación",
         "success"
       );
+      setflag(true);
     } catch (err) {
       if (err.response.data.message === undefined) {
         Swal.fire(
@@ -53,9 +55,20 @@ const Table = (props) => {
               <option value="Aceptado">Aceptado</option>
               <option value="Desestimado">Desestimado</option>
             </select>
-            <button type="submit" className="btn btn-primary ml-2">
-              Modificar
-            </button>
+            {flag ? (
+              <button type="submit" className="btn btn-primary ml-2">
+                <FiMail />
+              </button>
+            ) : (
+              <button className="btn btn-primary" type="button" disabled>
+                <span
+                  className="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                <span className="sr-only">Loading...</span>
+              </button>
+            )}
           </div>
         </form>
       </td>
