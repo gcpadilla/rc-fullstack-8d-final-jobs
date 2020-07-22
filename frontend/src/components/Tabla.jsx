@@ -3,32 +3,15 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const Table = (props) => {
-  const [estado, setestado] = useState("");
-console.log(props);
+  const [estado, setestado] = useState(props.c.state);
+  console.log(props);
   const modificar = async (e) => {
     e.preventDefault();
     console.log(estado);
-    console.log({
-      // emailcandidate: props.c.emailcandidate,
-      // experiences: props.c.experiences,
-      // intendedsalary: props.c.intendedsalary,
-      // studies: props.c.studies,
-      state: estado
-      // offerid: props.c.offerid,
-      // candidateid: props.c.candidateid
-    });
     try {
       await axios.put(
         `http://localhost:3001/api/v1/offer/postulates/${props.c._id}/admin`,
-        {
-          //  emailcandidate: props.c.emailcandidate,
-          // experiences: props.c.experiences,
-          // intendedsalary: props.c.intendedsalary,
-          // studies: props.c.studies,
-          state: estado
-          // offerid: props.c.offerid,
-          // candidateid: props.c.candidateid
-        }
+        { state: estado }
       );
       await Swal.fire(
         "genial",
@@ -49,14 +32,16 @@ console.log(props);
   };
   return (
     <tr>
-      <td>{props.d.firstname} {props.d.lastname}</td>
+      <td>
+        {props.d.firstname} {props.d.lastname}
+      </td>
       <td>{props.c.emailcandidate}</td>
       <td>{props.c.experiences}</td>
       <td>{props.c.intendedsalary}</td>
       <td>{props.c.studies}</td>
       <td>
         <form onSubmit={modificar}>
-          <div className="form-group">
+          <div className="form-group d-flex flex-nowrap">
             <select
               className="form-control"
               name="state"
@@ -64,13 +49,11 @@ console.log(props);
               onChange={(e) => setestado(e.target.value)}
               defaultValue={props.c.state}
             >
-              {/* <option>pendiente</option> */}
-              <option>Aceptado</option>
-              <option>Desestimado</option>
+              <option value="">pendiente</option>
+              <option value="Aceptado">Aceptado</option>
+              <option value="Desestimado">Desestimado</option>
             </select>
-            <button className="btn btn-primary ">
-              Modificar
-            </button>
+            <button className="btn btn-primary ">Modificar</button>
           </div>
         </form>
       </td>

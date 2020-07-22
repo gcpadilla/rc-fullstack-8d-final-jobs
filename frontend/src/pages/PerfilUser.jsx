@@ -122,17 +122,18 @@ const PerfilUser = () => {
     }
   };
 
-  const cargarImagen = (e) => {
-  
-    setfile(e.target.files[0]);
-    console.log("imagen");
+  const cargarImagen = (e) => {  
+    // setfile(e.target.files[0]);
+    console.log("imagen");  
+    guardarImage(e.target.files[0])  
   };
-  const guardarImage = async (e) => {
-    e.preventDefault()
+
+  const guardarImage = async (f) => {
+    // e.preventDefault()
     try {
-      if (file !== null) {
+      if (f !== null) {
         const formData = new FormData();
-        formData.append("image", file);
+        formData.append("image", f);
         await axios.post(
           "http://localhost:3001/api/v1/users/candidates/upImagen",
           formData,
@@ -185,6 +186,7 @@ const PerfilUser = () => {
             <h2 className="textAdmin text-dark">
               Bienvenido {UserSelec.username}
             </h2>
+           
             <img
               src={"http://localhost:3001" + UserSelec.imageUrl}
               alt="logo"
@@ -203,8 +205,7 @@ const PerfilUser = () => {
               </label>
               <button className="text-dark btn btn-link" >guarda imagen</button>
             </div>
-            </form>
-            <ul className="nav flex-column d-flex mt-5">
+            </form>            <ul className="nav flex-column d-flex mt-5">
               <li className="nav-item">
                 <button
                   onClick={() => {

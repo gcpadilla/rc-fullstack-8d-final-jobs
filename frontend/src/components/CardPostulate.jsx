@@ -7,19 +7,19 @@ import FormPostulate from "./FormPostulate";
 
 const CardPostulate = (props) => {
   const [show, setShow] = useState(false);
-  const [data, setdata] = useState([]);
+  const [data, setdata] = useState(null);
 
   // CERRAR MODAL
   const handleClose = () => {
-    setShow(false)
+    setShow(false);
     props.get();
   };
 
   // ABRIR MODAL
   const handleShow = () => {
-    setShow(true)
+    setShow(true);
   };
- 
+
   // TRAE LA OFERTA POR ID
   const getArticles = useCallback(async () => {
     try {
@@ -28,29 +28,40 @@ const CardPostulate = (props) => {
       );
       setdata(response.data);
     } catch (error) {
+      setdata(null)
     }
   }, [props.all.offerid]);
-  
+
   useEffect(() => {
     getArticles();
   }, [getArticles]);
-
+  console.log(data);
   return (
     <>
-      <div className="card cartelCategories m-3" onClick={handleShow}>
-        <div className="card-body">
-          <h5 className="card-title"> Postulado a </h5>
-          <h6 className="card-subtitle mb-2">{data.title}</h6>
-          <p className="card-title text-muted">Estado: {props.all.state}</p>
-        </div>
-      </div>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-        </Modal.Header>
-        <Modal.Body>
-          <FormPostulate all={data} postu={props.all} cerrar={handleClose} postularse={true} />
-        </Modal.Body>
-      </Modal>
+      {data !== null ? (
+        <>
+          <div className="card cartelCategories m-3" onClick={handleShow}>
+            <div className="card-body">
+              <h5 className="card-title"> Postulado a </h5>
+              <h6 className="card-subtitle mb-2">{data.title}</h6>
+              <p className="card-title text-muted">Estado: {props.all.state}</p>
+            </div>
+          </div>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton></Modal.Header>
+            <Modal.Body>
+              <FormPostulate
+                all={data}
+                postu={props.all}
+                cerrar={handleClose}
+                postularse={true}
+              />
+            </Modal.Body>
+          </Modal>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 };

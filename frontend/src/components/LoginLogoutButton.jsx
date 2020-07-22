@@ -38,7 +38,7 @@ function LoginLogoutButton(props) {
     } catch (error) {
       sweetalert.fire("ERROR", "error de deslogueo", "error");
       localStorage.clear()
-      history.push("/home");
+      history.push("/");
     }
   };
 
