@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { MdEdit } from "react-icons/md";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -68,8 +69,8 @@ console.log(props);
               <option value="Aceptado">Aceptado</option>
               <option value="Desestimado">Desestimado</option>
             </select>
-            <button type="submit" className="btn btn-primary ml-2">
-              Modificar
+            <button type="submit" className="btn btn-outline-secondary ml-2">
+             <MdEdit/>
             </button>
           </div>
         </form>
