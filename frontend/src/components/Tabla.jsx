@@ -5,38 +5,22 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const Table = (props) => {
-  const [estado, setestado] = useState("");
-  console.log(props);
+  const [estado, setestado] = useState(props.c.state);
+  const [flag, setflag] = useState(true);
   const modificar = async (e) => {
     e.preventDefault();
-    console.log(estado);
-    console.log({
-      // emailcandidate: props.c.emailcandidate,
-      // experiences: props.c.experiences,
-      // intendedsalary: props.c.intendedsalary,
-      // studies: props.c.studies,
-      state: estado
-      // offerid: props.c.offerid,
-      // candidateid: props.c.candidateid
-    });
     try {
+      setflag(false);
       await axios.put(
         `http://localhost:3001/api/v1/offer/postulates/${props.c._id}/admin`,
-        {
-          //  emailcandidate: props.c.emailcandidate,
-          // experiences: props.c.experiences,
-          // intendedsalary: props.c.intendedsalary,
-          // studies: props.c.studies,
-          state: estado
-          // offerid: props.c.offerid,
-          // candidateid: props.c.candidateid
-        }
+        { state: estado }
       );
       await Swal.fire(
         "genial",
         "se modifico correctamente la postulación",
         "success"
       );
+      setflag(true);
     } catch (err) {
       if (err.response.data.message === undefined) {
         Swal.fire(
@@ -73,9 +57,20 @@ const Table = (props) => {
               <option value="Aceptado">Aceptado</option>
               <option value="Desestimado">Desestimado</option>
             </select>
-            <button type="submit" className="btn btn-outline-secondary btn-sm text-white ml-2">
-              <AiTwotoneEdit />
-            </button>
+            {flag ? (
+             <button type="submit" className="btn btn-outline-secondary btn-sm text-white ml-2">
+             <AiTwotoneEdit />
+           </button>
+            ) : (
+              <button className="btn btn-primary" type="button" disabled>
+                <span
+                  className="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                <span className="sr-only">Loading...</span>
+              </button>
+            )}
           </div>
         </form>
       </td>

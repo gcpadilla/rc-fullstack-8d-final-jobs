@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../utils/auth";
 import logo from "../images/RollingJobs.svg";
+import sombra from "../images/sombra4.png";
 import profilePH from "../images/profile.jpg";
 import PostulationInicio from "../components/PostulationInico";
 import OfertaInicioUser from "../components/OfertaInicioUser";
@@ -31,7 +32,6 @@ const PerfilUser = () => {
       );
       setdatauser(response.data);
     } catch (error) {
-      console.log("no tiene ofertas");
       setdatauser([]);
     }
   }, []);
@@ -43,7 +43,7 @@ const PerfilUser = () => {
       );
       setdatapostulation(response.data);
     } catch (error) {
-      console.log("no tiene postulaciones");
+      // console.log("no tiene postulaciones");
       setdatapostulation([]);
     }
   };
@@ -103,7 +103,7 @@ const PerfilUser = () => {
       "http://localhost:3001/api/v1/users/candidates/edit/"
     );
     setUserSelec(response.data);
-    console.log(response.data.imageUrl);
+    // console.log(response.data.imageUrl);
   }, []);
 
   useEffect(() => {
@@ -128,12 +128,13 @@ const PerfilUser = () => {
     setfile(e.target.files[0]);
     console.log("imagen");
   };
-  const guardarImage = async (e) => {
-    e.preventDefault()
+
+  const guardarImage = async (f) => {
+    // e.preventDefault()
     try {
-      if (file !== null) {
+      if (f !== null) {
         const formData = new FormData();
-        formData.append("image", file);
+        formData.append("image", f);
         await axios.post(
           "http://localhost:3001/api/v1/users/candidates/upImagen",
           formData,
@@ -164,7 +165,7 @@ const PerfilUser = () => {
       }
     }
   };
-  console.log(UserSelec);
+  console.log(UserSelec.imageUrl);
 
   return (
     <>
