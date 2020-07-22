@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FiMail } from "react-icons/fi";
+import { BsFileText } from "react-icons/bs";
+import { AiTwotoneEdit } from "react-icons/ai";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -34,12 +35,13 @@ const Table = (props) => {
   };
   return (
     <tr>
-      <td>
-        {props.d.firstname} {props.d.lastname}
-      </td>
+      <td><button className="btn btn-outline-secondary btn-sm text-white">
+        <BsFileText />
+      </button></td>
+      <td>{props.d.firstname} {props.d.lastname}</td>
       <td>{props.c.emailcandidate}</td>
       <td>{props.c.experiences}</td>
-      <td>{props.c.intendedsalary}</td>
+      <td className="text-center">{props.c.intendedsalary}</td>
       <td>{props.c.studies}</td>
       <td>
         <form onSubmit={modificar}>
@@ -56,9 +58,9 @@ const Table = (props) => {
               <option value="Desestimado">Desestimado</option>
             </select>
             {flag ? (
-              <button type="submit" className="btn btn-primary ml-2">
-                <FiMail />
-              </button>
+             <button type="submit" className="btn btn-outline-secondary btn-sm text-white ml-2">
+             <AiTwotoneEdit />
+           </button>
             ) : (
               <button className="btn btn-primary" type="button" disabled>
                 <span
