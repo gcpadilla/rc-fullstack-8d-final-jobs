@@ -4,7 +4,7 @@ const PostulateSchema = new mongoose.Schema(
   {
     state: {
       type: String,
-      default:"pendiente",
+      default:"Pendiente",
       required: true,
       trim: true,
     },

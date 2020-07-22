@@ -59,7 +59,7 @@ const AdminEditPostulation = (props) => {
             </table>
           </div>
         ) : (
-          <div>no hay</div>
+          <h2 className="text-center mt-5" >Aun no presenta postulaciones!</h2>
         )}
       </div>
     </div>

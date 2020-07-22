@@ -172,7 +172,7 @@ exports.updatePostulateAdmin = async (req, res) => {
 
     //----------------------Email------------------------------------------------------------
 
-    if (state !== "pendiente") {
+    if (state !== "Pendiente") {
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -187,6 +187,10 @@ exports.updatePostulateAdmin = async (req, res) => {
         subject: "Postulacion a Jobs",
         text: `Estas ${state}, cominicate al telefono 12345 o dirigete a Av. Siempreviva 742`,
       });
+    } else {
+      return res
+      .status(404)
+      .json({ message: "El estado continua pendiente. . ." });
     }
 
     //----------------------Email------------------------------------------------------------

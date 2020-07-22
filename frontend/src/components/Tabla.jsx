@@ -49,11 +49,13 @@ const Table = (props) => {
               onChange={(e) => setestado(e.target.value)}
               defaultValue={props.c.state}
             >
-              <option value="">pendiente</option>
+              <option value="">Pendiente</option>
               <option value="Aceptado">Aceptado</option>
               <option value="Desestimado">Desestimado</option>
             </select>
-            <button className="btn btn-primary ">Modificar</button>
+            <button type="submit" className="btn btn-primary ml-2">
+              Modificar
+            </button>
           </div>
         </form>
       </td>
