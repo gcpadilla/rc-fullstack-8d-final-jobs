@@ -6,9 +6,11 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../utils/auth";
 import logo from "../images/RollingJobs.svg";
+import sombra from "../images/sombra4.png";
 import profilePH from "../images/profile.jpg";
 import PostulationInicio from "../components/PostulationInico";
 import OfertaInicioUser from "../components/OfertaInicioUser";
+import { AiOutlineEdit } from "react-icons/ai";
 
 const PerfilUser = () => {
   const [display, setdisplay] = useState(1);
@@ -30,7 +32,6 @@ const PerfilUser = () => {
       );
       setdatauser(response.data);
     } catch (error) {
-      console.log("no tiene ofertas");
       setdatauser([]);
     }
   }, []);
@@ -42,7 +43,7 @@ const PerfilUser = () => {
       );
       setdatapostulation(response.data);
     } catch (error) {
-      console.log("no tiene postulaciones");
+      // console.log("no tiene postulaciones");
       setdatapostulation([]);
     }
   };
@@ -102,7 +103,7 @@ const PerfilUser = () => {
       "http://localhost:3001/api/v1/users/candidates/edit/"
     );
     setUserSelec(response.data);
-    console.log(response.data.imageUrl);
+    // console.log(response.data.imageUrl);
   }, []);
 
   useEffect(() => {
@@ -123,16 +124,17 @@ const PerfilUser = () => {
   };
 
   const cargarImagen = (e) => {
-  
+
     setfile(e.target.files[0]);
     console.log("imagen");
   };
-  const guardarImage = async (e) => {
-    e.preventDefault()
+
+  const guardarImage = async (f) => {
+    // e.preventDefault()
     try {
-      if (file !== null) {
+      if (f !== null) {
         const formData = new FormData();
-        formData.append("image", file);
+        formData.append("image", f);
         await axios.post(
           "http://localhost:3001/api/v1/users/candidates/upImagen",
           formData,
@@ -163,7 +165,7 @@ const PerfilUser = () => {
       }
     }
   };
-  console.log(UserSelec);
+  console.log(UserSelec.imageUrl);
 
   return (
     <div className=" companyStyle container-fluid">
@@ -185,25 +187,27 @@ const PerfilUser = () => {
             <h2 className="textAdmin text-dark">
               Bienvenido {UserSelec.username}
             </h2>
-            <img
-              src={"http://localhost:3001" + UserSelec.imageUrl}
-              alt="logo"
-              className="profilePH img-fluid mx-auto d-block rounded-circle"
-            />
-            <form onSubmit={guardarImage} >
-            <div className="custom-file">
-              <input
-                type="file"
-                className="custom-file-input"
-                onChange={cargarImagen}
-                lang="es"
+            {UserSelec.imageUrl!==undefined ?(<div>
+              <img
+                src={"http://localhost:3001" + UserSelec.imageUrl}
+                alt="sombra"
+                className="profilePH img-fluid mx-auto d-block rounded-circle"
               />
-              <label className="custom-file-label" htmlFor="customFileLang">
-                Seleccionar Archivo
-              </label>
-              <button className="text-dark btn btn-link" >guarda imagen</button>
-            </div>
-            </form>
+            </div>):(<div>
+              <img
+                src={sombra}
+                alt="sombra"
+                className="profilePH img-fluid mx-auto d-block rounded-circle"
+              />
+            </div>)
+            }
+            
+            <form onSubmit={guardarImage}>
+            <div className="imgPerfil mt-2 ml-4">
+                <label for="file_input_id" ><AiOutlineEdit/> Foto de perfil</label>
+                <input type="file" id="file_input_id" onChange={cargarImagen} accept="image/png, .jpg, image/gif" />
+              </div>
+            </form>{" "}
             <ul className="nav flex-column d-flex mt-5">
               <li className="nav-item">
                 <button
@@ -402,8 +406,8 @@ const PerfilUser = () => {
               </div>
             </div>
           ) : (
-            <></>
-          )}
+              <></>
+            )}
 
           {display === 1 ? (
             <div className="container">
@@ -412,8 +416,7 @@ const PerfilUser = () => {
                 <h5 className="mb-4 texdo">Registro de Candidato</h5>
                 <p className="mb-4 textNews">
                   {" "}
-                  Por favor, controle sus datos personales para iniciar tu
-                  proceso a tu nuevo trabajo.
+                  Por favor, controle sus datos personales para iniciar el proceso de postulación
                 </p>
                 <div className="card">
                   <ul className="list-group list-group-flush">
@@ -439,8 +442,8 @@ const PerfilUser = () => {
               </div>
             </div>
           ) : (
-            <></>
-          )}
+              <></>
+            )}
           {display === 2 ? (
             <div>
               <PostulationInicio
@@ -449,15 +452,15 @@ const PerfilUser = () => {
               />
             </div>
           ) : (
-            <></>
-          )}
+              <></>
+            )}
           {display === 3 ? (
             <div>
               <OfertaInicioUser get={actualizar} datauser={datauser} />
             </div>
           ) : (
-            <></>
-          )}
+              <></>
+            )}
         </div>
       </div>
     </div>

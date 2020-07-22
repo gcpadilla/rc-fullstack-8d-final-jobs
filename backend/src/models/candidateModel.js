@@ -20,6 +20,9 @@ const CandidateSchema = new mongoose.Schema({
   imageUrl: {
     type: String,
   },
+  cv: {
+    type: String,
+  },
   email: {
     type: String,
     required: true,

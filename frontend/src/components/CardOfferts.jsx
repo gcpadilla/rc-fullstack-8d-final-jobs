@@ -47,20 +47,22 @@ const CardOfferts = (props) => {
         </h3>
         {props.sola ? (
           <></>
-        ) : (
+        ) : (<>
         <Link to="/company"
           className="card-text tiempoCartel"
           onClick={() => props.adminPostulate(props.data._id)}
         >
-          Postulaciones
-        </Link>)}
-        <p
-          className={`card-text tiempoCartel ${
-            props.data.active ? "text-success" : "text-muted"
-          }`}
-        >
-          {props.data.active ? "Active" : "Inactiva"}
-        </p>
+        <p> Postulaciones</p>
+        </Link>
+            <p
+            className={`card-text tiempoCartel ${
+              props.data.active ? "text-success" : "text-muted"
+            }`}
+          >
+            {props.data.active ? "Active" : "Inactiva"}
+          </p></>
+        )}
+    
 
         <p className="card-text tiempoCartel">{props.data.publicationdate}</p>
         {props.sola ? (

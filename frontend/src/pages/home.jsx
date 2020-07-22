@@ -69,6 +69,7 @@ const Home = () => {
           <PostulationInicio
             get={actualizar}
             datapostulation={datapostulation}
+            // datauser={datauser}
           />
         </div>
       ) : (

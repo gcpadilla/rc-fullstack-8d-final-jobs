@@ -39,10 +39,11 @@ const AdminEditPostulation = (props) => {
 
       <div>
         {cat.postulateRef.length > 0 ? (
-          <div>
-            <table className="table">
+          <div className="table-responsive">
+            <table className="table table-striped table-dark">
               <thead>
                 <tr>
+                <th scope="col">CV</th>
                   <th scope="col">Nombre y Apellido</th>
                   <th scope="col">Email</th>
                   <th scope="col">Experiencia</th>
@@ -59,7 +60,7 @@ const AdminEditPostulation = (props) => {
             </table>
           </div>
         ) : (
-          <div>no hay</div>
+          <h2 className="text-center mt-5" >Aun no presenta postulaciones!</h2>
         )}
       </div>
     </div>
