@@ -50,6 +50,7 @@ const FormJobPostulate = (props) => {
             name="title"
             placeholder="Titulo del Puesto"
             onChange={onInputChange}
+            autoFocus
           />
         </div>
         <div className="col-md-6 col-sm-12 form-group">

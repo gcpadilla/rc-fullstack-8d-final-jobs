@@ -94,6 +94,7 @@ const Register = () => {
                       name="firstname"
                       placeholder="Nombre"
                       onChange={onInputChange}
+                      autoFocus
                     />
                   </div>
 
@@ -117,6 +118,8 @@ const Register = () => {
                       type="number"
                       required
                       className="form-control"
+                      minLength="8"
+                      maxLength="8"
                       name="dni"
                       placeholder="DNI / Cedula de Identidad / Pasaporte"
                       onChange={onInputChange}

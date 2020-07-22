@@ -172,7 +172,7 @@ exports.updatePostulateAdmin = async (req, res) => {
 
     //----------------------Email------------------------------------------------------------
 
-    if (state !== "pendiente") {
+    if (state !== "Pendiente") {
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {

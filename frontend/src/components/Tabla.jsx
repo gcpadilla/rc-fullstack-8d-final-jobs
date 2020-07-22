@@ -56,7 +56,7 @@ console.log(props);
       <td>{props.c.studies}</td>
       <td>
         <form onSubmit={modificar}>
-          <div className="form-group">
+          <div className="form-group d-flex flex-nowrap">
             <select
               className="form-control"
               name="state"
@@ -64,11 +64,11 @@ console.log(props);
               onChange={(e) => setestado(e.target.value)}
               defaultValue={props.c.state}
             >
-              {/* <option>pendiente</option> */}
-              <option>Aceptado</option>
-              <option>Desestimado</option>
+              <option value="">Pendiente</option>
+              <option value="Aceptado">Aceptado</option>
+              <option value="Desestimado">Desestimado</option>
             </select>
-            <button className="btn btn-primary ">
+            <button type="submit" className="btn btn-primary ml-2">
               Modificar
             </button>
           </div>

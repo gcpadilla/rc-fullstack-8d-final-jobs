@@ -52,7 +52,7 @@ const CardOfferts = (props) => {
           className="card-text tiempoCartel"
           onClick={() => props.adminPostulate(props.data._id)}
         >
-          Postulaciones
+          <p>Postulaciones</p>
         </Link>)}
         <p
           className={`card-text tiempoCartel ${

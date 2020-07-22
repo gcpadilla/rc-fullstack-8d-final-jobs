@@ -1,5 +1,6 @@
 const { validationResult } = require("express-validator");
 const offerModel = require("../models/offerModel");
+const postulateModel = require("../models/postulateModel");
 const adminModel = require("../models/administratorModel");
 const mongoose = require("mongoose");
 
@@ -75,11 +76,12 @@ exports.updateOffer = async (req, res) => {
 
 //Borrar oferta
 exports.deleteOffer = async (req, res) => {
-  try {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      return res.status(404).json({ message: "No de encontro oferta ..." });
-    }
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(404).json({ message: "No de encontro oferta ..." });
+  }
 
+  try {
+    await postulateModel.deleteOne({ offerid: req.params.id });
     const oferta = await offerModel.findByIdAndDelete(req.params.id);
 
     if (!oferta) {
@@ -151,14 +153,8 @@ exports.getPostulationsOffer = async (req, res) => {
 
     const offer = await offerModel
       .findById(req.params.OfferId)
-      .populate(
-        "postulateRef",
-       "-candidateid",
-       )
-       .populate(
-        "candidateRef",
-        "firstname lastname -_id"
-       )
+      .populate("postulateRef", "-candidateid")
+      .populate("candidateRef", "firstname lastname -_id");
     if (!offer) {
       return res.status(404).json({ message: "Offer not found." });
     }
