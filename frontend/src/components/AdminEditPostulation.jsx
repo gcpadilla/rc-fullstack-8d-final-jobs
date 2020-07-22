@@ -39,10 +39,11 @@ const AdminEditPostulation = (props) => {
 
       <div>
         {cat.postulateRef.length > 0 ? (
-          <div>
-            <table className="table">
+          <div className="table-responsive">
+            <table className="table table-striped table-dark">
               <thead>
                 <tr>
+                <th scope="col">CV</th>
                   <th scope="col">Nombre y Apellido</th>
                   <th scope="col">Email</th>
                   <th scope="col">Experiencia</th>

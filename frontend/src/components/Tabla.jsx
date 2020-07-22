@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { MdEdit } from "react-icons/md";
+import { BsFileText } from "react-icons/bs";
+import { AiTwotoneEdit } from "react-icons/ai";
 import Swal from "sweetalert2";
 import axios from "axios";
 
 const Table = (props) => {
   const [estado, setestado] = useState("");
-console.log(props);
+  console.log(props);
   const modificar = async (e) => {
     e.preventDefault();
     console.log(estado);
@@ -50,10 +51,13 @@ console.log(props);
   };
   return (
     <tr>
+      <td><button className="btn btn-outline-secondary btn-sm text-white">
+        <BsFileText />
+      </button></td>
       <td>{props.d.firstname} {props.d.lastname}</td>
       <td>{props.c.emailcandidate}</td>
       <td>{props.c.experiences}</td>
-      <td>{props.c.intendedsalary}</td>
+      <td className="text-center">{props.c.intendedsalary}</td>
       <td>{props.c.studies}</td>
       <td>
         <form onSubmit={modificar}>
@@ -69,8 +73,8 @@ console.log(props);
               <option value="Aceptado">Aceptado</option>
               <option value="Desestimado">Desestimado</option>
             </select>
-            <button type="submit" className="btn btn-outline-secondary ml-2">
-             <MdEdit/>
+            <button type="submit" className="btn btn-outline-secondary btn-sm text-white ml-2">
+              <AiTwotoneEdit />
             </button>
           </div>
         </form>

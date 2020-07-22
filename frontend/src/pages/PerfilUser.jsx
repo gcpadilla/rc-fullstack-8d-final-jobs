@@ -9,6 +9,7 @@ import logo from "../images/RollingJobs.svg";
 import profilePH from "../images/profile.jpg";
 import PostulationInicio from "../components/PostulationInico";
 import OfertaInicioUser from "../components/OfertaInicioUser";
+import { AiOutlineEdit } from "react-icons/ai";
 
 const PerfilUser = () => {
   const [display, setdisplay] = useState(1);
@@ -123,7 +124,7 @@ const PerfilUser = () => {
   };
 
   const cargarImagen = (e) => {
-  
+
     setfile(e.target.files[0]);
     console.log("imagen");
   };
@@ -191,7 +192,11 @@ const PerfilUser = () => {
               className="profilePH img-fluid mx-auto d-block rounded-circle"
             />
             <form onSubmit={guardarImage} >
-            <div className="custom-file">
+              <div className="imgPerfil mt-2 ml-4">
+                <label for="file_input_id" ><AiOutlineEdit/> Foto de perfil</label>
+                <input type="file" id="file_input_id" onChange={cargarImagen} accept="image/png, .jpg, image/gif" />
+              </div>
+              {/* <div className="custom-file">
               <input
                 type="file"
                 className="custom-file-input"
@@ -202,7 +207,7 @@ const PerfilUser = () => {
                 Seleccionar Archivo
               </label>
               <button className="text-dark btn btn-link" >guarda imagen</button>
-            </div>
+            </div> */}
             </form>
             <ul className="nav flex-column d-flex mt-5">
               <li className="nav-item">
@@ -402,8 +407,8 @@ const PerfilUser = () => {
               </div>
             </div>
           ) : (
-            <></>
-          )}
+              <></>
+            )}
 
           {display === 1 ? (
             <div className="container">
@@ -412,8 +417,7 @@ const PerfilUser = () => {
                 <h5 className="mb-4 texdo">Registro de Candidato</h5>
                 <p className="mb-4 textNews">
                   {" "}
-                  Por favor, controle sus datos personales para iniciar tu
-                  proceso a tu nuevo trabajo.
+                  Por favor, controle sus datos personales para iniciar el proceso de postulación
                 </p>
                 <div className="card">
                   <ul className="list-group list-group-flush">
@@ -439,8 +443,8 @@ const PerfilUser = () => {
               </div>
             </div>
           ) : (
-            <></>
-          )}
+              <></>
+            )}
           {display === 2 ? (
             <div>
               <PostulationInicio
@@ -449,15 +453,15 @@ const PerfilUser = () => {
               />
             </div>
           ) : (
-            <></>
-          )}
+              <></>
+            )}
           {display === 3 ? (
             <div>
               <OfertaInicioUser get={actualizar} datauser={datauser} />
             </div>
           ) : (
-            <></>
-          )}
+              <></>
+            )}
         </div>
       </div>
     </div>
