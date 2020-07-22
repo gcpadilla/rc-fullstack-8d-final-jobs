@@ -167,101 +167,85 @@ const PerfilUser = () => {
   console.log(UserSelec);
 
   return (
-    <div className=" companyStyle container-fluid">
-      <div className="row">
-        <nav
-          id="sidebarMenu"
-          className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenu sticky-top "
-        >
-          <Link to="/">
-            <img
-              src={logo}
-              alt="logo"
-              loading="lazy"
-              className="logoStyle mb-3"
-            />
-          </Link>
-
-          <div className="sidebar-sticky d-flex flex-column justify-content-around mb-3">
-            <h2 className="textAdmin text-dark">
-              Bienvenido {UserSelec.username}
-            </h2>
-            <img
-              src={"http://localhost:3001" + UserSelec.imageUrl}
-              alt="logo"
-              className="profilePH img-fluid mx-auto d-block rounded-circle"
-            />
-            <form onSubmit={guardarImage} >
-              <div className="imgPerfil mt-2 ml-4">
-                <label for="file_input_id" ><AiOutlineEdit/> Foto de perfil</label>
-                <input type="file" id="file_input_id" onChange={cargarImagen} accept="image/png, .jpg, image/gif" />
-              </div>
-              {/* <div className="custom-file">
-              <input
-                type="file"
-                className="custom-file-input"
-                onChange={cargarImagen}
-                lang="es"
+    <>
+    <div class="container-fluid">
+  <div class="row">
+    <div class=" col-12 col-sm-3 col-md-3 col-lg-2 sidebarMenu">
+    <div>
+          <div>
+            <Link to="/">
+              <img
+                src={logo}
+                alt="logo"
+                loading="lazy"
+                className="logoStyle"
               />
-              <label className="custom-file-label" htmlFor="customFileLang">
-                Seleccionar Archivo
-              </label>
-              <button className="text-dark btn btn-link" >guarda imagen</button>
-            </div> */}
-            </form>
-            <ul className="nav flex-column d-flex mt-5">
-              <li className="nav-item">
-                <button
-                  onClick={() => {
-                    setdisplay(0);
-                    actualizar();
-                  }}
-                  className="text-dark btn btn-link"
-                >
-                  {" "}
-                  Modificar Perfil
-                </button>
-              </li>
-              <li className="nav-item">
-                <button
-                  onClick={() => {
-                    setdisplay(2);
-                    actualizar();
-                  }}
-                  className="text-dark btn btn-link"
-                >
-                  {" "}
-                  Ver Postulaciones
-                </button>
-              </li>
-              <li className="nav-item">
-                <button
-                  onClick={() => {
-                    setdisplay(3);
-                    actualizar();
-                  }}
-                  className="text-dark btn btn-link"
-                >
-                  {" "}
-                  Ofertas Publicadas{" "}
-                </button>
-              </li>
-            </ul>
-            <ul className="nav flex-column d-flex mt-5">
-              <li className="nav-item">
-                <button
-                  onClick={signOutHandler}
-                  className="text-dark btn btn-link mt-auto"
-                >
-                  {" "}
-                  Cerrar Sesión
-                </button>
-              </li>
-            </ul>
+            </Link>
           </div>
-        </nav>
 
-        <div className=" col-md-9 col-lg-10 companyData d-flex flex-column flex-wrap">
+           <div className="d-none d-sm-block mt-4">
+              <h2 className="text-dark font-weight-bold">
+                Bienvenido {UserSelec.username}
+              </h2>
+           </div>
+            <div className="d-none d-sm-block">
+              <img
+                src={"http://localhost:3001" + UserSelec.imageUrl}
+                alt="logo"
+                className="mx-auto rounded-circle" style={{width:"150px"}}
+              />
+              <form onSubmit={guardarImage} >
+                <div className="imgPerfil mt-2 ml-3">
+                  <label for="file_input_id" ><AiOutlineEdit/> Foto de perfil</label>
+                  <input type="file" id="file_input_id" onChange={cargarImagen} accept="image/png, .jpg, image/gif" />
+                </div>
+              </form>
+            </div>
+                <div className="d-flex flex-sm-column">
+                  <button
+                    onClick={() => {
+                      setdisplay(0);
+                      actualizar();
+                    }}
+                    className="text-dark text-left btn btn-link"
+                  >
+                    {" "}
+                    Modificar Perfil
+                  </button>
+                  <button
+                    onClick={() => {
+                      setdisplay(2);
+                      actualizar();
+                    }}
+                    className="text-dark text-left btn btn-link"
+                  >
+                    {" "}
+                    Ver Postulaciones
+                  </button>
+                  <button
+                    onClick={() => {
+                      setdisplay(3);
+                      actualizar();
+                    }}
+                    className="text-dark text-left btn btn-link"
+                  >
+                    {" "}
+                    Ofertas Publicadas{" "}
+                  </button>
+                  <button
+                    onClick={signOutHandler}
+                    className="text-dark text-left btn btn-link mt-auto"
+                  >
+                    {" "}
+                    Cerrar Sesión
+                  </button>
+                </div>
+
+        </div>
+    </div>
+    
+    <div class="col-12 col-sm-9 col-md-9 col-lg-10" style={{height:"100vh"}}>
+    <div>
           {display === 0 ? (
             <div className="container">
               <div className="text-center pb-5 form-group mb-3">
@@ -463,8 +447,10 @@ const PerfilUser = () => {
               <></>
             )}
         </div>
-      </div>
     </div>
+  </div>
+</div>
+    </>
   );
 };
 
