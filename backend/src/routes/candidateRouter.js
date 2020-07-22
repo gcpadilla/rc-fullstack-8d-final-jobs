@@ -10,6 +10,7 @@ router.post('/', [
 body('firstname', 'El nombre no puede ser nulo').notEmpty(),
 body('lastname', 'El apellido no puede ser nulo').notEmpty(),
 body('username', 'El usuario no puede ser nulo').notEmpty(),
+body('dni', 'Dni no admitido').isLength({ min: 7, max: 8 }),
 body('email', 'El email no puede ser nulo').notEmpty(),
 body('email', 'Debe ser un email valido').isEmail(),
 body('password', 'Password no puede ser nulo').notEmpty(),
