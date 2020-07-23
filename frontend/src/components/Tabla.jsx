@@ -3,7 +3,7 @@ import { BsFileText } from "react-icons/bs";
 import { AiTwotoneEdit } from "react-icons/ai";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Table = (props) => {
   const [estado, setestado] = useState(props.c.state);
@@ -34,12 +34,18 @@ const Table = (props) => {
       }
     }
   };
-console.log(props);
+
   return (
     <tr>
-      <td><Link className="btn btn-outline-secondary btn-sm text-white" >
+      <td>
+      {props.d.cv !== undefined ? (
+      <a className="btn btn-outline-secondary btn-sm text-white"  href={"http://localhost:3001" + props.d.cv}>
         <BsFileText />
-      </Link></td>
+      </a>):( <button className="btn btn-outline-secondary btn-sm text-white" onClick={() => {
+        Swal.fire("Oops..","no tiene CV añadido", "error")
+      }}  >
+        <BsFileText />
+      </button> )}</td>
       <td>{props.d.firstname} {props.d.lastname}</td>
       <td>{props.c.emailcandidate}</td>
       <td>{props.c.experiences}</td>

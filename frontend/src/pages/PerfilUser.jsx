@@ -210,9 +210,9 @@ const PerfilUser = () => {
 
   return (
     <>
-      <div class="container-fluid">
-        <div class="row">
-          <div class=" col-12 col-sm-3 col-md-3 col-lg-2 sidebarMenu">
+      <div className="container-fluid">
+        <div className="row">
+          <div className=" col-12 col-sm-3 col-md-3 col-lg-2 sidebarMenu">
             <div>
               <div>
                 <Link to="/">
@@ -231,16 +231,22 @@ const PerfilUser = () => {
                 </h2>
               </div>
               <div className="d-none d-sm-block">
+               { UserSelec.imageUrl !== undefined ? (
                 <img
                   src={"http://localhost:3001" + UserSelec.imageUrl}
                   alt="logo"
                   className="mx-auto rounded-circle"
                   style={{ width: "150px" }}
-                />
+                />):(<img
+                  src={sombra}
+                  alt="logo"
+                  className="mx-auto rounded-circle"
+                  style={{ width: "150px" }}
+                />)}
 
                 <form onSubmit={guardarImage}>
                   <div className="imgPerfil mt-2 ml-3">
-                    <label for="file_input_id">
+                    <label htmlFor="file_input_id">
                       <AiOutlineEdit /> Foto de perfil
                     </label>
                     <input
@@ -309,7 +315,7 @@ const PerfilUser = () => {
           </div>
 
           <div
-            class="col-12 col-sm-9 col-md-9 col-lg-10"
+            className="col-12 col-sm-9 col-md-9 col-lg-10"
             style={{ height: "100vh" }}
           >
             <div>
