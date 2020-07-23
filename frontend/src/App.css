@@ -67,6 +67,12 @@ html {
   
 }
 
+.react-icons{
+  color:white;
+  display:flex;
+  justify-content: end;
+}
+
 .nav-link {
   color: white;
   font-size: 10pt;
@@ -81,8 +87,6 @@ html {
 }
 
 .sidebarMenuAdmin{
-  height: 100vh;
-  width: 25%;
   background-color: #0c0a59;
 }
 
@@ -104,8 +108,6 @@ html {
     
   }
   .sidebarMenuAdmin{
-    height: 100vh;
-    width: 30%;
     background-color: #0c0a59;
   }
   
@@ -120,7 +122,51 @@ html {
   
 }
 
+
+/* navbartesting */
+
+.vertical-nav {
+  min-width: 17rem;
+  width: 22rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+  background-color: #0c0a59;
+}
+
+#sidebar.active {
+  margin-left: -17rem;
+}
+
+#content.active {
+  width: 100%;
+  margin: 0;
+}
+
+
+
 @media (min-width: 768px) {
+  
+/* navbarTesint */
+#sidebar {
+  margin-left: -17rem;
+}
+#sidebar.active {
+  margin-left: 0;
+}
+#content {
+  width: 100%;
+  margin: 0;
+}
+#content.active {
+  margin-left: 17rem;
+  width: calc(100% - 17rem);
+}
+/* finNavbarTesting */
+
   .logoStyle{
     max-width: 160px ;
   }
@@ -193,8 +239,6 @@ html {
 
 
 .sidebarMenuAdmin{
-  height: 100vh;
-  width: 30%;
   background-color: #0c0a59;
 }
 
