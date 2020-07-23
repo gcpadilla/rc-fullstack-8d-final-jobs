@@ -26,8 +26,13 @@ const Register = () => {
         // setTimeout(() => {
         //   setredirec(true);
         // }, 1000);
-
-        await Swal.fire("genial", "se registro sactifactoriamente!", "success");
+        await Swal.fire({
+          icon: 'success',
+          title:  "se registro sactifactoriamente!",
+          showConfirmButton: false,
+          timer: 1000  
+        })
+        // await Swal.fire("genial", "se registro sactifactoriamente!", "success");
         setredirec(true);
       } catch (err) {
         if (err.response.data.message === undefined) {

@@ -3,6 +3,7 @@ import { BsFileText } from "react-icons/bs";
 import { AiTwotoneEdit } from "react-icons/ai";
 import Swal from "sweetalert2";
 import axios from "axios";
+// import { Link } from "react-router-dom";
 
 const Table = (props) => {
   const [estado, setestado] = useState(props.c.state);
@@ -15,11 +16,17 @@ const Table = (props) => {
         `http://localhost:3001/api/v1/offer/postulates/${props.c._id}/admin`,
         { state: estado }
       );
-      await Swal.fire(
-        "genial",
-        "se modifico correctamente la postulación",
-        "success"
-      );
+      await Swal.fire({
+        icon: 'success',
+        title:  `Se envio el mail al candidato`,
+        showConfirmButton: false,
+        timer: 1500  
+      }) 
+      // await Swal.fire(
+      //   "genial",
+      //   "se modifico correctamente la postulación",
+      //   "success"
+      // );
       setflag(true);
     } catch (err) {
       if (err.response.data.message === undefined) {
@@ -33,11 +40,18 @@ const Table = (props) => {
       }
     }
   };
+
   return (
     <tr>
-      <td><button className="btn btn-outline-secondary btn-sm text-white">
+      <td>
+      {props.d.cv !== undefined ? (
+      <a className="btn btn-outline-secondary btn-sm text-white"  href={"http://localhost:3001" + props.d.cv}>
         <BsFileText />
-      </button></td>
+      </a>):( <button className="btn btn-outline-secondary btn-sm text-white" onClick={() => {
+        Swal.fire("Oops..","no tiene CV añadido", "error")
+      }}  >
+        <BsFileText />
+      </button> )}</td>
       <td>{props.d.firstname} {props.d.lastname}</td>
       <td>{props.c.emailcandidate}</td>
       <td>{props.c.experiences}</td>

@@ -15,11 +15,11 @@ import {BsFillAlarmFill} from "react-icons/bs"
 import { IconContext } from "react-icons/lib";
 
 const Company = () => {
-  const [username, setUsername] = useState(localStorage.getItem("username")); // eslint-disable-line no-unused-vars
   const [display, setdisplay] = useState(2);
   const [data, setdata] = useState([]);
   const [id, setid] = useState("");
   const [idpost, setidpost] = useState("");
+  const username =localStorage.getItem("username")
   const history = useHistory();
 
   // TRAIGO LAS OFERTAS CREADAS
@@ -47,13 +47,19 @@ const Company = () => {
         "http://localhost:3001/api/v1/users/administrators/logout"
       );
       auth.logout();
-      await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
+      await sweetalert.fire({
+        icon: 'success',
+        title:  "sesion cerrada",
+        showConfirmButton: false,
+        timer: 1000  
+      }) 
+      // await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
       history.push("/");
       return;
     } catch (error) {}
   };
 
-  // SETEO EL LO Q SE VE AL EN ADMIN
+  // SELECCIONO EL DISPLAY EN LA PAGINA DE ADMIN
   const crearOferta = () => {
     setdisplay(1);
   };

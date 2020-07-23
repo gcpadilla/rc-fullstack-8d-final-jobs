@@ -538,6 +538,10 @@ label:hover{
   display:none;
 }
 
+#cv_input_id{
+  display:none;
+}
+
 /* .generalBody {
   height: 40rem;
 }

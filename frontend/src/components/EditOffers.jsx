@@ -15,11 +15,12 @@ const EditOffers = (props) => {
         UserSelec
       );
       setUserSelec({});
-      await Swal.fire(
-        "genial",
-        "se modifico correctamente la oferta",
-        "success"
-      );
+      await Swal.fire({
+  icon: 'success',
+  title: 'se modifico correctamente la oferta',
+  showConfirmButton: false,
+  timer: 1000
+}) 
       props.terminar();
     } catch (err) {
       if (err.response.data.message === undefined) {

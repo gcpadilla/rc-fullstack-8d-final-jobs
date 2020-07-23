@@ -21,7 +21,7 @@ const AdminEditPostulation = (props) => {
         `http://localhost:3001/api/v1/offers/${props.idpost}/postulations`
       );
       setcat(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     } catch (error) {}
   }, [props.idpost]);
 
@@ -32,6 +32,9 @@ const AdminEditPostulation = (props) => {
   useEffect(() => {
     getArticles();
   }, [getArticles]);
+  console.log(props);
+  console.log(cat);
+
 
   return (
     <div>
@@ -68,3 +71,4 @@ const AdminEditPostulation = (props) => {
 };
 
 export default AdminEditPostulation;
+
