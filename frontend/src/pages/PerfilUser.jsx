@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import {MdLocalOffer} from "react-icons/md";
-import {FaRegEdit} from "react-icons/fa";
+import { MdLocalOffer } from "react-icons/md";
+import { FaRegEdit } from "react-icons/fa";
 
 import { BsFilePost } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -169,7 +169,7 @@ const PerfilUser = () => {
 
   //FUNCIONES PARA CARGAR Y GUARDAR CV
   const cargarCv = (e) => {
-console.log(e.target);
+    console.log(e.target);
     guardarCv(e.target.files[0]);
   };
 
@@ -209,310 +209,322 @@ console.log(e.target);
   };
 
   return (
-    <div className=" companyStyle container-fluid">
-      <div className="row">
-        <nav
-          id="sidebarMenu"
-          className="col-md-3 col-lg-2 d-inline sidebar collapse sidebarMenu sticky-top "
-        >
-          <Link to="/">
-            <img
-              src={logo}
-              alt="logo"
-              loading="lazy"
-              className="logoStyle mb-3"
-            />
-          </Link>
-
-          <div className="sidebar-sticky d-flex flex-column justify-content-around mb-3">
-            <h2 className="textAdmin text-dark">
-              Bienvenido {UserSelec.username}
-            </h2>
-            {UserSelec.imageUrl!==undefined ?(<div>
-              <img
-                src={"http://localhost:3001" + UserSelec.imageUrl}
-                alt="sombra"
-                className="profilePH img-fluid mx-auto d-block rounded-circle"
-              />
-            </div>):(<div>
-              <img
-                src={sombra}
-                alt="sombra"
-                className="profilePH img-fluid mx-auto d-block rounded-circle"
-              />
-            </div>)
-            }
-            
-            <form onSubmit={guardarImage}>
-            <div className="imgPerfil mt-2 ml-4">
-                <label htmlFor="file_input_id" ><AiOutlineEdit/> Foto de perfil</label>
-                <input type="file" id="file_input_id" onChange={cargarImagen} accept="image/png, .jpg, image/gif" />
+    <>
+      <div class="container-fluid">
+        <div class="row">
+          <div class=" col-12 col-sm-3 col-md-3 col-lg-2 sidebarMenu">
+            <div>
+              <div>
+                <Link to="/">
+                  <img
+                    src={logo}
+                    alt="logo"
+                    loading="lazy"
+                    className="logoStyle"
+                  />
+                </Link>
               </div>
-            </form>{" "}
-            <ul className="nav flex-column d-flex mt-5">
-              <li className="nav-item">
+
+              <div className="d-none d-sm-block mt-4">
+                <h2 className="text-dark font-weight-bold text-center">
+                  Bienvenido {UserSelec.username}
+                </h2>
+              </div>
+              <div className="d-none d-sm-block">
+                <img
+                  src={"http://localhost:3001" + UserSelec.imageUrl}
+                  alt="logo"
+                  className="mx-auto rounded-circle"
+                  style={{ width: "150px" }}
+                />
+
+                <form onSubmit={guardarImage}>
+                  <div className="imgPerfil mt-2 ml-3">
+                    <label for="file_input_id">
+                      <AiOutlineEdit /> Foto de perfil
+                    </label>
+                    <input
+                      type="file"
+                      id="file_input_id"
+                      onChange={cargarImagen}
+                      accept="image/png, .jpg, image/gif"
+                    />
+                  </div>
+                </form>
+              </div>
+              <div className="d-flex flex-sm-column">
                 <button
                   onClick={() => {
                     setdisplay(0);
                     actualizar();
                   }}
-                  className="text-dark btn btn-link"
+                  className="text-dark text-left btn btn-link"
                 >
                   {" "}
-                 <FaRegEdit/> Modificar Perfil
+                  <FaRegEdit /> Editar Perfil
                 </button>
-              </li>
-              <li className="nav-item">
                 <button
                   onClick={() => {
                     setdisplay(2);
                     actualizar();
                   }}
-                  className="text-dark btn btn-link"
+                  className="text-dark text-left btn btn-link"
                 >
                   {" "}
-                 < BsFilePost/> Ver Postulaciones
+                  <BsFilePost /> Postulaciones
                 </button>
-              </li>
-              <li className="nav-item">
                 <button
                   onClick={() => {
                     setdisplay(3);
                     actualizar();
                   }}
-                  className="text-dark btn btn-link"
+                  className="text-dark text-left btn btn-link"
                 >
                   {" "}
-                  <MdLocalOffer/>Ofertas Publicadas{" "}
+                  <MdLocalOffer /> Ofertas{" "}
                 </button>
-              </li>
-              <li className="nav-item">
-              <form onSubmit={guardarCv} >
-            <div className="imgPerfil mt-2 ml-4">
-                <label   htmlFor="cv_input_id" ><AiFillFilePdf/> Añadir CV</label>
-                <input className="text-left" type="file" id="cv_input_id" onChange={cargarCv} accept=".doc, .docx,.ppt, .pptx,.txt,.pdf" />
-              </div>
-            </form>{" "}
-              </li>
-            </ul>
-            <ul className="nav flex-column d-flex mt-5">
-              <li className="nav-item">
+                  <div className="imgPerfil ">
+                <form onSubmit={guardarCv}>
+                    <label htmlFor="cv_input_id"  className="text-dark text-left btn btn-link">
+                      <AiFillFilePdf /> Añadir CV
+                    </label>
+                    <input
+                     
+                      type="file"
+                      id="cv_input_id"
+                      onChange={cargarCv}
+                      accept=".doc, .docx,.pdf"
+                      />
+                      </form>
+                  </div>
                 <button
                   onClick={signOutHandler}
-                  className="text-dark btn btn-link mt-auto"
+                  className="text-dark text-left btn btn-link mt-auto"
                 >
                   {" "}
                   Cerrar Sesión
                 </button>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
-        </nav>
 
-        <div className=" col-md-9 col-lg-10 companyData d-flex flex-column flex-wrap">
-          {display === 0 ? (
-            <div className="container">
-              <div className="text-center pb-5 form-group mb-3">
-                <h3 className="mt-4 titulos">Bienvenido</h3>
-                <h5 className="mb-4 texdo">Registro de Candidato</h5>
-                <p className="mb-4 textNews">
-                  {" "}
-                  Por favor, ingrese sus datos personales para iniciar tu
-                  proceso a tu nuevo trabajo.
-                </p>
-                <div className="mb-4">
-                  <form onSubmit={onsubmit}>
-                    <div className="form-group">
-                      <div className=" form-row ">
-                        <div className="form-group col-6">
-                          <label htmlFor="Name">Nombre</label>
-                          <input
-                            type="text"
-                            required
-                            className="form-control "
-                            name="firstname"
-                            defaultValue={UserSelec.firstname}
-                            onChange={onInputChange}
-                          />
-                        </div>
+          <div
+            class="col-12 col-sm-9 col-md-9 col-lg-10"
+            style={{ height: "100vh" }}
+          >
+            <div>
+              {display === 0 ? (
+                <div className="container">
+                  <div className="text-center pb-5 form-group mb-3">
+                    <h3 className="mt-4 titulos">Bienvenido</h3>
+                    <h5 className="mb-4 texdo">Registro de Candidato</h5>
+                    <p className="mb-4 textNews">
+                      {" "}
+                      Por favor, ingrese sus datos personales para iniciar tu
+                      proceso a tu nuevo trabajo.
+                    </p>
+                    <div className="mb-4">
+                      <form onSubmit={onsubmit}>
+                        <div className="form-group">
+                          <div className=" form-row ">
+                            <div className="form-group col-6">
+                              <label htmlFor="Name">Nombre</label>
+                              <input
+                                type="text"
+                                required
+                                className="form-control "
+                                name="firstname"
+                                defaultValue={UserSelec.firstname}
+                                onChange={onInputChange}
+                              />
+                            </div>
 
-                        <div className="form-group col-6">
-                          <label htmlFor="lastname">Apellido</label>
-                          <input
-                            type="text"
-                            required
-                            className="form-control"
-                            name="lastname"
-                            defaultValue={UserSelec.lastname}
-                            onChange={onInputChange}
-                          />
-                        </div>
-                      </div>
-                      <div className="form-row">
-                        <div className="form-group col-md-6">
-                          <label htmlFor="dni">Documento</label>
-                          <input
-                            type="number"
-                            required
-                            className="form-control"
-                            name="dni"
-                            defaultValue={UserSelec.dni}
-                            onChange={onInputChange}
-                          />
-                        </div>
-                      </div>
+                            <div className="form-group col-6">
+                              <label htmlFor="lastname">Apellido</label>
+                              <input
+                                type="text"
+                                required
+                                className="form-control"
+                                name="lastname"
+                                defaultValue={UserSelec.lastname}
+                                onChange={onInputChange}
+                              />
+                            </div>
+                          </div>
+                          <div className="form-row">
+                            <div className="form-group col-md-6">
+                              <label htmlFor="dni">Documento</label>
+                              <input
+                                type="number"
+                                required
+                                className="form-control"
+                                name="dni"
+                                defaultValue={UserSelec.dni}
+                                onChange={onInputChange}
+                              />
+                            </div>
+                          </div>
 
-                      <div className="form-row">
-                        <div className="form-group col-md-6">
-                          <label htmlFor="profession">
-                            Profesión Principal
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            className="form-control"
-                            name="profession"
-                            defaultValue={UserSelec.profession}
-                            onChange={onInputChange}
-                          />
-                        </div>
+                          <div className="form-row">
+                            <div className="form-group col-md-6">
+                              <label htmlFor="profession">
+                                Profesión Principal
+                              </label>
+                              <input
+                                type="text"
+                                required
+                                className="form-control"
+                                name="profession"
+                                defaultValue={UserSelec.profession}
+                                onChange={onInputChange}
+                              />
+                            </div>
 
-                        <div className="form-group col-md-6">
-                          <label htmlFor="exampleInputEmail1">
-                            Correo Elctrónico
-                          </label>
-                          <input
-                            type="email"
-                            required
-                            className="form-control"
-                            name="email"
-                            aria-describedby="emailHelp"
-                            defaultValue={UserSelec.email}
-                            onChange={onInputChange}
-                          />
-                        </div>
-                      </div>
+                            <div className="form-group col-md-6">
+                              <label htmlFor="exampleInputEmail1">
+                                Correo Elctrónico
+                              </label>
+                              <input
+                                type="email"
+                                required
+                                className="form-control"
+                                name="email"
+                                aria-describedby="emailHelp"
+                                defaultValue={UserSelec.email}
+                                onChange={onInputChange}
+                              />
+                            </div>
+                          </div>
 
-                      <div className="form-row">
-                        <div className="form-group col-md-6">
-                          <label htmlFor="username">Nombre de Usuario</label>
-                          <input
-                            type="text"
-                            required
-                            className="form-control"
-                            name="username"
-                            defaultValue={UserSelec.username}
-                            onChange={onInputChange}
-                          />
-                        </div>
+                          <div className="form-row">
+                            <div className="form-group col-md-6">
+                              <label htmlFor="username">
+                                Nombre de Usuario
+                              </label>
+                              <input
+                                type="text"
+                                required
+                                className="form-control"
+                                name="username"
+                                defaultValue={UserSelec.username}
+                                onChange={onInputChange}
+                              />
+                            </div>
 
-                        <div className="form-group col-md-3">
-                          {" "}
-                          <label htmlFor="inputPassword5">Contraseña</label>
-                          <input
-                            type="password"
-                            required
-                            defaultValue=""
-                            id="inputPassword5"
-                            name="password"
-                            className="form-control"
-                            aria-describedby="passwordHelpBlock"
-                            onChange={onInputChange}
-                          />
-                          <small
-                            id="passwordHelpBlock"
-                            className="form-text text-muted"
-                          >
-                            la password debe tener entre 8 y 20 caracteres,
-                            contener letras y numeros, tiene que contener por lo
-                            menos una mayuscula y una minuscula.
-                          </small>
+                            <div className="form-group col-md-3">
+                              {" "}
+                              <label htmlFor="inputPassword5">Contraseña</label>
+                              <input
+                                type="password"
+                                required
+                                defaultValue=""
+                                id="inputPassword5"
+                                name="password"
+                                className="form-control"
+                                aria-describedby="passwordHelpBlock"
+                                onChange={onInputChange}
+                              />
+                              <small
+                                id="passwordHelpBlock"
+                                className="form-text text-muted"
+                              >
+                                la password debe tener entre 8 y 20 caracteres,
+                                contener letras y numeros, tiene que contener
+                                por lo menos una mayuscula y una minuscula.
+                              </small>
+                            </div>
+                            <div className="form-group col-md-3">
+                              <label htmlFor="exampleInputPassword1">
+                                Repita la Contraseña
+                              </label>
+                              <input
+                                type="password"
+                                required
+                                className="form-control"
+                                name="password2"
+                                defaultValue=""
+                                onChange={onInputChange}
+                              />
+                            </div>
+                          </div>
                         </div>
-                        <div className="form-group col-md-3">
-                          <label htmlFor="exampleInputPassword1">
-                            Repita la Contraseña
-                          </label>
-                          <input
-                            type="password"
-                            required
-                            className="form-control"
-                            name="password2"
-                            defaultValue=""
-                            onChange={onInputChange}
-                          />
-                        </div>
-                      </div>
+                        <button
+                          type="submit"
+                          onSubmit={onsubmit}
+                          className="btn btn-success rounded-pill"
+                        >
+                          Modificar Registro
+                        </button>
+                      </form>
                     </div>
-                    <button
-                      type="submit"
-                      onSubmit={onsubmit}
-                      className="btn btn-success rounded-pill"
-                    >
-                      Modificar Registro
-                    </button>
-                  </form>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ) : (
-              <></>
-            )}
+              ) : (
+                <></>
+              )}
 
-          {display === 1 ? (
-            <div className="container">
-              <div className="text-center pb-5 form-group mb-3">
-                <h3 className="mt-4 titulos">Bienvenido</h3>
-                <h5 className="mb-4 texdo">Registro de Candidato</h5>
-                <p className="mb-4 textNews">
-                  {" "}
-                  Por favor, controle sus datos personales para iniciar el proceso de postulación
-                </p>
-                <div className="card">
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item align-content-start">
-                      NOMBRE: {UserSelec.firstname}
-                    </li>
-                    <li className="list-group-item">
-                      APELLIDO: {UserSelec.lastname}
-                    </li>
-                    <li className="list-group-item">
-                      USERNAME: {UserSelec.username}
-                    </li>
-                    <li className="list-group-item">
-                      Profesión: {UserSelec.profession}
-                    </li>
-                    <li className="list-group-item">
-                      EMAIL: {UserSelec.email}
-                    </li>
-                    <li className="list-group-item">DNI: {UserSelec.dni}</li>
-                    <li className="list-group-item">EDAD: {UserSelec.age}</li>
-                  </ul>
+              {display === 1 ? (
+                <div className="container">
+                  <div className="text-center pb-5 form-group mb-3">
+                    <h3 className="mt-4 titulos">Bienvenido</h3>
+                    <h5 className="mb-4 texdo">Registro de Candidato</h5>
+                    <p className="mb-4 textNews">
+                      {" "}
+                      Por favor, controle sus datos personales para iniciar el
+                      proceso de postulación
+                    </p>
+                    <div className="card">
+                      <ul className="list-group list-group-flush">
+                        <li className="list-group-item align-content-start">
+                          NOMBRE: {UserSelec.firstname}
+                        </li>
+                        <li className="list-group-item">
+                          APELLIDO: {UserSelec.lastname}
+                        </li>
+                        <li className="list-group-item">
+                          USERNAME: {UserSelec.username}
+                        </li>
+                        <li className="list-group-item">
+                          Profesión: {UserSelec.profession}
+                        </li>
+                        <li className="list-group-item">
+                          EMAIL: {UserSelec.email}
+                        </li>
+                        <li className="list-group-item">
+                          DNI: {UserSelec.dni}
+                        </li>
+                        <li className="list-group-item">
+                          EDAD: {UserSelec.age}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <></>
+              )}
+              {display === 2 ? (
+                <div>
+                  <PostulationInicio
+                    get={actualizar}
+                    datapostulation={datapostulation}
+                  />
+                </div>
+              ) : (
+                <></>
+              )}
+              {display === 3 ? (
+                <div>
+                  <OfertaInicioUser get={actualizar} datauser={datauser} />
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
-          ) : (
-              <></>
-            )}
-          {display === 2 ? (
-            <div>
-              <PostulationInicio
-                get={actualizar}
-                datapostulation={datapostulation}
-              />
-            </div>
-          ) : (
-              <></>
-            )}
-          {display === 3 ? (
-            <div>
-              <OfertaInicioUser get={actualizar} datauser={datauser} />
-            </div>
-          ) : (
-              <></>
-            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

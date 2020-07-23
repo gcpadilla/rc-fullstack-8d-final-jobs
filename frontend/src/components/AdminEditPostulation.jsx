@@ -71,3 +71,4 @@ const AdminEditPostulation = (props) => {
 };
 
 export default AdminEditPostulation;
+
