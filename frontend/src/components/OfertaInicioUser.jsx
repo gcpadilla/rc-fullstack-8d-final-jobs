@@ -4,12 +4,13 @@ import CardPostulation from "./CardPostulation";
 const OfertasInicioUser = (props) => {
   return (
     <>
-        <div className="d-flex- align-items-center my-5 generalBody">
-          <div className="titulares d-flex justify-content-center justify-content-md-arround my-3">
+        <div className="OfertasDeTrabajo d-flex flex-column my-5">
+          <div className="titulares d-flex d-flex justify-content-center justify-content-md-around">
             <h3 className="titulos col-10">Ofertas de trabajo</h3>
           </div>
+          
           <div className="container">
-            <div className="d-flex flex-wrap justify-content-center justify-content-md-start">
+            <div className="d-flex flex-wrap justify-content-sm-center justify-content-md-start">
               {props.datauser.map((a, i) => {
                 return (
                   <CardPostulation

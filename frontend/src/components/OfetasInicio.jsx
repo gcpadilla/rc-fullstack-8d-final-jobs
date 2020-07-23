@@ -22,8 +22,8 @@ const OfertasInicio= (props) => {
     getArticles();
   }, [getArticles]);
   return (
-      <div className="d-flex flex-column align-items-center my-5">
-        <div className="titulares d-flex justify-content-center justify-content-md-arround ">
+      <div className="OfertasDeTrabajo1 d-flex flex-column align-items-center my-5">
+        <div className="titulares d-flex justify-content-center justify-content-md-around ">
           <h3 className="infoCard mb-5">Ofertas de trabajo</h3>
         </div>
         <div className="d-flex flex-wrap justify-content-center justify-content-md-start">
