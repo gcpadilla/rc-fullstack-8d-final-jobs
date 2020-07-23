@@ -3,6 +3,7 @@ import { BsFileText } from "react-icons/bs";
 import { AiTwotoneEdit } from "react-icons/ai";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Table = (props) => {
   const [estado, setestado] = useState(props.c.state);
@@ -33,11 +34,12 @@ const Table = (props) => {
       }
     }
   };
+console.log(props);
   return (
     <tr>
-      <td><button className="btn btn-outline-secondary btn-sm text-white">
+      <td><Link className="btn btn-outline-secondary btn-sm text-white" >
         <BsFileText />
-      </button></td>
+      </Link></td>
       <td>{props.d.firstname} {props.d.lastname}</td>
       <td>{props.c.emailcandidate}</td>
       <td>{props.c.experiences}</td>

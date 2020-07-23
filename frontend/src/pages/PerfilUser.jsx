@@ -1,23 +1,26 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-// import { MdPlace, MdDescription, MdEventAvailable } from "react-icons/md";
+import {MdLocalOffer} from "react-icons/md";
+import {FaRegEdit} from "react-icons/fa";
+
+import { BsFilePost } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../utils/auth";
 import logo from "../images/RollingJobs.svg";
 import sombra from "../images/sombra4.png";
-import profilePH from "../images/profile.jpg";
+// import profilePH from "../images/profile.jpg";
 import PostulationInicio from "../components/PostulationInico";
 import OfertaInicioUser from "../components/OfertaInicioUser";
-import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineEdit, AiFillFilePdf } from "react-icons/ai";
 
 const PerfilUser = () => {
   const [display, setdisplay] = useState(1);
   const [UserSelec, setUserSelec] = useState({});
   const [datapostulation, setdatapostulation] = useState([]);
   const [datauser, setdatauser] = useState([]);
-  const [file, setfile] = useState(null);
+  // const [file, setfile] = useState(null);
   const history = useHistory();
 
   // TRAE LOS DATOS DE LAS OFERTAS Y POSTULACIONES
@@ -123,14 +126,12 @@ const PerfilUser = () => {
     }
   };
 
+  //FUNCIONES PARA CARGAR IMAGEN Y GUARDARLA
   const cargarImagen = (e) => {
-
-    setfile(e.target.files[0]);
-    console.log("imagen");
+    guardarImage(e.target.files[0]);
   };
 
   const guardarImage = async (f) => {
-    // e.preventDefault()
     try {
       if (f !== null) {
         const formData = new FormData();
@@ -165,7 +166,47 @@ const PerfilUser = () => {
       }
     }
   };
-  console.log(UserSelec.imageUrl);
+
+  //FUNCIONES PARA CARGAR Y GUARDAR CV
+  const cargarCv = (e) => {
+console.log(e.target);
+    guardarCv(e.target.files[0]);
+  };
+
+  const guardarCv = async (f) => {
+    try {
+      if (f !== null) {
+        const formData = new FormData();
+        formData.append("CV", f);
+        await axios.post(
+          "http://localhost:3001/api/v1/users/candidates/upCv",
+          formData,
+          {
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          }
+        );
+      }
+      Swal.fire({
+        icon: "success",
+        text: "Se guardo correctamente su curriculum vitae",
+        width: 250,
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    } catch (err) {
+      if (err.response.data.message === undefined) {
+        Swal.fire(
+          `Error de ${err.response.data.errors[0].param}`,
+          err.response.data.errors[0].msg,
+          "error"
+        );
+      } else {
+        Swal.fire("Oops..", err.response.data.message, "error");
+      }
+    }
+  };
 
   return (
     <div className=" companyStyle container-fluid">
@@ -204,7 +245,7 @@ const PerfilUser = () => {
             
             <form onSubmit={guardarImage}>
             <div className="imgPerfil mt-2 ml-4">
-                <label for="file_input_id" ><AiOutlineEdit/> Foto de perfil</label>
+                <label htmlFor="file_input_id" ><AiOutlineEdit/> Foto de perfil</label>
                 <input type="file" id="file_input_id" onChange={cargarImagen} accept="image/png, .jpg, image/gif" />
               </div>
             </form>{" "}
@@ -218,7 +259,7 @@ const PerfilUser = () => {
                   className="text-dark btn btn-link"
                 >
                   {" "}
-                  Modificar Perfil
+                 <FaRegEdit/> Modificar Perfil
                 </button>
               </li>
               <li className="nav-item">
@@ -230,7 +271,7 @@ const PerfilUser = () => {
                   className="text-dark btn btn-link"
                 >
                   {" "}
-                  Ver Postulaciones
+                 < BsFilePost/> Ver Postulaciones
                 </button>
               </li>
               <li className="nav-item">
@@ -242,8 +283,16 @@ const PerfilUser = () => {
                   className="text-dark btn btn-link"
                 >
                   {" "}
-                  Ofertas Publicadas{" "}
+                  <MdLocalOffer/>Ofertas Publicadas{" "}
                 </button>
+              </li>
+              <li className="nav-item">
+              <form onSubmit={guardarCv} >
+            <div className="imgPerfil mt-2 ml-4">
+                <label   htmlFor="cv_input_id" ><AiFillFilePdf/> Añadir CV</label>
+                <input className="text-left" type="file" id="cv_input_id" onChange={cargarCv} accept=".doc, .docx,.ppt, .pptx,.txt,.pdf" />
+              </div>
+            </form>{" "}
               </li>
             </ul>
             <ul className="nav flex-column d-flex mt-5">
