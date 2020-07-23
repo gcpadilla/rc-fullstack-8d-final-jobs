@@ -21,13 +21,18 @@ const LoginBody = (props) => {
         }
       );
       auth.login(response.data.token, response.data.username, response.data.role);
-
-      await sweetalert.fire(
-        "ADMINISTRADOR",
-        `Bienvenido ${username.trim()}`,
-        "success"
-      );
-      console.log("es un admin");
+      await sweetalert.fire({
+        icon: 'success',
+        title:  `Bienvenido ${username.trim()}`,
+        showConfirmButton: false,
+        timer: 1000
+      }) 
+      // await sweetalert.fire(
+      //   "ADMINISTRADOR",
+      //   `Bienvenido ${username.trim()}`,
+      //   "success"
+      // );
+      // console.log("es un admin");
 
       history.push("/company");
       return;
@@ -44,12 +49,18 @@ if (flag===true) {
       }
     );
     auth.login(response.data.token, response.data.username, response.data.role) ;
+    await sweetalert.fire({
+      icon: 'success',
+      title:  `Bienvenido ${username.trim()}`,
+      showConfirmButton: false,
+      timer: 1000
 
-    await sweetalert.fire(
-      "genial",
-      `Bienvenido ${username.trim()}`,
-      "success"
-    );
+    }) 
+    // await sweetalert.fire(
+    //   "genial",
+    //   `Bienvenido ${username.trim()}`,
+    //   "success"
+    // );
     props.setUsername(response.data.username);
     // props.user(response.data)
     history.push("/");

@@ -47,12 +47,18 @@ const FormPostulate = (props) => {
           UserSelec
         );
         setUserSelec({});
-        await Swal.fire(
-          "genial",
-          "se modifico correctamente la postulación",
-          "success"
-        );
-        props.cerrar();//CIERRA MODAL
+        await Swal.fire({
+          icon: "success",
+          title: "se modifico correctamente la postulación",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        // await Swal.fire(
+        //   "genial",
+        //   "se modifico correctamente la postulación",
+        //   "success"
+        // );
+        props.cerrar(); //CIERRA MODAL
       } catch (err) {
         if (err.response.data.message === undefined) {
           Swal.fire(
@@ -72,7 +78,13 @@ const FormPostulate = (props) => {
           UserSelec
         );
         setUserSelec({});
-        await Swal.fire("genial", "te postulaste correctamente", "success");
+        await Swal.fire({
+          icon: "success",
+          title: "te postulaste correctamente",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        // await Swal.fire("genial", "te postulaste correctamentefdffdfdf", "success");
         props.cerrar();
       } catch (err) {
         if (err.response.data.message === undefined) {
@@ -99,7 +111,9 @@ const FormPostulate = (props) => {
     <div className="d-flex flex-column align-items-center">
       <h4 className="titulos mb-3">
         {" "}
-        {props.postularse ? `Modificar Postulación de ${props.all.title}` : "Crear Postulación"}
+        {props.postularse
+          ? `Modificar Postulación de ${props.all.title}`
+          : "Crear Postulación"}
       </h4>
       <form onSubmit={onsubmit}>
         <div className="form-row">
@@ -153,13 +167,13 @@ const FormPostulate = (props) => {
           </div>
         </div>
         <Modal.Footer>
-          {props.postularse ? (//si es true aparecen los botones de borrar y modificar, de lo contrario esta el de crear
+          {props.postularse ? ( //si es true aparecen los botones de borrar y modificar, de lo contrario esta el de crear
             <div>
               <Button
                 variant="btn btn-danger rounded-pill mx-2"
                 onClick={onDelete}
               >
-               Borrar Postulación
+                Borrar Postulación
               </Button>
               <button type="submit" className="btn btn-success rounded-pill">
                 {" "}

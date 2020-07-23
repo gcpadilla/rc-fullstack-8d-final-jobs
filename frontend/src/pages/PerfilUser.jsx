@@ -119,7 +119,13 @@ const PerfilUser = () => {
     try {
       await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
       auth.logout();
-      await Swal.fire("", "sesion cerrada", "success");
+      await Swal.fire({
+        icon: 'success',
+        title:  "sesion cerrada",
+        showConfirmButton: false,
+        timer: 1000  
+      })
+      // await Swal.fire("", "sesion cerrada", "success");
       history.push("/");
     } catch (error) {
       Swal.fire("ERROR", "error de deslogueo", "error");
@@ -152,7 +158,7 @@ const PerfilUser = () => {
         text: "se cargo la imagen",
         width: 250,
         showConfirmButton: false,
-        timer: 2000,
+        timer: 1000,
       });
     } catch (err) {
       if (err.response.data.message === undefined) {
@@ -193,7 +199,7 @@ const PerfilUser = () => {
         text: "Se guardo correctamente su curriculum vitae",
         width: 250,
         showConfirmButton: false,
-        timer: 2000,
+        timer: 1000,
       });
     } catch (err) {
       if (err.response.data.message === undefined) {
@@ -210,9 +216,9 @@ const PerfilUser = () => {
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid ">
         <div className="row">
-          <div className=" col-12 col-sm-3 col-md-3 col-lg-2 sidebarMenu">
+          <div className=" col-12 col-sm-3 col-md-3 col-lg-2 sidebarMenuAdmin">
             <div>
               <div>
                 <Link to="/">
@@ -220,13 +226,13 @@ const PerfilUser = () => {
                     src={logo}
                     alt="logo"
                     loading="lazy"
-                    className="logoStyle"
+                    className="logoStyle  mb-3"
                   />
                 </Link>
               </div>
 
               <div className="d-none d-sm-block mt-4">
-                <h2 className="text-dark font-weight-bold text-center">
+                <h2 className="text-white font-weight-bold text-center">
                   Bienvenido {UserSelec.username}
                 </h2>
               </div>
@@ -245,7 +251,7 @@ const PerfilUser = () => {
                 />)}
 
                 <form onSubmit={guardarImage}>
-                  <div className="imgPerfil mt-2 ml-3">
+                  <div className="imgPerfil mt-2 ml-3 text-white">
                     <label htmlFor="file_input_id">
                       <AiOutlineEdit /> Foto de perfil
                     </label>
@@ -264,7 +270,7 @@ const PerfilUser = () => {
                     setdisplay(0);
                     actualizar();
                   }}
-                  className="text-dark text-left btn btn-link"
+                  className="text-white text-left btn btn-link"
                 >
                   {" "}
                   <FaRegEdit /> Editar Perfil
@@ -274,7 +280,7 @@ const PerfilUser = () => {
                     setdisplay(2);
                     actualizar();
                   }}
-                  className="text-dark text-left btn btn-link"
+                  className="text-white text-left btn btn-link"
                 >
                   {" "}
                   <BsFilePost /> Postulaciones
@@ -284,14 +290,14 @@ const PerfilUser = () => {
                     setdisplay(3);
                     actualizar();
                   }}
-                  className="text-dark text-left btn btn-link"
+                  className="text-white text-left btn btn-link"
                 >
                   {" "}
                   <MdLocalOffer /> Ofertas{" "}
                 </button>
                   <div className="imgPerfil ">
                 <form onSubmit={guardarCv}>
-                    <label htmlFor="cv_input_id"  className="text-dark text-left btn btn-link">
+                    <label htmlFor="cv_input_id"  className="text-white text-left btn btn-link">
                       <AiFillFilePdf /> Añadir CV
                     </label>
                     <input
@@ -305,7 +311,7 @@ const PerfilUser = () => {
                   </div>
                 <button
                   onClick={signOutHandler}
-                  className="text-dark text-left btn btn-link mt-auto"
+                  className="text-white text-left btn btn-link mt-auto"
                 >
                   {" "}
                   Cerrar Sesión

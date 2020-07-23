@@ -16,11 +16,17 @@ const Table = (props) => {
         `http://localhost:3001/api/v1/offer/postulates/${props.c._id}/admin`,
         { state: estado }
       );
-      await Swal.fire(
-        "genial",
-        "se modifico correctamente la postulación",
-        "success"
-      );
+      await Swal.fire({
+        icon: 'success',
+        title:  `Se envio el mail al candidato`,
+        showConfirmButton: false,
+        timer: 1500  
+      }) 
+      // await Swal.fire(
+      //   "genial",
+      //   "se modifico correctamente la postulación",
+      //   "success"
+      // );
       setflag(true);
     } catch (err) {
       if (err.response.data.message === undefined) {

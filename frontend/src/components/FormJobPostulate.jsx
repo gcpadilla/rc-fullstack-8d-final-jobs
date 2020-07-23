@@ -12,7 +12,13 @@ const FormJobPostulate = (props) => {
     try {
       await axios.post("http://localhost:3001/api/v1/offers", UserSelec);
       setUserSelec({});
-      await Swal.fire("genial", "se creo correctamente la oferta", "success");
+            await Swal.fire({
+  icon: 'success',
+  title: 'se creo correctamente la oferta',
+  showConfirmButton: false,
+  timer: 1000
+}) 
+      // await Swal.fire("genial", "se creo correctamente la oferta", "success");
       // props.crear();
       props.forzar();
     } catch (err) {
