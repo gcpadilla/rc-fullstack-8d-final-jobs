@@ -98,7 +98,7 @@ const Company = () => {
 
     });
   });
-
+  
   return (
     <>
     <nav className="navbar navbar-light bg-light d-flex justify-content-start">
@@ -259,7 +259,7 @@ const Company = () => {
 
               {display === 4 ? (
                 <div >
-                  <AdminEditPostulation idpost={idpost} />
+                  <AdminEditPostulation idpost={idpost}/>
                 </div>
               ) : (
                 <></>

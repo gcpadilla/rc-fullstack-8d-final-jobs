@@ -49,7 +49,7 @@ const EditOffers = (props) => {
     <div className="d-flex flex-column align-items-center">
       <h3 className="titulos my-3">Editar Oferta {props.oferta.summary}</h3>
 
-      <form>
+      <form  onSubmit={onsubmit}>
         <div className="form-row"> 
         
         
@@ -158,7 +158,7 @@ const EditOffers = (props) => {
         </div>
         </div>
 
-      </form>
+      
       <div className="buttonOptions d-flex justify-content-between">
       <button
                 onClick={props.terminar}
@@ -168,15 +168,17 @@ const EditOffers = (props) => {
               </button>
         <button
           type="submit"
-          onClick={onsubmit}
+         
           // onClick={() => props.crear(true)}
           className="btn btn-success rounded-pill"
         >
           Editar oferta
         </button>
+        
         {/* <Button className="mr-2" name="Crear oferta" /> */}
         {/* <Button className="mr-2" name="Publicar" /> */}
       </div>
+      </form>
     </div>
   );
 };

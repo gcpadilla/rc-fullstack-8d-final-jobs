@@ -53,8 +53,8 @@ if (flag===true) {
       icon: 'success',
       title:  `Bienvenido ${username.trim()}`,
       showConfirmButton: false,
+      width: 250,
       timer: 1000
-
     }) 
     // await sweetalert.fire(
     //   "genial",
