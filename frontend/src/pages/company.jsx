@@ -11,7 +11,6 @@ import logo from "../images/RollingJobswhite.svg";
 
 
 import $ from "jquery";
-import logoNavbar from '../images/rj.svg'
 import {BsFillAlarmFill} from "react-icons/bs"
 import { IconContext } from "react-icons/lib";
 
