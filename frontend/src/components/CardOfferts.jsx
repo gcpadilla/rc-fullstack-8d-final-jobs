@@ -38,7 +38,7 @@ const CardOfferts = (props) => {
   };
   console.log(props.data);
   return (
-    <div className="card m-2 shadow border-0 cartelJobs container d-flex flex-row justify-content-between align-items-center">
+    <div className="card m-2 shadow border-0d-flex flex-row justify-content-between align-items-center">
       <div className="card-body dataBody">
         <h3 className="card-text datosCartel"> {props.data.title} </h3>
         <h3 className="card-title tituloCartel">{props.data.summary}</h3>
