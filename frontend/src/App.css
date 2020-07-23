@@ -69,8 +69,11 @@ html {
 
 .react-icons{
   color:white;
-  display:flex;
   justify-content: end;
+}
+
+svg {
+  margin-top: -3px !important;
 }
 
 .nav-link {
@@ -288,12 +291,18 @@ html {
   background-position: right bottom;
 }
 
-.cartelCategories{
-    max-width: 12rem;
-    max-height: 10rem;
-    border-top-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-  }
+.cartelCategories {
+  padding: 1rem !important;
+  cursor: pointer;
+  width: 320px;
+  height: 150px;
+  -webkit-box-shadow: 1px -2px 20px 2px #000000;
+  box-shadow: 1px -2px 20px 2px #000000;
+  border: solid 1px #0c0a59 !important;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
   .tituloCartel {
     font-weight: 600;
     font-size: 14pt;
@@ -387,34 +396,25 @@ html {
     width: 50rem;
   
   }
-  .companyData {
-    height: 100wh;
-    width: 100vw;
-  }
+  
   .textAdmin{
     font-size: 1.5rem;
   }
-  .cartelCategories{
-    /* -webkit-border-top-left-radius: 10px;
-    -webkit-border-bottom-right-radius: 10px;
-    -moz-border-radius-topleft: 10px;
-    -moz-border-radius-bottomright: 10px; */
-      max-width: 15rem;
-      max-height: 10rem;
-      border-top-left-radius: 15px;
-      border-bottom-right-radius: 15px;
 
-     }
 
-     .cartelCategories :hover {
-      background-color: #0c0a59;
-      max-width: 15rem;
-      max-height: 10rem;
-      border-top-left-radius: 15px;
-      border-bottom-right-radius: 15px;
-      color: white;
-
-    }
+  .cartelCategories:hover {
+    padding: 1rem !important;
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    background-color: #0c0a59;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: white;
+    /* transition: background-color .4s; */
+  }
 
     .tituloCartel {
       font-weight: 600;
