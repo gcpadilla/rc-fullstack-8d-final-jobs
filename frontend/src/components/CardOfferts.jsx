@@ -36,7 +36,7 @@ const CardOfferts = (props) => {
   const onClickUpdateHandler = async () => {
     props.update(props.data);
   };
-
+  console.log(props.data);
   return (
     <div className="card m-2 shadow border-0 d-flex flex-row justify-content-between align-items-center">
       <div className="card-body dataBody" style={{ width:"315px"}}>
@@ -52,7 +52,7 @@ const CardOfferts = (props) => {
           className="card-text tiempoCartel"
           onClick={() => props.adminPostulate(props.data._id)}
         >
-        <p> Postulaciones</p>
+        <p> Postulaciones </p>
         </Link>
             <p
             className={`card-text tiempoCartel ${
@@ -62,8 +62,6 @@ const CardOfferts = (props) => {
             {props.data.active ? "Active" : "Inactiva"}
           </p></>
         )}
-    
-
         <p className="card-text tiempoCartel">{props.data.publicationdate}</p>
         {props.sola ? (
           <div></div>

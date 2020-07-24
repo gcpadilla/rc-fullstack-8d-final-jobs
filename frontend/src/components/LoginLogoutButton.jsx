@@ -31,7 +31,14 @@ function LoginLogoutButton(props) {
     try {
       await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
       auth.logout();
-      await sweetalert.fire("", "sesion cerrada", "success");
+      await sweetalert.fire({
+        icon: 'success',
+        title:  "sesion cerrada",
+        showConfirmButton: false,
+        width: 250,
+        timer: 1000
+      }) 
+      // await sweetalert.fire("", "sesion cerrada", "success");
       // setForceUpdate(true);
       history.push("/");
       handleClose();

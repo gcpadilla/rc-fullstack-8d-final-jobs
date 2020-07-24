@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../utils/auth";
-import logo from "../images/RollingJobs.svg";
+import logo from "../images/RollingJobswhite.svg";
 import sombra from "../images/sombra4.png";
 // import profilePH from "../images/profile.jpg";
 import PostulationInicio from "../components/PostulationInico";

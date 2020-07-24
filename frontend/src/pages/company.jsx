@@ -261,7 +261,7 @@ const Company = () => {
 
               {display === 4 ? (
                 <div >
-                  <AdminEditPostulation idpost={idpost} />
+                  <AdminEditPostulation idpost={idpost}/>
                 </div>
               ) : (
                 <></>
