@@ -52,6 +52,7 @@ const Company = () => {
         icon: 'success',
         title:  "sesion cerrada",
         showConfirmButton: false,
+        width: 250,
         timer: 1000  
       }) 
       // await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");

@@ -32,6 +32,7 @@ const AdminEditPostulation = (props) => {
   useEffect(() => {
     getArticles();
   }, [getArticles]);
+  
   console.log(props);
   console.log(cat);
 

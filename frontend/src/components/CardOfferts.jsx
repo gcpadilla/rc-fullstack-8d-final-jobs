@@ -39,28 +39,42 @@ const CardOfferts = (props) => {
   console.log(props.data);
   return (
     <div className="card m-2 shadow border-0 d-flex flex-row justify-content-between align-items-center">
-      <div className="card-body dataBody" style={{ width:"315px"}}>
+      <div className="card-body dataBody" style={{ width: "315px" }}>
         <h3 className="card-text tituloCartel "> {props.data.title} </h3>
-        <h3 className="card-text datosCartel" style={{height:"35px"}}>{props.data.summary}</h3>
+        <h3 className="card-text datosCartel" style={{ height: "35px" }}>
+          {props.data.summary}
+        </h3>
         <h3 className="card-text datosCartel">
           {props.data.workplace} - {props.data.availability}
         </h3>
         {props.sola ? (
           <></>
-        ) : (<>
-        <Link to="/company"
-          className="card-text tiempoCartel"
-          onClick={() => props.adminPostulate(props.data._id)}
-        >
-        <p> Postulaciones </p>
-        </Link>
+        ) : (
+          <>
+            {" "}
+            {props.data.candidateRef.length === 0 ? (
+              <p className="card-text tiempoCartel">
+                No hay postulaciones a esta oferta
+              </p>
+            ) : (
+              <>
+                <Link
+                  to="/company"
+                  className="card-text tiempoCartel"
+                  onClick={() => props.adminPostulate(props.data._id)}
+                >
+                  <p>Tiene {props.data.postulateRef.length} Postulaciones </p>
+                </Link>
+              </>
+            )}
             <p
-            className={`card-text tiempoCartel ${
-              props.data.active ? "text-success" : "text-muted"
-            }`}
-          >
-            {props.data.active ? "Active" : "Inactiva"}
-          </p></>
+              className={`card-text tiempoCartel ${
+                props.data.active ? "text-success" : "text-muted"
+              }`}
+            >
+              {props.data.active ? "Activa" : "Inactiva"}
+            </p>
+          </>
         )}
         <p className="card-text tiempoCartel">{props.data.publicationdate}</p>
         {props.sola ? (
