@@ -148,15 +148,15 @@ exports.getOffer = async (req, res) => {
 exports.getPostulationsOffer = async (req, res) => {
   try {
     if (!mongoose.Types.ObjectId.isValid(req.params.OfferId)) {
-      return res.status(404).json({ message: "Offer not found." });
+      return res.status(404).json({ message: "No se encontro oferta. . ." });
     }
 
     const offer = await offerModel
       .findById(req.params.OfferId)
-      .populate("postulateRef", "-candidateid")
+      .populate("postulateRef")
       .populate("candidateRef", "firstname lastname cv -_id");
     if (!offer) {
-      return res.status(404).json({ message: "Offer not found." });
+      return res.status(404).json({ message: "No se encontro oferta. . ." });
     }
 
     res.send(offer);

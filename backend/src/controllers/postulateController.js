@@ -231,7 +231,7 @@ exports.deletePostulate = async (req, res) => {
         .json({ message: "No de encontro postulación ..." });
     }
 
-    const postulate = await postulateModel.findByIdAndDelete(req.params.id);
+    let postulate = await postulateModel.findById(req.params.id);
 
     if (!postulate) {
       return res
@@ -239,7 +239,26 @@ exports.deletePostulate = async (req, res) => {
         .json({ message: "No de encontro postulación ..." });
     }
 
-    return res.status(200).send({ message: "Postulación eliminada" });
+    const oferta = await offerModel.findById(postulate.offerid)
+    const candidateRef = oferta.candidateRef
+    let indice = candidateRef.indexOf(res.locals.user.id);
+    candidateRef.splice(indice, 1);   
+    await offerModel.findByIdAndUpdate(
+      postulate.offerid,
+      {candidateRef:candidateRef},
+      { new: true }
+    );
+
+
+    postulate = await postulateModel.findByIdAndDelete(req.params.id);
+
+    if (!postulate) {
+      return res
+        .status(404)
+        .json({ message: "No de encontro postulación ..." });
+    }
+
+    return res.status(200).send({ message: "Se borro postulacion" });
   } catch (error) {
     res.status(500).send({ message: "Error al borrar postulación ..." });
   }
