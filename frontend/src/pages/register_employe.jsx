@@ -27,11 +27,12 @@ const Register = () => {
         //   setredirec(true);
         // }, 1000);
         await Swal.fire({
-          icon: 'success',
-          title:  "se registro sactifactoriamente!",
+          icon: "success",
+          title: "se registro sactifactoriamente!",
           showConfirmButton: false,
-          timer: 1000  
-        })
+          width: 250,
+          timer: 1000,
+        });
         // await Swal.fire("genial", "se registro sactifactoriamente!", "success");
         setredirec(true);
       } catch (err) {
@@ -57,17 +58,18 @@ const Register = () => {
   };
 
   const onInputChange = (e) => {
-    if (e.target.name==="age") {  
+    if (e.target.name === "age") {
       setUserSelec({
         ...UserSelec,
         [e.target.name]: e.target.value,
-        publicationdate: new Date().toLocaleString(), dateborn: e.target.value
-      });   
+        publicationdate: new Date().toLocaleString(),
+        dateborn: e.target.value,
+      });
     } else {
       setUserSelec({
         ...UserSelec,
         [e.target.name]: e.target.value,
-      }); 
+      });
     }
     console.log(UserSelec);
   };
