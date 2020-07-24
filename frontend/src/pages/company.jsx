@@ -21,6 +21,7 @@ const Company = () => {
   const [idpost, setidpost] = useState("");
   const username =localStorage.getItem("username")
   const history = useHistory();
+  const  [mostrarSidevar, setMostrarSidevar] = useState(false)
 
   // TRAIGO LAS OFERTAS CREADAS
   const getArticles = useCallback(async () => {
@@ -90,15 +91,15 @@ const Company = () => {
     </div>
   ));
 
-  $(function () {
-    // Sidebar toggle behavior
-    $("#sidebarCollapse").on("click", function () {
-      $("#sidebar, #content").toggleClass("active");
-      console.log('click')
+  // $(function () {
+  //   // Sidebar toggle behavior
+  //   $("#sidebarCollapse").on("click", function () {
+  //     $("#sidebar, #content").toggleClass("active");
+  //     console.log('click')
 
-    });
-  });
-  
+  //   });
+  // });
+
   return (
     <>
     <nav className="navbar navbar-light bg-light d-flex justify-content-start">
@@ -119,7 +120,7 @@ const Company = () => {
 
     <div className="container d-flex justify-content-center">
  
-<div className="col-md-3 col-lg-9 vertical-nav " id="sidebar">
+<div className={"col-md-3 col-lg-9 vertical-nav "+ (mostrarSidevar? "active" : "")} id="sidebar">
             <div className="py-4 px-3 mb-4">
               <div className="media d-flex justify-content-center">
                 <div className="media-body">
@@ -128,6 +129,7 @@ const Company = () => {
                 </div>
                   <button
                     id="sidebarCollapse"
+                    onClick={()=> setMostrarSidevar(!mostrarSidevar)}
                     type="button"
                     className="btn rounded-circle shadow-sm"
                   >
@@ -221,7 +223,7 @@ const Company = () => {
  */}
 
 
-          <div className=" col-md-9 col-lg-9 companyData d-flex flex-column flex-wrap" id="content">
+          <div className={" col-md-9 col-lg-9 companyData d-flex flex-column flex-wrap " + (mostrarSidevar? "active" : "")} id="content">
 
 
             <div className=""></div>
@@ -241,7 +243,7 @@ const Company = () => {
                   <h3 className="titulos text-center my-3 testingBackground">
                     Ofertas Publicadas
                   </h3>
-                  <div className="d-flex flex-wrap justify-content-center">
+                  <div className="d-flex flex-wrap justify-content-center justify-content-md-start">
                     {cards}
                   </div>
                 </div>
