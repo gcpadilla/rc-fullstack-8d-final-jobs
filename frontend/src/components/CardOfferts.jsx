@@ -36,7 +36,7 @@ const CardOfferts = (props) => {
   const onClickUpdateHandler = async () => {
     props.update(props.data);
   };
-  console.log(props.data.postulateRef.length);
+  // console.log(props.data.postulateRef.length);
   return (
     <div className="card m-2 shadow border-0 d-flex flex-row justify-content-between align-items-center">
       <div className="card-body dataBody" style={{ width:"315px"}}>
