@@ -36,7 +36,7 @@ const CardOfferts = (props) => {
   const onClickUpdateHandler = async () => {
     props.update(props.data);
   };
-  console.log(props.data);
+  console.log(props.data.postulateRef.length);
   return (
     <div className="card m-2 shadow border-0 d-flex flex-row justify-content-between align-items-center">
       <div className="card-body dataBody" style={{ width:"315px"}}>
@@ -47,19 +47,19 @@ const CardOfferts = (props) => {
         </h3>
         {props.sola ? (
           <></>
-        ) : (<>
+        ) : (<> {props.data.postulateRef.length === 0 ? ( <p className="card-text tiempoCartel">No hay postulaciones a esta oferta</p> ):(<>
         <Link to="/company"
           className="card-text tiempoCartel"
           onClick={() => props.adminPostulate(props.data._id)}
         >
-        <p> Postulaciones </p>
-        </Link>
+        <p>Tiene {props.data.postulateRef.length} Postulaciones </p>
+        </Link></>)}
             <p
             className={`card-text tiempoCartel ${
               props.data.active ? "text-success" : "text-muted"
             }`}
           >
-            {props.data.active ? "Active" : "Inactiva"}
+            {props.data.active ? "Activa" : "Inactiva"}
           </p></>
         )}
         <p className="card-text tiempoCartel">{props.data.publicationdate}</p>
