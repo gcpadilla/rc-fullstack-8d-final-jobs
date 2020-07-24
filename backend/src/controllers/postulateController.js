@@ -230,6 +230,7 @@ exports.deletePostulate = async (req, res) => {
         .status(404)
         .json({ message: "No de encontro postulación ..." });
     }
+    
 
     let postulate = await postulateModel.findById(req.params.id);
 
@@ -240,12 +241,18 @@ exports.deletePostulate = async (req, res) => {
     }
 
     const oferta = await offerModel.findById(postulate.offerid)
+    
     const candidateRef = oferta.candidateRef
-    let indice = candidateRef.indexOf(res.locals.user.id);
-    candidateRef.splice(indice, 1);   
+    let indiceCandidate = candidateRef.indexOf(res.locals.user.id);
+    candidateRef.splice(indiceCandidate, 1); 
+    
+    const postulateRef = oferta.postulateRef
+    let indicePostulate = candidateRef.indexOf(res.locals.user.id);
+    postulateRef.splice(indicePostulate, 1);   
+   
     await offerModel.findByIdAndUpdate(
       postulate.offerid,
-      {candidateRef:candidateRef},
+      {candidateRef:candidateRef, postulateRef:postulateRef},
       { new: true }
     );
 
