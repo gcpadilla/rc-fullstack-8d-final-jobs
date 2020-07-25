@@ -5,7 +5,6 @@ const cors = require("cors");
 const app = express();
 const morgan = require("morgan");
 const path = require('path');
-const port = 3001;
 
 app.use(cors());
 app.use(morgan("dev"));
@@ -33,6 +32,6 @@ app.use(function (req, res, next) {
   res.status(404).json({ message: "Sorry can't find that!" });
 });
 
-app.listen(port, () =>
-  console.log(`app listening at http://localhost:${port}`)
+app.listen(process.env.PORT, () =>
+  console.log(`app listening at http://localhost:${process.env.PORT}`)
 );
