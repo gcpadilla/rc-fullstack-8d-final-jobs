@@ -39,8 +39,9 @@ const AdminEditPostulation = (props) => {
 
   return (
     <div>
+      <div className="d-flex flex-nowrap justify-content-center">
       <CardOfferts data={data} key={data._id} sola={true} />
-
+      </div>
       <div>
         {cat.postulateRef.length > 0 ? (
           <div className="table-responsive">

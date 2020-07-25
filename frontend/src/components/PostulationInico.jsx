@@ -11,7 +11,7 @@ const PostulationInico = (props) => {
         </div>
         <div className="d-flex flex-column flex-wrap align-items-center my-5 ">
           <div className="container">
-            <div className="d-flex flex-wrap justify-content-sm-center justify-content-md-start">
+            <div className="d-flex flex-wrap justify-content-sm-center justify-content-md-start ml-4">
               {props.datapostulation.map((a, i) => {
                 return (
                   <CardPostulate

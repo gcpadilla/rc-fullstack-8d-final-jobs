@@ -13,7 +13,6 @@ const sendEmail = (email, subject, html ) => {
         from: "<reactjobs2020@gmail.com>",
         to: email,
         subject:subject,
-        //text: `Estas ${msg}, cominicate al telefono 12345 o dirigete a Av. Siempreviva 742`,
         html: html
     };
 
