@@ -80,9 +80,9 @@ const PerfilUser = () => {
           Swal.fire({
             icon: "success",
             text: "modificado correctamente...",
-            width: 250,
+            width: "auto",
             showConfirmButton: false,
-            timer: 2000,
+            timer: 1500,
           });
           // setUserSelec({});
           // setdisplay(1)
@@ -131,8 +131,8 @@ const PerfilUser = () => {
         icon: "success",
         title: "sesion cerrada",
         showConfirmButton: false,
-        width: 250,
-        timer: 1000,
+        width: "auto",
+        timer: 1500,
       });
       // await Swal.fire("", "sesion cerrada", "success");
       history.push("/");
@@ -165,9 +165,9 @@ const PerfilUser = () => {
       Swal.fire({
         icon: "success",
         text: "se cargo la imagen",
-        width: 250,
+        width: "auto",
         showConfirmButton: false,
-        timer: 1000,
+        timer: 1500,
       });
     } catch (err) {
       if (err.response.data.message === undefined) {
@@ -206,10 +206,10 @@ const PerfilUser = () => {
       setState({ isPaneOpenLeft: false })
       Swal.fire({
         icon: "success",
-        text: "Se guardo correctamente su curriculum vitae",
-        width: 240,
+        text: "Se guardo correctamente su </br> curriculum vitae",
+        width: "auto",
         showConfirmButton: false,
-        timer: 1000,
+        timer: 1500,
       });
     } catch (err) {
       if (err.response.data.message === undefined) {

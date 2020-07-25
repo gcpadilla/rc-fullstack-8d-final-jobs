@@ -14,10 +14,10 @@ const FormJobPostulate = (props) => {
       setUserSelec({});
             await Swal.fire({
   icon: 'success',
-  title: 'se creo correctamente la oferta',
+  title: 'se creo correctamente </br> la oferta',
   showConfirmButton: false,
-  width: 250,  
-  timer: 1000
+  width: "auto",  
+  timer: 1500
 }) 
       // await Swal.fire("genial", "se creo correctamente la oferta", "success");
       // props.crear();
@@ -70,6 +70,7 @@ const FormJobPostulate = (props) => {
             name="summary"
             placeholder="Resumen"
             onChange={onInputChange}
+            maxLength="80"
           />
         </div>
         <div className="col-md-6 col-sm-12 form-group">
@@ -144,7 +145,7 @@ const FormJobPostulate = (props) => {
         </div>
   
 
-      <div className="buttonOptions d-flex ">
+      <div className="buttonOptions d-flex mb-2">
       <button
                 onClick={props.forzar}
                 className="btn btn-danger rounded-pill mr-5"
