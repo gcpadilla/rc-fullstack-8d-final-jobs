@@ -29,7 +29,7 @@ const FormPostulate = (props) => {
             text: "Oferta eliminada...",
             width: 250,
             showConfirmButton: false,
-            timer: 2000,
+            timer: 1500,
           });
           props.cerrar();
         }
@@ -49,10 +49,10 @@ const FormPostulate = (props) => {
         setUserSelec({});
         await Swal.fire({
           icon: "success",
-          title: "se modifico correctamente la postulación",
+          title: "se modifico correctamente </br> la postulación",
           showConfirmButton: false,
-          width: 250,
-          timer: 1000,
+          width: "auto",
+          timer: 1500,
         });
         // await Swal.fire(
         //   "genial",
@@ -83,8 +83,8 @@ const FormPostulate = (props) => {
           icon: "success",
           title: "te postulaste correctamente",
           showConfirmButton: false,
-          width: 250,
-          timer: 1000,
+          width: "auto",
+          timer: 1500,
         });
         // await Swal.fire("genial", "te postulaste correctamentefdffdfdf", "success");
         props.cerrar();
@@ -120,23 +120,27 @@ const FormPostulate = (props) => {
       <form onSubmit={onsubmit}>
         <div className="form-row">
           <div className="input-group mb-3 col-md-6 col-sm-12">
-            <div className="input-group-prepend">
+            <label htmlFor="intendedsalary" className="formLabel ">
+              Sueldo pretendido
+            </label>
+            <div className="input-group-prepend col-md-11 col-sm-12">
               <span className="input-group-text" id="basic-addon1">
                 $
               </span>
+              <input
+                type="number"
+                required
+                className="form-control "
+                defaultValue={props.postu.intendedsalary}
+                name="intendedsalary"
+                placeholder="Sueldo Pretendido"
+                onChange={onInputChange}
+                aria-describedby="basic-addon1"
+              />
             </div>
-            <input
-              type="number"
-              required
-              className="form-control "
-              defaultValue={props.postu.intendedsalary}
-              name="intendedsalary"
-              placeholder="Sueldo Pretendido"
-              onChange={onInputChange}
-              aria-describedby="basic-addon1"
-            />
           </div>
           <div className="col-md-6 col-sm-12 form-group">
+            <label className="formLabel">Email de contacto</label>
             <input
               type="email"
               required
@@ -148,6 +152,7 @@ const FormPostulate = (props) => {
             />
           </div>
           <div className="col-md-6 col-sm-12 form-group">
+            <label className="formLabel">Experiencia Laboral</label>
             <textarea
               className="form-control"
               required
@@ -158,6 +163,7 @@ const FormPostulate = (props) => {
             />
           </div>
           <div className="col-md-6 col-sm-12 form-group">
+            <label className="formLabel">Estudios</label>
             <textarea
               className="form-control"
               required

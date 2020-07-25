@@ -20,7 +20,7 @@ const Table = (props) => {
         icon: 'success',
         title:  `Se envio el mail al candidato`,
         showConfirmButton: false,
-        width: 250,
+        width: "auto",
         timer: 1500  
       }) 
       // await Swal.fire(
@@ -46,7 +46,7 @@ console.log(props);
     <tr>
       <td>
       {props.d.cv !== undefined ? (
-      <a className="btn btn-outline-secondary btn-sm text-white"  href={"http://localhost:3001" + props.d.cv}>
+      <a className="btn btn-outline-secondary btn-sm text-white" target="_blank" rel="noopener noreferrer" href={"http://localhost:3001" + props.d.cv}>
         <BsFileText />
       </a>):( <button className="btn btn-outline-secondary btn-sm text-white" onClick={() => {
         Swal.fire("Oops..","no tiene CV añadido", "error")

@@ -2,18 +2,21 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { MdLocalOffer } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
-
 import { BsFilePost } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../utils/auth";
 import logo from "../images/RollingJobswhite.svg";
-import sombra from "../images/sombra4.png"
+import sombra from "../images/sombra4.png";
 // import profilePH from "../images/profile.jpg";
 import PostulationInicio from "../components/PostulationInico";
 import OfertaInicioUser from "../components/OfertaInicioUser";
 import { AiOutlineEdit, AiFillFilePdf } from "react-icons/ai";
+import SlidingPane from "react-sliding-pane";
+import "react-sliding-pane/dist/react-sliding-pane.css";
+import { IconContext } from "react-icons";
+import { MdMenu } from "react-icons/md";
 
 const PerfilUser = () => {
   const [display, setdisplay] = useState(1);
@@ -22,6 +25,11 @@ const PerfilUser = () => {
   const [datauser, setdatauser] = useState([]);
   // const [file, setfile] = useState(null);
   const history = useHistory();
+
+  const [state, setState] = useState({
+    isPaneOpen: false,
+    isPaneOpenLeft: false,
+  });
 
   // TRAE LOS DATOS DE LAS OFERTAS Y POSTULACIONES
   const actualizar = () => {
@@ -72,9 +80,9 @@ const PerfilUser = () => {
           Swal.fire({
             icon: "success",
             text: "modificado correctamente...",
-            width: 250,
+            width: "auto",
             showConfirmButton: false,
-            timer: 2000,
+            timer: 1500,
           });
           // setUserSelec({});
           // setdisplay(1)
@@ -120,12 +128,12 @@ const PerfilUser = () => {
       await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
       auth.logout();
       await Swal.fire({
-        icon: 'success',
-        title:  "sesion cerrada",
+        icon: "success",
+        title: "sesion cerrada",
         showConfirmButton: false,
-        width: 250,
-        timer: 1000  
-      })
+        width: "auto",
+        timer: 1500,
+      });
       // await Swal.fire("", "sesion cerrada", "success");
       history.push("/");
     } catch (error) {
@@ -157,9 +165,9 @@ const PerfilUser = () => {
       Swal.fire({
         icon: "success",
         text: "se cargo la imagen",
-        width: 250,
+        width: "auto",
         showConfirmButton: false,
-        timer: 1000,
+        timer: 1500,
       });
     } catch (err) {
       if (err.response.data.message === undefined) {
@@ -195,12 +203,13 @@ const PerfilUser = () => {
           }
         );
       }
+      setState({ isPaneOpenLeft: false })
       Swal.fire({
         icon: "success",
-        text: "Se guardo correctamente su curriculum vitae",
-        width: 250,
+        text: "Se guardo correctamente su </br> curriculum vitae",
+        width: "auto",
         showConfirmButton: false,
-        timer: 1000,
+        timer: 1500,
       });
     } catch (err) {
       if (err.response.data.message === undefined) {
@@ -218,11 +227,21 @@ const PerfilUser = () => {
 
   return (
     <>
-      <div className="container-fluid ">
-        <div className="row">
-          <div className=" col-12 col-sm-3 col-md-3 col-lg-2 sidebarMenuAdmin">
-            <div>
-              <div>
+      <div>
+        <div style={{ marginTop: "15px", marginLeft: "15px" }}>
+          <div  onClick={() => setState({ isPaneOpenLeft: true })}>
+            <IconContext.Provider value={{ size:"30px" }}><MdMenu/></IconContext.Provider> Menu
+        </div>
+        </div>
+        <SlidingPane
+          isOpen={state.isPaneOpenLeft}
+          from="left"
+          width="240px"
+          className="bg-primary"
+          onRequestClose={() => setState({ isPaneOpenLeft: false })}
+        >
+          <div>
+          <div>
                 <Link to="/">
                   <img
                     src={logo}
@@ -232,13 +251,12 @@ const PerfilUser = () => {
                   />
                 </Link>
               </div>
-
-              <div className="d-none d-sm-block mt-4">
+              <div>
                 <h2 className="text-white font-weight-bold text-center">
                   Bienvenido {UserSelec.username}
                 </h2>
               </div>
-              <div className="d-none d-sm-block">
+              <div>
                { UserSelec.imageUrl !== undefined ? (
                 <img
                   src={"http://localhost:3001" + UserSelec.imageUrl}
@@ -253,7 +271,7 @@ const PerfilUser = () => {
                 />)}
 
                 <form onSubmit={guardarImage}>
-                  <div className="imgPerfil mt-2 ml-3 text-white">
+                  <div className="imgPerfil btn-link text-white poiter mt-3">
                     <label htmlFor="file_input_id">
                       <AiOutlineEdit /> Foto de perfil
                     </label>
@@ -266,44 +284,46 @@ const PerfilUser = () => {
                   </div>
                 </form>
               </div>
-              <div className="d-flex flex-sm-column">
-                <button
+              <div className="">
+                <div
                   onClick={() => {
                     setdisplay(0);
+                    setState({ isPaneOpenLeft: false })
                     actualizar();
                   }}
-                  className="text-white text-left btn btn-link"
+                  className="btn-link text-white poiter mt-1"
                 >
                   {" "}
                   <FaRegEdit /> Editar Perfil
-                </button>
-                <button
+                </div>
+                <div
                   onClick={() => {
                     setdisplay(2);
+                    setState({ isPaneOpenLeft: false })
                     actualizar();
                   }}
-                  className="text-white text-left btn btn-link"
+                  className="btn-link text-white poiter mt-1"
                 >
                   {" "}
                   <BsFilePost /> Postulaciones
-                </button>
-                <button
+                </div>
+                <div
                   onClick={() => {
                     setdisplay(3);
+                    setState({ isPaneOpenLeft: false })
                     actualizar();
                   }}
-                  className="text-white text-left btn btn-link"
+                  className="btn-link text-white poiter mt-1"
                 >
                   {" "}
                   <MdLocalOffer /> Ofertas{" "}
-                </button>
+                </div>
                   <div className="imgPerfil ">
                 <form onSubmit={guardarCv}>
-                    <label htmlFor="cv_input_id"  className="text-white text-left btn btn-link">
+                    <label htmlFor="cv_input_id"  className="btn-link text-white poiter mt-1">
                       <AiFillFilePdf /> Añadir CV
                     </label>
                     <input
-                     
                       type="file"
                       id="cv_input_id"
                       onChange={cargarCv}
@@ -311,27 +331,23 @@ const PerfilUser = () => {
                       />
                       </form>
                   </div>
-                <button
+                <div
                   onClick={signOutHandler}
-                  className="text-white text-left btn btn-link mt-auto"
+                  className="btn-link text-white poiter mt-1"
                 >
                   {" "}
                   Cerrar Sesión
-                </button>
+                </div>
               </div>
-            </div>
           </div>
-
-          <div
-            className="col-12 col-sm-9 col-md-9 col-lg-10"
-            style={{ height: "100vh" }}
-          >
-            <div>
+        </SlidingPane>
+        <div>
+            <div className="container">
               {display === 0 ? (
-                <div className="container">
+                <div className="col-12">
                   <div className="text-center pb-5 form-group mb-3">
                     <h3 className="mt-4 titulos">Bienvenido</h3>
-                    <h5 className="mb-4 texdo">Registro de Candidato</h5>
+                    <h5 className="mb-4 texto">Registro de Candidato</h5>
                     <p className="mb-4 textNews">
                       {" "}
                       Por favor, ingrese sus datos personales para iniciar tu
@@ -342,7 +358,9 @@ const PerfilUser = () => {
                         <div className="form-group">
                           <div className=" form-row ">
                             <div className="form-group col-6">
-                              <label htmlFor="Name">Nombre</label>
+                              <label htmlFor="firstame" className="formLabel">
+                                Nombre
+                              </label>
                               <input
                                 type="text"
                                 required
@@ -354,7 +372,9 @@ const PerfilUser = () => {
                             </div>
 
                             <div className="form-group col-6">
-                              <label htmlFor="lastname">Apellido</label>
+                              <label htmlFor="lastname" className="formLabel">
+                                Apellido
+                              </label>
                               <input
                                 type="text"
                                 required
@@ -367,7 +387,9 @@ const PerfilUser = () => {
                           </div>
                           <div className="form-row">
                             <div className="form-group col-md-6">
-                              <label htmlFor="dni">Documento</label>
+                              <label htmlFor="dni" className="formLabel">
+                                Documento
+                              </label>
                               <input
                                 type="number"
                                 required
@@ -377,25 +399,8 @@ const PerfilUser = () => {
                                 onChange={onInputChange}
                               />
                             </div>
-                          </div>
-
-                          <div className="form-row">
                             <div className="form-group col-md-6">
-                              <label htmlFor="profession">
-                                Profesión Principal
-                              </label>
-                              <input
-                                type="text"
-                                required
-                                className="form-control"
-                                name="profession"
-                                defaultValue={UserSelec.profession}
-                                onChange={onInputChange}
-                              />
-                            </div>
-
-                            <div className="form-group col-md-6">
-                              <label htmlFor="exampleInputEmail1">
+                              <label htmlFor="email" className="formLabel">
                                 Correo Elctrónico
                               </label>
                               <input
@@ -409,59 +414,80 @@ const PerfilUser = () => {
                               />
                             </div>
                           </div>
+                        </div>
 
-                          <div className="form-row">
-                            <div className="form-group col-md-6">
-                              <label htmlFor="username">
-                                Nombre de Usuario
-                              </label>
-                              <input
-                                type="text"
-                                required
-                                className="form-control"
-                                name="username"
-                                defaultValue={UserSelec.username}
-                                onChange={onInputChange}
-                              />
-                            </div>
-
-                            <div className="form-group col-md-3">
-                              {" "}
-                              <label htmlFor="inputPassword5">Contraseña</label>
-                              <input
-                                type="password"
-                                required
-                                defaultValue=""
-                                id="inputPassword5"
-                                name="password"
-                                className="form-control"
-                                aria-describedby="passwordHelpBlock"
-                                onChange={onInputChange}
-                              />
-                              <small
-                                id="passwordHelpBlock"
-                                className="form-text text-muted"
-                              >
-                                la password debe tener entre 8 y 20 caracteres,
-                                contener letras y numeros, tiene que contener
-                                por lo menos una mayuscula y una minuscula.
-                              </small>
-                            </div>
-                            <div className="form-group col-md-3">
-                              <label htmlFor="exampleInputPassword1">
-                                Repita la Contraseña
-                              </label>
-                              <input
-                                type="password"
-                                required
-                                className="form-control"
-                                name="password2"
-                                defaultValue=""
-                                onChange={onInputChange}
-                              />
-                            </div>
+                        <div className="form-row">
+                          <div className="form-group col-md-6">
+                            <label htmlFor="profession" className="formLabel">
+                              Profesión Principal
+                            </label>
+                            <input
+                              type="text"
+                              required
+                              className="form-control"
+                              name="profession"
+                              defaultValue={UserSelec.profession}
+                              onChange={onInputChange}
+                            />
+                          </div>
+                          <div className="form-group col-md-6">
+                            <label
+                              htmlFor="exampleInputPassword1"
+                              className="formLabel"
+                            >
+                              Contraseña
+                            </label>
+                            <input
+                              type="password"
+                              required
+                              className="form-control"
+                              name="password2"
+                              defaultValue=""
+                              onChange={onInputChange}
+                            />
                           </div>
                         </div>
+                        <div className="form-row">
+                          <div className="form-group col-md-6">
+                            <label htmlFor="username" className="formLabel">
+                              Nombre de Usuario
+                            </label>
+                            <input
+                              type="text"
+                              required
+                              className="form-control"
+                              name="username"
+                              defaultValue={UserSelec.username}
+                              onChange={onInputChange}
+                            />
+                          </div>
+
+                          <div className="form-group col-md-6">
+                            {" "}
+                            <label htmlFor="password" className="formLabel">
+                              Repita la Contraseña
+                            </label>
+                            <input
+                              type="password"
+                              required
+                              defaultValue=""
+                              id="inputPassword5"
+                              name="password"
+                              className="form-control"
+                              aria-describedby="passwordHelpBlock"
+                              onChange={onInputChange}
+                            />
+                            <small
+                              id="passwordHelpBlock"
+                              className="form-text text-muted"
+                            >
+                              la password debe tener entre 8 y 20 caracteres,
+                              contener letras y numeros, tiene que contener por
+                              lo menos una mayuscula y una minuscula.
+                            </small>
+                          </div>
+                        </div>
+
                         <button
                           type="submit"
                           onSubmit={onsubmit}
@@ -536,7 +562,6 @@ const PerfilUser = () => {
               )}
             </div>
           </div>
-        </div>
       </div>
     </>
   );

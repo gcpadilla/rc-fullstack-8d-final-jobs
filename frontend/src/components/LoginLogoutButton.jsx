@@ -35,8 +35,8 @@ function LoginLogoutButton(props) {
         icon: 'success',
         title:  "sesion cerrada",
         showConfirmButton: false,
-        width: 250,
-        timer: 1000
+        width: "auto",
+        timer: 1500
       }) 
       // await sweetalert.fire("", "sesion cerrada", "success");
       // setForceUpdate(true);
@@ -77,7 +77,7 @@ function LoginLogoutButton(props) {
             onClick={handleShow}
           > <FiUser /> Iniciar Sesión
           </Button>
-          <Modal show={photo} onHide={handleClose}>
+          <Modal show={photo} onHide={handleClose} >
             <Modal.Header closeButton>
               <Modal.Title>
                 <div className="ml-5 d-flex flex-column align-items-center">
