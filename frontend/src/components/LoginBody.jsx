@@ -82,7 +82,8 @@ if (flag===true) {
           <form onSubmit={signInHandler}>
             <div className="form-group">
               {/* <label for="exampleInputEmail1">Email address</label> */}
-              <input
+
+              <input 
                 type="text"
                 required
                 className="form-control rounded-pill"
@@ -91,7 +92,7 @@ if (flag===true) {
                 onChange={(e) => setUsername(e.target.value)}
                 value={username}
                 placeholder="Nombre de Usuario"
-                autoFocus
+                autoFocus={true}
               />
             </div>
             <div className="form-group">
