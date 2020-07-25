@@ -39,7 +39,7 @@ axios.interceptors.response.use(
 
 ReactDOM.render(
   // <React.StrictMode>
-    <App classname="p-0"/>
+    <App className="p-0"/>
   // </React.StrictMode>
   ,document.getElementById('root')
 );
