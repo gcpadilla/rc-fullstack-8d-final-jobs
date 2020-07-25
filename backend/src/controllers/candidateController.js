@@ -8,6 +8,7 @@ const jsonwebtoken = require("jsonwebtoken");
 const candidateModel = require("../models/candidateModel");
 const uploadImagenModel = require("../models/uploadImageModel");
 const uploadCvModel = require("../models/uploadCvModel");
+const sendEmail = require("../middlewares/sendEmail");
 
 //crear candidato
 exports.createCandidate = async (req, res) => {
@@ -51,10 +52,24 @@ exports.createCandidate = async (req, res) => {
 
   try {
     await user.save();
+   
+    //----------------------Email------------------------------------------------------------
+
+      let email = candidateData.email;
+      let subject = "Registro a RollingJobs";
+      let html =  `<div style=" width: 500px">
+                      <h1> &#60; Roling<strong style="color:#312f73">Jobs</strong> &#62; </h1>
+                      <h2>Felicidades, ahora estas listo para buscar tu empleo soñado &#128578;</h2>
+                      <h3>
+                      Hola ${candidateData.firstname} ${candidateData.lastname},  el quipo de RollingJobs de ta la bienvenida, ingresa a http://${process.env.DB_HOST}:${process.env.PORT}/ , y comienza a buscar trabajo.
+                      </h3>
+                    </div>`;
+        await sendEmail(email, subject, html);
+      
+
+    //----------------------Email------------------------------------------------------------
     res.send({ message: "Se registro usuario correctamente.." });
-    console.log("se registro nuevo usuerio");
   } catch (err) {
-    console.log("error al registrar candidate");
     res.status(500).send(err);
   }
 };
