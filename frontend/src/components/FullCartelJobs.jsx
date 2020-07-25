@@ -17,11 +17,11 @@ function FullCartelJobs(props) {
 
                         <p className="card-text tiempoCartel">{props.tiempoPublicacion}</p>
                     </div>
-                    <div class="col-4">
+                    <div className="col-4">
                         <img className="imageLogoCard card-img rounded-circle btn-sm" src={props.logoEmpresa} alt="logo-empresa" />
                     </div>
-                    <Link to="/" class="btn btn-primary btn-sm rounded-pill mr-1 mt-1">{props.button} Testing</Link>
-                    <Link to="/" class="btn btn-primary btn-sm rounded-pill mr-1 mt-1">{props.button} Testing</Link>
+                    <Link to="/" className="btn btn-primary btn-sm rounded-pill mr-1 mt-1">{props.button} Testing</Link>
+                    <Link to="/" className="btn btn-primary btn-sm rounded-pill mr-1 mt-1">{props.button} Testing</Link>
 
 
                 </div>
