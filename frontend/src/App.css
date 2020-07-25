@@ -211,8 +211,8 @@ svg {
   height: 40rem;
   background: url(./images/lunaAustronaut.svg) no-repeat;
   background-color: #312f73;
+  background-attachment: fixed;
   background-position: center;
-  border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
   background-position: bottom;
 }
