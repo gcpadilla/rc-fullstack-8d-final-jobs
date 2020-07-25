@@ -8,20 +8,27 @@ import EditOffers from "../components/EditOffers";
 import AdminEditPostulation from "../components/AdminEditPostulation";
 import auth from "../utils/auth";
 import logo from "../images/RollingJobswhite.svg";
+import SlidingPane from "react-sliding-pane";
+import "react-sliding-pane/dist/react-sliding-pane.css";
+import { IconContext } from "react-icons";
+import { MdMenu } from "react-icons/md";
 
 
 import $ from "jquery";
-import {BsFillAlarmFill} from "react-icons/bs"
-import { IconContext } from "react-icons/lib";
+import { BsFillAlarmFill } from "react-icons/bs"
 
 const Company = () => {
   const [display, setdisplay] = useState(2);
   const [data, setdata] = useState([]);
   const [id, setid] = useState("");
   const [idpost, setidpost] = useState("");
-  const username =localStorage.getItem("username")
+  const username = localStorage.getItem("username")
   const history = useHistory();
-  const  [mostrarSidevar, setMostrarSidevar] = useState(false)
+  const [mostrarSidevar, setMostrarSidevar] = useState(false)
+  const [state, setState] = useState({
+    isPaneOpen: false,
+    isPaneOpenLeft: false,
+  });
 
   // TRAIGO LAS OFERTAS CREADAS
   const getArticles = useCallback(async () => {
@@ -50,23 +57,25 @@ const Company = () => {
       auth.logout();
       await sweetalert.fire({
         icon: 'success',
-        title:  "sesion cerrada",
+        title: "sesion cerrada",
         showConfirmButton: false,
         width: 250,
-        timer: 1000  
-      }) 
+        timer: 1000
+      })
       // await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
       history.push("/");
       return;
-    } catch (error) {}
+    } catch (error) { }
   };
 
   // SELECCIONO EL DISPLAY EN LA PAGINA DE ADMIN
   const crearOferta = () => {
+    setState({ isPaneOpenLeft: false })
     setdisplay(1);
   };
   const mostrarOfertas = () => {
     getArticles();
+    setState({ isPaneOpenLeft: false })
     setdisplay(2);
   };
   const update = (oferta) => {
@@ -103,174 +112,107 @@ const Company = () => {
 
   return (
     <>
-    <nav className="navbar navbar-light bg-light d-flex justify-content-start">
-    {/* <button
-        id="sidebarCollapse"
-        type="button"
-        className="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"
-      >
-        <i className="fa fa-bars mr-2"></i>
-        <small className="text-uppercase font-weight-bold">Toggle</small>
-      </button> */}
-
-</nav>
-
-
-
-
-
-    <div className="container d-flex justify-content-center">
- 
-<div className={"col-md-3 col-lg-9 vertical-nav "+ (mostrarSidevar? "active" : "")} id="sidebar">
-            <div className="py-4 px-3 mb-4">
-              <div className="media d-flex justify-content-center">
-                <div className="media-body">
-                  <p className="m-0 text-white">Bienvenido</p>
-                  <h4 className="m-0 text-white"> {username}</h4>
-                </div>
-                  <button
-                    id="sidebarCollapse"
-                    onClick={()=> setMostrarSidevar(!mostrarSidevar)}
-                    type="button"
-                    className="btn rounded-circle shadow-sm"
-                  >
-                  <IconContext.Provider value={{ className: 'react-icons' }}>
-                    <div>
-                  <BsFillAlarmFill />
+      <div>
+        <div style={{ marginTop: "15px", marginLeft: "15px" }}>
+          <div onClick={() => setState({ isPaneOpenLeft: true })}>
+            <IconContext.Provider value={{ size: "30px" }}><MdMenu /></IconContext.Provider> Menu
+        </div>
+        </div>
+        <SlidingPane
+          isOpen={state.isPaneOpenLeft}
+          from="left"
+          width="240px"
+          className="bg-primary"
+          onRequestClose={() => setState({ isPaneOpenLeft: false })}
+        >
+          <div>
+            <div>
+              <h3>Bienvenido</h3>
+              <h4> {username}</h4>
+            </div>
+          </div>
+          <div className="d-flex flex-column">
+            <div>
+              <div
+                onClick={crearOferta}
+                className="btn-link text-white poiter my-2"
+              >
+                {" "}
+                      Crear Ofertas
+                    </div>
+            </div>
+            <div>
+              <div
+                onClick={mostrarOfertas}
+                className="btn-link text-white poiter mb-2"
+              >
+                {" "}
+                      Ofertas publicadas
+                    </div>
+            </div>
+            <div>
+              <div
+                onClick={signOutHandler}
+                className="btn-link text-white poiter mb-2"
+              >
+                {" "}
+                      Cerrar Sesión
+                    </div>{" "}
+            </div>
+          </div>
+        </SlidingPane>
+      </div>
+      <div className="container">
+              <div className="row">
+                {display === 1 ? (
+                  <div className="container">
+                    <div className="col-11">
+                    <FormJobPostulate
+                      // crear={crearOferta}
+                      forzar={forzar}
+                    />
+                    </div>
                   </div>
-
-                  </IconContext.Provider>
-                  </button>
+                ) : (
+                  <></>
+                )}
+                {display === 2 ? (
+                  <div className="container">
+                    <div className="col-11">
+                      <h3 className="text-center">
+                        Ofertas Publicadas
+                      </h3>
+                      <div className="d-flex flex-wrap justify-content-center justify-content-md-start">
+                        {cards}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <></>
+                )}
+                
+                {display === 3 ? (
+                  <div>
+                    <EditOffers oferta={id} terminar={mostrarOfertas} />
+                  </div>
+                ) : (
+                  <></>
+                )}
+                
+                {display === 4 ? (
+                  <>
+                  <div className="col-1">
+                  </div>
+                  <div className="col-11">
+                    <AdminEditPostulation idpost={idpost}/>
+                  </div>
+                  </>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
 
-            <ul className="nav flex-column  mb-0">
-              <li className="nav-item">
-                <button
-                  onClick={crearOferta}
-                  className="text-white btn btn-link"
-                >
-                  {" "}
-                  Crear Ofertas
-                </button>
-              </li>
-              <li className="nav-item">
-                <button
-                  onClick={mostrarOfertas}
-                  className="text-white btn btn-link"
-                >
-                  {" "}
-                  Ofertas Publicadas
-                </button>
-              </li>
-              <li className="nav-item">
-                <button
-                  onClick={signOutHandler}
-                  className="text-white btn btn-link mt-auto"
-                >
-                  {" "}
-                  Cerrar Sesión
-                </button>{" "}
-              </li>
-            </ul>
-          </div>
-          {/* <nav
-            id="sidebarMenu"
-            className="col-md-3 col-lg-3 d-inline sidebar collapse sidebarMenuAdmin sticky-top "
-          >
-            <Link to="/">
-              <img
-                src={logo}
-                alt="logo"
-                loading="lazy"
-                className="logoStyle mb-3"
-              />
-            </Link>
-            <div className="sidebar-sticky d-flex flex-column justify-content-around mb-3">
-              <h2 className="textAdmin text-white">Bienvenido {username}</h2>
-              <ul className="nav d-flex flex-column mt-5">
-                <li className="nav-item">
-                  <button
-                    onClick={crearOferta}
-                    className="text-white btn btn-link"
-                  >
-                    {" "}
-                    Crear Ofertas
-                  </button>
-                </li>
-                <li className="nav-item">
-                  <button
-                    onClick={mostrarOfertas}
-                    className="text-white btn btn-link"
-                  >
-                    {" "}
-                    Ofertas Publicadas
-                  </button>
-                </li>
-              </ul>
-              <ul className="nav flex-column d-flex mt-5">
-                <li className="nav-item">
-                  <button
-                    onClick={signOutHandler}
-                    className="text-white btn btn-link mt-auto"
-                  >
-                    {" "}
-                    Cerrar Sesión
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </nav>
- */}
-
-
-          <div className={" col-md-9 col-lg-9 companyData d-flex flex-column flex-wrap " + (mostrarSidevar? "active" : "")} id="content">
-
-
-            <div className=""></div>
-            <div className="">
-              {display === 1 ? (
-                <div>
-                  <FormJobPostulate
-                    // crear={crearOferta}
-                    forzar={forzar}
-                  />
-                </div>
-              ) : (
-                <></>
-              )}
-              {display === 2 ? (
-                <div>
-                  <h3 className="titulos text-center my-3 testingBackground">
-                    Ofertas Publicadas
-                  </h3>
-                  <div className="d-flex flex-wrap justify-content-center justify-content-md-start">
-                    {cards}
-                  </div>
-                </div>
-              ) : (
-                <></>
-              )}
-
-              {display === 3 ? (
-                <div>
-                  <EditOffers oferta={id} terminar={mostrarOfertas} />
-                </div>
-              ) : (
-                <></>
-              )}
-
-              {display === 4 ? (
-                <div >
-                  <AdminEditPostulation idpost={idpost}/>
-                </div>
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
-        </div>
-  
     </>
   );
 };

@@ -21,6 +21,12 @@ p, label  {
   font-family: 'Poppins', sans-serif;
   font-size: 8pt;
 }
+.poiter{
+  cursor: pointer;
+}
+.poiter:hover{
+  color: blue !important;
+}
 
 
 html {

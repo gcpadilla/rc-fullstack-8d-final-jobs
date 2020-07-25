@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { MdLocalOffer } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
-
 import { BsFilePost } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -14,6 +13,10 @@ import sombra from "../images/sombra4.png";
 import PostulationInicio from "../components/PostulationInico";
 import OfertaInicioUser from "../components/OfertaInicioUser";
 import { AiOutlineEdit, AiFillFilePdf } from "react-icons/ai";
+import SlidingPane from "react-sliding-pane";
+import "react-sliding-pane/dist/react-sliding-pane.css";
+import { IconContext } from "react-icons";
+import { MdMenu } from "react-icons/md";
 
 const PerfilUser = () => {
   const [display, setdisplay] = useState(1);
@@ -22,6 +25,11 @@ const PerfilUser = () => {
   const [datauser, setdatauser] = useState([]);
   // const [file, setfile] = useState(null);
   const history = useHistory();
+
+  const [state, setState] = useState({
+    isPaneOpen: false,
+    isPaneOpenLeft: false,
+  });
 
   // TRAE LOS DATOS DE LAS OFERTAS Y POSTULACIONES
   const actualizar = () => {
@@ -195,10 +203,11 @@ const PerfilUser = () => {
           }
         );
       }
+      setState({ isPaneOpenLeft: false })
       Swal.fire({
         icon: "success",
         text: "Se guardo correctamente su curriculum vitae",
-        width: 250,
+        width: 240,
         showConfirmButton: false,
         timer: 1000,
       });
@@ -218,11 +227,21 @@ const PerfilUser = () => {
 
   return (
     <>
-      <div className="container-fluid ">
-        <div className="row">
-          <div className=" col-12 col-sm-3 col-md-3 col-lg-2 sidebarMenuAdmin">
-            <div>
-              <div>
+      <div>
+        <div style={{ marginTop: "15px", marginLeft: "15px" }}>
+          <div  onClick={() => setState({ isPaneOpenLeft: true })}>
+            <IconContext.Provider value={{ size:"30px" }}><MdMenu/></IconContext.Provider> Menu
+        </div>
+        </div>
+        <SlidingPane
+          isOpen={state.isPaneOpenLeft}
+          from="left"
+          width="240px"
+          className="bg-primary"
+          onRequestClose={() => setState({ isPaneOpenLeft: false })}
+        >
+          <div>
+          <div>
                 <Link to="/">
                   <img
                     src={logo}
@@ -232,31 +251,27 @@ const PerfilUser = () => {
                   />
                 </Link>
               </div>
-
-              <div className="d-none d-sm-block mt-4">
+              <div>
                 <h2 className="text-white font-weight-bold text-center">
                   Bienvenido {UserSelec.username}
                 </h2>
               </div>
-              <div className="d-none d-sm-block">
-                {UserSelec.imageUrl !== undefined ? (
-                  <img
-                    src={"http://localhost:3001" + UserSelec.imageUrl}
-                    alt="logo"
-                    className="mx-auto rounded-circle"
-                    style={{ width: "150px" }}
-                  />
-                ) : (
-                  <img
-                    src={sombra}
-                    alt="logo"
-                    className="mx-auto rounded-circle"
-                    style={{ width: "150px" }}
-                  />
-                )}
+              <div>
+               { UserSelec.imageUrl !== undefined ? (
+                <img
+                  src={"http://localhost:3001" + UserSelec.imageUrl}
+                  alt="logo"
+                  className="mx-auto rounded-circle"
+                  style={{ width: "150px" }}
+                />):(<img
+                  src={sombra}
+                  alt="logo"
+                  className="mx-auto rounded-circle"
+                  style={{ width: "150px" }}
+                />)}
 
                 <form onSubmit={guardarImage}>
-                  <div className="imgPerfil mt-2 ml-3 text-white">
+                  <div className="imgPerfil btn-link text-white poiter mt-3">
                     <label htmlFor="file_input_id">
                       <AiOutlineEdit /> Foto de perfil
                     </label>
@@ -269,43 +284,43 @@ const PerfilUser = () => {
                   </div>
                 </form>
               </div>
-              <div className="d-flex flex-sm-column">
-                <button
+              <div className="">
+                <div
                   onClick={() => {
                     setdisplay(0);
+                    setState({ isPaneOpenLeft: false })
                     actualizar();
                   }}
-                  className="text-white text-left btn btn-link"
+                  className="btn-link text-white poiter mt-1"
                 >
                   {" "}
                   <FaRegEdit /> Editar Perfil
-                </button>
-                <button
+                </div>
+                <div
                   onClick={() => {
                     setdisplay(2);
+                    setState({ isPaneOpenLeft: false })
                     actualizar();
                   }}
-                  className="text-white text-left btn btn-link"
+                  className="btn-link text-white poiter mt-1"
                 >
                   {" "}
                   <BsFilePost /> Postulaciones
-                </button>
-                <button
+                </div>
+                <div
                   onClick={() => {
                     setdisplay(3);
+                    setState({ isPaneOpenLeft: false })
                     actualizar();
                   }}
-                  className="text-white text-left btn btn-link"
+                  className="btn-link text-white poiter mt-1"
                 >
                   {" "}
                   <MdLocalOffer /> Ofertas{" "}
-                </button>
-                <div className="imgPerfil ">
-                  <form onSubmit={guardarCv}>
-                    <label
-                      htmlFor="cv_input_id"
-                      className="text-white text-left btn btn-link"
-                    >
+                </div>
+                  <div className="imgPerfil ">
+                <form onSubmit={guardarCv}>
+                    <label htmlFor="cv_input_id"  className="btn-link text-white poiter mt-1">
                       <AiFillFilePdf /> Añadir CV
                     </label>
                     <input
@@ -313,30 +328,26 @@ const PerfilUser = () => {
                       id="cv_input_id"
                       onChange={cargarCv}
                       accept=".doc, .docx,.pdf"
-                    />
-                  </form>
-                </div>
-                <button
+                      />
+                      </form>
+                  </div>
+                <div
                   onClick={signOutHandler}
-                  className="text-white text-left btn btn-link mt-auto"
+                  className="btn-link text-white poiter mt-1"
                 >
                   {" "}
                   Cerrar Sesión
-                </button>
+                </div>
               </div>
-            </div>
           </div>
-
-          <div
-            className="col-12 col-sm-9 col-md-9 col-lg-10"
-            style={{ height: "100vh" }}
-          >
-            <div>
+        </SlidingPane>
+        <div>
+            <div className="container">
               {display === 0 ? (
-                <div className="container">
+                <div className="col-12">
                   <div className="text-center pb-5 form-group mb-3">
                     <h3 className="mt-4 titulos">Bienvenido</h3>
-                    <h5 className="mb-4 texdo">Registro de Candidato</h5>
+                    <h5 className="mb-4 texto">Registro de Candidato</h5>
                     <p className="mb-4 textNews">
                       {" "}
                       Por favor, ingrese sus datos personales para iniciar tu
@@ -551,7 +562,6 @@ const PerfilUser = () => {
               )}
             </div>
           </div>
-        </div>
       </div>
     </>
   );
