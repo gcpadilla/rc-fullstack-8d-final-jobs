@@ -14,9 +14,6 @@ import { IconContext } from "react-icons";
 import { MdMenu } from "react-icons/md";
 
 
-import $ from "jquery";
-import { BsFillAlarmFill } from "react-icons/bs"
-
 const Company = () => {
   const [display, setdisplay] = useState(2);
   const [data, setdata] = useState([]);
@@ -24,7 +21,6 @@ const Company = () => {
   const [idpost, setidpost] = useState("");
   const username = localStorage.getItem("username")
   const history = useHistory();
-  const [mostrarSidevar, setMostrarSidevar] = useState(false)
   const [state, setState] = useState({
     isPaneOpen: false,
     isPaneOpenLeft: false,
@@ -59,8 +55,8 @@ const Company = () => {
         icon: 'success',
         title: "sesion cerrada",
         showConfirmButton: false,
-        width: 250,
-        timer: 1000
+        width: "auto",
+        timer: 1500
       })
       // await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
       history.push("/");
@@ -101,14 +97,6 @@ const Company = () => {
     </div>
   ));
 
-  // $(function () {
-  //   // Sidebar toggle behavior
-  //   $("#sidebarCollapse").on("click", function () {
-  //     $("#sidebar, #content").toggleClass("active");
-  //     console.log('click')
-
-  //   });
-  // });
 
   return (
     <>
@@ -127,24 +115,23 @@ const Company = () => {
         >
           <div>
             <div>
-              <h3>Bienvenido</h3>
-              <h4> {username}</h4>
+              <h2 className="text-white">Bienvenido</h2>
+              <h4 className="text-white mb-5"> {username}</h4>
             </div>
           </div>
           <div className="d-flex flex-column">
             <div>
               <div
                 onClick={crearOferta}
-                className="btn-link text-white poiter my-2"
+                className="btn-link text-white poiter my-3"
               >
-                {" "}
-                      Crear Ofertas
+                {" "}Crear Ofertas
                     </div>
             </div>
             <div>
               <div
                 onClick={mostrarOfertas}
-                className="btn-link text-white poiter mb-2"
+                className="btn-link text-white poiter mb-3"
               >
                 {" "}
                       Ofertas publicadas
@@ -153,7 +140,7 @@ const Company = () => {
             <div>
               <div
                 onClick={signOutHandler}
-                className="btn-link text-white poiter mb-2"
+                className="btn-link text-white poiter mb-3"
               >
                 {" "}
                       Cerrar Sesión

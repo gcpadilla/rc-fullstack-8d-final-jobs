@@ -20,7 +20,7 @@ const Table = (props) => {
         icon: 'success',
         title:  `Se envio el mail al candidato`,
         showConfirmButton: false,
-        width: 250,
+        width: "auto",
         timer: 1500  
       }) 
       // await Swal.fire(

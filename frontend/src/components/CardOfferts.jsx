@@ -24,9 +24,9 @@ const CardOfferts = (props) => {
             sweetalert.fire({
               icon: "success",
               text: "Oferta eliminada...",
-              width: 250,
+              width: "auto",
               showConfirmButton: false,
-              timer: 2000,
+              timer: 1500,
             });
             props.forzar();
           }
@@ -38,14 +38,17 @@ const CardOfferts = (props) => {
   };
   console.log(props.data);
   return (
-    <div className="card m-2 shadow border-0 d-flex flex-row justify-content-between align-items-center">
-      <div className="card-body dataBody" style={{ width: "315px" }}>
+    <div className="card m-2 shadow  d-flex flex-row justify-content-between align-items-center">
+      <div className="card-body dataBody" style={{ width: "309px" }}>
         <h3 className="card-text tituloCartel "> {props.data.title} </h3>
         <h3 className="card-text datosCartel" style={{ height: "35px" }}>
           {props.data.summary}
         </h3>
         <h3 className="card-text datosCartel">
-          {props.data.workplace} - {props.data.availability}
+          {props.data.workplace}
+        </h3>
+        <h3 className="card-text datosCartel">
+          {props.data.availability}
         </h3>
         {props.sola ? (
           <></>
@@ -53,7 +56,7 @@ const CardOfferts = (props) => {
           <>
             {" "}
             {props.data.candidateRef.length === 0 ? (
-              <p className="card-text tiempoCartel">
+              <p className="card-text tiempoCartel text-muted">
                 No hay postulaciones a esta oferta
               </p>
             ) : (
@@ -63,7 +66,7 @@ const CardOfferts = (props) => {
                   className="card-text tiempoCartel"
                   onClick={() => props.adminPostulate(props.data._id)}
                 >
-                  <p>Tiene {props.data.postulateRef.length} Postulaciones </p>
+                  <p>Postulaciones {props.data.postulateRef.length}</p>
                 </Link>
               </>
             )}
@@ -80,7 +83,7 @@ const CardOfferts = (props) => {
         {props.sola ? (
           <div></div>
         ) : (
-          <div className="d-flex flex-nowrap">
+          <div className="d-flex flex-nowrap justify-content-center">
             <button
               type="submit"
               onClick={onClickUpdateHandler}
@@ -91,7 +94,7 @@ const CardOfferts = (props) => {
             <button
               type="submit"
               onClick={onClickDeleteHandler}
-              className="btn btn-primary rounded-pill"
+              className="btn btn-danger rounded-pill"
             >
               Borrar
             </button>{" "}

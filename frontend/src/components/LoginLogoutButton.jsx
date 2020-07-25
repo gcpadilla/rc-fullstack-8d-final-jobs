@@ -35,8 +35,8 @@ function LoginLogoutButton(props) {
         icon: 'success',
         title:  "sesion cerrada",
         showConfirmButton: false,
-        width: 250,
-        timer: 1000
+        width: "auto",
+        timer: 1500
       }) 
       // await sweetalert.fire("", "sesion cerrada", "success");
       // setForceUpdate(true);
