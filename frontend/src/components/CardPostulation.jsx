@@ -24,7 +24,7 @@ const CardPostulation = (props) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title className="tituloCartel">Postularse a la oferta de {props.titulo}</Modal.Title>
+          <Modal.Title className="tituloCartel"> oferta de {props.titulo}</Modal.Title>
         </Modal.Header>
         <div className="card">
           <ul className="list-group list-group-flush">

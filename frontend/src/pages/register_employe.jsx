@@ -125,8 +125,8 @@ const Register = () => {
                       type="number"
                       required
                       className="form-control"
-                      minLength="8"
-                      maxLength="8"
+                      min="100000"
+                      max="999999999"
                       name="dni"
                       placeholder="DNI / Cedula de Identidad / Pasaporte"
                       onChange={onInputChange}
@@ -194,6 +194,7 @@ const Register = () => {
                     <input
                       type="password"
                       required
+                      minLength="8"
                       placeholder="Contraseña"
                       id="inputPassword5"
                       name="password"
@@ -217,6 +218,7 @@ const Register = () => {
                     <input
                       type="password"
                       required
+                      minLength="8"
                       className="form-control"
                       name="password2"
                       placeholder="Contraseña"

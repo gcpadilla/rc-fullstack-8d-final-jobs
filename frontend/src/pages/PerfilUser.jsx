@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../utils/auth";
 import logo from "../images/RollingJobswhite.svg";
-import sombra from "../images/sombra4.png"
+import sombra from "../images/sombra4.png";
 // import profilePH from "../images/profile.jpg";
 import PostulationInicio from "../components/PostulationInico";
 import OfertaInicioUser from "../components/OfertaInicioUser";
@@ -120,12 +120,12 @@ const PerfilUser = () => {
       await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
       auth.logout();
       await Swal.fire({
-        icon: 'success',
-        title:  "sesion cerrada",
+        icon: "success",
+        title: "sesion cerrada",
         showConfirmButton: false,
         width: 250,
-        timer: 1000  
-      })
+        timer: 1000,
+      });
       // await Swal.fire("", "sesion cerrada", "success");
       history.push("/");
     } catch (error) {
@@ -239,18 +239,21 @@ const PerfilUser = () => {
                 </h2>
               </div>
               <div className="d-none d-sm-block">
-               { UserSelec.imageUrl !== undefined ? (
-                <img
-                  src={"http://localhost:3001" + UserSelec.imageUrl}
-                  alt="logo"
-                  className="mx-auto rounded-circle"
-                  style={{ width: "150px" }}
-                />):(<img
-                  src={sombra}
-                  alt="logo"
-                  className="mx-auto rounded-circle"
-                  style={{ width: "150px" }}
-                />)}
+                {UserSelec.imageUrl !== undefined ? (
+                  <img
+                    src={"http://localhost:3001" + UserSelec.imageUrl}
+                    alt="logo"
+                    className="mx-auto rounded-circle"
+                    style={{ width: "150px" }}
+                  />
+                ) : (
+                  <img
+                    src={sombra}
+                    alt="logo"
+                    className="mx-auto rounded-circle"
+                    style={{ width: "150px" }}
+                  />
+                )}
 
                 <form onSubmit={guardarImage}>
                   <div className="imgPerfil mt-2 ml-3 text-white">
@@ -297,20 +300,22 @@ const PerfilUser = () => {
                   {" "}
                   <MdLocalOffer /> Ofertas{" "}
                 </button>
-                  <div className="imgPerfil ">
-                <form onSubmit={guardarCv}>
-                    <label htmlFor="cv_input_id"  className="text-white text-left btn btn-link">
+                <div className="imgPerfil ">
+                  <form onSubmit={guardarCv}>
+                    <label
+                      htmlFor="cv_input_id"
+                      className="text-white text-left btn btn-link"
+                    >
                       <AiFillFilePdf /> Añadir CV
                     </label>
                     <input
-                     
                       type="file"
                       id="cv_input_id"
                       onChange={cargarCv}
                       accept=".doc, .docx,.pdf"
-                      />
-                      </form>
-                  </div>
+                    />
+                  </form>
+                </div>
                 <button
                   onClick={signOutHandler}
                   className="text-white text-left btn btn-link mt-auto"
@@ -342,7 +347,9 @@ const PerfilUser = () => {
                         <div className="form-group">
                           <div className=" form-row ">
                             <div className="form-group col-6">
-                              <label htmlFor="Name">Nombre</label>
+                              <label htmlFor="firstame" className="formLabel">
+                                Nombre
+                              </label>
                               <input
                                 type="text"
                                 required
@@ -354,7 +361,9 @@ const PerfilUser = () => {
                             </div>
 
                             <div className="form-group col-6">
-                              <label htmlFor="lastname">Apellido</label>
+                              <label htmlFor="lastname" className="formLabel">
+                                Apellido
+                              </label>
                               <input
                                 type="text"
                                 required
@@ -367,7 +376,9 @@ const PerfilUser = () => {
                           </div>
                           <div className="form-row">
                             <div className="form-group col-md-6">
-                              <label htmlFor="dni">Documento</label>
+                              <label htmlFor="dni" className="formLabel">
+                                Documento
+                              </label>
                               <input
                                 type="number"
                                 required
@@ -377,25 +388,8 @@ const PerfilUser = () => {
                                 onChange={onInputChange}
                               />
                             </div>
-                          </div>
-
-                          <div className="form-row">
                             <div className="form-group col-md-6">
-                              <label htmlFor="profession">
-                                Profesión Principal
-                              </label>
-                              <input
-                                type="text"
-                                required
-                                className="form-control"
-                                name="profession"
-                                defaultValue={UserSelec.profession}
-                                onChange={onInputChange}
-                              />
-                            </div>
-
-                            <div className="form-group col-md-6">
-                              <label htmlFor="exampleInputEmail1">
+                              <label htmlFor="email" className="formLabel">
                                 Correo Elctrónico
                               </label>
                               <input
@@ -409,59 +403,80 @@ const PerfilUser = () => {
                               />
                             </div>
                           </div>
+                        </div>
 
-                          <div className="form-row">
-                            <div className="form-group col-md-6">
-                              <label htmlFor="username">
-                                Nombre de Usuario
-                              </label>
-                              <input
-                                type="text"
-                                required
-                                className="form-control"
-                                name="username"
-                                defaultValue={UserSelec.username}
-                                onChange={onInputChange}
-                              />
-                            </div>
-
-                            <div className="form-group col-md-3">
-                              {" "}
-                              <label htmlFor="inputPassword5">Contraseña</label>
-                              <input
-                                type="password"
-                                required
-                                defaultValue=""
-                                id="inputPassword5"
-                                name="password"
-                                className="form-control"
-                                aria-describedby="passwordHelpBlock"
-                                onChange={onInputChange}
-                              />
-                              <small
-                                id="passwordHelpBlock"
-                                className="form-text text-muted"
-                              >
-                                la password debe tener entre 8 y 20 caracteres,
-                                contener letras y numeros, tiene que contener
-                                por lo menos una mayuscula y una minuscula.
-                              </small>
-                            </div>
-                            <div className="form-group col-md-3">
-                              <label htmlFor="exampleInputPassword1">
-                                Repita la Contraseña
-                              </label>
-                              <input
-                                type="password"
-                                required
-                                className="form-control"
-                                name="password2"
-                                defaultValue=""
-                                onChange={onInputChange}
-                              />
-                            </div>
+                        <div className="form-row">
+                          <div className="form-group col-md-6">
+                            <label htmlFor="profession" className="formLabel">
+                              Profesión Principal
+                            </label>
+                            <input
+                              type="text"
+                              required
+                              className="form-control"
+                              name="profession"
+                              defaultValue={UserSelec.profession}
+                              onChange={onInputChange}
+                            />
+                          </div>
+                          <div className="form-group col-md-6">
+                            <label
+                              htmlFor="exampleInputPassword1"
+                              className="formLabel"
+                            >
+                              Contraseña
+                            </label>
+                            <input
+                              type="password"
+                              required
+                              className="form-control"
+                              name="password2"
+                              defaultValue=""
+                              onChange={onInputChange}
+                            />
                           </div>
                         </div>
+                        <div className="form-row">
+                          <div className="form-group col-md-6">
+                            <label htmlFor="username" className="formLabel">
+                              Nombre de Usuario
+                            </label>
+                            <input
+                              type="text"
+                              required
+                              className="form-control"
+                              name="username"
+                              defaultValue={UserSelec.username}
+                              onChange={onInputChange}
+                            />
+                          </div>
+
+                          <div className="form-group col-md-6">
+                            {" "}
+                            <label htmlFor="password" className="formLabel">
+                              Repita la Contraseña
+                            </label>
+                            <input
+                              type="password"
+                              required
+                              defaultValue=""
+                              id="inputPassword5"
+                              name="password"
+                              className="form-control"
+                              aria-describedby="passwordHelpBlock"
+                              onChange={onInputChange}
+                            />
+                            <small
+                              id="passwordHelpBlock"
+                              className="form-text text-muted"
+                            >
+                              la password debe tener entre 8 y 20 caracteres,
+                              contener letras y numeros, tiene que contener por
+                              lo menos una mayuscula y una minuscula.
+                            </small>
+                          </div>
+                        </div>
+
                         <button
                           type="submit"
                           onSubmit={onsubmit}

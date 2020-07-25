@@ -50,6 +50,7 @@ const FormJobPostulate = (props) => {
       <form onSubmit={onsubmit}>
         <div className="form-row">
         <div className="col-md-6 col-sm-12 form-group">
+          <label htmlFor="title" className="formLabel">Titulo del Puesto</label>
           <input
             type="text"
             required
@@ -61,6 +62,7 @@ const FormJobPostulate = (props) => {
           />
         </div>
         <div className="col-md-6 col-sm-12 form-group">
+          <label htmlFor="summary" className="formLabel">Resumen</label>
           <input
             type="text"
             required
@@ -71,6 +73,7 @@ const FormJobPostulate = (props) => {
           />
         </div>
         <div className="col-md-6 col-sm-12 form-group">
+          <label htmlFor="description" className="formLabel">Descripción</label>
           <textarea
             className="form-control"
             required
@@ -80,16 +83,18 @@ const FormJobPostulate = (props) => {
           />
         </div>
         <div className="col-md-6 col-sm-12 form-group">
+          <label htmlFor="profession" className="formLabel">Profesión</label>
           <input
             type="text"
             required
             className="form-control"
             name="profession"
-            placeholder="Profesion"
+            placeholder="Profesión"
             onChange={onInputChange}
           />
         </div>
         <div className="col-md-6 col-sm-12 form-group">
+          <label htmlFor="workplace" className="formLabel">Lugar de trabajo</label>
           <input
             type="text"
             required
@@ -100,41 +105,43 @@ const FormJobPostulate = (props) => {
           />
         </div>
         <div className="col-md-6 col-sm-12 form-group">
+          <label htmlFor="quota" className="formLabel">Cupo</label>
           <input
             type="number"
             required
             className="form-control"
             name="quota"
-            placeholder="cupo"
+            placeholder="Cupo"
             onChange={onInputChange}
           />
         </div>
         <div className="col-md-6 col-sm-12 form-group">
+          <label htmlFor="availability" className="formLabel">disponibilidad </label>
           <select
             className="form-control"
             onChange={onInputChange}
             name="availability"
             required
           >
-            <option>disponibilidad</option>
-            <option>Media Jornada</option>
-            <option>Jornada Completa</option>
+            <option value="">disponibilidad</option>
+            <option value="Media jornada">Media Jornada</option>
+            <option value="Jornada Completa">Jornada Completa</option>
           </select>
         </div>
         <div className="col-md-6 col-sm-12 form-group">
+          <label htmlFor="categories" className="formLabel">Elija una categoria</label>
           <select
             className="form-control"
             onChange={onInputChange}
             name="categories"
             required
           >
-            <option>elija una categoria</option>
-            <option>informatica</option>
-            <option>construccion</option>
+            <option value="">elija una categoria</option>
+            <option value="informatica">informatica</option>
+            <option value="construccion">construccion</option>
           </select>
           </div>
         </div>
-
   
 
       <div className="buttonOptions d-flex ">

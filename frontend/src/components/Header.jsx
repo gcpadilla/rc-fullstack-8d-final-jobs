@@ -6,6 +6,8 @@ import logo from "../images/RollingJobswhite.svg";
 import { NavLink, Link } from "react-router-dom";
 import LoginLogoutButton from "../components/LoginLogoutButton";
 import auth from "../utils/auth";
+import { AiOutlineHome } from "react-icons/ai";
+
 // import { useState } from 'react';
 // import FaqsCandidates from "../pages/faqsCandidates";
 // import FaqBusiness from "../pages/FaqsBusiness";
@@ -19,9 +21,7 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
-        <Link className="d-flex"to="/home">
           <img className="logoStyle" src={logo} alt="logo" />
-        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -40,6 +40,11 @@ const Navbar = () => {
         >
           <div className="navbarStyle d-flex align-items-end">
             <ul className="navbar-nav mr-5">
+              <li>
+                <NavLink className="nav-link text-white" to="/">
+                  <AiOutlineHome/> Home
+                </NavLink>
+              </li>
               <li className="nav-item dropdown mr-2">
                 <NavLink
                   className="nav-link dropdown-toggle text-white"
@@ -53,10 +58,13 @@ const Navbar = () => {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  {auth.isAuthenticated() ? ( 
-                <Link className="dropdown-item" to="/PerfilUser">
-                    Mi Perfil
-                  </Link>) :(<></>)}
+                  {auth.isAuthenticated() ? (
+                    <Link className="dropdown-item" to="/PerfilUser">
+                      Mi Perfil
+                    </Link>
+                  ) : (
+                    <></>
+                  )}
 
                   <Link className="dropdown-item" to="/faqcandidates">
                     Preguntas Frecuentes
@@ -123,15 +131,13 @@ const Navbar = () => {
                   </Link>
                 </div>
               </li>
-              <LoginLogoutButton 
-              // id={id} 
+              <LoginLogoutButton
+              // id={id}
               />
-
             </ul>
           </div>
         </div>
       </nav>
-
     </div>
   );
 };
