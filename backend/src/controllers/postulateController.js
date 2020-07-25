@@ -1,9 +1,9 @@
 const { validationResult } = require("express-validator");
-const nodemailer = require("nodemailer");
 const postulateModel = require("../models/postulateModel");
 const mongoose = require("mongoose");
 const candidateModel = require("../models/candidateModel");
 const offerModel = require("../models/offerModel");
+const sendEmail = require("../middlewares/sendEmail");
 
 //crear postulacion
 exports.createPostulate = async (req, res) => {
@@ -164,43 +164,55 @@ exports.updatePostulateAdmin = async (req, res) => {
     const postulate_in_db = await postulateModel.findOne({
       _id: req.params.id,
     });
-    console.log(req.params.id)
 
     if (!postulate_in_db) {
       return res.status(400).json({ message: "Credenciales no validas." });
     }
 
+    const offer_in_db = await offerModel.findOne({
+      _id: postulate_in_db.offerid,
+    });
+
     //----------------------Email------------------------------------------------------------
 
     if (state !== "Pendiente") {
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: "reactjobs2020@gmail.com" || process.env.EMAIL,
-          pass: "rivercampeon2018" || process.env.PASSEMAIL,
-        },
-      });
-
-      await transporter.sendMail({
-        from: "<reactjobs2020@gmail.com>",
-        to: `${postulate_in_db.emailcandidate}`,
-        subject: "Postulacion a Jobs",
-        text: `Estas ${state}, cominicate al telefono 12345 o dirigete a Av. Siempreviva 742`,
-      });
+      let oferta = offer_in_db.title;
+      let email = postulate_in_db.emailcandidate;
+      let subject = "Postulacion a Jobs";
+      let msg = state;
+      if (state === "Admitido") {
+        let html = `<div style=" width: 500px">
+                      <h1> &#60; Roling<strong style="color:#312f73">Jobs</strong> &#62; </h1>
+                      <h2>Felicidades fuiste selecionado &#128578;</h2>
+                      <h3>
+                      Estas ${msg} a tu postulacion de ${oferta}, cominicate al telefono 12345 o dirigete a Av. Siempreviva 742.
+                      </h3>
+                    </div>`;
+        await sendEmail(email, subject, html);
+      } else {
+        let html = `<div style=" width: 500px">
+                      <h1> &#60; RolingJobs &#62; </h1>
+                      <h2>Lamentablemente no quedaste &#128532; </h2>
+                      <p>
+                      Estas ${msg} a tu postulacion de ${oferta}, lo sentimos, gracias por postularte.
+                      </p>
+                    </div>`;
+        await sendEmail(email, subject, html);
+      }
     } else {
       return res
-      .status(404)
-      .json({ message: "El estado continua pendiente. . ." });
+        .status(404)
+        .json({ message: "El estado continua pendiente. . ." });
     }
 
     //----------------------Email------------------------------------------------------------
-    console.log(state)
+
     let postulate = await postulateModel.findByIdAndUpdate(
       req.params.id,
-      {state:state},
+      { state: state },
       { new: true }
     );
-    console.log(postulate)
+    console.log(postulate);
 
     postulate = await postulateModel.findOne(
       { _id: req.params.id },
@@ -230,7 +242,6 @@ exports.deletePostulate = async (req, res) => {
         .status(404)
         .json({ message: "No de encontro postulación ..." });
     }
-    
 
     let postulate = await postulateModel.findById(req.params.id);
 
@@ -240,22 +251,21 @@ exports.deletePostulate = async (req, res) => {
         .json({ message: "No de encontro postulación ..." });
     }
 
-    const oferta = await offerModel.findById(postulate.offerid)
-    
-    const candidateRef = oferta.candidateRef
+    const oferta = await offerModel.findById(postulate.offerid);
+
+    const candidateRef = oferta.candidateRef;
     let indiceCandidate = candidateRef.indexOf(res.locals.user.id);
-    candidateRef.splice(indiceCandidate, 1); 
-    
-    const postulateRef = oferta.postulateRef
+    candidateRef.splice(indiceCandidate, 1);
+
+    const postulateRef = oferta.postulateRef;
     let indicePostulate = candidateRef.indexOf(res.locals.user.id);
-    postulateRef.splice(indicePostulate, 1);   
-   
+    postulateRef.splice(indicePostulate, 1);
+
     await offerModel.findByIdAndUpdate(
       postulate.offerid,
-      {candidateRef:candidateRef, postulateRef:postulateRef},
+      { candidateRef: candidateRef, postulateRef: postulateRef },
       { new: true }
     );
-
 
     postulate = await postulateModel.findByIdAndDelete(req.params.id);
 
