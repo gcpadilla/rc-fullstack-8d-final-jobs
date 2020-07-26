@@ -11,7 +11,7 @@ import home from "./pages/home";
 import login_employe from "./pages/login_employe.jsx";
 import register_employe from "./pages/register_employe";
 import company from "./pages/company";
-import company2 from "./pages/company2.jsx";
+// import company2 from "./pages/company2.jsx";
 import offers from "./pages/offers";
 import PerfilUser from "./pages/PerfilUser"
 import FaqsCandidates from "./pages/faqsCandidates";
@@ -30,14 +30,14 @@ function App() {
           <Route path="/login_employe" component={login_employe} />
           <Route path="/register_employe" component={register_employe} />
           <PrivateRoute path="/company" component={company} />
-          <PrivateRoute path="/profile" component={company2} />
+          {/* <PrivateRoute path="/profile" component={company2} /> */}
           <Route path="/PerfilUser" component={PerfilUser}/>
           <Route path="/offers" component={offers} />
           <Route path="/faqbusiness" exact component={FaqBusiness} />
           <Route path="/prices" component={Prices} />
           <PrivateRoute path="/publicJob" component={FormJobPostulate} />
           <Route path="/informacion" component={WeAre}/>
-          <Route path="/prensa" />
+          {/* <Route path="/prensa" /> */}
           <Route path="/contacto" component={Contacto} />
           <Route path="/" component={home} />
           <Route exact path="/">

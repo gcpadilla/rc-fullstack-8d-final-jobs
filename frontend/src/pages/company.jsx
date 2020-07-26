@@ -1,25 +1,23 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import sweetalert from "sweetalert2";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import CardOfferts from "../components/CardOfferts";
 import FormJobPostulate from "../components/FormJobPostulate";
 import EditOffers from "../components/EditOffers";
 import AdminEditPostulation from "../components/AdminEditPostulation";
 import auth from "../utils/auth";
-import logo from "../images/RollingJobswhite.svg";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import { IconContext } from "react-icons";
 import { MdMenu } from "react-icons/md";
-
 
 const Company = () => {
   const [display, setdisplay] = useState(2);
   const [data, setdata] = useState([]);
   const [id, setid] = useState("");
   const [idpost, setidpost] = useState("");
-  const username = localStorage.getItem("username")
+  const username = localStorage.getItem("username");
   const history = useHistory();
   const [state, setState] = useState({
     isPaneOpen: false,
@@ -52,26 +50,25 @@ const Company = () => {
       );
       auth.logout();
       await sweetalert.fire({
-        icon: 'success',
+        icon: "success",
         title: "sesion cerrada",
         showConfirmButton: false,
         width: "auto",
-        timer: 1500
-      })
-      // await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
+        timer: 1500,
+      });
       history.push("/");
       return;
-    } catch (error) { }
+    } catch (error) {}
   };
 
   // SELECCIONO EL DISPLAY EN LA PAGINA DE ADMIN
   const crearOferta = () => {
-    setState({ isPaneOpenLeft: false })
+    setState({ isPaneOpenLeft: false });
     setdisplay(1);
   };
   const mostrarOfertas = () => {
     getArticles();
-    setState({ isPaneOpenLeft: false })
+    setState({ isPaneOpenLeft: false });
     setdisplay(2);
   };
   const update = (oferta) => {
@@ -97,14 +94,16 @@ const Company = () => {
     </div>
   ));
 
-
   return (
     <>
       <div>
         <div style={{ marginTop: "15px", marginLeft: "15px" }}>
           <div onClick={() => setState({ isPaneOpenLeft: true })}>
-            <IconContext.Provider value={{ size: "30px" }}><MdMenu /></IconContext.Provider> Menu
-        </div>
+            <IconContext.Provider value={{ size: "30px" }}>
+              <MdMenu />
+            </IconContext.Provider>{" "}
+            Menu
+          </div>
         </div>
         <SlidingPane
           isOpen={state.isPaneOpenLeft}
@@ -125,8 +124,9 @@ const Company = () => {
                 onClick={crearOferta}
                 className="btn-link text-white poiter my-3"
               >
-                {" "}Crear Ofertas
-                    </div>
+                {" "}
+                Crear Ofertas
+              </div>
             </div>
             <div>
               <div
@@ -134,8 +134,8 @@ const Company = () => {
                 className="btn-link text-white poiter mb-3"
               >
                 {" "}
-                      Ofertas publicadas
-                    </div>
+                Ofertas publicadas
+              </div>
             </div>
             <div>
               <div
@@ -143,63 +143,58 @@ const Company = () => {
                 className="btn-link text-white poiter mb-3"
               >
                 {" "}
-                      Cerrar Sesión
-                    </div>{" "}
+                Cerrar Sesión
+              </div>{" "}
             </div>
           </div>
         </SlidingPane>
       </div>
       <div className="container">
-              <div className="row">
-                {display === 1 ? (
-                  <div className="container">
-                    <div className="col-11">
-                    <FormJobPostulate
-                      // crear={crearOferta}
-                      forzar={forzar}
-                    />
-                    </div>
-                  </div>
-                ) : (
-                  <></>
-                )}
-                {display === 2 ? (
-                  <div className="container">
-                    <div className="col-11">
-                      <h3 className="text-center">
-                        Ofertas Publicadas
-                      </h3>
-                      <div className="d-flex flex-wrap justify-content-center justify-content-md-start">
-                        {cards}
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <></>
-                )}
-                
-                {display === 3 ? (
-                  <div>
-                    <EditOffers oferta={id} terminar={mostrarOfertas} />
-                  </div>
-                ) : (
-                  <></>
-                )}
-                
-                {display === 4 ? (
-                  <>
-                  <div className="col-1">
-                  </div>
-                  <div className="col-11">
-                    <AdminEditPostulation idpost={idpost}/>
-                  </div>
-                  </>
-                ) : (
-                  <></>
-                )}
+        <div className="row">
+          {display === 1 ? (
+            <div className="container">
+              <div className="col-11">
+                <FormJobPostulate
+                  forzar={forzar}
+                />
               </div>
             </div>
+          ) : (
+            <></>
+          )}
+          {display === 2 ? (
+            <div className="container">
+              <div className="col-11">
+                <h3 className="text-center">Ofertas Publicadas</h3>
+                <div className="d-flex flex-wrap justify-content-center justify-content-md-start">
+                  {cards}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <></>
+          )}
 
+          {display === 3 ? (
+            <div>
+              <EditOffers oferta={id} terminar={mostrarOfertas} />
+            </div>
+          ) : (
+            <></>
+          )}
+
+          {display === 4 ? (
+            <>
+              <div className="col-1"></div>
+              <div className="col-11">
+                <AdminEditPostulation idpost={idpost} />
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
+      </div>
     </>
   );
 };

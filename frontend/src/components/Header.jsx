@@ -125,9 +125,9 @@ const Navbar = () => {
                   <Link className="dropdown-item" to="/informacion">
                     ¿Quienes Somos?
                   </Link>
-                  <Link className="dropdown-item" to="/prensa">
+                  {/* <Link className="dropdown-item" to="/prensa">
                     Prensa
-                  </Link>
+                  </Link> */}
                   <Link className="dropdown-item" to="/contacto">
                     Contacto
                   </Link>
