@@ -30,8 +30,8 @@ const Register = () => {
           icon: "success",
           title: "se registro sactifactoriamente!",
           showConfirmButton: false,
-          width: 250,
-          timer: 1000,
+          width: "auto",
+          timer: 1500,
         });
         // await Swal.fire("genial", "se registro sactifactoriamente!", "success");
         setredirec(true);
@@ -97,7 +97,7 @@ const Register = () => {
                     <input
                       type="text"
                       required
-                      className="form-control "
+                      className="form-control form-control-sm "
                       name="firstname"
                       placeholder="Nombre"
                       onChange={onInputChange}
@@ -110,7 +110,7 @@ const Register = () => {
                     <input
                       type="text"
                       required
-                      className="form-control"
+                      className="form-control form-control-sm"
                       name="lastname"
                       placeholder="Apellido"
                       onChange={onInputChange}
@@ -124,7 +124,7 @@ const Register = () => {
                     <input
                       type="number"
                       required
-                      className="form-control"
+                      className="form-control form-control-sm"
                       min="100000"
                       max="999999999"
                       name="dni"
@@ -138,7 +138,7 @@ const Register = () => {
                     <input
                       type="date"
                       required
-                      className="form-control"
+                      className="form-control form-control-sm"
                       name="age"
                       placeholder="Fecha de Nacimiento"
                       onChange={onInputChange}
@@ -152,7 +152,7 @@ const Register = () => {
                     <input
                       type="text"
                       required
-                      className="form-control"
+                      className="form-control form-control-sm"
                       name="profession"
                       placeholder="Profesión"
                       onChange={onInputChange}
@@ -166,7 +166,7 @@ const Register = () => {
                     <input
                       type="email"
                       required
-                      className="form-control"
+                      className="form-control form-control-sm"
                       name="email"
                       aria-describedby="emailHelp"
                       placeholder="Correo Elctrónico"
@@ -181,7 +181,7 @@ const Register = () => {
                     <input
                       type="text"
                       required
-                      className="form-control"
+                      className="form-control form-control-sm"
                       name="username"
                       placeholder="Nombre de Usuario"
                       onChange={onInputChange}
@@ -198,7 +198,7 @@ const Register = () => {
                       placeholder="Contraseña"
                       id="inputPassword5"
                       name="password"
-                      className="form-control"
+                      className="form-control form-control-sm"
                       aria-describedby="passwordHelpBlock"
                       onChange={onInputChange}
                     />
@@ -219,7 +219,7 @@ const Register = () => {
                       type="password"
                       required
                       minLength="8"
-                      className="form-control"
+                      className="form-control form-control-sm"
                       name="password2"
                       placeholder="Contraseña"
                       onChange={onInputChange}

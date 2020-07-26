@@ -25,8 +25,8 @@ const LoginBody = (props) => {
         icon: 'success',
         title:  `Bienvenido ${username.trim()}`,
         showConfirmButton: false,
-        width: 250,
-        timer: 1000
+        width: "auto",
+        timer: 1500
       }) 
       // await sweetalert.fire(
       //   "ADMINISTRADOR",
@@ -54,8 +54,8 @@ if (flag===true) {
       icon: 'success',
       title:  `Bienvenido ${username.trim()}`,
       showConfirmButton: false,
-      width: 250,
-      timer: 1000
+      width: "auto",
+      timer: 1500
     }) 
     // await sweetalert.fire(
     //   "genial",

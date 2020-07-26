@@ -7,6 +7,8 @@ import { NavLink, Link } from "react-router-dom";
 import LoginLogoutButton from "../components/LoginLogoutButton";
 import auth from "../utils/auth";
 import { AiOutlineHome } from "react-icons/ai";
+import {BsPerson} from "react-icons/bs"
+import {IoMdBusiness, IoIosBusiness} from "react-icons/io"
 
 // import { useState } from 'react';
 // import FaqsCandidates from "../pages/faqsCandidates";
@@ -52,7 +54,7 @@ const Navbar = () => {
                   data-toggle="dropdown"
                   to="/"
                 >
-                  Candidatos
+                 <BsPerson/> Candidatos
                 </NavLink>
                 <div
                   className="dropdown-menu"
@@ -85,7 +87,7 @@ const Navbar = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Empresas
+                 <IoMdBusiness/> Empresas
                 </NavLink>
                 <div
                   className="dropdown-menu"
@@ -113,7 +115,7 @@ const Navbar = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Institucional
+                 <IoIosBusiness/> Institucional
                 </NavLink>
 
                 <div

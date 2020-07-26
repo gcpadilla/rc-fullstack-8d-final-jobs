@@ -29,7 +29,7 @@ const FormPostulate = (props) => {
             text: "Oferta eliminada...",
             width: 250,
             showConfirmButton: false,
-            timer: 2000,
+            timer: 1500,
           });
           props.cerrar();
         }
@@ -49,10 +49,10 @@ const FormPostulate = (props) => {
         setUserSelec({});
         await Swal.fire({
           icon: "success",
-          title: "se modifico correctamente la postulación",
+          title: "se modifico correctamente </br> la postulación",
           showConfirmButton: false,
-          width: 350,
-          timer: 1000,
+          width: "auto",
+          timer: 1500,
         });
         // await Swal.fire(
         //   "genial",
@@ -83,8 +83,8 @@ const FormPostulate = (props) => {
           icon: "success",
           title: "te postulaste correctamente",
           showConfirmButton: false,
-          width: 350,
-          timer: 1000,
+          width: "auto",
+          timer: 1500,
         });
         // await Swal.fire("genial", "te postulaste correctamentefdffdfdf", "success");
         props.cerrar();

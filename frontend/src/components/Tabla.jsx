@@ -20,7 +20,7 @@ const Table = (props) => {
         icon: 'success',
         title:  `Se envio el mail al candidato`,
         showConfirmButton: false,
-        width: 350,
+        width: "auto",
         timer: 1500  
       }) 
       // await Swal.fire(
@@ -69,7 +69,7 @@ console.log(props);
               defaultValue={props.c.state}
             >
               <option value="">Pendiente</option>
-              <option value="Aceptado">Aceptado</option>
+              <option value="Admitido">Admitido</option>
               <option value="Desestimado">Desestimado</option>
             </select>
             {flag ? (
