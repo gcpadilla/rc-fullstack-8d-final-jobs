@@ -41,7 +41,7 @@ const Table = (props) => {
       }
     }
   };
-console.log(props);
+
   return (
     <tr>
       <td>

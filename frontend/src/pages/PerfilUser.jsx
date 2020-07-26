@@ -54,7 +54,6 @@ const PerfilUser = () => {
       );
       setdatapostulation(response.data);
     } catch (error) {
-      // console.log("no tiene postulaciones");
       setdatapostulation([]);
     }
   };
@@ -114,7 +113,6 @@ const PerfilUser = () => {
       "http://localhost:3001/api/v1/users/candidates/edit/"
     );
     setUserSelec(response.data);
-    // console.log(response.data.imageUrl);
   }, []);
 
   useEffect(() => {
@@ -184,7 +182,6 @@ const PerfilUser = () => {
 
   //FUNCIONES PARA CARGAR Y GUARDAR CV
   const cargarCv = (e) => {
-    console.log(e.target);
     guardarCv(e.target.files[0]);
   };
 
@@ -206,7 +203,7 @@ const PerfilUser = () => {
       setState({ isPaneOpenLeft: false })
       Swal.fire({
         icon: "success",
-        text: "Se guardo correctamente su </br> curriculum vitae",
+        text: "Se guardo correctamente <br/> su curriculum vitae",
         width: "auto",
         showConfirmButton: false,
         timer: 1500,
@@ -223,7 +220,6 @@ const PerfilUser = () => {
       }
     }
   };
-  console.log(UserSelec);
 
   return (
     <>

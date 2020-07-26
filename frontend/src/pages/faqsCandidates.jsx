@@ -38,7 +38,6 @@ const FaqsCandidates = () => {
     <>
     <Header />
     <div className="p-5">
-    {console.log('test')}
         <h3 className="titulos text-center">Preguntas Frecuentes</h3>
         {faqs.map (ques =>  {
             return      <div className="p-3">
