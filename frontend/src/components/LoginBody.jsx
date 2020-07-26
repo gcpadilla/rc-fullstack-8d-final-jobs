@@ -92,7 +92,7 @@ if (flag===true) {
                 onChange={(e) => setUsername(e.target.value)}
                 value={username}
                 placeholder="Nombre de Usuario"
-                autoFocus={true}
+                // ref={props.inputEl}
               />
             </div>
             <div className="form-group">
