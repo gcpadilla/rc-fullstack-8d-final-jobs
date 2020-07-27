@@ -18,7 +18,7 @@ const Prices = () => {
         <>
         <Navbar />
             <h3 className="text-center my-5">Un Producto para cada Necesidad</h3>
-            <CardDeck classname="d-flex justify-content-center">
+            <CardDeck className="d-flex justify-content-center">
                 <Card>
                     <Card.Img variant="top" src={ClassicBan} />
                     <Card.Body>

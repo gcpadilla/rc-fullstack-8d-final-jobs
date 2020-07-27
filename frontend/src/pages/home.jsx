@@ -14,10 +14,9 @@ import auth from "../utils/auth";
 const Home = () => {
   const [datapostulation, setdatapostulation] = useState([]);
   const [datauser, setdatauser] = useState([]);
-  const [role, setrole] = useState(localStorage.getItem("role")); // eslint-disable-line no-unused-vars
+  const role = useState(localStorage.getItem("role"));
   const history = useHistory();
 
-  // console.log(role);
   const actualizar = () => {
     getpostulation();
     getuser();
@@ -31,7 +30,6 @@ const Home = () => {
       );
       setdatauser(response.data);
     } catch (error) {
-      // console.log("no tiene ofertas");
       setdatauser([]);
     }
   }, []);
@@ -44,10 +42,10 @@ const Home = () => {
       );
       setdatapostulation(response.data);
     } catch (error) {
-      // console.log("no tiene postulaciones");
       setdatapostulation([]);
     }
   };
+
   // CON ESTO CONTROLO QUE ESTE AUTENTICADO Y ADEMAS NO SEA UN ADMIN
   useEffect(() => {
     if (auth.isAuthenticated() === true) {
@@ -56,7 +54,7 @@ const Home = () => {
       }
       actualizar();
     }
-  }, [auth.isAuthenticated()]);
+  }, [auth.isAuthenticated() ]);
 
   return (
     <div>
@@ -69,7 +67,6 @@ const Home = () => {
           <PostulationInicio
             get={actualizar}
             datapostulation={datapostulation}
-            // datauser={datauser}
           />
         </div>
       ) : (

@@ -28,13 +28,6 @@ const LoginBody = (props) => {
         width: "auto",
         timer: 1500
       }) 
-      // await sweetalert.fire(
-      //   "ADMINISTRADOR",
-      //   `Bienvenido ${username.trim()}`,
-      //   "success"
-      // );
-      // console.log("es un admin");
-
       history.push("/company");
       return;
     } catch (error) {

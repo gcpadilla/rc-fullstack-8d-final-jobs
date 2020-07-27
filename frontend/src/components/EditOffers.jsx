@@ -41,7 +41,7 @@ const EditOffers = (props) => {
       [e.target.name]: e.target.value,
       publicationdate: new Date().toLocaleString(),
     });
-    console.log(UserSelec);
+
   };
   return (
     <div className="container">

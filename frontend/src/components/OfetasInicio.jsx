@@ -14,7 +14,6 @@ const OfertasInicio= (props) => {
       );
       setdata(response.data);      
     } catch (error) {
-      console.log(error);
     }
   }, []);
 

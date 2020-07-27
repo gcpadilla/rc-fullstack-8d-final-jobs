@@ -10,16 +10,8 @@ import { AiOutlineHome } from "react-icons/ai";
 import {BsPerson} from "react-icons/bs"
 import {IoMdBusiness, IoIosBusiness} from "react-icons/io"
 
-// import { useState } from 'react';
-// import FaqsCandidates from "../pages/faqsCandidates";
-// import FaqBusiness from "../pages/FaqsBusiness";
-// import FormJobPostulate from "../components/FormJobPostulate";
-
 const Navbar = () => {
-  // const params = useParams();
-  // const id =(parametros) => {
-  //   console.log(parametros);
-  // }
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
@@ -125,9 +117,9 @@ const Navbar = () => {
                   <Link className="dropdown-item" to="/informacion">
                     ¿Quienes Somos?
                   </Link>
-                  <Link className="dropdown-item" to="/prensa">
+                  {/* <Link className="dropdown-item" to="/prensa">
                     Prensa
-                  </Link>
+                  </Link> */}
                   <Link className="dropdown-item" to="/contacto">
                     Contacto
                   </Link>

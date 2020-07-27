@@ -5,45 +5,7 @@ import image1 from '../images/peopleUno.svg'
 
 
 const ContactForm = () => {
-  // const [UserSelec, setUserSelec] = useState({});
 
-  // const onsubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.put(
-  //       `http://localhost:3001/api/v1/offers/${props.oferta._id}`,
-  //       UserSelec
-  //     );
-  //     setUserSelec({});
-  //     await Swal.fire(
-  //       "genial",
-  //       "se modifico correctamente la oferta",
-  //       "success"
-  //     );
-  //     props.terminar();
-  //   } catch (err) {
-  //     if (err.response.data.message === undefined) {
-  //       Swal.fire(
-  //         `Error de ${err.response.data.errors[0].param}`,
-  //         err.response.data.errors[0].msg,
-  //         "error"
-  //       );
-  //     } else {
-  //       Swal.fire("Oops..", err.response.data.message, "error");
-  //     }
-  //   }
-  // };
-
-  // const onInputChange = (e) => {
-   
-  //   setUserSelec({
-
-  //     ...UserSelec,
-  //     [e.target.name]: e.target.value,
-  //     publicationdate: new Date().toLocaleString(),
-  //   });
-  //   console.log(UserSelec);
-  // };
   return (
     <div className="container d-flex flex-wrap generalBody">
     <div className="d-flex flex-column align-items-center col-6">
@@ -60,8 +22,6 @@ const ContactForm = () => {
             required
             className="form-control "
             name="title"
-            // defaultValue={}
-            // onChange={onInputChange}
           />
         </div>
         <div className=" col-md-6 col-sm-12 form-group">
