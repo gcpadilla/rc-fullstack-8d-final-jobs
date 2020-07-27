@@ -69,7 +69,7 @@ console.log(props);
               defaultValue={props.c.state}
             >
               <option value="">Pendiente</option>
-              <option value="Aceptado">Aceptado</option>
+              <option value="Admitido">Admitido</option>
               <option value="Desestimado">Desestimado</option>
             </select>
             {flag ? (

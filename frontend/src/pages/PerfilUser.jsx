@@ -59,7 +59,7 @@ const PerfilUser = () => {
     }
   };
 
-  // FUNCIONES DEL FORMULARIO
+  // FUNCIONES DEL FORMULARIO PARA SER EDITADOS
   const onsubmit = async (e) => {
     e.preventDefault();
     Swal.fire({
@@ -85,7 +85,7 @@ const PerfilUser = () => {
             timer: 1500,
           });
           // setUserSelec({});
-          // setdisplay(1)
+          setdisplay(1)
         } catch (err) {
           if (err.response.data.message === undefined) {
             Swal.fire(
@@ -347,11 +347,10 @@ const PerfilUser = () => {
                 <div className="col-12">
                   <div className="text-center pb-5 form-group mb-3">
                     <h3 className="mt-4 titulos">Bienvenido</h3>
-                    <h5 className="mb-4 texto">Registro de Candidato</h5>
+                    <h5 className="mb-4 texto">Edición de Registro de candidatos</h5>
                     <p className="mb-4 textNews">
                       {" "}
-                      Por favor, ingrese sus datos personales para iniciar tu
-                      proceso a tu nuevo trabajo.
+                      Aqui puede modificar sus datos personales.
                     </p>
                     <div className="mb-4">
                       <form onSubmit={onsubmit}>
@@ -487,7 +486,14 @@ const PerfilUser = () => {
                             </small>
                           </div>
                         </div>
-
+                        <div>
+                        <button
+                          type="submit"
+                          onClick={() => setdisplay(1)}
+                          className="btn btn-danger rounded-pill mr-5"
+                        >
+                        Cerrar
+                        </button>
                         <button
                           type="submit"
                           onSubmit={onsubmit}
@@ -495,6 +501,7 @@ const PerfilUser = () => {
                         >
                           Modificar Registro
                         </button>
+                        </div>
                       </form>
                     </div>
                   </div>
