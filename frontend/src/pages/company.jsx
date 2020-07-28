@@ -10,7 +10,7 @@ import auth from "../utils/auth";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import { IconContext } from "react-icons";
-import { MdMenu } from "react-icons/md";
+import { AiOutlineMenuUnfold } from "react-icons/ai";
 
 const Company = () => {
   const [display, setdisplay] = useState(2);
@@ -51,7 +51,7 @@ const Company = () => {
       auth.logout();
       await sweetalert.fire({
         icon: "success",
-        title: "sesion cerrada",
+        title: "Sesión cerrada",
         showConfirmButton: false,
         width: "auto",
         timer: 1500,
@@ -100,7 +100,7 @@ const Company = () => {
         <div style={{ marginTop: "15px", marginLeft: "15px" }}>
           <div onClick={() => setState({ isPaneOpenLeft: true })}>
             <IconContext.Provider value={{ size: "30px" }}>
-              <MdMenu />
+              <AiOutlineMenuUnfold />
             </IconContext.Provider>{" "}
             Menu
           </div>

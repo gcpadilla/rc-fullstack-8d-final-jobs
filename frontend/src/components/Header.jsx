@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
+      <nav className="navbar navbar-expand-lg navbar-dark cabeceraWeb">
           <img className="logoStyle" src={logo} alt="logo" />
         <button
           className="navbar-toggler"
