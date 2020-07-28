@@ -23,7 +23,7 @@ function LoginLogoutButton(props) {
     //     "http://localhost:3001/api/v1/users/administrators/logout"
     //   );
     //   auth.logout();
-    //   await sweetalert.fire("ADMINISTRADOR", "sesion cerrada", "success");
+    //   await sweetalert.fire("ADMINISTRADOR", "Sesión cerrada", "success");
     //   history.push("/");
     //   return;
     // } catch (error) {}
@@ -33,12 +33,12 @@ function LoginLogoutButton(props) {
       auth.logout();
       await sweetalert.fire({
         icon: 'success',
-        title:  "sesion cerrada",
+        title:  "Sesión cerrada",
         showConfirmButton: false,
         width: "auto",
         timer: 1500
       }) 
-      // await sweetalert.fire("", "sesion cerrada", "success");
+      // await sweetalert.fire("", "Sesión cerrada", "success");
       // setForceUpdate(true);
       history.push("/");
       handleClose();
