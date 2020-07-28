@@ -15,7 +15,11 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
-          <img className="logoStyle" src={logo} alt="logo" />
+      <a class="navbar-brand" href="/">
+        <img src={logo} width="160"  alt="" loading=""/>
+      </a>
+
+          {/* <img className="logoStyle" src={logo} alt="logo" /> */}
         <button
           className="navbar-toggler"
           type="button"
@@ -34,11 +38,11 @@ const Navbar = () => {
         >
           <div className="navbarStyle d-flex align-items-end">
             <ul className="navbar-nav mr-5">
-              <li>
+              {/* <li>
                 <NavLink className="nav-link text-white" to="/">
                   <AiOutlineHome/> Home
                 </NavLink>
-              </li>
+              </li> */}
               <li className="nav-item dropdown mr-2">
                 <NavLink
                   className="nav-link dropdown-toggle text-white"
@@ -91,9 +95,7 @@ const Navbar = () => {
                   <Link className="dropdown-item" to="/prices">
                     Precios
                   </Link>
-                  <Link className="dropdown-item" to="/publicJob">
-                    Publicar Empleos
-                  </Link>
+
                 </div>
               </li>
 
