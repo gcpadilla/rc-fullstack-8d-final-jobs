@@ -16,16 +16,12 @@ const Register = () => {
     e.preventDefault();
     const anio = edad(UserSelec.age);
     UserSelec.age = anio;
-    console.log(UserSelec);
     if (UserSelec.password === UserSelec.password2) {
       try {
         await axios.post(
           "http://localhost:3001/api/v1/users/candidates",
           UserSelec
         );
-        // setTimeout(() => {
-        //   setredirec(true);
-        // }, 1000);
         await Swal.fire({
           icon: "success",
           title: "se registro sactifactoriamente!",
@@ -71,12 +67,10 @@ const Register = () => {
         [e.target.name]: e.target.value,
       });
     }
-    console.log(UserSelec);
   };
 
   return (
     <div>
-      {console.log(redirec)}
       {redirec && <Redirect to="/" />}
       <Header />
       <div className="container">

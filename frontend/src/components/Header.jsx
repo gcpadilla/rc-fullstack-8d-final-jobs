@@ -7,17 +7,11 @@ import { NavLink, Link } from "react-router-dom";
 import LoginLogoutButton from "../components/LoginLogoutButton";
 import auth from "../utils/auth";
 import { AiOutlineHome } from "react-icons/ai";
-
-// import { useState } from 'react';
-// import FaqsCandidates from "../pages/faqsCandidates";
-// import FaqBusiness from "../pages/FaqsBusiness";
-// import FormJobPostulate from "../components/FormJobPostulate";
+import {BsPerson} from "react-icons/bs"
+import {IoMdBusiness, IoIosBusiness} from "react-icons/io"
 
 const Navbar = () => {
-  // const params = useParams();
-  // const id =(parametros) => {
-  //   console.log(parametros);
-  // }
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
@@ -52,7 +46,7 @@ const Navbar = () => {
                   data-toggle="dropdown"
                   to="/"
                 >
-                  Candidatos
+                 <BsPerson/> Candidatos
                 </NavLink>
                 <div
                   className="dropdown-menu"
@@ -85,7 +79,7 @@ const Navbar = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Empresas
+                 <IoMdBusiness/> Empresas
                 </NavLink>
                 <div
                   className="dropdown-menu"
@@ -113,7 +107,7 @@ const Navbar = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Institucional
+                 <IoIosBusiness/> Institucional
                 </NavLink>
 
                 <div
@@ -123,9 +117,9 @@ const Navbar = () => {
                   <Link className="dropdown-item" to="/informacion">
                     ¿Quienes Somos?
                   </Link>
-                  <Link className="dropdown-item" to="/prensa">
+                  {/* <Link className="dropdown-item" to="/prensa">
                     Prensa
-                  </Link>
+                  </Link> */}
                   <Link className="dropdown-item" to="/contacto">
                     Contacto
                   </Link>

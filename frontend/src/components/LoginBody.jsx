@@ -28,13 +28,6 @@ const LoginBody = (props) => {
         width: "auto",
         timer: 1500
       }) 
-      // await sweetalert.fire(
-      //   "ADMINISTRADOR",
-      //   `Bienvenido ${username.trim()}`,
-      //   "success"
-      // );
-      // console.log("es un admin");
-
       history.push("/company");
       return;
     } catch (error) {
@@ -82,7 +75,8 @@ if (flag===true) {
           <form onSubmit={signInHandler}>
             <div className="form-group">
               {/* <label for="exampleInputEmail1">Email address</label> */}
-              <input
+
+              <input 
                 type="text"
                 required
                 className="form-control rounded-pill"
@@ -91,7 +85,7 @@ if (flag===true) {
                 onChange={(e) => setUsername(e.target.value)}
                 value={username}
                 placeholder="Nombre de Usuario"
-                autoFocus
+                // ref={props.inputEl}
               />
             </div>
             <div className="form-group">
