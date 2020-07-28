@@ -203,7 +203,7 @@ const PerfilUser = () => {
       setState({ isPaneOpenLeft: false })
       Swal.fire({
         icon: "success",
-        text: "Se guardo correctamente <br/> su curriculum vitae",
+        text: "Se guardo correctamente su curriculum vitae",
         width: "auto",
         showConfirmButton: false,
         timer: 1500,
