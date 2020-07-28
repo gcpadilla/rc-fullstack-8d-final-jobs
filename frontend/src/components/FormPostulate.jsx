@@ -49,9 +49,9 @@ const FormPostulate = (props) => {
         setUserSelec({});
         await Swal.fire({
           icon: "success",
-          title: "se modifico correctamente </br> la postulación",
+          title: "se modifico correctamente la postulación",
           showConfirmButton: false,
-          width: "auto",
+          maxWidth: 300,
           timer: 1500,
         });
         // await Swal.fire(

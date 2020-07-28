@@ -16,9 +16,9 @@ const EditOffers = (props) => {
       setUserSelec({});
       await Swal.fire({
         icon: "success",
-        title: "se modifico correctamente </br> la oferta",
+        title: "se modifico correctamente la oferta",
         showConfirmButton: false,
-        width: "auto",
+        maxWidth: 300,
         timer: 1500,
       });
       props.terminar();

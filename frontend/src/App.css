@@ -36,11 +36,11 @@ label {
 
 .poiter:hover {
   color: rgb(0, 247, 255) !important;
-  -moz-transform: scale(1.2) translate(45px, 0px);
--webkit-transform: scale(1.2) translate(45px, 0px);
--o-transform: scale(1.2) translate(45px, 0px);
--ms-transform: scale(1.2) translate(45px, 0px);
-transform: scale(1.2) translate(45px, 0px);
+  -moz-transform: scale(1.2) translate(20px, 0px);
+-webkit-transform: scale(1.2) translate(20px, 0px);
+-o-transform: scale(1.2) translate(20px, 0px);
+-ms-transform: scale(1.2) translate(20px, 0px);
+transform: scale(1.2) translate(20px, 0px);
 }
 
 
@@ -60,8 +60,11 @@ html {
 }
 
 .navbar {
-  border-bottom-right-radius: 15px;
   background-color: #0c0a59;
+}
+
+.textColor {
+  color:  #0c0a59;
 }
 
 .bg-primary {
@@ -251,8 +254,8 @@ svg {
   height: 40rem;
   background: url(./images/lunaAustronaut.svg) no-repeat;
   background-color: #312f73;
+  background-attachment: fixed;
   background-position: center;
-  border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
   background-position: bottom;
 }
@@ -341,9 +344,9 @@ svg {
   cursor: pointer;
   width: 320px;
   height: 150px;
-  -webkit-box-shadow: 1px -2px 20px 2px #000000;
-  box-shadow: 1px -2px 20px 2px #000000;
-  border: solid 1px #0c0a59 !important;
+  -webkit-box-shadow: 1px -2px 10px 2px #C9C9C7;
+  box-shadow: 1px -2px 10px 2px #C9C9C7;
+  border: solid 1px #C9C9C7 !important;
   border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
@@ -435,8 +438,19 @@ svg {
   list-style-type: none;
 }
 
+.tablaTitulo {
+font-size: 11pt;
+text-align: center;
+}
+
 
 @media (min-width: 768px) {
+
+  .tablaTitulo {
+    font-size: 12pt;
+    }
+
+
   .logoPortada {
     width: 50rem;
   }
@@ -586,11 +600,11 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-label {
+.labelnav {
   cursor: pointer;
 }
 
-label:hover {
+.labelnav:hover {
   text-decoration: underline;
 }
 

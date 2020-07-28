@@ -53,16 +53,16 @@ const Table = (props) => {
       }}  >
         <BsFileText />
       </button> )}</td>
-      <td>{props.d.firstname} {props.d.lastname}</td>
-      <td>{props.c.emailcandidate}</td>
-      <td>{props.c.experiences}</td>
+      <td className="text-center">{props.d.firstname} {props.d.lastname}</td>
+      <td className="text-center">{props.c.emailcandidate}</td>
+      <td className="text-center">{props.c.experiences}</td>
       <td className="text-center">{props.c.intendedsalary}</td>
-      <td>{props.c.studies}</td>
+      <td className="text-center">{props.c.studies}</td>
       <td>
         <form onSubmit={modificar}>
           <div className="form-group d-flex flex-nowrap">
             <select
-              className="form-control"
+              className="form-control form-control-sm"
               name="state"
               required
               onChange={(e) => setestado(e.target.value)}
