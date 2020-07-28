@@ -40,17 +40,17 @@ const AdminEditPostulation = (props) => {
       </div>
       <div>
         {cat.postulateRef.length > 0 ? (
-          <div className="table-responsive">
-            <table className="table table-striped table-dark">
+          <div className="table-responsive ">
+            <table className="table table-striped table-sm table-dark">
               <thead>
                 <tr>
-                <th scope="col">CV</th>
-                  <th scope="col">Nombre y Apellido</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Experiencia</th>
-                  <th scope="col">Salario pretendido</th>
-                  <th scope="col">Estudios</th>
-                  <th scope="col">Estado</th>
+                <th className="tablaTitulo" scope="col">CV</th>
+                  <th className="tablaTitulo" scope="col">Candidato</th>
+                  <th className="tablaTitulo" scope="col">Email</th>
+                  <th className="tablaTitulo" scope="col">Experiencia</th>
+                  <th className="tablaTitulo" scope="col">Salario pretendido</th>
+                  <th className="tablaTitulo" scope="col">Estudios</th>
+                  <th className="tablaTitulo" scope="col">Estado</th>
                 </tr>
                 {cat.postulateRef.map((c,i) => {
                   return (

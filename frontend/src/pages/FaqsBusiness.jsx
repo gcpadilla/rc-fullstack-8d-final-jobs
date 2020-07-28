@@ -48,7 +48,7 @@ const FaqBusiness = () => {
         <h3 className="titulos text-center">Preguntas Frecuentes</h3>
         {faqs.map (ques =>  {
             return      <div className="p-3">
-                <h1 className="titulosQues">{ques.pregunta}</h1>
+                <h3 className="titulosQues">{ques.pregunta}</h3>
             <p className="card-text">{ques.respuesta} </p>
       </div>
         })}
