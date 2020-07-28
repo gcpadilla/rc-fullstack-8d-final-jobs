@@ -36,11 +36,11 @@ label {
 
 .poiter:hover {
   color: rgb(0, 247, 255) !important;
-  -moz-transform: scale(1.2) translate(45px, 0px);
--webkit-transform: scale(1.2) translate(45px, 0px);
--o-transform: scale(1.2) translate(45px, 0px);
--ms-transform: scale(1.2) translate(45px, 0px);
-transform: scale(1.2) translate(45px, 0px);
+  -moz-transform: scale(1.2) translate(20px, 0px);
+-webkit-transform: scale(1.2) translate(20px, 0px);
+-o-transform: scale(1.2) translate(20px, 0px);
+-ms-transform: scale(1.2) translate(20px, 0px);
+transform: scale(1.2) translate(20px, 0px);
 }
 
 
@@ -600,11 +600,11 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-label {
+.labelnav {
   cursor: pointer;
 }
 
-label:hover {
+.labelnav:hover {
   text-decoration: underline;
 }
 

@@ -2,13 +2,18 @@ import React from 'react'
 import '.././App.css'
 import logo from '../images/RollingJobswhite.svg'
 import { Link } from 'react-router-dom'
+import moment from "moment";
 // import Offers from '../pages/offers'
 
+
+
 const Footer = () => {
+    const date = moment().format('YYYY');
     return (
-        <div className="footerWeb d-flex flex-wrap justify-content-between">
+        <div className="searchBar">
+        <div className="footerWeb d-flex flex-wrap justify-content-center">
             <Link to="/" className="col-sm-12 col-md-4">
-            <img className=" logoFooter " src={logo} alt="Logo" />
+                <img className=" logoFooter " src={logo} alt="Logo" />
             </Link>
             <div className="container col-md-8 d-flex justify-content-center">
             <div className="container d-flex flex-wrap align-items-top">
@@ -28,8 +33,16 @@ const Footer = () => {
                     <Link className="tituloLinks" to="/prices">Precios</Link>
                 </div>
             </div>
-            </div>
+
         </div>
+        </div>
+                    <div>
+                    <p className="  text-center text-white mt-3" style={{fontSize: "1rem"}}>
+                            RollingJobs | Copyright ® {date}. Todos los derechos reservados.
+                    </p>
+        
+                    </div>
+                    </div>
     )
 }
 

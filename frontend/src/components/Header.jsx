@@ -14,12 +14,10 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light cabeceraWeb">
+      <nav className="navbar navbar-expand-lg navbar-dark cabeceraWeb">
       <a class="navbar-brand" href="/">
-        <img src={logo} width="160"  alt="" loading=""/>
-      </a>
-
-          {/* <img className="logoStyle" src={logo} alt="logo" /> */}
+    <img src={logo} width="180" height="" alt="" loading="lazy"/>
+  </a>
         <button
           className="navbar-toggler"
           type="button"

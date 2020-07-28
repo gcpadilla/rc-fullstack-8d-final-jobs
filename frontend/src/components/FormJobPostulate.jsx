@@ -14,9 +14,9 @@ const FormJobPostulate = (props) => {
       setUserSelec({});
             await Swal.fire({
   icon: 'success',
-  title: 'se creo correctamente </br> la oferta',
+  title: 'se creo correctamente la oferta',
   showConfirmButton: false,
-  width: "auto",  
+  maxWidth: 300,  
   timer: 1500
 }) 
       // await Swal.fire("genial", "se creo correctamente la oferta", "success");
@@ -72,6 +72,7 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
             maxLength="80"
           />
+          <small class="form-text text-muted ml-1">80 caracteres max.</small>
         </div>
         <div className="col-md-6 col-sm-12 form-group">
           <label htmlFor="description" className="formLabel">Descripción</label>
@@ -117,14 +118,14 @@ const FormJobPostulate = (props) => {
           />
         </div>
         <div className="col-md-6 col-sm-12 form-group">
-          <label htmlFor="availability" className="formLabel">disponibilidad </label>
+          <label htmlFor="availability" className="formLabel">Disponibilidad </label>
           <select
             className="form-control"
             onChange={onInputChange}
             name="availability"
             required
           >
-            <option value="">disponibilidad</option>
+            <option value="">Disponibilidad</option>
             <option value="Media jornada">Media Jornada</option>
             <option value="Jornada Completa">Jornada Completa</option>
           </select>
@@ -137,15 +138,18 @@ const FormJobPostulate = (props) => {
             name="categories"
             required
           >
-            <option value="">elija una categoria</option>
-            <option value="informatica">informatica</option>
-            <option value="construccion">construccion</option>
+            <option value="">Elija una categoria</option>
+            <option value="Informatica">Informatica</option>
+            <option value="Construccion">Construccion</option>
+            <option value="Telecomunicaciones">Telecomunicaciones</option>
+            <option value="Ventas">Ventas</option>
+            <option value="Medicina / Salud">Medicina / Salud</option>
           </select>
           </div>
         </div>
   
 
-      <div className="buttonOptions d-flex mb-2">
+      <div className="buttonOptions d-flex justify-content-center mb-2">
       <button
                 onClick={props.forzar}
                 className="btn btn-danger rounded-pill mr-5"

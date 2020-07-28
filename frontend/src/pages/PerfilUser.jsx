@@ -16,7 +16,7 @@ import { AiOutlineEdit, AiFillFilePdf } from "react-icons/ai";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import { IconContext } from "react-icons";
-import { MdMenu } from "react-icons/md";
+import { AiOutlineMenuUnfold } from "react-icons/ai";
 
 const PerfilUser = () => {
   const [display, setdisplay] = useState(1);
@@ -127,15 +127,17 @@ const PerfilUser = () => {
       auth.logout();
       await Swal.fire({
         icon: "success",
-        title: "sesion cerrada",
+        title: "Sesión cerrada",
         showConfirmButton: false,
         width: "auto",
         timer: 1500,
       });
-      // await Swal.fire("", "sesion cerrada", "success");
+      // await Swal.fire("", "Sesión cerrada", "success");
       history.push("/");
     } catch (error) {
       Swal.fire("ERROR", "error de deslogueo", "error");
+      localStorage.clear()
+      history.push("/");
     }
   };
 
@@ -203,8 +205,8 @@ const PerfilUser = () => {
       setState({ isPaneOpenLeft: false })
       Swal.fire({
         icon: "success",
-        text: "Se guardo correctamente <br/> su curriculum vitae",
-        width: "auto",
+        text: "Se guardo correctamente su curriculum vitae",
+        maxWidth: 300,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -226,7 +228,7 @@ const PerfilUser = () => {
       <div>
         <div style={{ marginTop: "15px", marginLeft: "15px" }}>
           <div  onClick={() => setState({ isPaneOpenLeft: true })}>
-            <IconContext.Provider value={{ size:"30px" }}><MdMenu/></IconContext.Provider> Menu
+            <IconContext.Provider value={{ size:"30px" }}><AiOutlineMenuUnfold/></IconContext.Provider> Menu
         </div>
         </div>
         <SlidingPane
@@ -268,7 +270,7 @@ const PerfilUser = () => {
 
                 <form onSubmit={guardarImage}>
                   <div className="imgPerfil btn-link text-white poiter mt-3">
-                    <label htmlFor="file_input_id">
+                    <label htmlFor="file_input_id" className="labelnav">
                       <AiOutlineEdit /> Foto de perfil
                     </label>
                     <input
