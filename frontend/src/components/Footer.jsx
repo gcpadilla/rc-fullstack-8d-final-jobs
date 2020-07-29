@@ -10,8 +10,8 @@ import moment from "moment";
 const Footer = () => {
     const date = moment().format('YYYY');
     return (
-        <div className="searchBar">
-        <div className="footerWeb d-flex flex-wrap justify-content-center">
+        <div className="searchBar d-flex flex-column">
+            <div className="footerWeb d-flex flex-wrap justify-content-center">
             <Link to="/" className="col-sm-12 col-md-4">
                 <img className=" logoFooter " src={logo} alt="Logo" />
             </Link>
@@ -20,7 +20,7 @@ const Footer = () => {
                 <div className="col-sm-12 col-md-4 dataInstitucional text-white d-flex flex-column my-2 ">
                     <h3 className="tituloFooter d-flex">Institucional</h3>
                     <Link className="tituloLinks" to="/informacion">¿Quiénes Somos?</Link>
-                    <Link className="tituloLinks" to="//contacto">Contacto</Link>
+                    <Link className="tituloLinks" to="/contacto">Contacto</Link>
                 </div>
                 <div className="col-sm-12 col-md-4 dataCandidatos text-white d-flex flex-column my-2">
                     <h3 className="tituloFooter">Candidatos</h3>
@@ -36,13 +36,11 @@ const Footer = () => {
 
         </div>
         </div>
-                    <div>
-                    <p className="  text-center text-white mt-3" style={{fontSize: "1rem"}}>
+                    <p className=" testingRolling text-center text-white mt-3" style={{fontSize: "1rem"}}>
                             RollingJobs | Copyright ® {date}. Todos los derechos reservados.
                     </p>
         
-                    </div>
-                    </div>
+        </div>
     )
 }
 
