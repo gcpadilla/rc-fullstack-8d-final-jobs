@@ -24,7 +24,7 @@ const CardPostulate = (props) => {
   const getArticles = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/v1/offers/${props.all.offerid}`
+        `/api/v1/offers/${props.all.offerid}`
       );
       setdata(response.data);
     } catch (error) {

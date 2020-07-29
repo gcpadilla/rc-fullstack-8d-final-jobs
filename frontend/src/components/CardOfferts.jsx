@@ -19,7 +19,7 @@ const CardOfferts = (props) => {
         .then(async (result) => {
           if (result.value) {
             await axios.delete(
-              `http://localhost:3001/api/v1/offers/${props.data._id}`
+              `/api/v1/offers/${props.data._id}`
             );
             sweetalert.fire({
               icon: "success",

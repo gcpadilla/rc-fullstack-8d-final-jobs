@@ -26,7 +26,7 @@ const Home = () => {
   const getuser = useCallback(async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/v1/offers/candidate/all"
+        "/api/v1/offers/candidate/all"
       );
       setdatauser(response.data);
     } catch (error) {
@@ -38,7 +38,7 @@ const Home = () => {
   const getpostulation = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/v1/offer/postulates/user/all"
+        "/api/v1/offer/postulates/user/all"
       );
       setdatapostulation(response.data);
     } catch (error) {

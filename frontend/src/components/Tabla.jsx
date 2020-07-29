@@ -13,7 +13,7 @@ const Table = (props) => {
     try {
       setflag(false);
       await axios.put(
-        `http://localhost:3001/api/v1/offer/postulates/${props.c._id}/admin`,
+        `/api/v1/offer/postulates/${props.c._id}/admin`,
         { state: estado }
       );
       await Swal.fire({

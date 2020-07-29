@@ -20,7 +20,7 @@ function LoginLogoutButton(props) {
     e.preventDefault();
     // try {
     //   await axios.get(
-    //     "http://localhost:3001/api/v1/users/administrators/logout"
+    //     "/api/v1/users/administrators/logout"
     //   );
     //   auth.logout();
     //   await sweetalert.fire("ADMINISTRADOR", "Sesión cerrada", "success");
@@ -29,7 +29,7 @@ function LoginLogoutButton(props) {
     // } catch (error) {}
 
     try {
-      await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
+      await axios.get("/api/v1/users/candidates/logout");
       auth.logout();
       await sweetalert.fire({
         icon: 'success',

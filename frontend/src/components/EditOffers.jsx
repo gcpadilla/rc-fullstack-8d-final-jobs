@@ -10,7 +10,7 @@ const EditOffers = (props) => {
     e.preventDefault();
     try {
       await axios.put(
-        `http://localhost:3001/api/v1/offers/${props.oferta._id}`,
+        `/api/v1/offers/${props.oferta._id}`,
         UserSelec
       );
       setUserSelec({});
