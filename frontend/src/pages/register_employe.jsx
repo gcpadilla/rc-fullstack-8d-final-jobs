@@ -19,7 +19,7 @@ const Register = () => {
     if (UserSelec.password === UserSelec.password2) {
       try {
         await axios.post(
-          "http://localhost:3001/api/v1/users/candidates",
+          "/api/v1/users/candidates",
           UserSelec
         );
         await Swal.fire({

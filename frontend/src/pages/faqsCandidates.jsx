@@ -39,8 +39,8 @@ const FaqsCandidates = () => {
     <Header />
     <div className="p-5">
         <h3 className="titulos text-center">Preguntas Frecuentes</h3>
-        {faqs.map (ques =>  {
-            return      <div className="p-3">
+        {faqs.map ((ques, i) =>  {
+            return      <div className="p-3" key={i}>
                 <h1 className="titulosQues">{ques.pregunta}</h1>
             <p className="card-text">{ques.respuesta} </p>
       </div>

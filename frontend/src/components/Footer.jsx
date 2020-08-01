@@ -20,7 +20,7 @@ const Footer = () => {
                 <div className="col-sm-12 col-md-4 dataInstitucional text-white d-flex flex-column my-2 ">
                     <h3 className="tituloFooter d-flex">Institucional</h3>
                     <Link className="tituloLinks" to="/informacion">¿Quiénes Somos?</Link>
-                    <Link className="tituloLinks" to="//contacto">Contacto</Link>
+                    <Link className="tituloLinks" to="/contacto">Contacto</Link>
                 </div>
                 <div className="col-sm-12 col-md-4 dataCandidatos text-white d-flex flex-column my-2">
                     <h3 className="tituloFooter">Candidatos</h3>

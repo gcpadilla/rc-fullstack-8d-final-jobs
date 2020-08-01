@@ -10,7 +10,7 @@ const OfertasInicio= (props) => {
   const getArticles = useCallback(async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/v1/offers/all"
+        "/api/v1/offers/all"
       );
       setdata(response.data);      
     } catch (error) {
