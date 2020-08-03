@@ -24,7 +24,7 @@ const Register = () => {
         );
         await Swal.fire({
           icon: "success",
-          title: "se registro sactifactoriamente!",
+          title: "Se registro sactifactoriamente!",
           showConfirmButton: false,
           width: "auto",
           timer: 1500,

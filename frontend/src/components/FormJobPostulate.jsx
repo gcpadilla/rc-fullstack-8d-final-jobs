@@ -14,7 +14,7 @@ const FormJobPostulate = (props) => {
       setUserSelec({});
             await Swal.fire({
   icon: 'success',
-  title: 'se creo correctamente la oferta',
+  title: 'Oferta creada',
   showConfirmButton: false,
   maxWidth: 300,  
   timer: 1500

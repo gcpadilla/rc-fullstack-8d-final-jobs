@@ -52,12 +52,13 @@ const AdminEditPostulation = (props) => {
                   <th className="tablaTitulo" scope="col">Estudios</th>
                   <th className="tablaTitulo" scope="col">Estado</th>
                 </tr>
+                </thead>
                 {cat.postulateRef.map((c,i) => {
                   return (
                     <Tabla c={c} d={cat.candidateRef[i]} key={c._id}/>
                   );
                 })}
-              </thead>
+              
             </table>
           </div>
         ) : (
