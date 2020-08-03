@@ -61,7 +61,7 @@ exports.createCandidate = async (req, res) => {
                       <h1> &#60; Roling<strong style="color:#312f73">Jobs</strong> &#62; </h1>
                       <h2>Felicidades, ahora estas listo para buscar tu empleo soñado &#128578;</h2>
                       <h3>
-                      Hola ${candidateData.firstname} ${candidateData.lastname},  el quipo de RollingJobs de ta la bienvenida, ingresa a http://${process.env.DB_HOST}:${process.env.PORT}/ , y comienza a buscar trabajo.
+                      Hola ${candidateData.firstname} ${candidateData.lastname},  el quipo de RollingJobs de ta la bienvenida, ya puedes comenzar con la busqueda de trabajo.
                       </h3>
                     </div>`;
         await sendEmail(email, subject, html);

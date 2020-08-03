@@ -14,7 +14,7 @@ import auth from "../utils/auth";
 const Home = () => {
   const [datapostulation, setdatapostulation] = useState([]);
   const [datauser, setdatauser] = useState([]);
-  const role = useState(localStorage.getItem("role"));
+  const [role, setRole] = useState(localStorage.getItem("role"));
   const history = useHistory();
 
   const actualizar = () => {
