@@ -192,6 +192,7 @@ const Register = () => {
                       placeholder="Contraseña"
                       id="inputPassword5"
                       name="password"
+                      autoComplete="off"
                       className="form-control form-control-sm"
                       aria-describedby="passwordHelpBlock"
                       onChange={onInputChange}

@@ -49,12 +49,13 @@ const Home = () => {
   // CON ESTO CONTROLO QUE ESTE AUTENTICADO Y ADEMAS NO SEA UN ADMIN
   useEffect(() => {
     if (auth.isAuthenticated() === true) {
+      setRole(localStorage.getItem("role"))
       if (role === "admin") {
         history.push("/company");
       }
       actualizar();
     }
-  }, [auth.isAuthenticated() ]);
+  }, [auth.isAuthenticated()]);
 
   return (
     <div>
