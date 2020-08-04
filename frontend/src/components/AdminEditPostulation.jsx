@@ -9,7 +9,7 @@ const AdminEditPostulation = (props) => {
   const getArticles = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/v1/offers/${props.idpost}/admin`
+        `/api/v1/offers/${props.idpost}/admin`
       );
       setdata(response.data);
     } catch (error) {}
@@ -18,7 +18,7 @@ const AdminEditPostulation = (props) => {
   const getAr = useCallback(async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3001/api/v1/offers/${props.idpost}/postulations`
+        `/api/v1/offers/${props.idpost}/postulations`
       );
       setcat(res.data);
     } catch (error) {}
@@ -52,12 +52,13 @@ const AdminEditPostulation = (props) => {
                   <th className="tablaTitulo" scope="col">Estudios</th>
                   <th className="tablaTitulo" scope="col">Estado</th>
                 </tr>
+                </thead>
                 {cat.postulateRef.map((c,i) => {
                   return (
                     <Tabla c={c} d={cat.candidateRef[i]} key={c._id}/>
                   );
                 })}
-              </thead>
+              
             </table>
           </div>
         ) : (

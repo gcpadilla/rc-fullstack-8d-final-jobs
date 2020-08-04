@@ -1,12 +1,8 @@
 import React from "react";
-
-// import Button from './Button'
-// import ".././App.css";
 import logo from "../images/RollingJobswhite.svg";
 import { NavLink, Link } from "react-router-dom";
 import LoginLogoutButton from "../components/LoginLogoutButton";
 import auth from "../utils/auth";
-import { AiOutlineHome } from "react-icons/ai";
 import {BsPerson} from "react-icons/bs"
 import {IoMdBusiness, IoIosBusiness} from "react-icons/io"
 
@@ -15,9 +11,9 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark cabeceraWeb">
-      <a class="navbar-brand" href="/">
+      <Link className="navbar-brand" to="/">
     <img src={logo} width="180" height="" alt="" loading="lazy"/>
-  </a>
+  </Link>
         <button
           className="navbar-toggler"
           type="button"

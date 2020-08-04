@@ -10,11 +10,11 @@ const FormJobPostulate = (props) => {
   const onsubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/api/v1/offers", UserSelec);
+      await axios.post("/api/v1/offers", UserSelec);
       setUserSelec({});
             await Swal.fire({
   icon: 'success',
-  title: 'se creo correctamente la oferta',
+  title: 'Oferta creada',
   showConfirmButton: false,
   maxWidth: 300,  
   timer: 1500
@@ -72,7 +72,7 @@ const FormJobPostulate = (props) => {
             onChange={onInputChange}
             maxLength="80"
           />
-          <small class="form-text text-muted ml-1">80 caracteres max.</small>
+          <small className="form-text text-muted ml-1">80 caracteres max.</small>
         </div>
         <div className="col-md-6 col-sm-12 form-group">
           <label htmlFor="description" className="formLabel">Descripción</label>

@@ -27,7 +27,7 @@ const Company = () => {
   // TRAIGO LAS OFERTAS CREADAS
   const getArticles = useCallback(async () => {
     const response = await axios.get(
-      "http://localhost:3001/api/v1/offers/admin/all"
+      "/api/v1/offers/admin/all"
     );
     setdata(response.data);
   }, []);
@@ -46,7 +46,7 @@ const Company = () => {
     e.preventDefault();
     try {
       await axios.get(
-        "http://localhost:3001/api/v1/users/administrators/logout"
+        "/api/v1/users/administrators/logout"
       );
       auth.logout();
       await sweetalert.fire({

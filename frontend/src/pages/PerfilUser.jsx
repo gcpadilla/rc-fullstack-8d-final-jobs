@@ -17,6 +17,8 @@ import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import { IconContext } from "react-icons";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const PerfilUser = () => {
   const [display, setdisplay] = useState(1);
@@ -39,7 +41,7 @@ const PerfilUser = () => {
   const getuser = useCallback(async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/v1/offers/candidate/all"
+        "/api/v1/offers/candidate/all"
       );
       setdatauser(response.data);
     } catch (error) {
@@ -50,7 +52,7 @@ const PerfilUser = () => {
   const getpostulation = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/v1/offer/postulates/user/all"
+        "/api/v1/offer/postulates/user/all"
       );
       setdatapostulation(response.data);
     } catch (error) {
@@ -73,7 +75,7 @@ const PerfilUser = () => {
       if (result.value) {
         try {
           await axios.put(
-            "http://localhost:3001/api/v1/users/candidates/",
+            "/api/v1/users/candidates/",
             UserSelec
           );
           Swal.fire({
@@ -110,7 +112,7 @@ const PerfilUser = () => {
   // TRAE LOS DATOS DEL USUARIO PARA SER EDITADOS
   const getArticles = useCallback(async () => {
     const response = await axios.get(
-      "http://localhost:3001/api/v1/users/candidates/edit/"
+      "/api/v1/users/candidates/edit/"
     );
     setUserSelec(response.data);
   }, []);
@@ -123,7 +125,7 @@ const PerfilUser = () => {
   const signOutHandler = async (e) => {
     e.preventDefault();
     try {
-      await axios.get("http://localhost:3001/api/v1/users/candidates/logout");
+      await axios.get("/api/v1/users/candidates/logout");
       auth.logout();
       await Swal.fire({
         icon: "success",
@@ -152,7 +154,7 @@ const PerfilUser = () => {
         const formData = new FormData();
         formData.append("image", f);
         await axios.post(
-          "http://localhost:3001/api/v1/users/candidates/upImagen",
+          "/api/v1/users/candidates/upImagen",
           formData,
           {
             headers: {
@@ -193,7 +195,7 @@ const PerfilUser = () => {
         const formData = new FormData();
         formData.append("CV", f);
         await axios.post(
-          "http://localhost:3001/api/v1/users/candidates/upCv",
+          "/api/v1/users/candidates/upCv",
           formData,
           {
             headers: {
@@ -225,6 +227,7 @@ const PerfilUser = () => {
 
   return (
     <>
+     <Header />
       <div>
         <div style={{ marginTop: "15px", marginLeft: "15px" }}>
           <div  onClick={() => setState({ isPaneOpenLeft: true })}>
@@ -568,6 +571,7 @@ const PerfilUser = () => {
             </div>
           </div>
       </div>
+      <Footer />
     </>
   );
 };

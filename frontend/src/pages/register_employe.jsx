@@ -19,12 +19,12 @@ const Register = () => {
     if (UserSelec.password === UserSelec.password2) {
       try {
         await axios.post(
-          "http://localhost:3001/api/v1/users/candidates",
+          "/api/v1/users/candidates",
           UserSelec
         );
         await Swal.fire({
           icon: "success",
-          title: "se registro sactifactoriamente!",
+          title: "Se registro sactifactoriamente!",
           showConfirmButton: false,
           width: "auto",
           timer: 1500,
