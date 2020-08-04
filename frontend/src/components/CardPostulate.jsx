@@ -46,7 +46,7 @@ const CardPostulate = (props) => {
               <p className="card-title text-muted">Estado: {props.all.state}</p>
             </div>
           </div>
-          <Modal show={show} onHide={handleClose}>
+          {props.all.state === "Pendiente" ? <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
               <FormPostulate
@@ -57,6 +57,7 @@ const CardPostulate = (props) => {
               />
             </Modal.Body>
           </Modal>
+          : <></>}
         </>
       ) : (
         <></>
