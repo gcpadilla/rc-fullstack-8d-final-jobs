@@ -2,7 +2,7 @@
 
 El proyecto trata de una aplicación de publicación y gestión de empleos.
 Donde un administrador publica diferentes solicitudes de empleos.
-Un usuario pueda cargar sus datos y postularse a uno o varios empleos.
+Un usuario puede cargar sus datos y postularse a uno o varios empleos.
 
 ## Como levantar el proyecto
 
