@@ -208,7 +208,7 @@ const PerfilUser = () => {
       Swal.fire({
         icon: "success",
         text: "Se guardo correctamente su curriculum vitae",
-        maxWidth: 300,
+        width: 300,
         showConfirmButton: false,
         timer: 1500,
       });
