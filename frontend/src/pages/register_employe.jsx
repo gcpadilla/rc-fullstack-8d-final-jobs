@@ -58,7 +58,7 @@ const Register = () => {
       setUserSelec({
         ...UserSelec,
         [e.target.name]: e.target.value,
-        publicationdate: new Date().toLocaleString(),
+        //publicationdate: new Date().toLocaleString(),
         dateborn: e.target.value,
       });
     } else {

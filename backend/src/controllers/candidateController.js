@@ -40,7 +40,7 @@ exports.createCandidate = async (req, res) => {
     dni: body.dni,
     age: body.age,
     profession: body.profession,
-    publicationdate: body.publicationdate,
+    dateOfBirth: body.dateOfBirth,
     postulantRef: body.postulantRef,
     token: [],
   };
