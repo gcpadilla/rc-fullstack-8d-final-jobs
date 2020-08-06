@@ -55,7 +55,7 @@ const CandidateSchema = new mongoose.Schema({
     default:"user",
    },
   dateOfBirth:{
-    type: String,
+    type: Date,
     required: true,
     trim: true
   },

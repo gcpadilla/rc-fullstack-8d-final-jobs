@@ -101,6 +101,11 @@ exports.getAllOffersActive = async (req, res) => {
       { active: true },
       "-postulateRef -active"
     );
+
+    if (offers.length === 0) {
+      return res.status(200).json({ message: "No hay ofertas disponibles . . ." });
+    }
+
     res.send(offers);
   } catch (err) {
     res.status(500).send(err);
@@ -117,6 +122,11 @@ exports.getAllOffersHome = async (req, res) => {
       )
       .sort("-publicationdate")
       .limit(3);
+
+      if (offers.length === 0) {
+        return res.status(200).json({ message: "No hay ofertas disponibles . . ." });
+      }
+
     res.send(offers);
   } catch (err) {
     res.status(500).send(err);

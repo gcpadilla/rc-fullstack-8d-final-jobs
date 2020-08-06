@@ -3,6 +3,34 @@ const bcryptjs = require('bcryptjs');
 const jsonwebtoken = require('jsonwebtoken');
 const adminModel = require('../models/administratorModel');
 
+
+//primer inicio, administrador 0
+exports.thereIsAnAdmin = async (req, res) => {
+  
+  let isAdmin = await adminModel.countDocuments()
+  if (isAdmin > 0 ) {
+    return res.status(200).json({ message: 'Todo bien che, pero ya existen uno o mas admines'});
+  }
+  
+  const adminData = {
+    username: 'Administrador0',
+    password: 'Administrador0',
+    token: []
+  };
+
+  const salt = await bcryptjs.genSalt(10);
+  adminData.password = await bcryptjs.hash(adminData.password, salt);
+
+  const user = new adminModel(adminData);
+
+  try {
+    await user.save();
+    res.send({ message: 'Es el primer inicio de la aplicacion, puedes loguearte con Username: Administrador0 , password: Administrador0' });
+  } catch (error) {
+    return res.status(500).json({ message: "ERROR DE INICIO.", error });
+  }
+}
+
 //crear usuario admin
 exports.createAdmin = async (req, res) => {
   const errors = validationResult(req);
@@ -48,12 +76,12 @@ exports.login = async (req, res) => {
   
   let user_in_db = await adminModel.findOne({ username: body.username });
   if (!user_in_db) {
-    return res.status(400).json({ message: 'Credenciales no validas.'});
+    return res.status(401).json({ message: 'Credenciales no validas.'});
   }
   
   const passCheck = await bcryptjs.compare(body.password, user_in_db.password);
   if (!passCheck) {
-    return res.status(400).json({ message: 'Credenciales no validas.'});
+    return res.status(401).json({ message: 'Credenciales no validas.'});
   }
 
   const jwt_payload = {

@@ -215,7 +215,7 @@ exports.deleteCandidate = async (req, res) => {
   }
 };
 
-//get candidate
+//get candidato
 exports.editCandidate = async (req, res) => {
   try {
     if (!res.locals.user.id) {

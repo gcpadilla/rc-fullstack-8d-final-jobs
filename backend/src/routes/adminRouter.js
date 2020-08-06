@@ -5,9 +5,12 @@ const router = express.Router();
 
 const adminController = require("../controllers/adminController");
 
+//PRIMER INICIO
+router.get('/', adminController.thereIsAnAdmin);
+
 //CREAR USUARIO ADMIN
 router.post(
-  "/",
+  "/create",
   [
     body("username", "El usuario no puede ser nulo").notEmpty(),
     body("username", "No puedes incluir mas de 25 caracteres").isLength({
