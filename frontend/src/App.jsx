@@ -7,8 +7,8 @@ import {
 import PrivateRoute from "./components/PrivateRoute";
 import "./App.css";
 import home from "./pages/home";
-import login_employe from "./pages/login_employe.jsx";
-import register_employe from "./pages/register_employe";
+import loginEmploye from "./pages/loginEmploye.jsx";
+import registerEmploye from "./pages/registerEmploye";
 import company from "./pages/company";
 import offers from "./pages/offers";
 import PerfilUser from "./pages/PerfilUser"
@@ -25,8 +25,8 @@ function App() {
       <Router>
         <Switch>
           <Route path="/faqcandidates" component={FaqsCandidates} />
-          <Route path="/login_employe" component={login_employe} />
-          <Route path="/register_employe" component={register_employe} />
+          <Route path="/loginEmploye" component={loginEmploye} />
+          <Route path="/registerEmploye" component={registerEmploye} />
           <PrivateRoute path="/company" component={company} />
           <Route path="/PerfilUser" component={PerfilUser}/>
           <Route path="/offers" component={offers} />

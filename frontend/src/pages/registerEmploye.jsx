@@ -11,6 +11,7 @@ import { useState } from "react";
 const Register = () => {
   const [UserSelec, setUserSelec] = useState({});
   const [redirec, setredirec] = useState(false);
+console.log(moment().format("YYYY-MM-DD"));
 
   const onsubmit = async (e) => {
     e.preventDefault();
@@ -58,9 +59,10 @@ const Register = () => {
       setUserSelec({
         ...UserSelec,
         [e.target.name]: e.target.value,
-        publicationdate: new Date().toLocaleString(),
+       publicationdate: new Date().toLocaleString(),
         dateborn: e.target.value,
       });
+      console.log(UserSelec);
     } else {
       setUserSelec({
         ...UserSelec,
@@ -117,6 +119,7 @@ const Register = () => {
                     <label htmlFor="dni">Documento</label>
                     <input
                       type="number"
+                      size="8"
                       required
                       className="form-control form-control-sm"
                       min="100000"
@@ -132,6 +135,9 @@ const Register = () => {
                     <input
                       type="date"
                       required
+                      min="1950-01-01"
+                      max={moment().format("YYYY-MM-DD")}
+                      step="1"
                       className="form-control form-control-sm"
                       name="age"
                       placeholder="Fecha de Nacimiento"
