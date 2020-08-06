@@ -59,7 +59,7 @@ const Register = () => {
         ...UserSelec,
         [e.target.name]: e.target.value,
         //publicationdate: new Date().toLocaleString(),
-        dateborn: e.target.value,
+        dateOfBirth: e.target.value,
       });
     } else {
       setUserSelec({
