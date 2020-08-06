@@ -85,7 +85,7 @@ exports.getAllPostulatessUser = async (req, res) => {
     );
 
     if (postulates.length === 0) {
-      return res.status(400).json({ message: "No tienes postulaciones . . ." });
+      return res.status(200).json({ message: "No tienes postulaciones . . ." });
     }
     res.send(postulates);
   } catch (err) {
