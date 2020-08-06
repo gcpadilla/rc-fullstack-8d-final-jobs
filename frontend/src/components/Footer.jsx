@@ -36,7 +36,7 @@ const Footer = () => {
 
         </div>
         </div>
-                    <p className=" testingRolling text-center text-white mt-3" style={{fontSize: "1rem"}}>
+                    <p className=" testingRolling text-center text-white mt-3">
                             RollingJobs | Copyright ® {date}. Todos los derechos reservados.
                     </p>
         

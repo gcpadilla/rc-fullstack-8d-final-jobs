@@ -16,8 +16,8 @@ const BodyDown = () => {
                 <img src={Team} alt="Team" className="imgSizeLanding" />
                 </div>
         </div>
-        <div>
-        <div className="mt-5 d-flex flex-column align-items-center testingMargin">
+        <div className="d-flex justify-content-center align-items-center spaceBodyDown">
+        <div className=" mt-5 mx-2 d-flex flex-column align-items-center testingMargin">
                 <h3 className="tituloNews text-center">Suscríbite al Newsletter</h3>
                 <p className="textNews text-center"> Trabajos - Talleres - Novedades - Información Util </p>  
             <FormSuscription />

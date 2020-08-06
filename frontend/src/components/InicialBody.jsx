@@ -13,7 +13,7 @@ const InicialBody = () => {
   return (
     <div className="homeInicial d-flex flex-column align-items-center justify-content-around">
       <img className="logoPortada" src={logo} alt="Logo" />
-      <div className="text-white text-center ">
+      <div className="text-white text-center m-n5">
         <h3>El paso a un</h3>
         <h3 className="infoInicial">nuevo trabajo</h3>
         <h3 >empieza aquí</h3>
