@@ -40,7 +40,10 @@ const Home = () => {
       const response = await axios.get(
         "/api/v1/offer/postulates/user/all"
       );
-      setdatapostulation(response.data);
+      if (!response.data.message) {
+        setdatapostulation(response.data);
+      }
+      
     } catch (error) {
       setdatapostulation([]);
     }

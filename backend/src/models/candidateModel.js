@@ -53,9 +53,9 @@ const CandidateSchema = new mongoose.Schema({
   role: {
     type: String,
     default:"user",
-  },
-  publicationdate:{
-    type: String,
+   },
+  dateOfBirth:{
+    type: Date,
     required: true,
     trim: true
   },

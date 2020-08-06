@@ -12,7 +12,9 @@ const OfertasInicio= (props) => {
       const response = await axios.get(
         "/api/v1/offers/all"
       );
-      setdata(response.data);      
+      if (!response.data.message) {
+        setdata(response.data);
+      } 
     } catch (error) {
     }
   }, []);
