@@ -27,11 +27,6 @@ Para controlar si el backend esta levantado
 /api/v1/status
 ```
 
-Se debe crear un administrador en el siguiente endpoint, para comenzar a publicar empleos.
-```
-/api/v1/users/administrators
-```
-
 # Autores
 ### Guillermo Padilla
 ### Alfredo Valenzuela
