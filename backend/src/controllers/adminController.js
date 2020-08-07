@@ -76,12 +76,12 @@ exports.login = async (req, res) => {
   
   let user_in_db = await adminModel.findOne({ username: body.username });
   if (!user_in_db) {
-    return res.status(401).json({ message: 'Credenciales no validas.'});
+    return res.status(400).json({ message: 'Credenciales no validas.'});
   }
   
   const passCheck = await bcryptjs.compare(body.password, user_in_db.password);
   if (!passCheck) {
-    return res.status(401).json({ message: 'Credenciales no validas.'});
+    return res.status(400).json({ message: 'Credenciales no validas.'});
   }
 
   const jwt_payload = {
@@ -93,10 +93,10 @@ exports.login = async (req, res) => {
   };
   
   try {
-    //const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET, { expiresIn: process.env.TOKEN_EXP_TIME });
-    const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET);
-    user_in_db.token.push(token)
-    //user_in_db.token = [ token ];
+    const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET, { expiresIn: process.env.TOKEN_EXP_TIME });
+    //const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET);
+    //user_in_db.token.push(token)
+    user_in_db.token = [ token ];
     await adminModel.update({ username: user_in_db.username }, user_in_db);
     res.send({ message: 'Se logueo perfecto', token, role: user_in_db.role, username: user_in_db.username});
   } catch (error) {
