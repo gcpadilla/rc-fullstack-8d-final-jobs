@@ -759,8 +759,10 @@ exports.createCandidate = async (req, res) => {
 //loguear candidato
 exports.login = async (req, res) => {
   const errors = validationResult(req);
+ 
+
   if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array() });
+    return res.status(400).json({ errors: errors.array() });
   }
 
   const { body } = req;
@@ -769,12 +771,14 @@ exports.login = async (req, res) => {
   if (!user_in_db) {
     return res.status(400).json({ message: "Credenciales no validas." });
   }
-
+  
   const passCheck = await bcryptjs.compare(body.password, user_in_db.password);
+  
   if (!passCheck) {
+    console.log(user_in_db)
     return res.status(400).json({ message: "Credenciales no validas." });
   }
-
+  
   const jwt_payload = {
     user: {
       id: user_in_db.id,
@@ -782,12 +786,12 @@ exports.login = async (req, res) => {
       role: user_in_db.role,
     },
   };
-
+  
   try {
-    // const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET, {
-    // expiresIn: process.env.TOKEN_EXP_TIME,
-    // });
-    const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET);
+    const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET, {
+    expiresIn: process.env.TOKEN_EXP_TIME,
+    });
+    //const token = jsonwebtoken.sign(jwt_payload, process.env.JWT_SECRET);
     user_in_db.token.push(token);
     //user_in_db.token = [token];
     await candidateModel.update({ username: user_in_db.username }, user_in_db);
