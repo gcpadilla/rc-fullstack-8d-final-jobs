@@ -30,7 +30,6 @@ label {
 transform: scale(1.2) translate(20px, 0px);
 }
 
-
 html {
   padding: 0;
 }
@@ -67,11 +66,9 @@ html {
   align-items: flex-start;
 }
 
-
 .botonHeader {
   background-color: #3dd993
 }
-
 
 .dropdown-item {
   font-size: 10pt;
@@ -82,7 +79,6 @@ html {
 .dropdown-menu {
   color: white;
   background-color: #0c0a59;
-
 }
 
 .react-icons {
@@ -122,31 +118,6 @@ svg {
   width: 100vw;
 }
 
-
-@media (min-width: 996px) {
-  .navbarGeneral {
-    display: flex;
-    justify-content: flex-end;
-
-  }
-
-  .sidebarMenuAdmin {
-    background-color: #0c0a59;
-  }
-
-  .sidebarMenu {
-    height: 100vh;
-    width: 30%;
-    background-color: #3DD990;
-  }
-
-  .textAdmin {
-    font-size: 1.5rem;
-  }
-
-}
-
-
 /* navbartesting */
 
 .vertical-nav {
@@ -170,73 +141,11 @@ svg {
   margin: 0;
 }
 
-
-
-@media (min-width: 768px) {
-
-  /* navbarTesint */
-  #sidebar {
-    margin-left: -17rem;
-  }
-
-  #sidebar.active {
-    margin-left: 0;
-  }
-
-  #content {
-    width: 100%;
-    margin: 0;
-  }
-
-  #content.active {
-    margin-left: 17rem;
-    width: calc(100% - 17rem);
-  }
-
-  /* finNavbarTesting */
-
-  .logoStyle {
-    max-width: 160px;
-  }
-
-  .dropdown-item {
-    font-size: 12pt;
-    color: white;
-    background-color: #0c0a59;
-  }
-
-  .dropdown-menu {
-    color: white;
-    background-color: #0c0a59;
-  }
-
-  .nav-link {
-    color: white;
-    font-size: 12pt;
-  }
-
-  .navbarStyle {
-    display: flex;
-    align-items: center;
-  }
-
-  .btn {
-    font-size: 12pt;
-  }
-
-  .usernameLoguin {
-    color: white;
-    font-size: 12pt;
-  }
-
-
-}
-
 .homeInicial {
   height: 92vh;
   background: url(./images/lunaAustronaut.svg) no-repeat;
   background-color: #312f73;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-position: center;
   border-bottom-right-radius: 15px;
   background-position: bottom;
@@ -255,8 +164,7 @@ svg {
 .formSuscription {
   background-color: #0c0a59;
   text-align: center;
-  width: 12rem;
-
+  width: 20rem;
 }
 
 .lateralSide {
@@ -267,7 +175,6 @@ svg {
   height: 100vh;
   width: 10rem;
 }
-
 
 .sidebarMenuAdmin {
   background-color: #0c0a59;
@@ -365,7 +272,6 @@ svg {
   width: 250px;
 }
 
-
 .cartelInfo {
   width: 10rem;
   height: 6rem;
@@ -379,7 +285,6 @@ svg {
   font-size: 26pt;
   line-height: 26pt;
 }
-
 
 .tituloDown {
   font-weight: 700;
@@ -423,13 +328,254 @@ font-size: 11pt;
 text-align: center;
 }
 
+.infoInicial {
+  font-weight: 700;
+  line-height: 20pt;
+}
+
+.imgSVG {
+  height: 20rem;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.labelnav {
+  cursor: pointer;
+}
+
+.labelnav:hover {
+  text-decoration: underline;
+}
+
+#file_input_id {
+  display: none;
+}
+
+#cv_input_id {
+  display: none;
+}
+
+/* .generalBody {
+  height: 40rem;
+}
+
+.bodyPostulates{
+  height: 20rem;
+}
+
+
+.titulos{
+font-size: 25pt;
+font-weight: 600;
+}
+
+
+
+.links{
+  font-family:'Poppins', sans-serif;
+font-size: 10pt;
+color: #3DD990;
+}
+
+.modifData{
+  max-width: 50rem;
+}
+  
+.cartelJobs{
+/* -webkit-border-top-left-radius: 10px;
+-webkit-border-bottom-right-radius: 10px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-bottomright: 10px; */
+/* width: 20rem;
+  height: 15rem;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+} */
+
+.dataBody {
+  line-height: 4pt;
+}
+
+.datosCartel {
+  font-size: 9pt;
+}
+
+.descriptionOffer {
+  font-size: 9pt;
+  line-height: 10pt;
+}
+
+.imageLogoCard {
+  background-color: rgb(223, 223, 223);
+  height: 5rem;
+  width: 5rem;
+}
+
+/* footer */
+
+.footerWeb {
+  background-color: #0c0a59;
+  /* max-height: 12rem; */
+}
+
+.menuFooter {
+  width: 100vh;
+}
+
+.tituloCardSale {
+  font-weight: 600;
+  font-size: 15pt;
+  font-family: 'Poppins', sans-serif;
+}
+
+.tituloFooter {
+  font-weight: 600;
+  font-size: 15pt;
+}
+
+.testingMargin {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.searchBar {
+  background-color: #0c0a59;
+}
+
+.testingRolling{
+  background-color: #0c0a59;
+  font-size: 0.8rem;
+}
+.imagePrice {
+  width: 70px;
+}
+
+.FourZero{
+  height: 700px
+}
+
+.contactFormSize{
+  height: 800px
+}
+
+.spaceBodyDown{
+  height: 400px
+} 
+
+.testingShade {
+  text-shadow: 5px 5px #000000
+}
+@media (min-width: 996px) {
+  .navbarGeneral {
+    display: flex;
+    justify-content: flex-end;
+
+  }
+
+  .sidebarMenuAdmin {
+    background-color: #0c0a59;
+  }
+
+  .sidebarMenu {
+    height: 100vh;
+    width: 30%;
+    background-color: #3DD990;
+  }
+
+  .textAdmin {
+    font-size: 1.5rem;
+  }
+
+}
+/* 
+@media (min-width: 576px) {
+
+  .tituloNews {
+    font-weight: 700;
+    color: #0c0a59;
+    font-size: 1.5rem;
+  }  
+
+  .textNews {
+    font-weight: 400;
+    color: #0c0a59;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  } */
+
+  .titulosQues{
+    font-size: 15pt;
+    font-weight: 600;
+  }
 
 @media (min-width: 768px) {
+
+  /* navbarTesint */
+  #sidebar {
+    margin-left: -17rem;
+  }
+
+  #sidebar.active {
+    margin-left: 0;
+  }
+
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+
+  #content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem);
+  }
+  /* finNavbarTesting */
+
+  .logoStyle {
+    max-width: 160px;
+  }
+
+  .dropdown-item {
+    font-size: 12pt;
+    color: white;
+    background-color: #0c0a59;
+  }
+
+  .dropdown-menu {
+    color: white;
+    background-color: #0c0a59;
+  }
+
+  .nav-link {
+    color: white;
+    font-size: 12pt;
+  }
+
+  .navbarStyle {
+    display: flex;
+    align-items: center;
+  }
+
+  .btn {
+    font-size: 12pt;
+  }
+
+  .usernameLoguin {
+    color: white;
+    font-size: 12pt;
+  }
 
   .tablaTitulo {
     font-size: 12pt;
     }
-
 
   .logoPortada {
     width: 50rem;
@@ -442,14 +588,12 @@ text-align: center;
   .formSuscription {
     background-color: #0c0a59;
     text-align: center;
-    width: 50rem;
-
+    width: 40rem;
   }
 
   .textAdmin {
     font-size: 1.5rem;
   }
-
 
   .cartelCategories:hover {
     -moz-transform: scale(1.1);
@@ -557,96 +701,11 @@ text-align: center;
     font-size: 12pt;
     list-style-type: none;
   }
-
-}
-
-.infoInicial {
-  font-weight: 700;
-  line-height: 20pt;
-}
-
-.imgSVG {
-  height: 30rem;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-.labelnav {
-  cursor: pointer;
-}
-
-.labelnav:hover {
-  text-decoration: underline;
-}
-
-#file_input_id {
-  display: none;
-}
-
-#cv_input_id {
-  display: none;
-}
-
-.dataBody {
-  line-height: 4pt;
-}
-
-.datosCartel {
-  font-size: 9pt;
-
-}
-
-.descriptionOffer {
-  font-size: 9pt;
-  line-height: 10pt;
-}
-
-.imageLogoCard {
-  background-color: rgb(223, 223, 223);
-  height: 5rem;
-  width: 5rem;
-
-}
-
-/* footer */
-
-.footerWeb {
-  background-color: #0c0a59;
-  /* max-height: 12rem; */
-}
-
-.menuFooter {
-  width: 100vh;
-}
-
-.tituloCardSale {
-  font-weight: 600;
-  font-size: 15pt;
-  font-family: 'Poppins', sans-serif;
-}
-
-.tituloFooter {
-  font-weight: 600;
-  font-size: 15pt;
-}
-
-.testingMargin {
-  margin-top: 5rem;
-  margin-bottom: 15rem;
-}
-
-.searchBar {
-  background-color: #0c0a59;
-}
-
-.imagePrice {
-  width: 70px;
+  .testingRolling{
+    background-color: #0c0a59;
+    font-size: 1rem;
+  }
+  .imgSVG {
+    height: 30rem;
+  }
 }
