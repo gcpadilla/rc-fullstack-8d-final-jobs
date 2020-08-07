@@ -334,7 +334,7 @@ text-align: center;
 }
 
 .imgSVG {
-  height: 30rem;
+  height: 20rem;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -377,10 +377,7 @@ font-size: 25pt;
 font-weight: 600;
 }
 
-.titulosQues{
-  font-size: 15pt;
-  font-weight: 600;
-}
+
 
 .links{
   font-family:'Poppins', sans-serif;
@@ -455,7 +452,7 @@ color: #3DD990;
 
 .testingRolling{
   background-color: #0c0a59;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 .imagePrice {
   width: 70px;
@@ -463,6 +460,10 @@ color: #3DD990;
 
 .FourZero{
   height: 700px
+}
+
+.contactFormSize{
+  height: 800px
 }
 
 .spaceBodyDown{
@@ -511,7 +512,10 @@ color: #3DD990;
   }
   } */
 
-
+  .titulosQues{
+    font-size: 15pt;
+    font-weight: 600;
+  }
 
 @media (min-width: 768px) {
 
@@ -697,5 +701,11 @@ color: #3DD990;
     font-size: 12pt;
     list-style-type: none;
   }
-
+  .testingRolling{
+    background-color: #0c0a59;
+    font-size: 1rem;
+  }
+  .imgSVG {
+    height: 30rem;
+  }
 }
