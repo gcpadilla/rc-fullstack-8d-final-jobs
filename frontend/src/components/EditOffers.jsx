@@ -18,7 +18,7 @@ const EditOffers = (props) => {
         icon: "success",
         title: "se modifico correctamente la oferta",
         showConfirmButton: false,
-        maxWidth: 300,
+        width: 300,
         timer: 1500,
       });
       props.terminar();

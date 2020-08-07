@@ -58,8 +58,8 @@ const Register = () => {
       setUserSelec({
         ...UserSelec,
         [e.target.name]: e.target.value,
-        publicationdate: new Date().toLocaleString(),
-        dateborn: e.target.value,
+        //publicationdate: new Date().toLocaleString(),
+        dateOfBirth: e.target.value,
       });
     } else {
       setUserSelec({
@@ -192,6 +192,7 @@ const Register = () => {
                       placeholder="Contraseña"
                       id="inputPassword5"
                       name="password"
+                      autoComplete="off"
                       className="form-control form-control-sm"
                       aria-describedby="passwordHelpBlock"
                       onChange={onInputChange}

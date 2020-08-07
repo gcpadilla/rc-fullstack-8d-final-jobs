@@ -51,7 +51,7 @@ const FormPostulate = (props) => {
           icon: "success",
           title: "se modifico correctamente la postulación",
           showConfirmButton: false,
-          maxWidth: 300,
+          width: 300,
           timer: 1500,
         });
         // await Swal.fire(

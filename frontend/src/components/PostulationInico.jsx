@@ -4,6 +4,7 @@ import CardPostulate from "./CardPostulate";
 
 const PostulationInico = (props) => {
 
+
   return (
       <div className="d-flex justify-content-md-start justify-content-sm-start  flex-column my-5">
         <div className="titulares d-flex d-flex justify-content-center justify-content-md-around">

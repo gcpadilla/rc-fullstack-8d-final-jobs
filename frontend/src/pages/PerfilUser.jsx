@@ -208,7 +208,7 @@ const PerfilUser = () => {
       Swal.fire({
         icon: "success",
         text: "Se guardo correctamente su curriculum vitae",
-        maxWidth: 300,
+        width: 300,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -257,7 +257,7 @@ const PerfilUser = () => {
                   Bienvenido {UserSelec.username}
                 </h2>
               </div>
-              <div>
+              <div className="d-flex flex-column justify-content-center">
                { UserSelec.imageUrl !== undefined ? (
                 <img
                   src={"http://localhost:3001" + UserSelec.imageUrl}
@@ -285,7 +285,7 @@ const PerfilUser = () => {
                   </div>
                 </form>
               </div>
-              <div className="">
+              <div>
                 <div
                   onClick={() => {
                     setdisplay(0);

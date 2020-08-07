@@ -33,14 +33,14 @@ const Footer = () => {
                     <Link className="tituloLinks" to="/prices">Precios</Link>
                 </div>
             </div>
-
-        </div>
-        </div>
+            </div>
                     <p className=" testingRolling text-center text-white mt-3">
                             RollingJobs | Copyright ® {date}. Todos los derechos reservados.
                     </p>
         
         </div>
+        </div>
+
     )
 }
 
