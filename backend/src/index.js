@@ -1,4 +1,5 @@
 const express = require("express");
+const port = process.env.PORT || 3001
 
 require("dotenv").config();
 const cors = require("cors");
@@ -32,6 +33,6 @@ app.use(function (req, res, next) {
   res.status(404).json({ message: "Sorry can't find that!" });
 });
 
-app.listen(process.env.PORT, () =>
-  console.log(`app listening at http://localhost:${process.env.PORT}`)
+app.listen(port, () =>
+  console.log(`app listening port ${port}`)
 );
