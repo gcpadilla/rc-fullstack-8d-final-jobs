@@ -7,8 +7,9 @@ import image1 from '../images/peopleUno.svg'
 const ContactForm = () => {
 
   return (
-    <div className="container d-flex flex-wrap generalBody">
-    <div className="d-flex flex-column align-items-center col-6">
+    <div className="container d-flex flex-wrap contactFormSize align-items-center">
+<div className="row">
+    <div className="d-flex flex-column align-items-center col-sm-12 col-md-6">
       <h3 className="titulos my-3">Comunicate con Nosotros </h3>
 
       <form>
@@ -68,8 +69,9 @@ const ContactForm = () => {
         {/* <Button className="mr-2" name="Publicar" /> */}
       </div>
     </div>
-    <img src={image1} alt="" className="col-6" />
+    <img src={image1} alt="" className="col-sm-12 col-md-6 imgSVG" />
     </div>
+</div>
   );
 };
 
