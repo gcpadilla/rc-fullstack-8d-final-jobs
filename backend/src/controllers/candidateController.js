@@ -539,8 +539,6 @@ exports.updateCandidate = async (req, res) => {
       lastname: body.lastname,
       username: body.username,
       email: body.email,
-      dni: body.dni,
-      age: body.age,
       profession: body.profession,
     };
     const salt = await bcryptjs.genSalt(10);
