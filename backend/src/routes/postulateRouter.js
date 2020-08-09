@@ -5,37 +5,64 @@ const authorizeUser = require("../middlewares/authorizeCandidate");
 const router = express.Router();
 const postulateController = require("../controllers/postulateController");
 
-
-
 //CREAR POSTULACION
 router.post(
-  "/:offerId",
-  authorizeUser("user")  ,
-  [
-    body("intendedsalary", "Incluir salario pretendido").notEmpty(),
-    body("experiences", "Debe ingresar experiencia").notEmpty(),
-    body("studies", "Debe incluir estudios").notEmpty(),
-    body("emailcandidate", "El email no puede ser nulo").notEmpty(),
-    body("emailcandidate", "Debe ser un email valido").isEmail(),
-  ],
-  postulateController.createPostulate
+	"/:offerId",
+	authorizeUser("user"),
+	[
+		body("intendedsalary", "Incluir salario pretendido").notEmpty(),
+		body("intendedsalary", "Salario pretendido no valido").isNumeric(),
+		body("experiences", "Debe ingresar experiencia").notEmpty(),
+		body("studies", "Debe incluir estudios").notEmpty(),
+		body("emailcandidate", "El email no puede ser nulo").notEmpty(),
+		body("emailcandidate", "Debe ser un email valido").isEmail(),
+	],
+	postulateController.createPostulate
 );
 
 //LISTAR TODAS LAS POSTULACIONES ADMIN
 
-router.get("/admin/all", authorizeAdmin("admin"), postulateController.getAllPostulates);
+router.get(
+	"/admin/all",
+	authorizeAdmin("admin"),
+	postulateController.getAllPostulates
+);
 
 //LISTAR TODAS LAS POSTULACIONES USER
 
-router.get("/user/all", authorizeUser("user"), postulateController.getAllPostulatessUser);
+router.get(
+	"/user/all",
+	authorizeUser("user"),
+	postulateController.getAllPostulatessUser
+);
 
 //BORRAR POSTULACION
-router.delete("/:id", authorizeUser("user"), postulateController.deletePostulate);
+router.delete(
+	"/:id",
+	authorizeUser("user"),
+	postulateController.deletePostulate
+);
 
 //EDITAR POSTULACION
-router.put('/:id', authorizeUser("user"), postulateController.updatePostulate);
+router.put(
+	"/:id",
+	authorizeUser("user"),
+	[
+		body("intendedsalary", "Incluir salario pretendido").notEmpty(),
+		body("intendedsalary", "Salario pretendido no valido").isNumeric(),
+		body("experiences", "Debe ingresar experiencia").notEmpty(),
+		body("studies", "Debe incluir estudios").notEmpty(),
+		body("emailcandidate", "El email no puede ser nulo").notEmpty(),
+		body("emailcandidate", "Debe ser un email valido").isEmail(),
+	],
+	postulateController.updatePostulate
+);
 
 //EDITAR POSTULACION ADMIN
-router.put('/:id/admin', authorizeAdmin("admin"), postulateController.updatePostulateAdmin);
+router.put(
+	"/:id/admin",
+	authorizeAdmin("admin"),
+	postulateController.updatePostulateAdmin
+);
 
 module.exports = router;
