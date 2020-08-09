@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import axios from "axios";
+import Swal from "sweetalert2"
 import { useHistory } from "react-router-dom";
 import Header from "../components/Header";
 import OfertaInicio from "../components/OfetasInicio";
@@ -21,6 +22,30 @@ const Home = () => {
     getpostulation();
     getuser();
   };
+
+  // VERIFICAR SI ES ADMIN 0
+  const administrado0 = useCallback(async () => {
+    try {
+      const response = await axios.get(
+        "/api/v1/users/administrators/"
+      );
+      if (response.data.message !=="Todo bien che, pero ya existen uno o mas admines") {
+        await Swal.fire({
+          title: `Bienvenido ${response.data.message}`,
+          showConfirmButton: true,
+          width: 300,        
+        });
+      }
+      // console.log(response);
+      // console.log(response.data);
+      // console.log("no error");
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+  useEffect(() => {
+administrado0()
+  }, [administrado0]);  
 
   // TRAIGO TODA LAS OFERTAS
   const getuser = useCallback(async () => {
