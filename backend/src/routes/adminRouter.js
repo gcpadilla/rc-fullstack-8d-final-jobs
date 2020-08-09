@@ -10,7 +10,7 @@ router.get('/', adminController.thereIsAnAdmin);
 
 //CREAR USUARIO ADMIN
 router.post(
-  "/create",
+  "/create", authorize("admin"),
   [
     body("username", "El usuario no puede ser nulo").notEmpty(),
     body("username", "No puedes incluir mas de 25 caracteres").isLength({
@@ -28,6 +28,9 @@ router.post(
   ],
   adminController.createAdmin
 );
+
+//EDITAR DATOS DE ADMINISTRADOR
+router.put('/', authorize("admin"), adminController.updateAdmin)
 
 //LOGUEAR USUARIO ADMIN
 router.post(
