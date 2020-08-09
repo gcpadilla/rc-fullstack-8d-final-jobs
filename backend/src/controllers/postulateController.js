@@ -95,6 +95,11 @@ exports.getAllPostulatessUser = async (req, res) => {
 
 //Editar postulación
 exports.updatePostulate = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+
   try {
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
       return res
@@ -107,7 +112,7 @@ exports.updatePostulate = async (req, res) => {
     });
 
     if (!postulate_in_db) {
-      return res.status(400).json({ message: "Credenciales no validas." });
+      return res.status(400).json({ message: "No de encontro postulación ..." });
     }
 
     const { body } = req;
