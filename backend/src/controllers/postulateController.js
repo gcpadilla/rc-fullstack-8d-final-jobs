@@ -26,7 +26,7 @@ exports.createPostulate = async (req, res) => {
     intendedsalary: body.intendedsalary,
     experiences: body.experiences,
     studies: body.studies,
-    emailcandidate: candidate.email,
+    telcandidate: candidate.email,
     offerid: mongoose.Types.ObjectId(req.params.offerId),
     candidateid: res.locals.user.id,
   };
@@ -122,7 +122,7 @@ exports.updatePostulate = async (req, res) => {
       intendedsalary: body.intendedsalary,
       experiences: body.experiences,
       studies: body.studies,
-      emailcandidate: body.emailcandidate,
+      telcandidate: body.telcandidate,
     };
 
     let postulate = await postulateModel.findByIdAndUpdate(

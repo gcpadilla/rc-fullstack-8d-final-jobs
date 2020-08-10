@@ -14,8 +14,7 @@ router.post(
 		body("intendedsalary", "Salario pretendido no valido").isNumeric(),
 		body("experiences", "Debe ingresar experiencia").notEmpty(),
 		body("studies", "Debe incluir estudios").notEmpty(),
-		body("emailcandidate", "El email no puede ser nulo").notEmpty(),
-		body("emailcandidate", "Debe ser un email valido").isEmail(),
+		body("telcandidate", "Debe ser un numero valido").isMobilePhone(),
 	],
 	postulateController.createPostulate
 );
@@ -52,8 +51,7 @@ router.put(
 		body("intendedsalary", "Salario pretendido no valido").isNumeric(),
 		body("experiences", "Debe ingresar experiencia").notEmpty(),
 		body("studies", "Debe incluir estudios").notEmpty(),
-		body("emailcandidate", "El email no puede ser nulo").notEmpty(),
-		body("emailcandidate", "Debe ser un email valido").isEmail(),
+		body("telcandidate", "Debe ser un numero valido").isMobilePhone(),
 	],
 	postulateController.updatePostulate
 );

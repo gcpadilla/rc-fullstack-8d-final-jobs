@@ -6,14 +6,18 @@ Un usuario puede cargar sus datos y postularse a uno o varios empleos.
 
 ## Como levantar el proyecto
 
-### Backend
+Parado en la carpeta principal:
+
+###  Para levantar Backend
 ```
 cd backend
 npm install
 npm start
 ```
 
-### Frontend
+Parado en la carpeta principal:
+
+### Para levantar Frontend
 ```
 cd frontend
 npm install
