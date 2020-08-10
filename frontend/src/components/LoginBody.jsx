@@ -7,65 +7,58 @@ import auth from "../utils/auth";
 const LoginBody = (props) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [flag, setflag] = useState(true);  
+  const [flag, setflag] = useState(true);
   const history = useHistory();
 
-  const signInHandler = async (e) => {  
+  const signInHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "/api/v1/users/administrators/login",
-        {
-          username: username.trim(),
-          password: password.trim(),
-        }
+      const response = await axios.post("/api/v1/users/administrators/login", {
+        username: username.trim(),
+        password: password.trim(),
+      });
+      auth.login(
+        response.data.token,
+        response.data.username,
+        response.data.role
       );
-      auth.login(response.data.token, response.data.username, response.data.role);
       await sweetalert.fire({
-        icon: 'success',
-        title:  `Bienvenido ${username.trim()}`,
+        icon: "success",
+        title: `Bienvenido ${username.trim()}`,
         showConfirmButton: false,
         width: "auto",
-        timer: 1500
-      }) 
+        timer: 1500,
+      });
       history.push("/company");
       return;
     } catch (error) {
-      setflag(false)
+      setflag(false);
     }
-if (flag===true) {
-  try {
-    const response = await axios.post(
-      "/api/v1/users/candidates/login",
-      {
-        username: username.trim(),
-        password: password.trim(),
+    if (flag === true) {
+      try {
+        const response = await axios.post("/api/v1/users/candidates/login", {
+          username: username.trim(),
+          password: password.trim(),
+        });
+        auth.login(
+          response.data.token,
+          response.data.username,
+          response.data.role
+        );
+        await sweetalert.fire({
+          icon: "success",
+          title: `Bienvenido ${username.trim()}`,
+          showConfirmButton: false,
+          width: "auto",
+          timer: 1500,
+        });
+        props.setUsername(response.data.username);
+        history.push("/");
+      } catch (error) {
+        sweetalert.fire("ERROR", error.response.data.message, "error");
+        setflag(true);
       }
-    );
-    auth.login(response.data.token, response.data.username, response.data.role) ;
-    await sweetalert.fire({
-      icon: 'success',
-      title:  `Bienvenido ${username.trim()}`,
-      showConfirmButton: false,
-      width: "auto",
-      timer: 1500
-    }) 
-    // await sweetalert.fire(
-    //   "genial",
-    //   `Bienvenido ${username.trim()}`,
-    //   "success"
-    // );
-    props.setUsername(response.data.username);
-    // props.user(response.data)
-    history.push("/");
-  } catch (error) {
-    sweetalert.fire("ERROR", error.response.data.message, "error");
-    setflag(true)
-  }
-  
-  
-}
-    
+    }
   };
 
   return (
@@ -74,9 +67,7 @@ if (flag===true) {
         <div className="mb-4">
           <form onSubmit={signInHandler}>
             <div className="form-group">
-              {/* <label for="exampleInputEmail1">Email address</label> */}
-
-              <input 
+              <input
                 type="text"
                 required
                 className="form-control rounded-pill"
@@ -85,11 +76,9 @@ if (flag===true) {
                 onChange={(e) => setUsername(e.target.value)}
                 value={username}
                 placeholder="Nombre de Usuario"
-                // ref={props.inputEl}
               />
             </div>
             <div className="form-group">
-              {/* <label for="exampleInputPassword1">Password</label> */}
               <input
                 type="password"
                 required
@@ -104,7 +93,8 @@ if (flag===true) {
               <div className="mt-3 text-center">
                 <button
                   type="submit"
-                  className="text-center btn btn-success rounded-pill">
+                  className="text-center btn btn-success rounded-pill"
+                >
                   Ingresar
                 </button>
               </div>

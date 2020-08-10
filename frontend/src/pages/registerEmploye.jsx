@@ -58,8 +58,8 @@ const Register = () => {
       setUserSelec({
         ...UserSelec,
         [e.target.name]: e.target.value,
-        //publicationdate: new Date().toLocaleString(),
-        dateOfBirth: e.target.value,
+       publicationdate: new Date().toLocaleString(),
+       dateOfBirth: e.target.value,
       });
     } else {
       setUserSelec({
@@ -117,6 +117,7 @@ const Register = () => {
                     <label htmlFor="dni">Documento</label>
                     <input
                       type="number"
+                      size="8"
                       required
                       className="form-control form-control-sm"
                       min="100000"
@@ -132,6 +133,9 @@ const Register = () => {
                     <input
                       type="date"
                       required
+                      min="1950-01-01"
+                      max={moment().format("YYYY-MM-DD")}
+                      step="1"
                       className="form-control form-control-sm"
                       name="age"
                       placeholder="Fecha de Nacimiento"

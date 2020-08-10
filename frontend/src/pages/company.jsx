@@ -6,6 +6,7 @@ import CardOfferts from "../components/CardOfferts";
 import FormJobPostulate from "../components/FormJobPostulate";
 import EditOffers from "../components/EditOffers";
 import AdminEditPostulation from "../components/AdminEditPostulation";
+import EditAdmin from "../components/EditAdmin";
 import auth from "../utils/auth";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
@@ -19,6 +20,7 @@ const Company = () => {
   const [idpost, setidpost] = useState("");
   const username = localStorage.getItem("username");
   const history = useHistory();
+
   const [state, setState] = useState({
     isPaneOpen: false,
     isPaneOpenLeft: false,
@@ -79,6 +81,9 @@ const Company = () => {
     setidpost(data);
     setdisplay(4);
   };
+  const editAdmin = () => {
+    setdisplay(5);
+  }
 
   // CARGO LAS CARD CON LAS OFERTAS
   const cards = data.map((a) => (
@@ -92,7 +97,7 @@ const Company = () => {
         adminPostulate={postuladosAOferta}
       />
     </div>
-  ));
+  )); 
 
   return (
     <>
@@ -119,6 +124,15 @@ const Company = () => {
             </div>
           </div>
           <div className="d-flex flex-column">
+          <div>
+              <div
+                onClick={editAdmin}
+                className="btn-link text-white poiter my-3"
+              >
+                {" "}
+                Editar Administrador
+              </div>
+            </div>
             <div>
               <div
                 onClick={crearOferta}
@@ -193,6 +207,14 @@ const Company = () => {
           ) : (
             <></>
           )}
+              {display === 5 ? (
+            <div>
+     <EditAdmin/>
+            </div>
+          ) : (
+            <></>
+          )}
+
         </div>
       </div>
     </>

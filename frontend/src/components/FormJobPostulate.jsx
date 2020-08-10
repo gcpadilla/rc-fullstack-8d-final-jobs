@@ -12,15 +12,13 @@ const FormJobPostulate = (props) => {
     try {
       await axios.post("/api/v1/offers", UserSelec);
       setUserSelec({});
-            await Swal.fire({
-  icon: 'success',
-  title: 'Oferta creada',
-  showConfirmButton: false,
-  width: 300,  
-  timer: 1500
-}) 
-      // await Swal.fire("genial", "se creo correctamente la oferta", "success");
-      // props.crear();
+      await Swal.fire({
+        icon: "success",
+        title: "Oferta creada",
+        showConfirmButton: false,
+        width: 300,
+        timer: 1500,
+      });
       props.forzar();
     } catch (err) {
       if (err.response.data.message === undefined) {
@@ -49,123 +47,134 @@ const FormJobPostulate = (props) => {
 
       <form onSubmit={onsubmit}>
         <div className="form-row">
-        <div className="col-md-6 col-sm-12 form-group">
-          <label htmlFor="title" className="formLabel">Titulo del Puesto</label>
-          <input
-            type="text"
-            required
-            className="form-control "
-            name="title"
-            placeholder="Titulo del Puesto"
-            onChange={onInputChange}
-            autoFocus
-          />
-        </div>
-        <div className="col-md-6 col-sm-12 form-group">
-          <label htmlFor="summary" className="formLabel">Resumen</label>
-          <input
-            type="text"
-            required
-            className="form-control "
-            name="summary"
-            placeholder="Resumen"
-            onChange={onInputChange}
-            maxLength="80"
-          />
-          <small className="form-text text-muted ml-1">80 caracteres max.</small>
-        </div>
-        <div className="col-md-6 col-sm-12 form-group">
-          <label htmlFor="description" className="formLabel">Descripción</label>
-          <textarea
-            className="form-control"
-            required
-            name="description"
-            placeholder="Descripción"
-            onChange={onInputChange}
-          />
-        </div>
-        <div className="col-md-6 col-sm-12 form-group">
-          <label htmlFor="profession" className="formLabel">Profesión</label>
-          <input
-            type="text"
-            required
-            className="form-control"
-            name="profession"
-            placeholder="Profesión"
-            onChange={onInputChange}
-          />
-        </div>
-        <div className="col-md-6 col-sm-12 form-group">
-          <label htmlFor="workplace" className="formLabel">Lugar de trabajo</label>
-          <input
-            type="text"
-            required
-            className="form-control "
-            name="workplace"
-            placeholder="Lugar de trabajo"
-            onChange={onInputChange}
-          />
-        </div>
-        <div className="col-md-6 col-sm-12 form-group">
-          <label htmlFor="quota" className="formLabel">Cupo</label>
-          <input
-            type="number"
-            required
-            className="form-control"
-            name="quota"
-            placeholder="Cupo"
-            onChange={onInputChange}
-          />
-        </div>
-        <div className="col-md-6 col-sm-12 form-group">
-          <label htmlFor="availability" className="formLabel">Disponibilidad </label>
-          <select
-            className="form-control"
-            onChange={onInputChange}
-            name="availability"
-            required
-          >
-            <option value="">Disponibilidad</option>
-            <option value="Media jornada">Media Jornada</option>
-            <option value="Jornada Completa">Jornada Completa</option>
-          </select>
-        </div>
-        <div className="col-md-6 col-sm-12 form-group">
-          <label htmlFor="categories" className="formLabel">Elija una categoria</label>
-          <select
-            className="form-control"
-            onChange={onInputChange}
-            name="categories"
-            required
-          >
-            <option value="">Elija una categoria</option>
-            <option value="Informatica">Informatica</option>
-            <option value="Construccion">Construccion</option>
-            <option value="Telecomunicaciones">Telecomunicaciones</option>
-            <option value="Ventas">Ventas</option>
-            <option value="Medicina / Salud">Medicina / Salud</option>
-          </select>
+          <div className="col-md-6 col-sm-12 form-group">
+            <label htmlFor="title" className="formLabel">
+              Titulo del Puesto
+            </label>
+            <input
+              type="text"
+              required
+              className="form-control "
+              name="title"
+              placeholder="Titulo del Puesto"
+              onChange={onInputChange}
+              autoFocus
+            />
+          </div>
+          <div className="col-md-6 col-sm-12 form-group">
+            <label htmlFor="summary" className="formLabel">
+              Resumen
+            </label>
+            <input
+              type="text"
+              required
+              className="form-control "
+              name="summary"
+              placeholder="Resumen"
+              onChange={onInputChange}
+              maxLength="80"
+            />
+            <small className="form-text text-muted ml-1">
+              80 caracteres max.
+            </small>
+          </div>
+          <div className="col-md-6 col-sm-12 form-group">
+            <label htmlFor="description" className="formLabel">
+              Descripción
+            </label>
+            <textarea
+              className="form-control"
+              required
+              name="description"
+              placeholder="Descripción"
+              onChange={onInputChange}
+            />
+          </div>
+          <div className="col-md-6 col-sm-12 form-group">
+            <label htmlFor="profession" className="formLabel">
+              Profesión
+            </label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              name="profession"
+              placeholder="Profesión"
+              onChange={onInputChange}
+            />
+          </div>
+          <div className="col-md-6 col-sm-12 form-group">
+            <label htmlFor="workplace" className="formLabel">
+              Lugar de trabajo
+            </label>
+            <input
+              type="text"
+              required
+              className="form-control "
+              name="workplace"
+              placeholder="Lugar de trabajo"
+              onChange={onInputChange}
+            />
+          </div>
+          <div className="col-md-6 col-sm-12 form-group">
+            <label htmlFor="quota" className="formLabel">
+              Cupo
+            </label>
+            <input
+              type="number"
+              required
+              className="form-control"
+              name="quota"
+              placeholder="Cupo"
+              onChange={onInputChange}
+            />
+          </div>
+          <div className="col-md-6 col-sm-12 form-group">
+            <label htmlFor="availability" className="formLabel">
+              Disponibilidad{" "}
+            </label>
+            <select
+              className="form-control"
+              onChange={onInputChange}
+              name="availability"
+              required
+            >
+              <option value="">Disponibilidad</option>
+              <option value="Media jornada">Media Jornada</option>
+              <option value="Jornada Completa">Jornada Completa</option>
+            </select>
+          </div>
+          <div className="col-md-6 col-sm-12 form-group">
+            <label htmlFor="categories" className="formLabel">
+              Elija una categoria
+            </label>
+            <select
+              className="form-control"
+              onChange={onInputChange}
+              name="categories"
+              required
+            >
+              <option value="">Elija una categoria</option>
+              <option value="Informatica">Informatica</option>
+              <option value="Construccion">Construccion</option>
+              <option value="Telecomunicaciones">Telecomunicaciones</option>
+              <option value="Ventas">Ventas</option>
+              <option value="Medicina / Salud">Medicina / Salud</option>
+            </select>
           </div>
         </div>
-  
 
-      <div className="buttonOptions d-flex justify-content-center mb-2">
-      <button
-                onClick={props.forzar}
-                className="btn btn-danger rounded-pill mr-5"
-              >
-                Cancelar
-              </button>
-        <button
-          type="submit"
-          // onClick={() => props.crear(true)}
-          className="btn btn-success rounded-pill"
-        >
-          Crear oferta
-        </button>
-        {/* <Button className="mr-2" name="Crear oferta" /> */}
-        {/* <Button className="mr-2" name="Publicar" /> */}
-      </div>
+        <div className="buttonOptions d-flex justify-content-center mb-2">
+          <button
+            onClick={props.forzar}
+            className="btn btn-danger rounded-pill mr-5"
+          >
+            Cancelar
+          </button>
+          <button type="submit" className="btn btn-success rounded-pill">
+            Crear oferta
+          </button>
+        </div>
       </form>
     </div>
   );

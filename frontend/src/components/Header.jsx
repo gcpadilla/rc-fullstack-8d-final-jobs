@@ -3,17 +3,16 @@ import logo from "../images/RollingJobswhite.svg";
 import { NavLink, Link } from "react-router-dom";
 import LoginLogoutButton from "../components/LoginLogoutButton";
 import auth from "../utils/auth";
-import {BsPerson} from "react-icons/bs"
-import {IoMdBusiness, IoIosBusiness} from "react-icons/io"
+import { BsPerson } from "react-icons/bs";
+import { IoMdBusiness, IoIosBusiness } from "react-icons/io";
 
 const Navbar = () => {
-
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark cabeceraWeb">
-      <Link className="navbar-brand" to="/">
-    <img src={logo} width="180" height="" alt="" loading="lazy"/>
-  </Link>
+        <Link className="navbar-brand" to="/">
+          <img src={logo} width="180" height="" alt="" loading="lazy" />
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -32,11 +31,6 @@ const Navbar = () => {
         >
           <div className="navbarStyle d-flex align-items-end">
             <ul className="navbar-nav mr-5">
-              {/* <li>
-                <NavLink className="nav-link text-white" to="/">
-                  <AiOutlineHome/> Home
-                </NavLink>
-              </li> */}
               <li className="nav-item dropdown mr-2">
                 <NavLink
                   className="nav-link dropdown-toggle text-white"
@@ -44,7 +38,7 @@ const Navbar = () => {
                   data-toggle="dropdown"
                   to="/"
                 >
-                 <BsPerson/> Candidatos
+                  <BsPerson /> Candidatos
                 </NavLink>
                 <div
                   className="dropdown-menu"
@@ -77,7 +71,7 @@ const Navbar = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                 <IoMdBusiness/> Empresas
+                  <IoMdBusiness /> Empresas
                 </NavLink>
                 <div
                   className="dropdown-menu"
@@ -89,7 +83,6 @@ const Navbar = () => {
                   <Link className="dropdown-item" to="/prices">
                     Precios
                   </Link>
-
                 </div>
               </li>
 
@@ -103,7 +96,7 @@ const Navbar = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                 <IoIosBusiness/> Institucional
+                  <IoIosBusiness /> Institucional
                 </NavLink>
 
                 <div
@@ -113,9 +106,6 @@ const Navbar = () => {
                   <Link className="dropdown-item" to="/informacion">
                     ¿Quienes Somos?
                   </Link>
-                  {/* <Link className="dropdown-item" to="/prensa">
-                    Prensa
-                  </Link> */}
                   <Link className="dropdown-item" to="/contacto">
                     Contacto
                   </Link>

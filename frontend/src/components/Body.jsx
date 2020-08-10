@@ -1,6 +1,5 @@
 import React from 'react'
 import CartelInfo from './CartelInfo'
-// import imagenUno from '../images/peopleUno.svg'
 import '../App.css'
 
 const Body = () => {

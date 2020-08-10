@@ -3,7 +3,6 @@ import { BsFileText } from "react-icons/bs";
 import { AiTwotoneEdit } from "react-icons/ai";
 import Swal from "sweetalert2";
 import axios from "axios";
-// import { Link } from "react-router-dom";
 
 const Table = (props) => {
   const [estado, setestado] = useState(props.c.state);
@@ -12,22 +11,16 @@ const Table = (props) => {
     e.preventDefault();
     try {
       setflag(false);
-      await axios.put(
-        `/api/v1/offer/postulates/${props.c._id}/admin`,
-        { state: estado }
-      );
+      await axios.put(`/api/v1/offer/postulates/${props.c._id}/admin`, {
+        state: estado,
+      });
       await Swal.fire({
-        icon: 'success',
+        icon: "success",
         title: `Se envio el mail al candidato`,
         showConfirmButton: false,
         width: "auto",
-        timer: 1500
-      })
-      // await Swal.fire(
-      //   "genial",
-      //   "se modifico correctamente la postulación",
-      //   "success"
-      // );
+        timer: 1500,
+      });
       setflag(true);
     } catch (err) {
       if (err.response.data.message === undefined) {
@@ -47,14 +40,28 @@ const Table = (props) => {
       <tr>
         <td>
           {props.d.cv !== undefined ? (
-            <a className="btn btn-outline-secondary btn-sm text-white" target="_blank" rel="noopener noreferrer" href={"http://localhost:3001" + props.d.cv}>
+            <a
+              className="btn btn-outline-secondary btn-sm text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={"http://localhost:3001" + props.d.cv}
+            >
               <BsFileText />
-            </a>) : (<button className="btn btn-outline-secondary btn-sm text-white" onClick={() => {
-              Swal.fire("Oops..", "no tiene CV añadido", "error")
-            }}  >
+            </a>
+          ) : (
+            <button
+              className="btn btn-outline-secondary btn-sm text-white"
+              onClick={() => {
+                Swal.fire("Oops..", "no tiene CV añadido", "error");
+              }}
+            >
               <BsFileText />
-            </button>)}</td>
-        <td className="text-center">{props.d.firstname} {props.d.lastname}</td>
+            </button>
+          )}
+        </td>
+        <td className="text-center">
+          {props.d.firstname} {props.d.lastname}
+        </td>
         <td className="text-center">{props.c.emailcandidate}</td>
         <td className="text-center">{props.c.experiences}</td>
         <td className="text-center">{props.c.intendedsalary}</td>
@@ -74,19 +81,22 @@ const Table = (props) => {
                 <option value="Desestimado">Desestimado</option>
               </select>
               {flag ? (
-                <button type="submit" className="btn btn-outline-secondary btn-sm text-white ml-2">
+                <button
+                  type="submit"
+                  className="btn btn-outline-secondary btn-sm text-white ml-2"
+                >
                   <AiTwotoneEdit />
                 </button>
               ) : (
-                  <button className="btn btn-primary" type="button" disabled>
-                    <span
-                      className="spinner-border spinner-border-sm"
-                      role="status"
-                      aria-hidden="true"
-                    ></span>
-                    <span className="sr-only">Loading...</span>
-                  </button>
-                )}
+                <button className="btn btn-primary" type="button" disabled>
+                  <span
+                    className="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  <span className="sr-only">Loading...</span>
+                </button>
+              )}
             </div>
           </form>
         </td>

@@ -9,10 +9,7 @@ const EditOffers = (props) => {
   const onsubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(
-        `/api/v1/offers/${props.oferta._id}`,
-        UserSelec
-      );
+      await axios.put(`/api/v1/offers/${props.oferta._id}`, UserSelec);
       setUserSelec({});
       await Swal.fire({
         icon: "success",
@@ -41,13 +38,12 @@ const EditOffers = (props) => {
       [e.target.name]: e.target.value,
       publicationdate: new Date().toLocaleString(),
     });
-
   };
   return (
     <div className="container">
       <div className="d-flex flex-column align-items-center">
         <h3 className="titulos my-3">Editar Oferta ({props.oferta.summary})</h3>
-      
+
         <form onSubmit={onsubmit}>
           <div className="form-row">
             <div className=" col-md-6 col-sm-12 form-group">
@@ -157,7 +153,7 @@ const EditOffers = (props) => {
               </select>
             </div>
           </div>
-      
+
           <div className="buttonOptions d-flex justify-content-center mb-2">
             <button
               onClick={props.terminar}
@@ -165,16 +161,9 @@ const EditOffers = (props) => {
             >
               Cancelar
             </button>
-            <button
-              type="submit"
-              // onClick={() => props.crear(true)}
-              className="btn btn-success rounded-pill"
-            >
+            <button type="submit" className="btn btn-success rounded-pill">
               Editar oferta
             </button>
-      
-            {/* <Button className="mr-2" name="Crear oferta" /> */}
-            {/* <Button className="mr-2" name="Publicar" /> */}
           </div>
         </form>
       </div>
