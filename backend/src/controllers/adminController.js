@@ -9,7 +9,7 @@ exports.thereIsAnAdmin = async (req, res) => {
   
   let isAdmin = await adminModel.countDocuments()
   if (isAdmin > 0 ) {
-    return res.status(200).json({ message: 'Todo bien che, pero ya existen uno o mas admines'});
+    return res.status(200).json({ message: 'Existe'});
   }
   
   const adminData = {
@@ -63,6 +63,59 @@ exports.createAdmin = async (req, res) => {
   }
 
 }
+
+//actualizar datos de admin
+exports.updateAdmin = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+  if (!res.locals.user.id) {
+    return res.status(404).json({ message: "No se encontro administrador..." });
+  }
+
+  const { body } = req;
+
+  const user_in_db = await adminModel
+    .find({ username: body.username })
+
+  const cantidad = user_in_db.length;
+
+  if (cantidad > 1) {
+    return res
+      .status(400)
+      .json({ message: "Ya existe un administrador con ese nombre . . ." });
+  }
+
+  try {
+    const userNew = {
+      username: body.username,
+    };
+    const salt = await bcryptjs.genSalt(10);
+    userNew.password = await bcryptjs.hash(body.password, salt);
+
+    const user = await adminModel.findByIdAndUpdate(
+      res.locals.user.id,
+      userNew,
+      { new: true }
+    );
+
+    if (!user) {
+      return res.status(404).json({ message: "No se encontro candidato..." });
+    }
+
+    let userNewData = await adminModel.findOne(
+      { _id: res.locals.user.id },
+      "-_id -role -token -password"
+    );
+    res.send({
+      message: "Se actualizaron tus datos correctamente...",
+      userNewData,
+    });
+  } catch (error) {
+    res.status(500).send({ message: "Error al actualizar ...." });
+  }
+};
 
 //loguear usuario admin
 exports.login = async (req, res) => {

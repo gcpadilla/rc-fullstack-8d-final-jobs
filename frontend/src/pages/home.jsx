@@ -29,16 +29,13 @@ const Home = () => {
       const response = await axios.get(
         "/api/v1/users/administrators/"
       );
-      if (response.data.message !=="Todo bien che, pero ya existen uno o mas admines") {
+      if (response.data.message !=="Existe") {
         await Swal.fire({
           title: `Bienvenido ${response.data.message}`,
           showConfirmButton: true,
           width: 300,        
         });
       }
-      // console.log(response);
-      // console.log(response.data);
-      // console.log("no error");
     } catch (error) {
       console.log(error);
     }

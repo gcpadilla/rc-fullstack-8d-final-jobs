@@ -74,8 +74,17 @@ router.put(
   "/",
   [
     body("firstname", "El nombre no puede ser nulo").notEmpty(),
+    body("firstname", "No puedes incluir mas de 25 caracteres").isLength({
+      max: 25,
+    }),
     body("lastname", "El apellido no puede ser nulo").notEmpty(),
+    body("lastname", "No puedes incluir mas de 25 caracteres").isLength({
+      max: 25,
+    }),
     body("username", "El usuario no puede ser nulo").notEmpty(),
+    body("username", "No puedes incluir mas de 25 caracteres").isLength({
+      max: 25,
+    }),
     body("email", "El email no puede ser nulo").notEmpty(),
     body("email", "Debe ser un email valido").isEmail(),
     body("password", "Password no puede ser nulo").notEmpty(),
@@ -86,7 +95,6 @@ router.put(
       min: 8,
       max: 32,
     }),
-    body("age", "La edad no puede ser nula").notEmpty(),
     body("profession", "La profesion no puede ser nula").notEmpty(),
   ],
   authorize("user"),
