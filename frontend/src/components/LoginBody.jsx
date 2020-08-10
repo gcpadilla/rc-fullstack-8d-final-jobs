@@ -52,13 +52,7 @@ const LoginBody = (props) => {
           width: "auto",
           timer: 1500,
         });
-        // await sweetalert.fire(
-        //   "genial",
-        //   `Bienvenido ${username.trim()}`,
-        //   "success"
-        // );
         props.setUsername(response.data.username);
-        // props.user(response.data)
         history.push("/");
       } catch (error) {
         sweetalert.fire("ERROR", error.response.data.message, "error");
@@ -73,8 +67,6 @@ const LoginBody = (props) => {
         <div className="mb-4">
           <form onSubmit={signInHandler}>
             <div className="form-group">
-              {/* <label for="exampleInputEmail1">Email address</label> */}
-
               <input
                 type="text"
                 required
@@ -84,11 +76,9 @@ const LoginBody = (props) => {
                 onChange={(e) => setUsername(e.target.value)}
                 value={username}
                 placeholder="Nombre de Usuario"
-                // ref={props.inputEl}
               />
             </div>
             <div className="form-group">
-              {/* <label for="exampleInputPassword1">Password</label> */}
               <input
                 type="password"
                 required

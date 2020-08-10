@@ -11,7 +11,6 @@ import { useState } from "react";
 const Register = () => {
   const [UserSelec, setUserSelec] = useState({});
   const [redirec, setredirec] = useState(false);
-console.log(moment().format("YYYY-MM-DD"));
 
   const onsubmit = async (e) => {
     e.preventDefault();
@@ -60,9 +59,8 @@ console.log(moment().format("YYYY-MM-DD"));
         ...UserSelec,
         [e.target.name]: e.target.value,
        publicationdate: new Date().toLocaleString(),
-        dateborn: e.target.value,
+       dateOfBirth: e.target.value,
       });
-      console.log(UserSelec);
     } else {
       setUserSelec({
         ...UserSelec,

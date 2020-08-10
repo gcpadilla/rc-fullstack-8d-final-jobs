@@ -8,7 +8,7 @@ const EditAdmin = () => {
   const signInHandler = async (e) => {
       e.preventDefault();
     try {
-      const response = await axios.put( "/api/v1/users/administrators/", {
+  await axios.put( "/api/v1/users/administrators/", {
         username: username.trim(),
         password: password.trim()
       });

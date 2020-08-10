@@ -21,9 +21,7 @@ const FormPostulate = (props) => {
         confirmButtonText: "Si, borrar!",
       }).then(async (result) => {
         if (result.value) {
-          await axios.delete(
-            `/api/v1/offer/postulates/${props.postu._id}`
-          );
+          await axios.delete(`/api/v1/offer/postulates/${props.postu._id}`);
           Swal.fire({
             icon: "success",
             text: "Oferta eliminada...",
@@ -54,11 +52,6 @@ const FormPostulate = (props) => {
           width: 300,
           timer: 1500,
         });
-        // await Swal.fire(
-        //   "genial",
-        //   "se modifico correctamente la postulación",
-        //   "success"
-        // );
         props.cerrar(); //CIERRA MODAL
       } catch (err) {
         if (err.response.data.message === undefined) {
@@ -86,7 +79,6 @@ const FormPostulate = (props) => {
           width: "auto",
           timer: 1500,
         });
-        // await Swal.fire("genial", "te postulaste correctamentefdffdfdf", "success");
         props.cerrar();
       } catch (err) {
         if (err.response.data.message === undefined) {

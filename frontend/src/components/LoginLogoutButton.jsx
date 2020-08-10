@@ -18,33 +18,21 @@ function LoginLogoutButton(props) {
 
   const signOutHandler = async (e) => {
     e.preventDefault();
-    // try {
-    //   await axios.get(
-    //     "/api/v1/users/administrators/logout"
-    //   );
-    //   auth.logout();
-    //   await sweetalert.fire("ADMINISTRADOR", "Sesión cerrada", "success");
-    //   history.push("/");
-    //   return;
-    // } catch (error) {}
-
     try {
       await axios.get("/api/v1/users/candidates/logout");
       auth.logout();
       await sweetalert.fire({
-        icon: 'success',
-        title:  "Sesión cerrada",
+        icon: "success",
+        title: "Sesión cerrada",
         showConfirmButton: false,
         width: "auto",
-        timer: 1500
-      }) 
-      // await sweetalert.fire("", "Sesión cerrada", "success");
-      // setForceUpdate(true);
+        timer: 1500,
+      });
       history.push("/");
       handleClose();
     } catch (error) {
       sweetalert.fire("ERROR", "error de deslogueo", "error");
-      localStorage.clear()
+      localStorage.clear();
       history.push("/");
     }
   };
@@ -61,23 +49,30 @@ function LoginLogoutButton(props) {
           <button
             onClick={signOutHandler}
             className="btn btn-secondary rounded-pill"
-          ><FiUserX/> Cerrar Sesión
+          >
+            <FiUserX /> Cerrar Sesión
           </button>
         </div>
       ) : (
         <div className="container  mx-2">
-           <li className="nav-item active tituloLinks">
-                <NavLink className="nav-link text-white react-icons" to="/registerEmploye">
-                <FiUserPlus/> Regístrate <span className="sr-only">(current)</span>
-                </NavLink>
-              </li>
+          <li className="nav-item active tituloLinks">
+            <NavLink
+              className="nav-link text-white react-icons"
+              to="/registerEmploye"
+            >
+              <FiUserPlus /> Regístrate{" "}
+              <span className="sr-only">(current)</span>
+            </NavLink>
+          </li>
           <Button
             variant="primary"
             className="btn btn-success rounded-pill react-icons"
             onClick={handleShow}
-          > <FiUser /> Iniciar Sesión
+          >
+            {" "}
+            <FiUser /> Iniciar Sesión
           </Button>
-          <Modal show={photo} onHide={handleClose} >
+          <Modal show={photo} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>
                 <div className="ml-5 d-flex flex-column align-items-center">
@@ -89,10 +84,10 @@ function LoginLogoutButton(props) {
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <LoginBody 
-              setUsername={setUsername}
-              //  user={user}
-               />
+              <LoginBody
+                setUsername={setUsername}
+                //  user={user}
+              />
             </Modal.Body>
           </Modal>
         </div>

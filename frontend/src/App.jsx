@@ -18,7 +18,7 @@ import FormJobPostulate from "./components/FormJobPostulate";
 import Prices from "./pages/Prices";
 import WeAre from './pages/Weare'
 import Contacto from './pages/Contacto'
-import FourZeroFour from './components/FourZeorFour'
+// simport FourZeroFour from './components/FourZeorFour'
 
 function App() {
   return (

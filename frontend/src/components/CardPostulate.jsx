@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-// import { Link } from "react-router-dom";
-// import searchImage from "../images/search.svg";
 import { Modal } from "react-bootstrap";
 import FormPostulate from "./FormPostulate";
 
