@@ -1,8 +1,29 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const EditAdmin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const signInHandler = async (e) => {
+      e.preventDefault();
+    try {
+      const response = await axios.put( "/api/v1/users/administrators/", {
+        username: username.trim(),
+        password: password.trim()
+      });
+      await Swal.fire({
+        icon: "success",
+        title: "Se modificaron sactifactoriamente sus datos!",
+        showConfirmButton: false,
+        width: "auto",
+        timer: 1500,
+      });
+    } catch (error) {
+      Swal("ERROR", "Something went wrong", "error");
+    }
+  }
+
   return (
     <div className="container">
       <div className="text-center pb-5 form-group mb-3">
@@ -13,9 +34,9 @@ const EditAdmin = () => {
           Aqui podra cambiar su nombre de usuario y su clave.
         </p>
         <div className="mb-4"></div>
-        <form>
+        <form onSubmit={signInHandler}>
           <div className="form-group">
-            <label htmlFor="username">username</label>
+            <label htmlFor="username">Username</label>
             <input
               type="text"
               required
@@ -23,6 +44,7 @@ const EditAdmin = () => {
               name="username"
               placeholder="Username"
               onChange={(e) => setUsername(e.target.value)}
+              value={username}
             />
           </div>
           <div className="form-group">
@@ -39,6 +61,7 @@ const EditAdmin = () => {
               className="form-control form-control-sm"
               aria-describedby="passwordHelpBlock"
               onChange={(e) => setPassword(e.target.value)}
+              value={password}
             />
             <small id="passwordHelpBlock" className="form-text text-muted">
               la password debe tener entre 8 y 20 caracteres, contener letras y
@@ -46,6 +69,12 @@ const EditAdmin = () => {
               minuscula.
             </small>
           </div>
+          <button
+                type="submit"
+                className="btn btn-success rounded-pill"
+              >
+                Modificar datos
+              </button>
         </form>
       </div>
     </div>
