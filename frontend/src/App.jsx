@@ -18,7 +18,7 @@ import FormJobPostulate from "./components/FormJobPostulate";
 import Prices from "./pages/Prices";
 import WeAre from './pages/Weare'
 import Contacto from './pages/Contacto'
-// simport FourZeroFour from './components/FourZeorFour'
+import FourZeroFour from './components/FourZeorFour'
 
 function App() {
   return (
@@ -37,6 +37,7 @@ function App() {
           <Route path="/informacion" component={WeAre}/>
           <Route path="/contacto" component={Contacto} />
           <Route path="/" component={home} />
+          <Route component={FourZeroFour} />
         </Switch>
       </Router>
     </div>
