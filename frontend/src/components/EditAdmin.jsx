@@ -28,7 +28,7 @@ const EditAdmin = () => {
     <div className="container">
       <div className="text-center pb-5 form-group mb-3">
         <h3 className="mt-4 titulos">Bienvenido</h3>
-        <h5 className="mb-4 texdo">Edicion de Administrador</h5>
+        <h5 className="mb-4 texdo">Edición de Administrador</h5>
         <p className="mb-4 textNews">
           {" "}
           Aqui podra cambiar su nombre de usuario y su clave.
