@@ -26,7 +26,7 @@ exports.createPostulate = async (req, res) => {
     intendedsalary: body.intendedsalary,
     experiences: body.experiences,
     studies: body.studies,
-    telcandidate: candidate.email,
+    telcandidate: body.telcandidate,
     offerid: mongoose.Types.ObjectId(req.params.offerId),
     candidateid: res.locals.user.id,
   };
