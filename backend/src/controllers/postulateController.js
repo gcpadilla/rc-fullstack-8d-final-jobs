@@ -26,6 +26,7 @@ exports.createPostulate = async (req, res) => {
     intendedsalary: body.intendedsalary,
     experiences: body.experiences,
     studies: body.studies,
+    emailcandidate:candidate.email,
     telcandidate: body.telcandidate,
     offerid: mongoose.Types.ObjectId(req.params.offerId),
     candidateid: res.locals.user.id,
@@ -49,7 +50,6 @@ exports.createPostulate = async (req, res) => {
     const offer = await offerModel.findById({
       _id: mongoose.Types.ObjectId(req.params.offerId),
     });
-    console.log(offer);
 
     offer.postulateRef.push(postulate._id);
     offer.candidateRef.push(candidate._id);
@@ -992,7 +992,6 @@ exports.updatePostulateAdmin = async (req, res) => {
       { state: state },
       { new: true }
     );
-    console.log(postulate);
 
     postulate = await postulateModel.findOne(
       { _id: req.params.id },
