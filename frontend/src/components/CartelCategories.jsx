@@ -4,7 +4,8 @@ import Swal from "sweetalert2";
 function CartelCategories(props) {
   const onClick = () => {
     Swal.fire({
-      title: "PARA PODER VER MAS OFERTAS DEBE REGISTRARSE",
+      title:"Atención",
+      text: "Para visualizar todas las ofertas, Iniciá Sesión o Regístrate",
       showConfirmButton: true,
       width: "auto",
     });

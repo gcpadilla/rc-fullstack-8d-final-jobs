@@ -25,7 +25,9 @@ exports.thereIsAnAdmin = async (req, res) => {
 
   try {
     await user.save();
-    res.send({ message: 'Es el primer inicio de la aplicacion, puedes loguearte con Username: Administrador0 , password: Administrador0' });
+    res.send({ 
+      title: 'Bienvenido',
+      text: 'Es el primer inicio de la aplicación. Para comenzar, ingresa los siguientes datos: Username: Administrador0 , password: Administrador0' });
   } catch (error) {
     return res.status(500).json({ message: "ERROR DE INICIO.", error });
   }
@@ -57,7 +59,7 @@ exports.createAdmin = async (req, res) => {
 
   try {
     await user.save();
-    res.send({ message: 'Se registro usuario correctamente..' });
+    res.send({ message: 'Se registró usuario correctamente..' });
   } catch (err) {
     res.status(500).send(err);
   }
@@ -153,7 +155,7 @@ exports.login = async (req, res) => {
     await adminModel.update({ username: user_in_db.username }, user_in_db);
     res.send({ message: 'Se logueo perfecto', token, role: user_in_db.role, username: user_in_db.username});
   } catch (error) {
-    return res.status(500).json({ message: "ERROR DE LOGIN.", error });
+    return res.status(500).json({ message: "Se ha producido un error al Iniciar Sesión", error });
   }
 }
 
@@ -164,10 +166,10 @@ exports.logout = async (req, res) => {
 
     await adminModel.updateOne({ _id: res.locals.user.id }, { $set: { token: [] } });
 
-    res.json({ message: 'Se deslogueo perfecto' });
+    res.json({ message: 'Se ha cerrado sesión.' });
 
   } catch (error) {
-    res.status(500).send({ message: 'ERROR DE LOGOUT.', error });
+    res.status(500).send({ message: 'Se ha producido un error al cerrar sesión.', error });
   }
 
 }

@@ -164,7 +164,7 @@ const Company = () => {
         </SlidingPane>
       </div>
       <div className="container">
-        <div className="row">
+        <div className="row d-flex justify-content-center">
           {display === 1 ? (
             <div className="container">
               <div className="col-11">
