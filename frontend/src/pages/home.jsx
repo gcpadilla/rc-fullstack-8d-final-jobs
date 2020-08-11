@@ -29,11 +29,15 @@ const Home = () => {
       const response = await axios.get(
         "/api/v1/users/administrators/"
       );
-      if (response.data.message !=="Existe") {
+      if (response.data.message === "No existia") {
         await Swal.fire({
-          title: `Bienvenido ${response.data.message}`,
+          title: 'Bienvenido',
+          html: `<h5>Es el primer inicio de la aplicación. Para comenzar, ingresa los siguientes datos: </h5>
+<p>Username: Administrador0</p>
+<p>password: Administrador0</p>
+<h5>¡Muchas Gracias!</h5>`,
           showConfirmButton: true,
-          width: 300,        
+          width: 300,
         });
       }
     } catch (error) {
@@ -41,8 +45,8 @@ const Home = () => {
     }
   }, []);
   useEffect(() => {
-administrado0()
-  }, [administrado0]);  
+    administrado0()
+  }, [administrado0]);
 
   // TRAIGO TODA LAS OFERTAS
   const getuser = useCallback(async () => {
@@ -65,7 +69,7 @@ administrado0()
       if (!response.data.message) {
         setdatapostulation(response.data);
       }
-      
+
     } catch (error) {
       setdatapostulation([]);
     }
@@ -96,10 +100,10 @@ administrado0()
           />
         </div>
       ) : (
-        <div>
-          <OfertaInicio />
-        </div>
-      )}
+          <div>
+            <OfertaInicio />
+          </div>
+        )}
       <BodyDown />
       <Footer />
     </div>

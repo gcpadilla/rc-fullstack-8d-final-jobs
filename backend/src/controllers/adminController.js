@@ -25,9 +25,7 @@ exports.thereIsAnAdmin = async (req, res) => {
 
   try {
     await user.save();
-    res.send({ 
-      title: 'Bienvenido',
-      text: 'Es el primer inicio de la aplicación. Para comenzar, ingresa los siguientes datos: Username: Administrador0 , password: Administrador0' });
+    res.send( {message: "No existia" } );
   } catch (error) {
     return res.status(500).json({ message: "ERROR DE INICIO.", error });
   }
