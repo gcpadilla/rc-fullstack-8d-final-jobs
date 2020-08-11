@@ -23,6 +23,11 @@ const PostulateSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    emailcandidate: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     telcandidate: {
       type: Number,
       trim: true,
