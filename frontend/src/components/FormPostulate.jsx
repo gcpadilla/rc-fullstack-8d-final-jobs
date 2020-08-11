@@ -132,14 +132,15 @@ const FormPostulate = (props) => {
             </div>
           </div>
           <div className="col-md-6 col-sm-12 form-group">
-            <label className="formLabel">Email de contacto</label>
+            <label className="formLabel">Numero de contacto</label>
             <input
-              type="email"
+              type="number"
               required
               className="form-control "
-              name="emailcandidate"
+              name="telcandidate"
+              maxLength="10"
               defaultValue={props.postu.emailcandidate}
-              placeholder="Email de contacto"
+              placeholder="Numero de celular"
               onChange={onInputChange}
             />
           </div>
