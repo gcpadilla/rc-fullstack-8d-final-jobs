@@ -25,18 +25,18 @@ function App() {
     <div>
       <Router>
         <Switch>
-          <Route path="/faqcandidates" component={FaqsCandidates} />
-          <Route path="/loginEmploye" component={loginEmploye} />
-          <Route path="/registerEmploye" component={registerEmploye} />
-          <PrivateRoute path="/company" component={company} />
-          <Route path="/PerfilUser" component={PerfilUser}/>
-          <Route path="/offers" component={offers} />
+          <Route path="/faqcandidates" exact component={FaqsCandidates} />
+          <Route path="/loginEmploye" exact component={loginEmploye} />
+          <Route path="/registerEmploye" exact component={registerEmploye} />
+          <PrivateRoute path="/company" exact component={company} />
+          <Route path="/PerfilUser" exact component={PerfilUser}/>
+          <Route path="/offers" exact component={offers} />
           <Route path="/faqbusiness" exact component={FaqBusiness} />
-          <Route path="/prices" component={Prices} />
-          <PrivateRoute path="/publicJob" component={FormJobPostulate} />
-          <Route path="/informacion" component={WeAre}/>
-          <Route path="/contacto" component={Contacto} />
-          <Route path="/" component={home} />
+          <Route path="/prices" exact component={Prices} />
+          <PrivateRoute path="/publicJob" exact component={FormJobPostulate} />
+          <Route path="/informacion" exact component={WeAre}/>
+          <Route path="/contacto" exact component={Contacto} />
+          <Route path="/" exact component={home} />
           <Route component={FourZeroFour} />
         </Switch>
       </Router>
