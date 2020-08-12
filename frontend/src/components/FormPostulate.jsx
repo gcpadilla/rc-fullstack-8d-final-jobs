@@ -24,7 +24,7 @@ const FormPostulate = (props) => {
           await axios.delete(`/api/v1/offer/postulates/${props.postu._id}`);
           Swal.fire({
             icon: "success",
-            text: "Oferta eliminada...",
+            text: "Postulacion eliminada...",
             width: 250,
             showConfirmButton: false,
             timer: 1500,
