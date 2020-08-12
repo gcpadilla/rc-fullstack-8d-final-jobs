@@ -6,7 +6,10 @@ import axios from "axios";
 
 const Table = (props) => {
   const [estado, setestado] = useState(props.c.state);
+  const [mostrarEstado, setMostrarEstado] = useState(props.c.state)
   const [flag, setflag] = useState(true);
+  const [button, setButon] = useState("btn btn-outline-secondary btn-sm text-white ml-1")
+
   const modificar = async (e) => {
     e.preventDefault();
     try {
@@ -22,6 +25,8 @@ const Table = (props) => {
         timer: 1500,
       });
       setflag(true);
+      setButon("d-none")
+      setMostrarEstado(estado)
     } catch (err) {
       if (err.response.data.message === undefined) {
         Swal.fire(
@@ -69,7 +74,7 @@ const Table = (props) => {
         <td>
           <form onSubmit={modificar}>
             <div className="form-group d-flex flex-nowrap">
-              <select
+             {mostrarEstado === "Pendiente"? <select
                 className="form-control form-control-sm"
                 name="state"
                 required
@@ -80,10 +85,12 @@ const Table = (props) => {
                 <option value="Admitido">Admitido</option>
                 <option value="Desestimado">Desestimado</option>
               </select>
+              : mostrarEstado
+              }
               {flag ? (
                 <button
                   type="submit"
-                  className="btn btn-outline-secondary btn-sm text-white ml-2"
+                  className={props.c.state !== "Pendiente" ? "d-none": button }
                 >
                   <AiTwotoneEdit />
                 </button>
